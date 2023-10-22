@@ -15,4 +15,4 @@ Welcome to Jianjun Zhou's Notebook!
 
 - [TonyCrane](https://github.com/TonyCrane)
 
-参考了 [TonyCrane's Notebook](https://github.com/TonyCrane/note) 的样式。
+Style modified from [TonyCrane's Notebook](https://github.com/TonyCrane/note).

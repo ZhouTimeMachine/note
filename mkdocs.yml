@@ -9,6 +9,18 @@ copyright: Copyright &copy; 2023 <a href="https://github.com/ZhouTimeMachine" ta
 nav:
   - Home:
     - index.md
+  - Courses:
+    - courses/index.md
+    - Database System: 
+      - Chapter 1-7: courses/db-ch1-to-7-review.md
+      - Chapter 12-19: courses/db-ch12-to-19-review.md
+    - Advanced Data Structure and Algorithm:
+      - Homework: courses/ads-hw-review.md
+      - Final Review: courses/ads-final-review.md
+    - Object Oriented Programming:
+      - Mid Term Review: courses/oop-mid-review.md
+      - Final Review: courses/oop-final-review.md
+    - C Programming: courses/C-review.md
 
 theme: 
   name: 'material'
@@ -90,3 +102,10 @@ plugins:
       extra_skipped_class:
         - arithmatex
       disable_serve: false
+  - git-revision-date-localized:
+      type: datetime
+      timezone: Asia/Shanghai
+      locale: zh
+      enable_creation_date: true
+      exclude:
+        - index.md
