@@ -1,0 +1,92 @@
+site_name: Jianjun Zhou's Notebook
+site_url: https://ZhouTimeMachine.github.io/note
+repo_name: ZhouTimeMachine/note
+repo_url: https://github.com/ZhouTimeMachine/note/
+edit_uri: tree/master/docs
+site_description: Jianjun Zhou's Notebook
+copyright: Copyright &copy; 2023 <a href="https://github.com/ZhouTimeMachine" target="_blank" rel="noopener">ZhouTimeMachine</a>
+
+nav:
+  - Home:
+    - index.md
+
+theme: 
+  name: 'material'
+  language: 'en'
+  icon: 
+    logo: material/notebook-outline
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 日间模式
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+  font: false
+
+markdown_extensions:
+  - admonition # mkdocs warning
+  - md_in_html # footnote
+  - meta # metadata
+  - pymdownx.caret # underline
+  - pymdownx.mark # text hightlight
+  - pymdownx.tilde # strikethrough
+  - pymdownx.keys
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.arithmatex: # TeX support for math formula
+      generic: true
+  - pymdownx.emoji: # emoji support
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      linenums: true
+  - pymdownx.tasklist: # tasklist support
+      custom_checkbox: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - tables
+#   - toc:
+#       permalink: true
+#       toc_depth: 4
+#   - def_list
+#   - attr_list
+#   - sane_lists
+
+extra_css:
+  - css/katex.min.css
+  - css/font.css
+  - css/custom.css
+
+extra_javascript:
+  - js/katex.min.js
+  - js/katex.js
+  - js/heti.js
+
+plugins:
+  - search
+  - heti:
+      extra_skipped_class:
+        - arithmatex
+      disable_serve: false
