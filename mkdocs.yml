@@ -11,15 +11,15 @@ nav:
     - index.md
   - Courses:
     - courses/index.md
-    - Database System: 
-      - Chapter 1-7: courses/db-ch1-to-7-review.md
-      - Chapter 12-19: courses/db-ch12-to-19-review.md
     - Advanced Data Structure and Algorithm:
       - Homework: courses/ads-hw-review.md
       - Final Review: courses/ads-final-review.md
     - Object Oriented Programming:
       - Mid Term Review: courses/oop-mid-review.md
       - Final Review: courses/oop-final-review.md
+    - Database System: 
+      - Chapter 1-7: courses/db-ch1-to-7-review.md
+      - Chapter 12-19: courses/db-ch12-to-19-review.md
     - C Programming: courses/C-review.md
 
 theme: 
@@ -105,7 +105,7 @@ plugins:
   - git-revision-date-localized:
       type: datetime
       timezone: Asia/Shanghai
-      locale: zh
+      locale: en
       enable_creation_date: true
       exclude:
         - index.md
