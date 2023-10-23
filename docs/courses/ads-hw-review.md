@@ -1,22 +1,10 @@
----
-title: ads-hw-review
-date: 2023-01-18 23:27:06
-tags:
-  - review
-  - ads
-categories:
-  - study
----
+# ADS Homework Review
 
-# Hw1
+!!! info "PTA homework of ZJU *Advanced Data Structure and Algorithm*, 2022 Spring."
 
-## 选择题
+## Hw1
 
-### 1.
-
-If the depth of an AVL tree is 6 (the depth of an empty tree is defined to be -1), then the minimum possible number of nodes in this tree is:
-
-<!--more-->
+**Q2-1.** If the depth of an AVL tree is 6 (the depth of an empty tree is defined to be -1), then the minimum possible number of nodes in this tree is:
 
 A. 13
 
@@ -26,19 +14,18 @@ C. 20
 
 D. 33
 
+??? general "Answer"
     D。
 
-$$
-n_h=h_{h-1}+h_{n-2}+1
-$$
+    $$
+    n_h=h_{h-1}+h_{n-2}+1
+    $$
 
-| depth | -1   | 0    | 1    | 2    | 3    | 4    | 5    | 6    |
-| ----- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| nodes | 0    | 1    | 2    | 4    | 7    | 12   | 20   | 33   |
+    | depth | -1   | 0    | 1    | 2    | 3    | 4    | 5    | 6    |
+    | ----- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | nodes | 0    | 1    | 2    | 4    | 7    | 12   | 20   | 33   |
 
-### 2.
-
-Insert 2, 1, 4, 5, 9, 3, 6, 7 into an initially empty AVL tree. Which one of the following statements is FALSE?
+**Q2-2.** Insert 2, 1, 4, 5, 9, 3, 6, 7 into an initially empty AVL tree. Which one of the following statements is FALSE?
 
 A. 4 is the root
 
@@ -48,17 +35,20 @@ C. 2 and 6 are siblings
 
 D. 9 is the parent of 7
 
+??? general "Answer"
     B。最终结果如下图。
+    
+    <div style="text-align:center;">
+        <img src="../imgs/ads/ads_hw_1.3.png" alt="1.3" style="margin: 0 auto; zoom: 80%;"/>
+    </div>
+    
+    如果搞不清过程，可以利用一下 [AVL 树模拟](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html)。
 
-<img src="/images/2023/ads_hw_1.3.png" alt="1.3"/>
+**Q2-3.** For the result of accessing the keys 3, 9, 1, 5 in order in the splay tree in the following figure, which one of the following statements is FALSE?
 
-如果搞不清过程，可以利用一下[AVL树模拟][https://www.cs.usfca.edu/~galles/visualization/AVLtree.html]。
-
-### 3.
-
-For the result of accessing the keys 3, 9, 1, 5 in order in the splay tree in the following figure, which one of the following statements is FALSE?
-
-<img src="/images/2023/ads_hw_1.1.jpg" alt="1.1"/>
+<div style="text-align:center;">
+    <img src="../imgs/ads/ads_hw_1.1.jpg" alt="1.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 A. 5 is the root
 
@@ -68,12 +58,14 @@ C. 6 and 10 are siblings
 
 D. 3 is the parent of 4
 
+??? general "Answer"
     D。最终结果如下图
 
-<img src="/images/2023/ads_hw_1.4.png" alt="1.4"/>
-### 4. 
+    <div style="text-align:center;">
+    <img src="../imgs/ads/ads_hw_1.4.png" alt="1.4" style="margin: 0 auto; zoom: 80%;"/>
+    </div>
 
-When doing amortized analysis, which one of the following statements is FALSE?
+**Q2-4.** When doing amortized analysis, which one of the following statements is FALSE?
 
 A. Aggregate analysis shows that for all $n$, a sequence of $n$ operations takes worst-case time $T(n)$ in total. Then the amortized cost per operation is therefore $T(n)/n$
 
@@ -83,13 +75,10 @@ C. For accounting method, when an operation's amortized cost exceeds its actual 
 
 D. The difference between aggregate analysis and accounting method is that the later one assumes that the amortized costs of the operations may differ from each other
 
+??? general "Answer"
     B。B应该是minimum。
 
-### 5.
-
-Consider the following buffer management problem. Initially the buffer size (the number of blocks) is one. Each block can accommodate exactly one item. As soon as a new item arrives, check if there is an available block. If yes, put the item into the block, induced a cost of one. Otherwise, the buffer size is doubled, and then the item is able to put into. Moreover, the old items have to be moved into the new buffer so it costs $k+1$ to make this insertion, where $k$ is the number of old items. Clearly, if there are $N$ items, the worst-case cost for one insertion can be $\Omega(N)$. To show that the average cost is $O(1)$, let us turn to the amortized analysis. To simplify the problem, assume that the buffer is full after all the $N$ items are placed. Which of the following potential functions works?
-
-
+**Q2-5.** Consider the following buffer management problem. Initially the buffer size (the number of blocks) is one. Each block can accommodate exactly one item. As soon as a new item arrives, check if there is an available block. If yes, put the item into the block, induced a cost of one. Otherwise, the buffer size is doubled, and then the item is able to put into. Moreover, the old items have to be moved into the new buffer so it costs $k+1$ to make this insertion, where $k$ is the number of old items. Clearly, if there are $N$ items, the worst-case cost for one insertion can be $\Omega(N)$. To show that the average cost is $O(1)$, let us turn to the amortized analysis. To simplify the problem, assume that the buffer is full after all the $N$ items are placed. Which of the following potential functions works?
 
 A. The number of items currently in the buffer
 
@@ -99,119 +88,113 @@ C. The number of available blocks currently in the buffer
 
 D. The opposite number of available blocks in the buffer
 
-D。如下图。
+??? general "Answer"
+    D。如下图。
 
-<img src="/images/2023/ads_hw_1.2.png" alt="1.2"/>
+    <div style="text-align:center;">
+    <img src="../imgs/ads/ads_hw_1.2.png" alt="1.2" style="margin: 0 auto; zoom: 80%;"/>
+    </div>
 
-# Hw2
+## Hw2
 
-## 判断题
+**Q1-1.** A 2-3 tree with 3 nonleaf nodes must have 18 keys at most. (T/F)
 
-### 1.
-
-A 2-3 tree with 3 nonleaf nodes must have 18 keys at most.
-
+??? general "Answer"
     T。必然一根两中间，2*3*3=18。
 
-## 选择题
-
-### 1
-
-In the red-black tree that results after successively inserting the keys 41; 38; 31; 12; 19; 8 into an initially empty red-black tree, which one of the following statements is FALSE?
+**Q2-1** In the red-black tree that results after successively inserting the keys 41; 38; 31; 12; 19; 8 into an initially empty red-black tree, which one of the following statements is FALSE?
 
 A. 38 is the root
 
 B. 19 and 41 are siblings, and they are both red
 
-
 C. 12 and 31 are siblings, and they are both black
-
 
 D. 8 is red
 
+??? general "Answer"
     B。最终结果如下图。
-<img src="/images/2023/ads_hw_2.2.png" alt="2.2"/>
+    
+    <div style="text-align:center;">
+    <img src="../imgs/ads/ads_hw_2.2.png" alt="2.2" style="margin: 0 auto; zoom: 80%;"/>
+    </div>
 
-如果搞不清过程，可以利用一下[RB树模拟][https://www.cs.usfca.edu/~galles/visualization/RedBlack.html]。
+    如果搞不清过程，可以利用一下 [RB 树模拟](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)。
 
-### 2.
+**Q2-2.** After deleting 15 from the red-black tree given in the figure, which one of the following statements must be FALSE?
 
-After deleting 15 from the red-black tree given in the figure, which one of the following statements must be FALSE?
-
-<img src="/images/2023/ads_hw_2.1.jpg" alt="2.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_2.1.jpg" alt="2.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 A. 11 is the parent of 17, and 11 is black
 
-
 B. 17 is the parent of 11, and 11 is red
-
 
 C. 11 is the parent of 17, and 11 is red
 
-
 D. 17 is the parent of 11, and 17 is black
 
-    C。可能11顶上去，则11为黑、17为红。
-    也可能17顶上去，则17为黑、11为红。
+??? general "Answer"
+    C。可能 11 顶上去，则 11 为黑、17 为红。
+    
+    也可能 17 顶上去，则 17 为黑、11 为红。
 
-### 3.
-
-Insert 3, 1, 4, 5, 9, 2, 6, 8, 7, 0 into an initially empty 2-3 tree (with splitting). Which one of the following statements is FALSE?
+**Q2-3.** Insert 3, 1, 4, 5, 9, 2, 6, 8, 7, 0 into an initially empty 2-3 tree (with splitting). Which one of the following statements is FALSE?
 
 A. 7 and 8 are in the same node
 
 B. the parent of the node containing 5 has 3 children
 
-
 C. the first key stored in the root is 6
-
 
 D. there are 5 leaf nodes
 
+??? general "Answer"
     A。最终结果如下图
 
-<img src="/images/2023/ads_hw_2.3.png" alt="2.3"/>
+    <div style="text-align:center;">
+    <img src="../imgs/ads/ads_hw_2.3.png" alt="2.3" style="margin: 0 auto; zoom: 80%;"/>
+    </div>
 
-如果搞不清过程，不建议使用对应网站的B+树模拟，它那里的B+树的定义似乎和ads有所不同（采用的可能是数据库的定义）。
+    如果搞不清过程，不建议使用对应网站的 B+ 树模拟，它那里的 B+ 树的定义似乎和 ads 有所不同（采用的可能是数据库的定义）。
 
-### 4.
+**Q2-4.** After deleting 9 from the 2-3 tree given in the figure, which one of the following statements is FALSE?
 
-After deleting 9 from the 2-3 tree given in the figure, which one of the following statements is FALSE?
-<img src="/images/2023/ads_hw_2.5.jpg" alt="2.5"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_2.5.jpg" alt="2.5" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 A. the root is full
 
 B. the second key stored in the root is 6
 
-
 C. 6 and 8 are in the same node
-
 
 D. 6 and 5 are in the same node
 
+??? general "Answer"
     D。最终结果如下图。
-<img src="/images/2023/ads_hw_2.4.png" alt="2.4"/>
+    
+    <div style="text-align:center;">
+    <img src="../imgs/ads/ads_hw_2.4.png" alt="2.4" style="margin: 0 auto; zoom: 80%;"/>
+    </div>
 
-### 5.
+**Q2-5.** Which of the following statements concerning a B+ tree of order $M$ is TRUE?
 
-Which of the following statements concerning a B+ tree of order $M$ is TRUE?
+A. the root always has between 2 and $M$ children
 
-A.
-the root always has between 2 and $M$ children
+B. not all leaves are at the same depth
 
-B.
-not all leaves are at the same depth
+C. leaves and nonleaf nodes have some key values in common
 
-C.
-leaves and nonleaf nodes have some key values in common
+D. all nonleaf nodes have between $\lceil M/2\rceil$ and $M$ children
 
-D.
-all nonleaf nodes have between $\lceil M/2\rceil$ and $M$ children
-
+??? general "Answer"
     C。A，考虑根为叶。B，所有叶必然同深。D，考虑根。
 
-# Hw3
-## 判断题
+## Hw3
+### 判断题
 ### 1.
 In distributed indexing, document-partitioned strategy is to store on each node all the documents that contain the terms in a certain range.
 
@@ -232,7 +215,7 @@ While accessing a term by hashing in an inverted file index, range searches are 
 
     T。
 
-## 选择题
+### 选择题
 
 ### 1.
 When measuring the relevancy of the answer set, if the precision is high but the recall is low, it means that:
@@ -282,8 +265,8 @@ $$
     recall = 4000 / (4000+8000) = 33\%
 $$
 
-# Hw4
-## 判断题
+## Hw4
+### 判断题
 
 ### 1. 
 The result of inserting keys $1$ to $2^k-1$ for any $k>4$ in order into an initially empty skew heap is always a full binary tree.
@@ -296,12 +279,14 @@ he right path of a skew heap can be arbitrarily long.
     T。skew heap只有轻结点受类似leftist heap的限制。
     相对而言，leftist heap就不能这么任意了，它受log N限制。
 
-## 选择题
+### 选择题
 
 ### 1.
 The right path of a skew heap can be arbitrarily long.
 
-<img src="/images/2023/ads_hw_4.1.jpg" alt="4.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_4.1.jpg" alt="4.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 A. 2 is the root with 11 being its right child
 
@@ -316,7 +301,9 @@ D. the null path length of 4 is less than that of 2
 
     D。都是2，如下图
 
-<img src="/images/2023/ads_hw_4.3.png" alt="4.3"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_4.3.png" alt="4.3" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 ### 2.
 We can perform BuildHeap for leftist heaps by considering each element as a one-node leftist heap, placing all these heaps on a queue, and performing the following step: Until only one heap is on the queue,， dequeue two heaps, merge them, and enqueue the result. Which one of the following statements is FALSE?
@@ -346,12 +333,16 @@ C. 6 is the left child of 2
 D. 11 is the right child of 7
 
     B。有8个叶结点。如下图
-<img src="/images/2023/ads_hw_4.4.png" alt="4.4"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_4.4.png" alt="4.4" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 ### 4. 
 Merge the two skew heaps in the following figure. Which one of the following statements is FALSE?
 
-<img src="/images/2023/ads_hw_4.2.jpg" alt="4.2"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_4.2.jpg" alt="4.2" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 
 A. 15 is the right child of 8
@@ -367,10 +358,12 @@ D. 9 is the right child of 3
 
     A。15是8是左结点。如下图
 
-<img src="/images/2023/ads_hw_4.5.png" alt="4.5"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_4.5.png" alt="4.5" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
-# Hw5
-## 选择题
+## Hw5
+### 选择题
 
 ### 1. 
 Which of the following binomial trees can represent a binomial queue of size 42?
@@ -405,7 +398,9 @@ D. insertion
 
 ### 3. 
 Merge the two binomial queues in the following figure. Which one of the following statements must be FALSE?
-<img src="/images/2023/ads_hw_5.1.jpg" alt="5.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_5.1.jpg" alt="5.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 A. there are two binomial trees after merging, which are $B_2$ and $B_4$
 
@@ -421,7 +416,9 @@ D. if 4 is a child of 2, then 23 must be another child of 2
 
 ### 4.
 Delete the minimum number from the given binomial queues in the following figure. Which one of the following statements must be FALSE?
-<img src="/images/2023/ads_hw_5.2.jpg" alt="5.2"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_5.2.jpg" alt="5.2" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 A. there are two binomial trees after deletion, which are $B_1$ and $B_2$
 
@@ -434,8 +431,8 @@ C. 29 can never be the root of any resulting binomial tree
 D. if 29 is a child of 4, then 15 must be the root of $B_1$
 
     C。29-55可以自成B1，不参与merge。
-# Hw6
-## 选择题
+## Hw6
+### 选择题
 
 ### 1.
 In the Tic-tac-toe game, a "goodness" function of a position is defined as 
@@ -443,7 +440,9 @@ $f(P)=W_{computer}-W_{human}$, where $W$ is the number of potential wins at posi
 
 In the following figure, $O$ represents the computer and $X$ the human. What is the goodness of the position of the figure?
 
-<img src="/images/2023/ads_hw_6.1.jpg" alt="6.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_6.1.jpg" alt="6.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 
 A. -1
@@ -462,7 +461,9 @@ D. 5
 ### 2.
 Given the following game tree, which node is the first one to be pruned with $\alpha-\beta$ pruning algorithm?
 
-<img src="/images/2023/ads_hw_6.2.png" alt="6.2"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_6.2.png" alt="6.2" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 
 A. a
@@ -476,8 +477,8 @@ D. d
     C。搜索到b等于86时，根据祖结点是68，min的策略，
     c结点不需要继续搜索了，即β剪枝。
 
-# Hw7
-## 选择题
+## Hw7
+### 选择题
 
 ### 1. 
 When solving a problem with input size $N$ by divide and conquer, if at each stage the problem is divided into 8 sub-problems of equal size $N/3$, and the conquer step takes $O(N^2\log N)$ to form the solution from the sub-solutions, then the overall time complexity is \_\_. 
@@ -570,12 +571,14 @@ $$
 T(n)=O((k+1)\log n)=O(\log n\log\log n)
 $$
 
-# Hw8
-## 选择题
+## Hw8
+### 选择题
 ### 1. 
 Rod-cutting Problem: Given a rod of total length $N$ inches and a table of selling prices $P_L$ for lengths $L=1,2,⋯,M$. You are asked to find the maximum revenue $R_N$ obtainable by cutting up the rod and selling the pieces. For example, based on the following table of prices, if we are to sell an 8-inch rod, the optimal solution is to cut it into two pieces of lengths 2 and 6, which produces revenue  $R_8=P_2+P_6=5+17=22$. And if we are to sell a 3-inch rod, the best way is not to cut it at all.
 
-<img src="/images/2023/ads_hw_8.1.png" alt="8.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_8.1.png" alt="8.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 Which one of the following statements is FALSE?
 
@@ -621,8 +624,8 @@ D. for i in 0 to n: for j in n to 0: for k in 0 to n
 
 $j$不能增序算，因为$f_{i,j,k}$依赖于$f_{i,j+1,k}$。
 
-# Hw9
-## 判断题
+## Hw9
+### 判断题
 ### 1. 
 Let $S$ be the set of activities in Activity Selection Problem. Then the earliest finish activity $a_m$ must be included in all the maximum-size subset of mutually compatible activities of $S$.
 
@@ -633,8 +636,8 @@ Greedy algorithm works only if the local optimum is equal to the global optimum.
 
     T。即最优子结构前提。
 
-# Hw10
-## 判断题
+## Hw10
+### 判断题
 ### 1.
 If $L_1\leq_p L_2$ and $L_2\in NP$, then $L_1\in NP$.
 
@@ -661,7 +664,7 @@ If a problem can be solved by dynamic programming, it must be solved in polynomi
 
     F。比如背包问题，其实不算P类。
 
-## 选择题
+### 选择题
 
 ### 1. 
 Among the following problems, \_\_ is NOT an NP-complete problem.
@@ -697,8 +700,8 @@ D. If $Q$ is NP-hard, then $Q$ is NP-complete.
     C，一个NP不是P，则NP≠P。
     D，NP-hard且NP就确定了NPC。
 
-# Hw11
-## 判断题
+## Hw11
+### 判断题
 
 ### 1. 
 Suppose ALG is an $\alpha$-approximation algorithm 
@@ -737,7 +740,7 @@ $$
 
 可见$\rho_1$是不可控的。
 
-## 选择题
+### 选择题
 
 ### 1.
 For the bin-packing problem: let $S=\sum_iS_i$.
@@ -780,13 +783,17 @@ C. $w(T)\geqslant w(S)/2$ for any graph $G$
 
 D. None of the above
 
-<img src="/images/2023/ads_hw_11.1.png" alt="11.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_11.1.png" alt="11.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
-# Hw12
-## 判断题
+## Hw12
+### 判断题
 ### 1. 
 For the graph given in the following figure, if we start from deleting the black vertex, then local search can always find the minimum vertex cover.
-<img src="/images/2023/ads_hw_12.5.jpg" alt="12.5"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_12.5.jpg" alt="12.5" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
     T。
 
@@ -846,9 +853,11 @@ $c_1,c_3$半径为$\frac{\sqrt{41}}{4}$, $c_2$半径为$\frac{\sqrt{7}}{2}$, $c_
 因此虽然不确定最优解是什么,但是最优解一定比上面的Local Search的解的二分之一更小.
 
 下图中，绿色圆圈表示Local Search，蓝色圆圈表示给出的一个比Local Search的 $1/2$ 更小的解。
-<img src="/images/2023/ads_hw_12.1.png" alt="12.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_12.1.png" alt="12.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
-## 选择题
+### 选择题
 
 ### 1.
 Spanning Tree Problem: Given an undirected graph $G=(V, E)$, where $|V|=n$ and $|E|=m$. Let $F$ be the set of all spanning trees of $G$. Define $d(u)$ to be the degree of a vertex $u \in V$. Define $w(e)$ to be the weight of an edge $e \in E$.
@@ -892,10 +901,14 @@ D. For neither of the problems that this local search always return an optimal s
 对于其他两种，寻找其反例。
 
 对于Max Leaf Spanning Tree，寻找反例如下:
-<img src="/images/2023/ads_hw_12.2.png" alt="12.2"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_12.2.png" alt="12.2" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 对于Minimum Degree Spanning Tree，同样的原图(Original)，寻找反例如下:
-<img src="/images/2023/ads_hw_12.3.png" alt="12.3"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_12.3.png" alt="12.3" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 究其本质，最小生成树如果有更好的选择一定能交换，因为进行的正是边交换，直接影响的就是树的整体权值。另外两种树的性质则与顶点相关，不能直接影响，所以就寄了。
 
@@ -937,10 +950,12 @@ C. Upon the termination of the algorithm, the algorithm returns a cut $(A,B)$ so
 
 D. The algorithm terminates after at most $O(|V|^2)$ flips.
 
-<img src="/images/2023/ads_hw_12.4.png" alt="12.4"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_12.4.png" alt="12.4" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
-# Hw13
-## 判断题
+## Hw13
+### 判断题
 
 ### 1. 
 Let $a=\left(a_{1}, a_{2}, \ldots, a_{i}, \ldots, a_{j}, \ldots, a_{n}\right)$ denote the list of elements we want to sort. In the quicksort algorithm, if the pivot is selected uniformly at random. Then any two elements get compared at most once and the probability of $a_{i}$ and $a_{j}$ being compared is $2 /(j-i+1)$ for $j>i$, given that $a_{i}$ or $a_{j}$ is selected as the pivot.
@@ -951,7 +966,7 @@ Let $a=\left(a_{1}, a_{2}, \ldots, a_{i}, \ldots, a_{j}, \ldots, a_{n}\right)$ d
 如果第一次就选中1或4，它们才会被比较。因此它们被比较的概率是1/2。按照 $\dfrac{2}{j-i+1}$ 计算，应该是1。
 事实上，如果是已经被排序好的，这就是对的。
 
-## 选择题
+### 选择题
 
 ### 1.
 Given a linked list containg $N$ nodes. 
@@ -999,8 +1014,8 @@ $$
 \frac{1}{N}\cdot \frac{k}{N-1} + \frac{k}{N} = \frac{1}{3}
 $$
 
-# Hw14
-## 判断题
+## Hw14
+### 判断题
 ### 1.
 While comparing a serial algorithm with its parallel counterpart, we just concentrate on reducing the work load.
 
@@ -1036,8 +1051,8 @@ To solve the Maximum Finding problem with parallel Random Sampling method, O(n) 
 
 T。
 
-# Hw15
-## 判断题
+## Hw15
+### 判断题
 
 ### 1.
 To merge 55 runs using 3 tapes for a 2-way merge, the original distribution (34, 21) is better than (27, 28).
@@ -1065,7 +1080,7 @@ In general, for a 3-way merge we need 6 input buffers and 2 output buffers for p
 
 In general, for a $k$-way merge we need $2k$ input buffers and 2 output buffers for parallel operations in external sorting.
 
-## 选择题
+### 选择题
 
 ### 1.
 Given 100,000,000 records of 256 bytes each, and the size of the internal memory is 128MB. If simple 2-way merges are used, how many passes do we have to do?
@@ -1137,7 +1152,9 @@ D. 7 and 8 are written onto the third tape; 9 and 15 are merged into an output b
 
 D。如下图：
 
-<img src="/images/2023/ads_hw_15.1.png" alt="15.1"/>
+<div style="text-align:center;">
+<img src="../imgs/ads/ads_hw_15.1.png" alt="15.1" style="margin: 0 auto; zoom: 80%;"/>
+</div>
 
 D选项强行想要 parallel ，因此没有管正在读入的10, 12，直接基于现有3个 buffer 块 merge ，因此进行了错误的 merge(9, 15)。事实上这一步无法 parallel ，必须等待10, 12读完之后才能进行正确的 merge(9, 10)。
 
