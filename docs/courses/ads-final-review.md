@@ -1,14 +1,8 @@
----
-title: ads-final-review
-date: 2022-07-08 21:10:20
-tags:
-  - review
-  - ads
-categories:
-  - study
----
+# ADS Final Review
 
-## Basic
+!!! warning "该页面还在建设中"
+
+## Basics
 
 - binary tree
   - perfect：完美二叉树，每一层都被完全填充<!--more-->

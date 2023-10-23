@@ -1,6 +1,6 @@
 # C Programming
 
-!!! info "PTA homework of ZJU *Fundamentals of Programming and Algorithms*, 2020 Fall."
+!!! info "PTA homework of ZJU *Fundamentals of Programming and Algorithm*, 2020 Fall."
 
 ## Week 1
 
