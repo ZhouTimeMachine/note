@@ -1,23 +1,15 @@
----
-title: db-ch12-to-19-review
-date: 2022-07-08 22:19:31
-tags:
-  - review
-  - db
-categories:
-  - study
----
+# Database System Review: Chapter 12-19
 
-# Chap12: Physical Storage Systems
+!!! warning "该页面还在建设中"
 
-## 1. storage
+## Chap12: Physical Storage Systems
 
-<!--more-->
+### 1. storage
 
 - cache, main memory, (NVM), flash memory, magnetic disk, optical disk, magnetic tapes
 - primary/secondary(online)/tertiary(offline) storage
 
-## 2. Magnetic Disks
+### 2. Magnetic Disks
 
 - head, tracks(磁道), sectors(扇区), extent(盘区)
 - Disk controller
@@ -39,9 +31,9 @@ categories:
 - Solid State Disks(SSD)：like Flash
 - Flash：erase, remapping, flash translation table, wear leveling
 
-# Chap13: Data Storage Structures
+## Chap13: Data Storage Structures
 
-## 1. File organization
+### 1. File organization
 
 - record
 
@@ -94,22 +86,22 @@ categories:
     - tuple deletion and update
     - decompression
 
-# Chap14: Indexing
+## Chap14: Indexing
 
-## 1. Concepts
+### 1. Concepts
 
 - ordered/hash indices
 - point/range query
 - access/insertion/deletion time
 
-## 2. Ordered Indices
+### 2. Ordered Indices
 
 - primary(clustering)/secondary(non-clustering) index
 - Dense/Sparse index
   - sparse：less space, less maintenance(insert, delete), slower for locating
 - multilevel index：outer sparse, inner primary
 
-## 3. B+ Tree Index
+### 3. B+ Tree Index
 
 - <img src="/images/2022/image-20220617163835370.png" alt="image-20220617163835370"  />
 - non-leaf：sparse indices
@@ -121,15 +113,15 @@ categories:
 - String：variable fanout, space utilization for split, prefix compression
 - Composite search keys
 
-## 4. Write Optimized Indices 
+### 4. Write Optimized Indices 
 
 - Log-structured merge tree (LSM-tree), Buffer tree
 - Stepped-merge index（k trees each level）
   - Bloom filter 
 
-# Chap15: Query Processing
+## Chap15: Query Processing
 
-## 1. Basic Steps
+### 1. Basic Steps
 
 - Parsing and translation：Into relational algebra
 - Optimization：choose evaluation plans
@@ -137,12 +129,12 @@ categories:
 
 explain \<query\>
 
-## 2. Selection Cost
+### 2. Selection Cost
 
 block transfers and seeks
 
 - linear search
-  - <img src="/images/2022/image-20220617180417861.png" alt="image-20220617180417861" />
+- <img src="/images/2022/image-20220617180417861.png" alt="image-20220617180417861" />
 - <img src="/images/2022/image-20220617180447424.png" alt="image-20220617180447424" />
 - <img src="/images/2022/image-20220617180533327.png" alt="image-20220617180533327" />
 - <img src="/images/2022/image-20220617180602521.png" alt="image-20220617180602521" />
@@ -151,7 +143,7 @@ block transfers and seeks
 - conjunctive selection：one/composite index, intersection of identifiers
 - disjunctive selection by union
 
-## 3. Sorting Cost
+### 3. Sorting Cost
 
 - merge sort：simple($b_b=1$)->advanced
   - runs=$\lceil b_r/M\rceil$
@@ -160,7 +152,7 @@ block transfers and seeks
   - seeks=$2\lceil b_r/M\rceil+b_r(2\lceil \log_{M-1}(b_r/M)\rceil-1)$
   - ->$2\lceil b_r/M\rceil+\lceil b_r/b_b\rceil(2\lceil \log_{\lfloor M/b_b\rfloor-1}(b_r/M)\rceil-1)$
 
-## 4. Join Cost
+### 4. Join Cost
 
 outer relation: r, inner relation: s
 
@@ -187,7 +179,7 @@ outer relation: r, inner relation: s
   - need: $2(b_r+b_s)\lceil\log_{M-1}(b_s/M)\rceil+b_r+b_s$
   - seeks = $2(\lceil b_r/b_b\rceil+\lceil b_s/b_b\rceil)\lceil\log_{M-1}(b_s/M)\rceil$
 
-## 5. Evaluation
+### 5. Evaluation
 
 - Materialization
   - double buffering
@@ -200,9 +192,9 @@ outer relation: r, inner relation: s
   - Column-oriented storage(vector)
   - Cache conscious algorithm
 
-# Chap16: Query Optimization
+## Chap16: Query Optimization
 
-## 1. Generating Equivalent Expressions
+### 1. Generating Equivalent Expressions
 
 <img src="/images/2022/image-20220617200428196.png" alt="image-20220617200428196" />
 
@@ -221,11 +213,11 @@ outer relation: r, inner relation: s
   - Space requirements：sharing common sub-experssions
   - Time requirements：Dynamic programming
 
-## 2. Statistics for Cost Estimation
+### 2. Statistics for Cost Estimation
 
 $b_r=\lceil n_r/f_r\rceil$
 
-### Selection
+#### Selection
 
 满足条件的数量
 
@@ -237,7 +229,7 @@ $b_r=\lceil n_r/f_r\rceil$
 
 <img src="/images/2022/image-20220617202943181.png" alt="image-20220617202943181" style="zoom:80%;" />
 
-### Join
+#### Join
 
 <img src="/images/2022/image-20220617203052240.png" alt="image-20220617203052240" style="zoom:80%;" />
 
@@ -245,7 +237,7 @@ $b_r=\lceil n_r/f_r\rceil$
 
 <img src="/images/2022/image-20220617203308321.png" alt="image-20220617203308321" style="zoom:80%;" />
 
-### Other
+#### Other
 
 <img src="/images/2022/image-20220617203421637.png" alt="image-20220617203421637" style="zoom:80%;" />
 
@@ -257,21 +249,21 @@ $b_r=\lceil n_r/f_r\rceil$
 
 <img src="/images/2022/image-20220617204002501.png" alt="image-20220617204002501" style="zoom:80%;" />
 
-## 3. Choice of Evaluation Plans
+### 3. Choice of Evaluation Plans
 
-### Join-Order
+#### Join-Order
 
 - (2(n-1))!/(n-1)!
 - DP, Time O(3^n), Space O(2^n)
 - left-deep join tree, Time O(3^n)
 
-### Heuristic Optimization
+#### Heuristic Optimization
 
 - Perform selection/projection early
 - Perform most restrictive selection and join operations 
 - Perform left-deep join order
 
-## 4. Optimizing Nested Subqueries
+### 4. Optimizing Nested Subqueries
 
 correlation variables/evaluation
 
@@ -279,13 +271,13 @@ correlation variables/evaluation
 
 - **incremental view maintenance**
 
-# Chap17: Transactions
+## Chap17: Transactions
 
-## 1. ACID
+### 1. ACID
 
 Atomicity, Consistency, Isolation, Durability
 
-## 2. Transaction State
+### 2. Transaction State
 
 <img src="/images/2022/image-20220617210751345.png" alt="image-20220617210751345" />
 
@@ -312,9 +304,9 @@ Atomicity, Consistency, Isolation, Durability
   - **Read committed** 
   - **Read uncommitted** 
 
-# Chap18: Concurrency Control
+## Chap18: Concurrency Control
 
-## 1. Lock-Based Protocols
+### 1. Lock-Based Protocols
 
 - concurrency-control manager
 - exclusive(X), shared(S)
@@ -330,7 +322,7 @@ Atomicity, Consistency, Isolation, Durability
   - **wait-die** scheme — non-preemptive：旧等新
   - **wound-wait** scheme — preemptive：新等旧
 
-## 2. Graph-Based Protocols
+### 2. Graph-Based Protocols
 
 - **Tree Protocol**
 - advantage
@@ -340,7 +332,7 @@ Atomicity, Consistency, Isolation, Durability
   - not guarantee recoverability 
   - lock more data items 
 
-## 3. Multiple Granularity
+### 3. Multiple Granularity
 
 - fine/coarse granularity
 - **intention-shared** (IS)/exclusive(IX): 
@@ -353,9 +345,9 @@ Atomicity, Consistency, Isolation, Durability
 - 插入，删除加X锁；select加S锁
 - 并发度低，Index locking protocols 更好
 
-# Chap19: Recovery System
+## Chap19: Recovery System
 
-## 0. Outline
+### 0. Outline
 
 - 故障分类Failure Classification
 - 存储结构Storage Structure
@@ -366,7 +358,7 @@ Atomicity, Consistency, Isolation, Durability
 - 使用提早锁释放和逻辑撤销操作进行恢复Recovery with Early Lock Release and Logical Undo Operations
 - ARIES恢复算法ARIES Recovery Algorithm
 
-## 1. Failure Classification
+### 1. Failure Classification
 
 - 事务故障**Transaction failure** :
   - 逻辑错误**Logical errors**: 内部错误条件
@@ -379,7 +371,7 @@ Atomicity, Consistency, Isolation, Durability
 
 <img src="/images/2022/image-20220616154108940.png" alt="image-20220616154108940" style="zoom:67%;" />
 
-## 2. Storage Structure
+### 2. Storage Structure
 
 - **Volatile storage**:
   - main memory, cache memory
@@ -388,51 +380,51 @@ Atomicity, Consistency, Isolation, Durability
 - **Stable storage**:
   - 通过在不同的非易失性介质上保持多个拷贝来近似
 
-## 3. Data Access
+### 3. Data Access
 
 <img src="/images/2022/image-20220616155448709-16572902360912.png" alt="image-20220616155448709" style="zoom:67%;" />
 
-## 4. Database recovery
+### 4. Database recovery
 
 - Recovery algorithms：ACID中的ACD
 - 2部分：normal transaction processing中留信息，failure后recover
 - 假定严格(strict)两阶段封锁协议，保证no dirty read
 - 幂等性Idempotent：再执行同果
 
-## 5. Log-Based Recovery
+### 5. Log-Based Recovery
 
-### log
+#### log
 
 - log：on SS
 - 先写日志原则WAL(Write-Ahead Logging)
   - Log to SS before data to db
 
-### concurrency control
+#### concurrency control
 
 - 所有事务共享一个disk buffer和一个log file
   - buffer是write back、allocate的
 - 严格两阶段封锁协议：commit或abort后的被写数据才能被读/写
 - 使用logical undo logging可以支持提早释放锁early lock release
 
-### Transaction Commit
+#### Transaction Commit
 
 - transaction commit：commit log被输出到SS
   - 确保先前的log都已经被输出到SS
 - 事务的写项可能仍在buffer中
 
-### Undo and Redo
+#### Undo and Redo
 
 - undo：写补偿日志compensation log；redo不写日志
 - repeating history - undo
 
-### Checkpoint
+#### Checkpoint
 
 - All logs：main memory->SS
 - All modified buffer blocks->disk
 - \<checkpoint L\>->SS, L: active transactions
 - 停机
 
-### Log Record Buffering
+#### Log Record Buffering
 
 - Log存于Buffer，当(1)buffer满 (2)log force 时写入SS
 - **log force**：transaction commit时，将其全部log写入SS
@@ -442,7 +434,7 @@ Atomicity, Consistency, Isolation, Durability
   - \<T commit\>先入SS，T再进入commit状态
   - WAL (strictly, only undo information required)
 
-### DB buffering
+#### DB buffering
 
 recovery algorithm可能有以下策略：
 
@@ -450,7 +442,7 @@ recovery algorithm可能有以下策略：
 - 强制策略**force policy**：commit必入disk (expensive commit)
 - 窃取策略**steal policy**：commit前就入disk
 
-### Fuzzy Checkpointing
+#### Fuzzy Checkpointing
 
 - 避免long interruption于checkpointing
 - 过程
@@ -461,7 +453,7 @@ recovery algorithm可能有以下策略：
   - 脏块->disk（脏块不更新，依旧WAL）
   - 更新last_checkpoint(on disk)
 
-### Dump(recovery of non-volatile storage)
+#### Dump(recovery of non-volatile storage)
 
 - 类似于checkpoint，DB to SS
 - all log to SS-> all buffer to disk->DB to SS->写\<dump\> to SS 
@@ -469,7 +461,7 @@ recovery algorithm可能有以下策略：
   - 从最新dump恢复，log-based recover
 - fuzzy/online dump
 
-## 6. Recovery with Early Lock Release and Logical Undo Operations
+### 6. Recovery with Early Lock Release and Logical Undo Operations
 
 - logical/physical undo logging, logical operations
 - redo：physically
@@ -478,16 +470,16 @@ recovery algorithm可能有以下策略：
 - operation-end之前crash/rollback，则物理undo；反之，逻辑undo。
 - rollback：<*T**i**,* *O**j**,* **operation-abort**>.
 
-## 7. ARIES Recovery Algorithm
+### 7. ARIES Recovery Algorithm
 
-### Data Structure
+#### Data Structure
 
 - log sequence number(**LSN**)：in pages
 - **Page LSN**
 - **Log records(many types)**
 - **Dirty page table**
 
-### Page LSN
+#### Page LSN
 
 - 最后一条反应于该页的LSN
 - update
@@ -499,7 +491,7 @@ recovery algorithm可能有以下策略：
   - 保证consistency，可物理redo
 - PageLSN避免重复redo，从而保证幂等性idempotence
 
-### Log Record
+#### Log Record
 
 - PrevLSN：同一事务前一log的LSN
 
@@ -509,11 +501,11 @@ recovery algorithm可能有以下策略：
 
 <img src="/images/2022/image-20220616212835932-16572902360914.png" alt="image-20220616212835932" style="zoom:67%;" />
 
-### DirtyPageTable
+#### DirtyPageTable
 
 PageLSN, RecLSN
 
-### 3 passes
+#### 3 passes
 
 - **Analysis pass**: undo-list, dirty pages, RedoLSN
   - start：last complete checkpoint log record
