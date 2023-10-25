@@ -1,6 +1,6 @@
 # Database System Review: Chapter 1-7
 
-!!! warning "该页面还在建设中"
+!!! info "My review note before final exam of ZJU *Database System*, 2022 Spring."
 
 ## Chap1: Introduction
 
@@ -29,7 +29,9 @@
 
 如果要在多个用户之间共享数据，系统必须提供**并发控制**(concurrency control)机制，以避免可能的异常(anomalous)结果。
 
-<img src="/images/2022/image-20220615191903132.png" alt="image-20220615191903132" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_1.1.png" alt="db_review_1.1" style="zoom:67%;" />
+</div>
 
 数据库-数据库管理系统DBMS-数据库应用程序的层次结构
 
@@ -70,7 +72,9 @@
 
 #### 数据库三层模型
 
-<img src="/images/2022/image-20220615195320062.png" alt="image-20220615195320062" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_1.2.png" alt="db_review_1.2" style="zoom:67%;" />
+</div>
 
 数据库可以分为视图层、逻辑层和物理层。分别由视图/逻辑映射、逻辑/物理映射进行变换。
 
@@ -163,7 +167,9 @@ ER模型与规范化理论(Normalization Theory)
     - DML编译器执行**查询优化**，即从各种备选方案中选择成本最低的评估计划。
   - 查询评估引擎 **Query evaluation engine**——执行DML编译器生成的底层指令。
   - Parsing and translation - Optimization - Evaluation
-  - <img src="/images/2022/image-20220615223844467.png" alt="image-20220615223844467" style="zoom:67%;" />
+  <div style="text-align:center;">-  
+    <img src="../imgs/db/db_review_1.3.png" alt="db_review_1.3" style="zoom:67%;" />
+  </div>
 - **transaction management** component事务管理
   - 事务**transaction**：在数据库应用程序中执行单个逻辑功能的操作集合。
   - 恢复管理器**Recover Manager**：确保数据库在出现故障时仍保持一致（consistent）状态。故障包括系统故障(system failures)（电源故障power failure, 操作系统崩溃OS crashes等）和事务故障(transaction failures)。
@@ -173,7 +179,9 @@ ER模型与规范化理论(Normalization Theory)
 
 #### Database Users
 
-<img src="/images/2022/image-20220615224703965.png" alt="image-20220615224703965" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_1.4.png" alt="db_review_1.4" style="zoom:67%;" />
+</div>
 
 Naive users：只与数据库应用程序交互(use interfaces)
 
@@ -194,7 +202,9 @@ DBA(Database Administrator)：DBMS, administration tools
   - 充当与用户的联络人**Acting as liaison with users**
   - 监控性能和响应需求变化-性能调整**Monitoring performance and responding to changes in requirements - Performance Tuning**
 
-<img src="/images/2022/image-20220615225104415.png" alt="image-20220615225104415" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_1.5.png" alt="db_review_1.5" style="zoom:67%;" />
+</div>
 
 ### 9. History of Database Systems
 
@@ -417,17 +427,29 @@ create index (name) on r(A)
 
 ### 2. SQL Functions
 
-<img src="/images/2022/image-20220617110230195-16572890258731.png" alt="image-20220617110230195"  />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.1.png" alt="db_review_5.1"  />
+</div>
 
-<img src="/images/2022/image-20220617110321802-16572890258732.png" alt="image-20220617110321802"  />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.2.png" alt="db_review_5.2"  />
+</div>
 
-<img src="/images/2022/image-20220617110339977-16572890258743.png" alt="image-20220617110339977"  />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.3.png" alt="db_review_5.3"  />
+</div>
 
-<img src="/images/2022/image-20220617110816786-16572890258744.png" alt="image-20220617110816786" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.4.png" alt="db_review_5.4" />
+</div>
 
-<img src="/images/2022/image-20220617110627793-16572890258745.png" alt="image-20220617110627793" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.5.png" alt="db_review_5.5" />
+</div>
 
-<img src="/images/2022/image-20220617110927185-16572890258746.png" alt="image-20220617110927185" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.6.png" alt="db_review_5.6" />
+</div>
 
 ### 3. Trigger
 
@@ -437,24 +459,34 @@ create index (name) on r(A)
 - referencing new/old row/table as
 - for each statement/row
 
-<img src="/images/2022/image-20220617111151480-16572890258747.png" alt="image-20220617111151480" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.7.png" alt="db_review_5.7" />
+</div>
 
-<img src="/images/2022/image-20220617111215457-16572890258748.png" alt="image-20220617111215457" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.8.png" alt="db_review_5.8" />
+</div>
 
-<img src="/images/2022/image-20220617111335694-16572890258749.png" alt="image-20220617111335694" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_5.9.png" alt="db_review_5.9" />
+</div>
 
 ## Chap6: Entity-Relationship Model
 
 ### 1. DB Design Process
 
-<img src="/images/2022/image-20220617112213290.png" alt="image-20220617112213290" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_6.1.png" alt="db_review_6.1" style="zoom:67%;" />
+</div>
 
 - avoid：**redundancy** and **incompleteness**
 
 ### 2. ER model
 
 - roles
-  - <img src="/images/2022/image-20220617112714880.png" alt="image-20220617112714880" style="zoom:80%;" />
+  <div style="text-align:center;">-  
+  <img src="../imgs/db/db_review_6.2.png" alt="db_review_6.2" style="zoom:80%;" />
+</div>
 - binary/ternary relationship
 - attributes(with domain)
   - simple/composite
@@ -498,10 +530,14 @@ create index (name) on r(A)
 - trivial：$A\rightarrow B$ is trivial if $B\subset A$
 - closure：all FDs(different from attribute closure)
 - Armstrong’s Axioms:
-  - <img src="/images/2022/image-20220617120720022.png" alt="image-20220617120720022" />
+  <div style="text-align:center;">-  
+    <img src="../imgs/db/db_review_7.1.png" alt="db_review_7.1" />
+  </div>
   - sound and complete
 - Additional
-  - <img src="/images/2022/image-20220617121011226.png" alt="image-20220617121011226" />
+  <div style="text-align:center;">-  
+    <img src="../imgs/db/db_review_7.2.png" alt="db_review_7.2" />
+  </div>
 - Canonial Cover：去除所有**Extraneous Attributes**
 
 - dependency preserving
