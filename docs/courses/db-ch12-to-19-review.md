@@ -1,6 +1,6 @@
 # Database System Review: Chapter 12-19
 
-!!! warning "该页面还在建设中"
+!!! info "My review note before final exam of ZJU *Database System*, 2022 Spring."
 
 ## Chap12: Physical Storage Systems
 
@@ -47,7 +47,9 @@
 
 - Slotted Page Structure
 
-  - <img src="/images/2022/image-20220617160231771.png" alt="image-20220617160231771" style="zoom:67%;" />
+  - <div style="text-align:center;">
+      <img src="../imgs/db/db_review_12.1.png" alt="db_review_12.1" style="zoom:67%;" />
+    </div>
   - header：
     - number of record entries
     - end of free space in the block
@@ -103,10 +105,16 @@
 
 ### 3. B+ Tree Index
 
-- <img src="/images/2022/image-20220617163835370.png" alt="image-20220617163835370"  />
+- <div style="text-align:center;">
+  <img src="../imgs/db/db_review_14.1.png" alt="db_review_14.1"  />
+</div>
 - non-leaf：sparse indices
-- <img src="/images/2022/image-20220617164125659.png" alt="image-20220617164125659" />
-- <img src="/images/2022/image-20220617164921263.png" alt="image-20220617164921263" />
+- <div style="text-align:center;">
+  <img src="../imgs/db/db_review_14.2.png" alt="db_review_14.2" />
+</div>
+- <div style="text-align:center;">
+  <img src="../imgs/db/db_review_14.3.png" alt="db_review_14.3" />
+</div>
 - Non-Unique key
   - Extra storage, Simpler code, More I/O, Widely used
 - Secondary index：replace record pointer with primary-index search key
@@ -134,11 +142,21 @@ explain \<query\>
 block transfers and seeks
 
 - linear search
-- <img src="/images/2022/image-20220617180417861.png" alt="image-20220617180417861" />
-- <img src="/images/2022/image-20220617180447424.png" alt="image-20220617180447424" />
-- <img src="/images/2022/image-20220617180533327.png" alt="image-20220617180533327" />
-- <img src="/images/2022/image-20220617180602521.png" alt="image-20220617180602521" />
-- <img src="/images/2022/image-20220617180619291.png" alt="image-20220617180619291" />
+- <div style="text-align:center;">
+    <img src="../imgs/db/db_review_15.1.png" alt="db_review_15.1" />
+  </div>
+- <div style="text-align:center;">
+    <img src="../imgs/db/db_review_15.2.png" alt="db_review_15.2" />
+  </div>
+- <div style="text-align:center;">
+    <img src="../imgs/db/db_review_15.3.png" alt="db_review_15.3" />
+  </div>
+- <div style="text-align:center;">
+    <img src="../imgs/db/db_review_15.4.png" alt="db_review_15.4" />
+  </div>
+- <div style="text-align:center;">
+    <img src="../imgs/db/db_review_15.5.png" alt="db_review_15.5" />
+  </div>
 - comparision：<just scan，>need index
 - conjunctive selection：one/composite index, intersection of identifiers
 - disjunctive selection by union
@@ -164,7 +182,9 @@ outer relation: r, inner relation: s
   - seeks = $2b_r$ -> $2\lceil b_r/(M-2)\rceil$
 
 - Indexed Nested-Loop Join
-  - <img src="/images/2022/image-20220617185200710.png" alt="image-20220617185200710" />
+  - <div style="text-align:center;">
+      <img src="../imgs/db/db_review_15.6.png" alt="db_review_15.6" />
+    </div>
 - Merge-Join(Assume already sorted)
   - block transfer = $b_r+b_s$
   - seeks = $\lceil b_r/x_r\rceil+\lceil b_s/x_s\rceil$($x_r+x_s=M$)
@@ -196,17 +216,29 @@ outer relation: r, inner relation: s
 
 ### 1. Generating Equivalent Expressions
 
-<img src="/images/2022/image-20220617200428196.png" alt="image-20220617200428196" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.1.png" alt="db_review_16.1" />
+</div>
 
-<img src="/images/2022/image-20220617200515306.png" alt="image-20220617200515306" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.2.png" alt="db_review_16.2" />
+</div>
 
-<img src="/images/2022/image-20220617200541733.png" alt="image-20220617200541733" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.3.png" alt="db_review_16.3" />
+</div>
 
-<img src="/images/2022/image-20220617200550300.png" alt="image-20220617200550300" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.4.png" alt="db_review_16.4" />
+</div>
 
-<img src="/images/2022/image-20220617200559446.png" alt="image-20220617200559446" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.5.png" alt="db_review_16.5" />
+</div>
 
-<img src="/images/2022/image-20220617200608293.png" alt="image-20220617200608293" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.6.png" alt="db_review_16.6" />
+</div>
 
 - Performing the selection/projection as early as possible 
 - Join Order
@@ -221,33 +253,53 @@ $b_r=\lceil n_r/f_r\rceil$
 
 满足条件的数量
 
-<img src="/images/2022/image-20220617202523554.png" alt="image-20220617202523554" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.7.png" alt="db_review_16.7" />
+</div>
 
 缺信息：$n_r/2$
 
 中选率selectivity=$s_i/n_r$
 
-<img src="/images/2022/image-20220617202943181.png" alt="image-20220617202943181" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.8.png" alt="db_review_16.8" style="zoom:80%;" />
+</div>
 
 #### Join
 
-<img src="/images/2022/image-20220617203052240.png" alt="image-20220617203052240" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.9.png" alt="db_review_16.9" style="zoom:80%;" />
+</div>
 
-<img src="/images/2022/image-20220617203207449.png" alt="image-20220617203207449" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.10.png" alt="db_review_16.10" style="zoom:80%;" />
+</div>
 
-<img src="/images/2022/image-20220617203308321.png" alt="image-20220617203308321" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.11.png" alt="db_review_16.11" style="zoom:80%;" />
+</div>
 
 #### Other
 
-<img src="/images/2022/image-20220617203421637.png" alt="image-20220617203421637" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.12.png" alt="db_review_16.12" style="zoom:80%;" />
+</div>
 
-<img src="/images/2022/image-20220617203449458.png" alt="image-20220617203449458" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.13.png" alt="db_review_16.13" style="zoom:80%;" />
+</div>
 
-<img src="/images/2022/image-20220617203805989.png" alt="image-20220617203805989" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.14.png" alt="db_review_16.14" style="zoom:80%;" />
+</div>
 
-<img src="/images/2022/image-20220617203912510.png" alt="image-20220617203912510" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.15.png" alt="db_review_16.15" style="zoom:80%;" />
+</div>
 
-<img src="/images/2022/image-20220617204002501.png" alt="image-20220617204002501" style="zoom:80%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_16.16.png" alt="db_review_16.16" style="zoom:80%;" />
+</div>
 
 ### 3. Choice of Evaluation Plans
 
@@ -279,7 +331,9 @@ Atomicity, Consistency, Isolation, Durability
 
 ### 2. Transaction State
 
-<img src="/images/2022/image-20220617210751345.png" alt="image-20220617210751345" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_17.1.png" alt="db_review_17.1" />
+</div>
 
 - concurrency advantages
   - **increased processor and disk utilization**
@@ -310,7 +364,9 @@ Atomicity, Consistency, Isolation, Durability
 
 - concurrency-control manager
 - exclusive(X), shared(S)
-- <img src="/images/2022/image-20220617213101406.png" alt="image-20220617213101406" style="zoom:67%;" />
+- <div style="text-align:center;">
+  <img src="../imgs/db/db_review_18.1.png" alt="db_review_18.1" style="zoom:67%;" />
+</div>
 - **enforce serializability** , 但不能避免deadlock
 - 某事务等待被授予X锁，然而有一系列的事务在申请S锁，该等待X锁的事务迟迟得不到X锁，于是被饿死了(starvation)
 
@@ -369,7 +425,9 @@ Atomicity, Consistency, Isolation, Durability
 - 磁盘错误**Disk failure**: 磁头崩溃等
   - 假设破坏是可检测的detectable：磁盘驱动器使用校验和checksums来检测故障
 
-<img src="/images/2022/image-20220616154108940.png" alt="image-20220616154108940" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_19.1.png" alt="db_review_19.1" style="zoom:67%;" />
+</div>
 
 ### 2. Storage Structure
 
@@ -382,7 +440,9 @@ Atomicity, Consistency, Isolation, Durability
 
 ### 3. Data Access
 
-<img src="/images/2022/image-20220616155448709-16572902360912.png" alt="image-20220616155448709" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_19.2.png" alt="db_review_19.2" style="zoom:67%;" />
+</div>
 
 ### 4. Database recovery
 
@@ -495,11 +555,15 @@ recovery algorithm可能有以下策略：
 
 - PrevLSN：同一事务前一log的LSN
 
-<img src="/images/2022/image-20220616211302417-16572902360913.png" alt="image-20220616211302417" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_19.3.png" alt="db_review_19.3" style="zoom:67%;" />
+</div>
 
 - UndoNextLSN：undo时的下一LSN（减少undo）
 
-<img src="/images/2022/image-20220616212835932-16572902360914.png" alt="image-20220616212835932" style="zoom:67%;" />
+<div style="text-align:center;">
+  <img src="../imgs/db/db_review_19.4.png" alt="db_review_19.4" style="zoom:67%;" />
+</div>
 
 #### DirtyPageTable
 
