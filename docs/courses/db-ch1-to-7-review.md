@@ -1,18 +1,10 @@
----
-title: db-ch1-to-7-review
-date: 2022-07-08 22:14:26
-tags:
-  - review
-  - db
-categories:
-  - study
----
+# Database System Review: Chapter 1-7
 
-# Chap1: Introduction
+!!! warning "该页面还在建设中"
 
-## 0. Outline
+## Chap1: Introduction
 
-<!--more-->
+### 0. Outline
 
 - 数据库系统Database Systems
 - (使用)数据库系统的目的Purpose of Database Systems
@@ -25,7 +17,7 @@ categories:
 - 数据库用户与管理员Database Users and Administrators
 - 数据库系统历史History of Database Systems
 
-## 1. Database Systems
+### 1. Database Systems
 
 **数据库**是相互关联(interrelated)的企业数据的聚合(collection)，由**DBMS**(Database Management System)管理。 
 
@@ -41,7 +33,7 @@ categories:
 
 数据库-数据库管理系统DBMS-数据库应用程序的层次结构
 
-## 2. Purpose of Database Systems
+### 2. Purpose of Database Systems
 
 直接基于文件系统(**file systems**)的数据库应用程序会招致诸多严重后果：
 
@@ -74,7 +66,7 @@ categories:
 - **故障恢复**failure recovery
 - **安全控制**security control
 
-## 3. View of Data
+### 3. View of Data
 
 #### 数据库三层模型
 
@@ -97,7 +89,7 @@ categories:
 - **Logical Data Independence**：能够在不修改用户视图模式的前提下修改逻辑模式的能力
   - 需要好好设计view/logical mapping
 
-## 4. Data Models
+### 4. Data Models
 
 - A collection of tools for describing 
   - Data
@@ -117,7 +109,7 @@ categories:
   - Network model (**网状模型**)
   - Hierarchical model(**层次模型**)
 
-## 5. Database Languages
+### 5. Database Languages
 
 #### classification
 
@@ -142,13 +134,13 @@ categories:
     - 语言扩展以允许嵌入式SQL (**embedded SQL**)
     - API(e.g., ODBC/JDBC)，允许SQL查询语句被送入数据库
 
-## 6. Database Design
+### 6. Database Design
 
 ER模型与规范化理论(Normalization Theory)
 
-## 7. Database Engine
+### 7. Database Engine
 
-##### 功能组件functional components 
+#### 功能组件functional components 
 
 - **storage manager**存储管理
   - 提供接口：底层数据与提交给系统的应用程序查询之间
@@ -177,7 +169,7 @@ ER模型与规范化理论(Normalization Theory)
   - 恢复管理器**Recover Manager**：确保数据库在出现故障时仍保持一致（consistent）状态。故障包括系统故障(system failures)（电源故障power failure, 操作系统崩溃OS crashes等）和事务故障(transaction failures)。
   - 并发控制管理器**Concurrency-control manager**：控制并发事务之间的交互，以确保数据库的一致性。
 
-## 8. Database Users and Administrators
+### 8. Database Users and Administrators
 
 #### Database Users
 
@@ -204,7 +196,7 @@ DBA(Database Administrator)：DBMS, administration tools
 
 <img src="/images/2022/image-20220615225104415.png" alt="image-20220615225104415" style="zoom:67%;" />
 
-## 9. History of Database Systems
+### 9. History of Database Systems
 
 - 1950s-early 1960s：**magnetic tapes**, sequential access
 - 1960s：**hard disks**(direct access), network/hierarchical model
@@ -258,14 +250,14 @@ DBA(Database Administrator)：DBMS, administration tools
     - **Aliyun** PolarDB
     - **Tencent** TDSQL-C/ TencentDB
 
-# Chap2: Relational Model
+## Chap2: Relational Model
 
-## 0. Outline
+### 0. Outline
 
 - 键值
 - 关系代数
 
-## 1. key
+### 1. key
 
 - superkey
 - candidate key：minimal superkey
@@ -273,7 +265,7 @@ DBA(Database Administrator)：DBMS, administration tools
 - foreign key：referencing->referenced(primary key)
 - referential integrity
 
-## 2. relational algebra
+### 2. relational algebra
 
 - "Pure” languages:
   - Relational algebra：非图灵机等价
@@ -304,20 +296,20 @@ DBA(Database Administrator)：DBMS, administration tools
   - intersection: min(m, n)
   - difference: min(0, m - n)
 
-# Chap3: Introduction to SQL
+## Chap3: Introduction to SQL
 
-## 1. SQL
+### 1. SQL
 
 - Structured Query Language(SQL)
 
-## 2. DDL
+### 2. DDL
 
 - 包含schema, domain, integrity constraints, indices, security+authorization, physical storage structure
 - type
   - (var)char, int, smallint, numeric(p, d), real, double, float
   - date(ymd), time(hms), timestamp(date+time), interval
 
-## 3. integrity constraints
+### 3. integrity constraints
 
 - not null
 - primary key()
@@ -327,7 +319,7 @@ DBA(Database Administrator)：DBMS, administration tools
   - alter table r add A D
   - alter table r drop A
 
-## 4. DML
+### 4. DML
 
 - duplicates：distinct/all(default)
 - between闭区间
@@ -352,16 +344,16 @@ DBA(Database Administrator)：DBMS, administration tools
 - update ... set ... where
 - case when then else end
 
-# Chap4: Intermediate SQL
+## Chap4: Intermediate SQL
 
-## 1. join
+### 1. join
 
 - join **type**：inner join, left/right/full outer join
 - join **condition**：natural, on..., using ...
 
-## 2. SQL Data Types and Schemas
+### 2. SQL Data Types and Schemas
 
-### type, domain
+#### type, domain
 
 - create type ... as numeric(12, 2)
 - create domain ... char(20) not null
@@ -372,7 +364,7 @@ DBA(Database Administrator)：DBMS, administration tools
   - blob: binary large object
   - clob: character large object
 
-## 3. Integrity constraints
+### 3. Integrity constraints
 
 - not null
 - primary key
@@ -380,11 +372,11 @@ DBA(Database Administrator)：DBMS, administration tools
 - check()：可嵌套查询，但未常实现
 - foreign key
 
-### Assertion
+#### Assertion
 
 create assertion (name) check ...
 
-## 4. views
+### 4. views
 
 create view v as ...
 
@@ -392,11 +384,11 @@ create view v as ...
 
 物理view
 
-## 5. Indices
+### 5. Indices
 
 create index (name) on r(A)
 
-## 6. Transactions
+### 6. Transactions
 
 - commit, rollback
 
@@ -404,7 +396,7 @@ create index (name) on r(A)
 - serializable, repeatable read, read commit, read uncommit
 - ACID
 
-## 7. Authorization
+### 7. Authorization
 
 - select, insert, update, delete
 - index, resources, alteration, drop
@@ -417,13 +409,13 @@ create index (name) on r(A)
 - grant with grant option
 - revoke cascade/restrict
 
-# Chap5: Advanced SQL
+## Chap5: Advanced SQL
 
-## 1. Accessing SQL From a Programming Language 
+### 1. Accessing SQL From a Programming Language 
 
 - API, O(Open)DBC(Connectivity)/J(Java)DBC, Embedded SQL(in C), SQLJ, JP(Persistence)A(API)
 
-## 2. SQL Functions
+### 2. SQL Functions
 
 <img src="/images/2022/image-20220617110230195-16572890258731.png" alt="image-20220617110230195"  />
 
@@ -437,7 +429,7 @@ create index (name) on r(A)
 
 <img src="/images/2022/image-20220617110927185-16572890258746.png" alt="image-20220617110927185" />
 
-## 3. Trigger
+### 3. Trigger
 
 - insert, delete, update
 
@@ -451,15 +443,15 @@ create index (name) on r(A)
 
 <img src="/images/2022/image-20220617111335694-16572890258749.png" alt="image-20220617111335694" />
 
-# Chap6: Entity-Relationship Model
+## Chap6: Entity-Relationship Model
 
-## 1. DB Design Process
+### 1. DB Design Process
 
 <img src="/images/2022/image-20220617112213290.png" alt="image-20220617112213290" style="zoom:67%;" />
 
 - avoid：**redundancy** and **incompleteness**
 
-## 2. ER model
+### 2. ER model
 
 - roles
   - <img src="/images/2022/image-20220617112714880.png" alt="image-20220617112714880" style="zoom:80%;" />
@@ -475,28 +467,28 @@ create index (name) on r(A)
   - disjoint/overlapping
   - total/partial(completeness constraint)
 
-# Chap7: Relational Database Design
+## Chap7: Relational Database Design
 
-## 1. pitfall of bad relations
+### 1. pitfall of bad relations
 
 - 信息重复Information repetition
 - 插入异常Insertion anomalies
 - 更新困难Update difficulty
 
-## 2. Decomposition Lossless
+### 2. Decomposition Lossless
 
 - R->R1,R2，充要条件
   - $R_1\cap R_2\rightarrow R_1$
   - $R_1\cap R_2\rightarrow R_2$
 
-## 3. Forms
+### 3. Forms
 
 - 第一范式First Normal Form：各attribute都atomic（不可分）
 - Boyce-Codd Normal Form(BCNF)：任意函数依赖$\alpha\rightarrow\beta$，要么trivial，要么$\alpha$为超键
 - 3NF：BCNF必3NF。若$\beta-\alpha$的任意属性都在整体$R$的某candidate key中，也属3NF。
 - 4NF：类似BCNF的定义。若4NF，必BCNF。
 
-## 4. Dependencies
+### 4. Dependencies
 
 ### Functional dependencies
 
