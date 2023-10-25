@@ -1,6 +1,6 @@
 # ADS Final Review
 
-!!! warning "该页面还在建设中"
+!!! info "My review note before final exam of ZJU *Advanced Data Structure and Algorithm*, 2022 Spring."
 
 ## Basics
 
@@ -8,7 +8,9 @@
   - perfect：完美二叉树，每一层都被完全填充<!--more-->
   - complete：完全二叉树，除最后一层外都是完全填充，最后一层左对齐
   - full：完满二叉树，每个结点要么两个子结点，要么没有子结点
-  - <img src="/images/2022/image-20220623205809854.png" alt="image-20220623205809854" style="zoom:67%;" />
+  - <div style="text-align:center;">
+      <img src="../imgs/ads/ads_review_binary_tree.png" alt="ads_review_binary_tree" style="zoom:67%;" />
+    </div>
 
 ## Ch2. 红黑树、B+树
 
@@ -26,11 +28,15 @@
   - 兄黑远红化其黑，父兄换色兄旋升。（case 4）
   - 兄侄全黑则兄红，黑父不当则上传。（case 2）
 - B+：根2到M，非根$\lceil M/2\rceil$到M。
-- <img src="/images/2022/image-20220623233529605.png" alt="image-20220623233529605" style="zoom:67%;" />
+- <div style="text-align:center;">
+    <img src="../imgs/ads/ads_review_RBTree_complexity.png" alt="ads_review_RBTree_complexity" style="zoom:67%;" />
+  </div>
 
 ## Ch4. 左倾堆和斜堆
 
-![heaps](/images/2022/heaps.png)
+<div style="text-align:center;">
+  <img src="../imgs/ads/heaps.png" alt="heaps" />
+</div>
 
 - 左倾堆针对二叉堆的merge进行了改进。斜堆不需要维护npl，但是make-heap代价较大。二项堆看似没有改进，其实是斐波那契堆的铺垫，斐波那契堆成功将插入、merge都变成了o(1)。
 
@@ -47,9 +53,13 @@
 
 - 基本主定理
   - 比较$f(N)$与$N^{\log_ba}$，取较大的量级。同量级，则$O(N^{\log_ba}\log N)$
-- <img src="/images/2022/image-20220624104732971.png" alt="image-20220624104732971" style="zoom:67%;" />
+- <div style="text-align:center;">
+    <img src="../imgs/ads/ads_review_master_theorem.png" alt="ads_review_master_theorem" style="zoom:67%;" />
+  </div>
 - 针对有log的N量级相同情况，有
-  - <img src="/images/2022/image-20220624104829098.png" alt="image-20220624104829098" style="zoom:67%;" />
+  - <div style="text-align:center;">
+      <img src="../imgs/ads/ads_review_master_theorem_log.png" alt="ads_review_master_theorem_log" style="zoom:67%;" />
+    </div>
   - 需要关注的只是中间情况。
 
 ## Ch11. 近似算法
