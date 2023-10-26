@@ -1,6 +1,6 @@
 # Database System Review: Chapter 1-7
 
-!!! info "My review note before final exam of ZJU *Database System*, 2022 Spring."
+!!! info "My review note before final exam of ZJU *Database System*, 2022 Spring & Summer."
 
 ## Chap1: Introduction
 

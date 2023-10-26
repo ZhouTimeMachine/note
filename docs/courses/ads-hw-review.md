@@ -1,6 +1,6 @@
 # ADS Homework Review
 
-!!! info "PTA homework of ZJU *Advanced Data Structure and Algorithm*, 2022 Spring."
+!!! info "PTA homework of ZJU *Advanced Data Structure and Algorithm*, 2022 Spring & Summer."
 
 ## Hw1
 
