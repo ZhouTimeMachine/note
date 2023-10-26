@@ -1,6 +1,6 @@
 # Database System Review: Chapter 12-19
 
-!!! info "My review note before final exam of ZJU *Database System*, 2022 Spring."
+!!! info "My review note before final exam of ZJU *Database System*, 2022 Spring & Summer."
 
 ## Chap12: Physical Storage Systems
 

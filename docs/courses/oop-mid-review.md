@@ -1,6 +1,6 @@
 # OOP Midterm Review
 
-!!! info "PTA homework of ZJU *Object Oriented Programming*, 2022 Spring."
+!!! info "PTA homework of ZJU *Object Oriented Programming*, 2022 Spring & Summer."
 
 ## Week1
 

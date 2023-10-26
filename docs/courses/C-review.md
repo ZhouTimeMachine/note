@@ -1,6 +1,10 @@
+---
+custom_css: custom.css
+---
+
 # C Programming
 
-!!! info "PTA homework of ZJU *Fundamentals of Programming and Algorithm*, 2020 Fall."
+!!! info "PTA homework of ZJU *Fundamentals of Programming and Algorithm*, 2020 Fall & Winter."
 
 ## Week 1
 
@@ -224,7 +228,9 @@ D. `*pc = &s;`
 **Q1-2.** 不同类型的指针变量是可以直接相互赋值的。(T/F)
 
 ??? general "Answer"
-	F。会报错。需要强制类型转换
+	F。会报错，一般需要强制类型转换。
+
+	但是存在例外，例如 `void*` 是可以直接赋值给其他指针的。
 
 **Q2-8.** For definitions: `char s[2][3]={"ab", "cd"}, *p=(char *)s;`
 
@@ -260,7 +266,7 @@ D. 给出的三项中，`p` 都是指针
 ??? general "Answer"
 	A、B都是指针，C是指针数组
 
-**Q2-10.** 若有定义 `char *str[]={“Python”, “SQL”, “JAVA”, “PHP”, “C++”}; `
+**Q2-10.** 若有定义 `char *str[]={"Python", "SQL", "JAVA", "PHP", "C++"}; `
 
 则表达式 `*str[1] > *str[3]` 比较的是：
 
@@ -290,7 +296,7 @@ D. 字符S和字符P
 **Q1-2.** 结构体成员的类型必须是基本数据类型 (T/F)
 
 ??? general "Answer"
-	F。链表？自定义类型也可以
+	F。链表？自定义类型也可以，只要是完整的可以让结构体估计大小的类型。
 
 **Q1-3.** 结构体类型本身不占用内存空间，结构体变量占用内存空间 (T/F)
 
