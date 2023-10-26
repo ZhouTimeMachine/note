@@ -1,6 +1,6 @@
 # ADS Final Review
 
-!!! info "My review note before final exam of ZJU *Advanced Data Structure and Algorithm*, 2022 Spring."
+!!! info "My review note before final exam of ZJU *Advanced Data Structure and Algorithm*, 2022 Spring & Summer."
 
 ## Basics
 

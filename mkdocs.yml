@@ -11,6 +11,7 @@ nav:
     - index.md
   - Courses:
     - courses/index.md
+    - Theory of Computation: courses/toc-review.md
     - Advanced Data Structure and Algorithm:
       - Homework: courses/ads-hw-review.md
       - Final Review: courses/ads-final-review.md
@@ -20,6 +21,10 @@ nav:
     - Database System: 
       - Chapter 1-7: courses/db-ch1-to-7-review.md
       - Chapter 12-19: courses/db-ch12-to-19-review.md
+    - Probability Theory: courses/probability-review.md
+    - Physics (H):
+      - Physics 1: courses/physics1-review.md
+      - Physics 2: courses/physics2-review.md
     - C Programming: courses/C-review.md
 
 theme: 
