@@ -163,7 +163,7 @@ $$
 
 	令 $L=\left\{ w\in \left\{ 0, 1 \right\}^* \;|\;  w\text{中}0\text{和}1\text{的数量不相等} \right\}$，那么 $L^*=\{0, 1\}^*$
 
-Hint：利用 $L_1\subseteq L_2\Rightarrow L_1^*\subseteq L_2^*$
+**hint**：利用 $L_1\subseteq L_2\Rightarrow L_1^*\subseteq L_2^*$
 
 ??? general "Proof"
 	$\{0, 1\}\subseteq L$，所以$\{0, 1\}^*\subseteq L^*$，但是根据$L$的定义又有$L\in \{0, 1\}^*\Rightarrow L^*\in\{0, 1\}^*$，则$L=\{0, 1\}^*$。

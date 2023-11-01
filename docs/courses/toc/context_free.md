@@ -281,7 +281,7 @@ $$
 
 ### Closure Properties
 
-!!! abstract "Theorem"
+!!! abstract "CFL 运算封闭性"
     CFL 关于**并、连接、Kleene Star** 封闭。
 
 ??? general "Proof"
