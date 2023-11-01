@@ -18,6 +18,7 @@ nav:
       - Context-Free Languages: courses/toc/context_free.md
       - Turing Machine: courses/toc/turing_machine.md
       - Undecidability: courses/toc/undecidability.md
+      - After Story: courses/toc/after_story.md
     - Advanced Data Structure and Algorithm:
       - Homework: courses/ads-hw-review.md
       - Final Review: courses/ads-final-review.md
@@ -27,7 +28,14 @@ nav:
     - Database System: 
       - Chapter 1-7: courses/db-ch1-to-7-review.md
       - Chapter 12-19: courses/db-ch12-to-19-review.md
-    - Probability Theory: courses/probability/index.md
+    - Probability Theory:
+      - courses/probability/index.md
+      - Basics: courses/probability/basics.md
+      - Random Variable & Vector: courses/probability/rand_var_vec.md
+      - Data Feature Basics: courses/probability/feature_basics.md
+      - Data Feature Pro: courses/probability/feature_pro.md
+      - Limit Theorems: courses/probability/prob_lim.md
+      - Normal Distribution: courses/probability/normal_distr.md
     - Physics (H):
       - courses/physics/index.md
       - Electrostatics: courses/physics/2-electrostatics.md
@@ -36,6 +44,14 @@ nav:
       - Optics: courses/physics/2-optics.md
       - Quantum: courses/physics/2-quantum.md
     - C Programming: courses/C-review.md
+  - Readings:
+    - readings/index.md
+    - Diffusion Models: readings/diffusion.md
+    - ICCV2023:
+      - readings/ICCV2023/index.md
+      - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
+      - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
+    - Metrics: readings/metrics.md
 
 theme: 
   name: 'material'
@@ -117,10 +133,3 @@ plugins:
       extra_skipped_class:
         - arithmatex
       disable_serve: false
-  - git-revision-date-localized:
-      type: datetime
-      timezone: Asia/Shanghai
-      locale: en
-      enable_creation_date: true
-      exclude:
-        - index.md
