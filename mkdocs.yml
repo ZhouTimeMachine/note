@@ -27,7 +27,14 @@ nav:
     - Database System: 
       - Chapter 1-7: courses/db-ch1-to-7-review.md
       - Chapter 12-19: courses/db-ch12-to-19-review.md
-    - Probability Theory: courses/probability/index.md
+    - Probability Theory:
+      - courses/probability/index.md
+      - Basics: courses/probability/basics.md
+      - Random Variable & Vector: courses/probability/rand_var_vec.md
+      - Data Feature Basics: courses/probability/feature_basics.md
+      - Data Feature Pro: courses/probability/feature_pro.md
+      - Limit Theorems: courses/probability/prob_lim.md
+      - Normal Distribution: courses/probability/normal_distr.md
     - Physics (H):
       - courses/physics/index.md
       - Electrostatics: courses/physics/2-electrostatics.md
