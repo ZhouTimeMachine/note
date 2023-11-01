@@ -268,3 +268,10 @@ input#mkdocs-content-password {
 .toc-tag-reports::before {
   content: "实验报告"
 }
+
+.center {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
