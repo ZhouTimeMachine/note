@@ -23,8 +23,12 @@ nav:
       - Chapter 12-19: courses/db-ch12-to-19-review.md
     - Probability Theory: courses/probability-review.md
     - Physics (H):
-      - Physics 1: courses/physics1-review.md
-      - Physics 2: courses/physics2-review.md
+      - courses/physics/index.md
+      - Electrostatics: courses/physics/2-electrostatics.md
+      - Current: courses/physics/2-current.md
+      - Electromagnetics: courses/physics/2-electromagnetics.md
+      - Optics: courses/physics/2-optics.md
+      - Quantum: courses/physics/2-quantum.md
     - C Programming: courses/C-review.md
 
 theme: 
