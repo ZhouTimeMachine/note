@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="../../css/counter.css" />
-
 # Physics Review
 
 !!! info "Note taken on ZJU ZJU *Physics Ⅰ (H)*, 2021 Spring & Summer and *Physics Ⅱ (H)*, 2021 Fall & Winter"

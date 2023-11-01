@@ -4,8 +4,6 @@
 
 !!! info "Part of note taken on ZJU *Physics Ⅱ (H)*, 2021 Fall & Winter"
 
-!!! warning "本页面还在建设中"
-
 ## Chap34：几何光学
 
 费马原理 (Fermat's Principle) 推导反射定律
@@ -286,8 +284,269 @@ a=\frac{2OP_{\max}}{D}D'=\frac{D'}{d}\lambda
 $$
 
 ## Chap36-2：衍射
-Chapters/36-2.tex
+
+### 夫琅禾费单缝衍射
+
+即 Fraunhofer Diffraction。
+
+$$
+\delta=a\sin\theta
+$$
+
+中央明纹半角宽度
+
+$$
+\Delta\theta=
+\frac{\lambda}{a}
+$$
+
+则中央明纹半宽度
+
+$$
+\Delta x=f\Delta\theta=\frac{f\lambda}{a}
+$$
+
+### 衍射光强分析
+
+将单缝 $a$ 分为 $m$ 个半波带，对相邻半波带分析有
+
+$$
+\begin{gathered}
+\delta_m=\frac{a\sin\theta}{m}\\
+\Delta\varphi=2\pi\frac{\delta_m}{\lambda}
+=\frac{2\pi a}{m\lambda}\sin\theta
+\end{gathered}
+$$
+
+整体分析得
+
+$$
+\begin{gathered}
+\varphi=m\Delta\varphi=\frac{2\pi a}{\lambda}\sin\theta\\
+E_\theta=2R\sin\frac{\varphi}{2}
+=2\frac{E_1}{\Delta\varphi}\sin\frac{\varphi}{2}
+=mE_1\frac{\displaystyle \sin\frac{\varphi}{2}}
+{\displaystyle \frac{\varphi}{2}}=E_0\frac{\sin\alpha}{\alpha}
+\end{gathered}
+$$
+
+其中 $\alpha=\dfrac{\varphi}{2}=\dfrac{\pi a}{\lambda}\sin\theta$，根据 $I=E^2$ 可得
+
+$$
+I(\theta)=I_0\left(\frac{\sin\alpha}{\alpha}\right)^2
+$$
+
+暗纹：令 $\sin\alpha=0$ 有
+
+$$
+\sin\theta=\pm k\dfrac{\lambda}{a}
+$$
+
+明纹：令 $\dfrac{\mathrm d}{\mathrm d\alpha}I_\theta=0$ 有
+
+$$
+\tan\alpha=\alpha
+$$
+
+则
+
+$$
+\alpha_1=1.43\pi,\alpha_2=2.46\pi,\alpha_3=3.47\pi
+$$
+
+即
+
+$$
+\sin\theta=\frac{\lambda}{a}\frac{\alpha}{\pi }=1.43, 2.46,3.47\cdots
+$$
+
+### 夫琅禾费圆孔衍射
+艾里斑相关参数
+
+$$
+\begin{gathered}
+\Delta\theta=1.22\frac{\lambda}{d}\\
+\Delta x=f\Delta\theta=1.22\frac{f\lambda}{d}
+\end{gathered}
+$$
+
+注意其中的 $d$ 是直径，对应于缝宽 $a$。
+
+### 瑞丽判据
+
+即 Rayleigh's Criterion，有最小分辨角$\theta_R$
+
+$$
+\theta_R=\theta_m=1.22\frac{\lambda}{d}
+$$
+
+分辨率 $R=\dfrac{1}{\theta_R}$
+
+### 考虑衍射的双缝干涉
+
+首先分析干涉叠加：
+
+$$
+\begin{gathered}
+\Delta\varphi=2\pi\frac{\delta}{\lambda}=
+\frac{2\pi d}{\lambda}\sin\theta\\
+E=2E_1\cos\beta\\
+(\beta=\frac{\Delta\varphi}{2}=)
+\frac{\pi d}{\lambda}\sin\theta\\
+I=I_m\cos^2\beta
+\end{gathered}
+$$
+
+根据衍射的结论，有
+
+$$
+\begin{gathered}
+I=I_m\left(\frac{\sin\alpha}{\alpha}\right)^2\\
+\alpha=\frac{\pi a}{\lambda}\sin\theta
+\end{gathered}
+$$
+
+两种合成，则考虑衍射的双缝干涉有
+
+$$
+I=I_m\left(\frac{\sin\alpha}{\alpha}\right)^2\cos^2\beta
+$$
+
+衍射因子(diffraction factor):
+
+$$
+    \displaystyle\left(\frac{\sin\alpha}{\alpha}\right)^2
+$$
+
+干涉因子(interference factor):
+
+$$
+    \displaystyle\cos^2\beta
+$$
+
+用相位图分析也可以得到该结论，略去。
+
 ## Chap36-3：光栅与光谱
-Chapters/36-3.tex
+
+### 光栅方程
+即 Grating Equation。
+
+任意两个缝相干均加强，$\Delta\varphi=2\pi\dfrac{d\sin\theta}{\lambda}=\pm 2m\pi$，有光栅方程：
+
+$$
+d\sin\theta=\pm m\lambda
+$$
+
+根据 $\theta<\dfrac{\pi}{2}$，观察到的明纹数量 $m$ 有限制，有
+
+$$
+m<\frac{d}{\lambda}
+$$
+
+让所有光程差加起来相消，即叠加电场成为闭合曲线，由 $N\Delta\varphi=2\pi N\dfrac{d\sin\theta}{\lambda}
+=\pm m'2\pi$，有光栅的暗纹方程：
+
+$$
+Nd\sin\theta=\pm m'\lambda
+$$
+
+其中 $m'\neq mN$，否则将变成明纹方程。
+
+因此，$N$ 缝干涉时，两条明纹之间有 ($N-1$) 条暗纹，有 ($N-2$) 个次极大值。
+
+### 第 m 级明纹半宽度
+第 $m$ 级明纹有光栅方程
+
+$$
+d\sin\theta=m\lambda
+$$
+
+其上侧最近的暗纹有方程
+
+$$
+Nd\sin(\theta+\delta\theta)
+=(mN+1)\lambda
+$$
+
+其中
+
+$$
+\begin{aligned}
+\sin(\theta+\delta\theta)
+&=\sin\theta\cos\delta\theta+\sin\delta\theta\cos\theta\\
+&\approx\sin\theta+\cos\theta\delta\theta
+\end{aligned}
+$$
+
+故有
+
+$$
+d\sin\theta+d\cos\theta\delta\theta
+=m\lambda+\frac{\lambda}{N}
+$$
+
+根据明纹光栅方程化简得到
+
+$$
+\delta\theta=\frac{\lambda}{Nd\cos\theta}
+$$
+
+对于中央明纹，就有 $\theta=0$，则
+
+$$
+\delta\theta=\frac{\lambda}{Nd}
+$$
+
+所以 $N$ 增大，$\delta\theta$ 就会减小，条纹就会尖锐 (sharp) 化。
+
+### 色散与分辨力
+
+已知复色光的 $\Delta\lambda$，有
+
+$$
+d\sin\theta=m\lambda\Rightarrow
+d\cos\theta\Delta\theta=m\Delta\lambda
+$$
+
+则定义色散(Dispersion)
+
+$$
+D=\frac{\Delta\theta}{\Delta\lambda}=
+\frac{m}{d\cos\theta}
+$$
+
+因此，在第 $m$ 级亮纹附近的色散，级数越大(增大 $m$、减小 $\cos\theta$)、$d$ 越小，色散越明显。
+
+分辨力依然考虑瑞丽判据，让 $\lambda+\Delta\lambda$ 的 $m$ 级明纹与 $\lambda$ 的 $Nm+1$ 级暗纹重合，则
+
+$$
+\begin{gathered}
+d\sin\theta=m(\lambda+\Delta\lambda)\\
+Nd\sin\theta=(Nm+1)\lambda\\
+\Rightarrow
+R=\frac{\lambda}{\Delta\lambda}=mN
+\end{gathered}
+$$
+
+$m$ 或 $N$ 增大，分辨力 $R$ 都会增大。
+
+### 光栅干涉 + 衍射强度分布
+
+$$
+I=I_m\left(\frac{\sin\alpha}{\alpha}\right)^2
+\frac{\sin^2(N\beta)}{N^2\sin^2\beta}
+$$
+
+其中 $\alpha=\dfrac{\pi a}{\lambda}\sin\theta, \beta=\dfrac{\pi d}{\lambda}\sin\theta$。
+
+### X 射线衍射(晶体衍射)
+
+布拉格公式 (Bragg's Law)：
+
+$$
+2d\sin\theta=m\lambda
+$$
+
 ## Chap36-4：偏振
-Chapters/36-4.tex
+
+!!! warning "To be done, or will never be down..."

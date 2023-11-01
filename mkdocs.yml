@@ -11,7 +11,13 @@ nav:
     - index.md
   - Courses:
     - courses/index.md
-    - Theory of Computation: courses/toc-review.md
+    - Theory of Computation:
+      - courses/toc/index.md
+      - Sets, Relations and Languages: courses/toc/languages.md
+      - Finite Automata: courses/toc/finite_automata.md
+      - Context-Free Languages: courses/toc/context_free.md
+      - Turing Machine: courses/toc/turing_machine.md
+      - Undecidability: courses/toc/undecidability.md
     - Advanced Data Structure and Algorithm:
       - Homework: courses/ads-hw-review.md
       - Final Review: courses/ads-final-review.md
@@ -21,7 +27,7 @@ nav:
     - Database System: 
       - Chapter 1-7: courses/db-ch1-to-7-review.md
       - Chapter 12-19: courses/db-ch12-to-19-review.md
-    - Probability Theory: courses/probability-review.md
+    - Probability Theory: courses/probability/index.md
     - Physics (H):
       - courses/physics/index.md
       - Electrostatics: courses/physics/2-electrostatics.md
