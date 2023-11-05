@@ -43,6 +43,9 @@ nav:
       - Optics: courses/physics/2-optics.md
       - Quantum: courses/physics/2-quantum.md
     - C Programming: courses/C-review.md
+  - Readings:
+    - readings/index.md
+    - Diffusion Models: readings/diffusion.md
 
 theme: 
   name: 'material'
@@ -124,10 +127,3 @@ plugins:
       extra_skipped_class:
         - arithmatex
       disable_serve: false
-  - git-revision-date-localized:
-      type: datetime
-      timezone: Asia/Shanghai
-      locale: en
-      enable_creation_date: true
-      exclude:
-        - index.md
