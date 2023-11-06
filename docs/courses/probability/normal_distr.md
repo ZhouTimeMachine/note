@@ -157,14 +157,14 @@
     $$
     \begin{aligned}
     p_{U,V}(u,v)&=\frac{1}{2\pi|\Sigma|^{\frac12}}\exp\left\{-\frac12(A^{-1}\vec u-\vec\mu)^{T}\Sigma^{-1}(A^{-1}\vec u-\vec \mu)\right\}|J|\\
-    &=\frac{1}{2\pi|A^T\Sigma A|^{\frac12}}\exp\left\{-\frac12(\vec u-A\vec\mu)^{T}(A\Sigma A^T)^{-1}(\vec u-A\vec \mu)\right\}
+    &=\frac{1}{2\pi|A^{\top}\Sigma A|^{\frac12}}\exp\left\{-\frac12(\vec u-A\vec\mu)^{T}(A\Sigma A^{\top})^{-1}(\vec u-A\vec \mu)\right\}
     \end{aligned}
     $$
 
     则
 
     $$
-    (U,V)\sim N(A\vec\mu,A\Sigma A^T)
+    (U,V)\sim N(A\vec\mu,A\Sigma A^{\top})
     $$
 
     $$
@@ -181,7 +181,7 @@
     \end{pmatrix}
     $$
 
-    $A\Sigma A^T$ 不再展开，那将会是个很长的可怕式子。
+    $A\Sigma A^{\top}$ 不再展开，那将会是个很长的可怕式子。
 
 ## 二元正态分布的条件分布和独立性
 

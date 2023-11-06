@@ -4,6 +4,8 @@
 
 !!! info "Part of note taken on ZJU *Probability Theory (H)*, 2021 Fall & Winter"
 
+!!! warning "本页面还在建设中"
+
 ## 随机变量
 
 ### 随机变量的概念
@@ -417,10 +419,10 @@ $$
 !!! info "n 维正态分布"
     设 $\boldsymbol{B}=\left(b_{i j}\right)$ 为 $n$ 维正定对称矩阵, $|\boldsymbol{B}|$ 为其行列式, $\boldsymbol{B}^{-1}$ 为其逆,
 
-    又设 $\boldsymbol{x}=$ $\left(x_{1}, x_{2}, \cdots, x_{n}\right)^T$, $\boldsymbol{a}=\left(a_{1}, a_{2}, \cdots, a_{n}\right)^T$, 则称
+    又设 $\boldsymbol{x}=$ $\left(x_{1}, x_{2}, \cdots, x_{n}\right)^{\top}$, $\boldsymbol{a}=\left(a_{1}, a_{2}, \cdots, a_{n}\right)^{\top}$, 则称
 
     $$
-    p(\boldsymbol{x})=\frac{1}{(2 \pi)^{n / 2}|\boldsymbol{B}|^{1 / 2}} \exp \left\{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{a})^T \boldsymbol{B}^{-1}(\boldsymbol{x}-\boldsymbol{a})\right\}
+    p(\boldsymbol{x})=\frac{1}{(2 \pi)^{n / 2}|\boldsymbol{B}|^{1 / 2}} \exp \left\{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{a})^{\top} \boldsymbol{B}^{-1}(\boldsymbol{x}-\boldsymbol{a})\right\}
     $$
 
     为 $n$ 维正态密度函数。若随机向量 $\xi$ 具有此密度函数，则称 $\xi$ 服从 $n$ 维正态分布，记作 $\xi \sim N(\boldsymbol{a}, \boldsymbol{B})$
@@ -464,3 +466,7 @@ $$
     简记作 $(\xi, \eta) \sim N\left(a, b, \sigma_{1}^{2}, \sigma_{2}^{2}, r\right)$。
 
 关于正态分布的更多详细内容见[正态分布](../normal_distr)。
+
+## 随机变量的独立性和条件分布
+
+!!! warning "TBD..."
