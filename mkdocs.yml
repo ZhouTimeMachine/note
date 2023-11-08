@@ -49,6 +49,7 @@ nav:
     - ICCV2023:
       - readings/ICCV2023/index.md
       - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
+      - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
     - Metrics: readings/metrics.md
 
 theme: 
