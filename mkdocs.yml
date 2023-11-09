@@ -18,6 +18,7 @@ nav:
       - Context-Free Languages: courses/toc/context_free.md
       - Turing Machine: courses/toc/turing_machine.md
       - Undecidability: courses/toc/undecidability.md
+      - After Story: courses/toc/after_story.md
     - Advanced Data Structure and Algorithm:
       - Homework: courses/ads-hw-review.md
       - Final Review: courses/ads-final-review.md

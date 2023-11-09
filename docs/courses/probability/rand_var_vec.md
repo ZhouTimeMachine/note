@@ -467,6 +467,180 @@ $$
 
 关于正态分布的更多详细内容见[正态分布](../normal_distr)。
 
-## 随机变量的独立性和条件分布
+## 随机变量的独立性
+设 $F(x, y), F_{\xi}(x)$ 和 $F_{\eta}(y)$ 分别为 $(\xi, \eta)$ 的联合分布函数及其边际分布函数, 如 果对一切 $x, y$ 都有
 
-!!! warning "TBD..."
+$$
+    F(x, y)=F_{\xi}(x) F_{\eta}(y)
+$$
+
+成立，则称 $\xi$ 与 $\eta$ 相互独立。
+
+### 离散型随机变量的独立性
+
+!!! info "离散型随机变量的独立性"
+    如果离散型随机向量 $(\xi, \eta)$ 的联合分布列满足
+
+    $$
+    P\left(\xi=x_{i}, \eta=y_{j}\right)=P\left(\xi=x_{i}\right) P\left(\eta=y_{j}\right), \quad i, j=1,2, \cdots,
+    $$
+
+    即
+
+    $$
+    p_{ij}=p_{i\cdot}\cdot p_{\cdot j}
+    $$
+
+    则称 $\xi$ 与 $\eta$ **相互独立(independent)**。否则，称 $\xi$ 与 $\eta$ **相依(dependent)**。
+
+可以这么推导：
+
+??? general "Proof"
+    $$
+    F(x,y)=P(\xi \leq x, \eta \leq y)=\sum_{x_{i} \leqslant x} \sum_{y_{j} \leqslant y} P\left(\xi=x_{i}, \eta=y_{j}\right)
+    $$
+
+    $$
+    F_{\xi}(x) F_{\eta}(y)=\sum_{x_{i} \leqslant x} P\left(\xi=x_{i}\right) \sum_{y_{j} \leqslant y} P\left(\eta=y_{j}\right)
+    $$
+
+    根据
+
+    $$
+        F(x, y)=F_{\xi}(x) F_{\eta}(y)
+    $$
+
+    令 $x_1<x_2<\cdots,y_1<y_2<\cdots$，有
+
+    $$
+        F(x_1, y_1)=F_{\xi}(x_1) F_{\eta}(y_1)
+    $$
+
+    即
+
+    $$
+        p_{11}=p_{1\cdot}\cdot p_{\cdot 1}
+    $$
+
+    考虑数学归纳，如果 $p_{ij}=p_{i\cdot}\cdot p_{\cdot j}$ 对 $\forall i\leqslant m,j\leqslant n(i,j\in \mathbb{N}_+)$ 成立，那么根据
+
+    $$
+        F(x_{m+1}, y_n)=F_{\xi}(x_{m+1}) F_{\eta}(y_n)
+    $$
+
+    有
+
+    $$
+    \sum_{i \leqslant m+1} \sum_{j \leqslant n} p_{ij}
+    =\sum_{i \leqslant m+1} p_{i\cdot} \sum_{j \leqslant n} p_{\cdot j}
+    $$
+
+    根据已有条件，除去相等项，可以得到
+
+    $$
+    p_{m+1,n}=p_{m+1,\cdot}\cdot p_{\cdot, n}
+    $$
+
+    同理，根据
+
+    $$
+        F(x_m, y_{n+1})=F_{\xi}(x_m) F_{\eta}(y_{n+1})
+    $$
+
+    可以得到
+
+    $$
+    p_{m,n+1}=p_{m,\cdot}\cdot p_{\cdot, n+1}
+    $$
+
+    因此对于离散型随机变量，用分布函数定义的随机变量的独立性条件
+
+    $$
+        F(x, y)=F_{\xi}(x) F_{\eta}(y)
+    $$
+
+    可以通过数学归纳推出其特有独立性条件
+
+    $$
+        p_{ij}=p_{i\cdot}\cdot p_{\cdot j}
+    $$
+
+    同理，很方便地可以用后者反推出前者。因此在离散型随机变量中，这两种定义是等价的。
+
+### 连续型随机变量的独立性
+
+!!! info "连续型随机变量的独立性"
+    设 $p(x, y)$ 与 $p_{\xi}(x), p_{\eta}(y)$ 分别为连续型随机向量 $(\xi, \eta)$ 的联合密度和边际密度, 则 $\xi, \eta$ 相互独立的充要条件是
+
+    $$
+        p(x, y)=p_{\xi}(x) p_{\eta}(y)
+    $$
+
+??? general "Proof"
+    $\forall x, y$,
+
+    $$
+    \begin{aligned}
+    &F(x, y) =F_{\xi}(x) F_{\eta}(y) \\
+    & \Longleftrightarrow \int_{-\infty}^{x} \int_{-\infty}^{y} p(u, v) d u d v=\int_{-\infty}^{x} p_{\xi}(u) d u \int_{-\infty}^{y} p_{\eta}(v) d v \\
+    & \Longleftrightarrow \int_{-\infty}^{x} \int_{-\infty}^{y} p(u, v) d u d v=\int_{-\infty}^{x} \int_{-\infty}^{y} p_{\xi}(u) p_{\eta}(v) d u d v \\
+    & \Longleftrightarrow p(x, y)=p_{\xi}(x) p_{\eta}(y)
+    \end{aligned}
+    $$
+
+## 随机变量的条件分布
+
+### 离散型随机变量的条件分布
+
+设 $(\xi, \eta)$ 的联合分布列为 $P\left(\xi=x_{i}, \eta=y_{j}\right)=p_{i j}, i, j=1,2, \cdots$。
+
+若已知 $\xi=x_{i}(P(\xi=$ $\left.x_{i}>0\right)$, 则
+
+$$
+P\left(\eta=y_{j} \mid \xi=x_{i}\right)=\frac{P\left(\xi=x_{i}, \eta=y_{j}\right)}{P\left(\xi=x_{i}\right)}=\frac{p_{i j}}{p_{i\cdot}}, \quad j=1,2, \cdots
+$$
+
+即
+
+$$
+p_{\eta|\xi}(y_j|x_i)=\frac{p_{i j}}{p_{i\cdot}}
+$$
+
+如果令事件 $A=\{\eta=y_j\}$，$B=\{\xi=x_i\}$，由乘法公式可知这是很自然的。
+
+可见，$\xi$ 和 $\eta$ 相互独立的等价条件是
+
+$$
+P(\eta=y_{j} \mid \xi=x_{i})=P(\eta=y_j)
+$$
+
+定义 $\xi=x_i$ 的条件下 $\eta$ 的**条件分布函数**：
+
+$$
+P(\eta\leqslant y|\xi = x_i)=\sum_{j:y_j\leqslant y}p_{\eta|\xi}(y_j|x_i)
+$$
+
+### 连续性随机变量的条件分布
+
+首先获得条件分布函数，通过条件分布函数求导获得概率密度函数。
+
+$$
+\begin{aligned}
+    P(Y\leqslant y|X=x)&=\lim_{\epsilon\to0}P(Y\leqslant y|x-\epsilon<X\leqslant x+\epsilon)\\
+    &=\lim_{\epsilon\to0}\frac{P(Y\leqslant y,x-\epsilon<X\leqslant x+\epsilon)}{P(x-\epsilon<X\leqslant x+\epsilon)}\\
+    &=\lim_{\epsilon\to0}\frac{\displaystyle\frac{1}{2\epsilon}\int_{x-\epsilon}^{x+\epsilon}\int_{-\infty}^yp(u,v)\mathrm{d}u\mathrm{d}v}{\displaystyle \frac{1}{2\epsilon}\int_{x-\epsilon}^{x+\epsilon}p_X(u)\mathrm{d}u}\\
+    &=\frac{\int_{-\infty}^{y}p(x,v)\mathrm dv}{p_X(x)}
+\end{aligned}
+$$
+
+求导得到
+
+$$
+p_{Y|X}(y|x)=\frac{p(x,y)}{p_X(x)}
+$$
+
+同理可以得到
+
+$$
+    p_{X|Y}(x|y)=\frac{p(x,y)}{p_Y(y)}
+$$

@@ -11,3 +11,5 @@ Notes are mainly about the 5 chapters below:
 - [Context-Free Languages](context_free.md)
 - [Turing Machine](turing_machine.md)
 - [Undecidability](undecidability.md)
+
+After I have completed this course, I'm still taking notes of TOC, useful things are in [After Story](after_story.md)
