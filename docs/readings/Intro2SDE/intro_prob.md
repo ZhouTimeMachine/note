@@ -32,7 +32,7 @@ $$
 $\bm b: \mathbb{R}^n \to \mathbb{R}^n$ 为光滑向量场。将能够确定**轨迹 (trajectory)** $\bm x: [0, \infty)\to \mathbb{R}^n$。
 
 <div style="text-align:center;">
-    <img src="../imgs/Intro2SDE/trajectory.png" alt="trajectory" style="zoom:50%;" />
+    <img src="../../imgs/Intro2SDE/trajectory.png" alt="trajectory" style="zoom:50%;" />
 </div>
 
 然而实践中，由于**随机扰动 (random perturbations)** 的存在，往往不精准地位于轨迹上。考虑随机扰动之后，就可以得到
@@ -176,7 +176,7 @@ $$
     $$
 
     <div style="text-align:center;">
-        <img src="../imgs/Intro2SDE/stock_trajectory.png" alt="stock_trajectory" style="zoom:50%;" />
+        <img src="../../imgs/Intro2SDE/stock_trajectory.png" alt="stock_trajectory" style="zoom:50%;" />
     </div>
 
 ## A Crash Course in Probability Theory
