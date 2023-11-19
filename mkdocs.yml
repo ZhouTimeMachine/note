@@ -46,6 +46,13 @@ nav:
     - C Programming: courses/C-review.md
   - Readings:
     - readings/index.md
+    - Introduction to SDE:
+      - readings/Intro2SDE/index.md
+      - Introduction & Probability: readings/Intro2SDE/intro_prob.md
+      - Brownian Motion & "White Noise": readings/Intro2SDE/Brownian_noise.md
+      - Stochastic Integrals: readings/Intro2SDE/stochastic_integrals.md
+      - SDE: readings/Intro2SDE/SDE.md
+      - Applications: readings/Intro2SDE/applications.md
     - Diffusion Models: readings/diffusion.md
     - ICCV2023:
       - readings/ICCV2023/index.md

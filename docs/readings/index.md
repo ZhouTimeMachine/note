@@ -1,9 +1,10 @@
 # Readings
 
-!!! info "A collection of my notes when reading some blogs or papers."
+!!! info "A collection of my notes when reading some books, blogs or papers."
 
 ## Contents
 
+- [Introduction to SDE](Intro2SDE/index.md)
 - [Diffusion Models](diffusion.md)
 - [ICCV2023](ICCV2023/index.md)
 - [Metrics](metrics.md)
