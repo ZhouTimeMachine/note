@@ -22,7 +22,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material
+      - run: pip install mkdocs-heti-plugin
       - run: git clone https://github.com/TonyCrane/mkdocs-toolchain.git
-      - run: pip install mkdocs-toolchain/mkdocs-heti-plugin
       - run: pip install mkdocs-toolchain/mkdocs-tikzautomata-plugin
       - run: mkdocs gh-deploy --force
