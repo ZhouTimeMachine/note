@@ -16,7 +16,7 @@ jobs:
           python-version: 3.x
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - run: sudo apt-get update
-      - run: sudo apt install latexmk
+      - run: sudo apt-get install texlive-xetex
       - uses: actions/cache@v3
         with:
           key: mkdocs-material-${{ env.cache_id }}
