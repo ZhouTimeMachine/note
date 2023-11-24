@@ -14,11 +14,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - uses: xu-cheng/latex-action@v3
-        with:
-          root_file: main.tex
-          texlive_version: latest
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - run: sudo apt install latexmk
       - uses: actions/cache@v3
         with:
           key: mkdocs-material-${{ env.cache_id }}
