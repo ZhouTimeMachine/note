@@ -19,10 +19,12 @@
 
 In Diffusion Models, when denoising, we have
 
+> Equation (12) in [*Denoising Diffusion Implicit Models*](https://arxiv.org/pdf/2010.02502.pdf)
+
 $$
-    x_{t-1} = 
-    \sqrt{\overline{\alpha}_{t-1}}\left( \frac{x_t-\sqrt{1-\overline{\alpha}_t}\varepsilon_{\theta}^{(t)}(x_t)}{\sqrt{\overline{\alpha}_t}} \right)
-    + \sqrt{1-\overline{\alpha}_t-\sigma_t^2}\varepsilon_{\theta}^{(t)}(x_t)
+    x_{t-1} = \sqrt{\overline{\alpha}_{t-1}}
+    \underbrace{\left( \frac{x_t-\sqrt{1-\overline{\alpha}_t}\varepsilon_{\theta}^{(t)}(x_t)}{\sqrt{\overline{\alpha}_t}} \right)}_{\text{“ predicted x0”}}
+    + \underbrace{\sqrt{1-\overline{\alpha}_{t-1}-\sigma_t^2}\varepsilon_{\theta}^{(t)}(x_t)}_{\text{“direction pointing to xt”}}
     + \underbrace{\sigma_t \varepsilon_t}_{\text{random noise}}
 $$
 
