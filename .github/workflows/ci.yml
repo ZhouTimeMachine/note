@@ -16,7 +16,8 @@ jobs:
           python-version: 3.x
       - uses: xu-cheng/latex-action@v3
         with:
-          texlive_version: 2022
+          root_file: main.tex
+          texlive_version: latest
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
       - uses: actions/cache@v3
         with:
