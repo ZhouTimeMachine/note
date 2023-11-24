@@ -24,4 +24,5 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install mkdocs-heti-plugin
       - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: pip install tools/mkdocs-tikzautomata-plugin
       - run: mkdocs gh-deploy --force

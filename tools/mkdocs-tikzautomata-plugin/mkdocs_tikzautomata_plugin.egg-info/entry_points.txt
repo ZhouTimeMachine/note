@@ -1,0 +1,2 @@
+[mkdocs.plugins]
+tikzautomata = mkdocs_tikzautomata_plugin.plugin:TikzAutomataPlugin

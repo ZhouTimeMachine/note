@@ -1,0 +1,1 @@
+Modified from [FrightenedFoxCN/mkdocs-mathenv-plugin](https://github.com/FrightenedFoxCN/mkdocs-mathenv-plugin/).

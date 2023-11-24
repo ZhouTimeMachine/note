@@ -1,0 +1,13 @@
+README.md
+setup.py
+mkdocs_tikzautomata_plugin/__init__.py
+mkdocs_tikzautomata_plugin/markdown_utils.py
+mkdocs_tikzautomata_plugin/plugin.py
+mkdocs_tikzautomata_plugin/renderer.py
+mkdocs_tikzautomata_plugin/tex.py
+mkdocs_tikzautomata_plugin.egg-info/PKG-INFO
+mkdocs_tikzautomata_plugin.egg-info/SOURCES.txt
+mkdocs_tikzautomata_plugin.egg-info/dependency_links.txt
+mkdocs_tikzautomata_plugin.egg-info/entry_points.txt
+mkdocs_tikzautomata_plugin.egg-info/requires.txt
+mkdocs_tikzautomata_plugin.egg-info/top_level.txt
