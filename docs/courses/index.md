@@ -5,7 +5,7 @@
 ## Contents
 
 - Introductiion to Theoretical Computer Science, *2022 Fall & Winter*
-    - [Index of 5 Chaps](toc/index.md)
+    - [Index of TOC](toc/index.md)
 - Advanced Data Structure and Algorithm, *2022 Spring & Summer*
     - [PTA](ads-hw-review.md)
     - [Review](ads-final-review.md)
