@@ -134,8 +134,6 @@ $$
                   edge node {$\sqcup$} (q_3)
             (q_2) edge [bend right] node {} (q_1);
 
-    我认为，这里用 $\sqcup$ 标记没有必要，每次都只走一步感觉就够了。
-
 !!! question "画出擦除右侧第一段连续的 $a$ 的图灵机"
     
 ??? general "Answer"
@@ -182,7 +180,7 @@ $$
 
     思路：每次从左到右依次删去一组 $a, b, c$，然后分别改为 $x, y, z$ 作为删除的标记。注意 $\sqcup$ 表示字符串的结束。
 
-!!! general "Answer"
+??? general "Answer"
     \automata[->,>={Stealth[round]},auto,node distance=5em,on grid,semithick,inner sep=2pt,bend angle=50,initial text=,every state/.style={draw=none,minimum size=0pt,inner sep=1pt}]
         \node[initial,state]    (q_0)                   {$R$};
         \node[state]            (q_1) [right=of q_0]    {$xR$};
