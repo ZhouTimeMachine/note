@@ -44,15 +44,31 @@ nav:
       - Optics: courses/physics/2-optics.md
       - Quantum: courses/physics/2-quantum.md
     - C Programming: courses/C-review.md
+  - Math:
+    - math/index.md
+    - Algebra:
+      - math/Algebra/index.md
+      - Linear Algebra Left Undone: math/Algebra/linear.md
+      - Lie Groups & Lie Algebras: math/Algebra/lie.md
+    - Differential Equations:
+      - math/Differ_Equ/index.md
+      - ODE:
+        - math/Differ_Equ/ODE/index.md
+        - Existence of Solution: math/Differ_Equ/ODE/general1.md
+      - PDE:
+        - math/Differ_Equ/PDE/index.md
+        - Introduction: math/Differ_Equ/PDE/introduction.md
+        - 4 Linear PDEs: math/Differ_Equ/PDE/4linearPDEs.md
+      - SDE:
+        - math/Differ_Equ/Intro2SDE/index.md
+        - Introduction & Probability: math/Differ_Equ/Intro2SDE/intro_prob.md
+        - Brownian Motion & "White Noise": math/Differ_Equ/Intro2SDE/Brownian_noise.md
+        - Stochastic Integrals: math/Differ_Equ/Intro2SDE/stochastic_integrals.md
+        - SDE: math/Differ_Equ/Intro2SDE/SDE.md
+        - Applications: math/Differ_Equ/Intro2SDE/applications.md
+    - Probability Theory: courses/probability/index.md
   - Readings:
     - readings/index.md
-    - Introduction to SDE:
-      - readings/Intro2SDE/index.md
-      - Introduction & Probability: readings/Intro2SDE/intro_prob.md
-      - Brownian Motion & "White Noise": readings/Intro2SDE/Brownian_noise.md
-      - Stochastic Integrals: readings/Intro2SDE/stochastic_integrals.md
-      - SDE: readings/Intro2SDE/SDE.md
-      - Applications: readings/Intro2SDE/applications.md
     - Diffusion Models: readings/diffusion.md
     - ICCV2023:
       - readings/ICCV2023/index.md

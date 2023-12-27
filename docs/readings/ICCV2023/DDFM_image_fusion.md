@@ -14,7 +14,7 @@
 ## Baseline
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_1.png" alt="DDFM_1" style="zoom:67%;" />
+    <img src="../../imgs/ICCV2023/DDFM_1.png" alt="DDFM_1" style="zoom:67%;" />
 </div>
 
 ## Get Subproblems
@@ -105,7 +105,7 @@ $$
 > Through the above probabilistic analysis, the original optimization problem can be transformed into a maximum likelihood inference problem.
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_2.png" alt="DDFM_2" style="zoom:67%;" />
+    <img src="../../imgs/ICCV2023/DDFM_2.png" alt="DDFM_2" style="zoom:67%;" />
 </div>
 
 Ultimately, the **log-likelihood functio**n of the probabilistic inference issue is:
@@ -242,13 +242,13 @@ $$
 ## DDFM Algorithm
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_3.png" alt="DDFM_3" style="zoom:67%;" />
+    <img src="../../imgs/ICCV2023/DDFM_3.png" alt="DDFM_3" style="zoom:67%;" />
 </div>
 
 ## Experiment on IVF Task
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_4.png" alt="DDFM_4" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDFM_4.png" alt="DDFM_4" style="zoom:80%;" />
 </div>
 
 ??? info "Metrics"
@@ -301,21 +301,21 @@ $$
     Details in *Infrared and visible image fusion methods and applications: A survey*.
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_5.png" alt="DDFM_5" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDFM_5.png" alt="DDFM_5" style="zoom:80%;" />
 </div>
 
 ### Ablation Experiment
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_6.png" alt="DDFM_6" style="zoom:67%;" />
+    <img src="../../imgs/ICCV2023/DDFM_6.png" alt="DDFM_6" style="zoom:67%;" />
 </div>
 
 ## Experiment on MIF Task
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_7.png" alt="DDFM_7" style="zoom:67%;" />
+    <img src="../../imgs/ICCV2023/DDFM_7.png" alt="DDFM_7" style="zoom:67%;" />
 </div>
 
 <div style="text-align:center;">
-    <img src="../imgs/DDFM_8.png" alt="DDFM_8" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDFM_8.png" alt="DDFM_8" style="zoom:80%;" />
 </div>

@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../../../css/counter.css" />
+<link rel="stylesheet" href="../../../../css/counter.css" />
 
-# Applications
+# Stochastic Integrals
 
 !!! info "Part of note of *An Introduction to Stochastic Differential Equations*, Lawrence C. Evans"
 
