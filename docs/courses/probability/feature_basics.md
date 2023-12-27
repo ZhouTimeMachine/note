@@ -63,7 +63,7 @@
     计算正态分布($\xi\sim N(a,\sigma^2)$)的数学期望
 
 ??? general "Answer"
-    $E\xi=a$，过程可见[正态分布](../normal_distr)
+    $E\xi=a$，过程可见[正态分布](normal_distr.md)
 
 ### 一般随机变量的数学期望
 
@@ -448,7 +448,7 @@ $$
     求一元正态分布($\xi\sim N(a,\sigma^2)$)的方差
 
 ??? general "Answer"
-    $Var\xi=\sigma^2$，详细过程见[正态分布](../normal_distr)
+    $Var\xi=\sigma^2$，详细过程见[正态分布](normal_distr.md)
 
 ## 协方差及其性质
 
@@ -682,4 +682,4 @@ $$
     对二元正态随机向量, 两个分量不相关与独立是等价的
 
 !!! question "习题"
-    证明性质 4。详解可见[正态分布](../normal_distr)。
+    证明性质 4。详解可见[正态分布](normal_distr.md)。
