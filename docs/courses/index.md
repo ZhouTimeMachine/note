@@ -15,6 +15,8 @@
 - Database System, *2022 Spring & Summer*
     - [Review for Chap1-7](db-ch1-to-7-review.md)
     - [Review for Chap12-19](db-ch12-to-19-review.md)
+- Numerical Algebra & Analysis, *2022 Spring & Summer*, *2023 Fall & Winter*
+    - [Index of Numerical Methods](numerical/index.md)
 - Probability Theory (H), *2021 Fall & Winter*
     - [Index](probability/index.md)
 - Physics (H), *2021*

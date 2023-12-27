@@ -10,7 +10,7 @@
 ## Deterministic/Stochastic Denoising
 
 <div style="text-align:center;">
-    <img src="../imgs/DDPM_latent_1.png" alt="DDPM_latent_1" style="zoom:67%;" />
+    <img src="../../imgs/ICCV2023/DDPM_latent_1.png" alt="DDPM_latent_1" style="zoom:67%;" />
 </div>
 
 !!! info "Latent Space of Diffusion Models"
@@ -73,7 +73,7 @@ $$
 $$
 
 <div style="text-align:center;">
-    <img src="../imgs/DDPM_latent_2.png" alt="DDPM_latent_2" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDPM_latent_2.png" alt="DDPM_latent_2" style="zoom:80%;" />
 </div>
 
 !!! tip "Metrics"
@@ -81,18 +81,18 @@ $$
     - PSNR: Quality
     - SSIM: Similarity
 
-    Details in [Metrics](../../metrics).
+    Details in [Metrics](../metrics.md).
 
 ### Zero-shot Image Editing
 
 <div style="text-align:center;">
-    <img src="../imgs/DDPM_latent_3.png" alt="DDPM_latent_3" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDPM_latent_3.png" alt="DDPM_latent_3" style="zoom:80%;" />
 </div>
 
 In DDIM, noise $\varepsilon_{\theta}(x_t, t)$ is predicted by network, but here in DDPM $x_{t-1}$ is firstly sampled, then noise is calculated and denoising continues.
 
 <div style="text-align:center;">
-    <img src="../imgs/DDPM_latent_4.png" alt="DDPM_latent_4" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDPM_latent_4.png" alt="DDPM_latent_4" style="zoom:80%;" />
 </div>
 
 $$
@@ -107,10 +107,10 @@ $$
     - PSNR: Quality
     - SSIM: Similarity between real image and generated image
 
-    Details in [Metrics](../../metrics).
+    Details in [Metrics](../metrics.md).
 
 <div style="text-align:center;">
-    <img src="../imgs/DDPM_latent_5.png" alt="DDPM_latent_5" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDPM_latent_5.png" alt="DDPM_latent_5" style="zoom:80%;" />
 </div>
 
 ### Plug-and-Play Guidance
@@ -157,5 +157,5 @@ $$
 > $\operatorname{DiffAug}_l$ stands for differentiable augmentation that mitigates the adversarial effect
 
 <div style="text-align:center;">
-    <img src="../imgs/DDPM_latent_6.png" alt="DDPM_latent_6" style="zoom:80%;" />
+    <img src="../../imgs/ICCV2023/DDPM_latent_6.png" alt="DDPM_latent_6" style="zoom:80%;" />
 </div>

@@ -121,10 +121,12 @@ $$
 
 $$
 \begin{cases}
-m_0c^2+h\nu=mc^2+h\nu'\\
-(mv)^2=\left(\dfrac{h\nu}{c}\right)^2+\left(\dfrac{h\nu'}{c}\right)^2-2\left(\dfrac{h\nu'}{c}\right)\left(\dfrac{h\nu}{c}\right)\cos\varphi\\
-m^2=\dfrac{m_0^2}{1-\dfrac{v^2}{c^2}}
-\end{cases}\\
+\begin{aligned}
+    &m_0c^2+h\nu=mc^2+h\nu'\\
+    &(mv)^2=\left(\frac{h\nu}{c}\right)^2+\left(\frac{h\nu'}{c}\right)^2-2\left(\frac{h\nu'}{c}\right)\left(\frac{h\nu}{c}\right)\cos\varphi\\
+    &m^2=\frac{m_0^2}{1-\frac{v^2}{c^2}}
+\end{aligned}
+\end{cases}
 $$
 
 首先对第三条方程进行变换，得到
@@ -290,7 +292,7 @@ $$
 U(x)=
 \begin{cases}
 0,&0\leqslant x\leqslant a\\
-+\infty,&x< 0 \text{或} x>a
++\infty,&x< 0 \text{ or } x>a
 \end{cases}
 $$
 
@@ -341,8 +343,8 @@ $$
 $$
 \psi(x)=
 \begin{cases}
-\displaystyle\sqrt{\frac{2}{a}}\sin\frac{n\pi}{a}x,&0<x<a\\
-0,&x\leqslant 0\text{ 或 }x\geqslant a
+    \sqrt{\dfrac{2}{a}}\sin\dfrac{n\pi}{a}x,&0<x<a\\
+    0,&x\leqslant 0\text{ or }x\geqslant a
 \end{cases}
 $$
 
@@ -398,8 +400,10 @@ $$
 
 $$
 \begin{cases}
-\displaystyle\frac{1}{4\pi \varepsilon_0}\frac{e^2}{r^2}=\frac{mv^2}{r}\\
-mvr=n\hbar
+    \begin{aligned}
+        &\frac{1}{4\pi \varepsilon_0}\frac{e^2}{r^2}=\frac{mv^2}{r}\\
+        &mvr=n\hbar
+    \end{aligned}
 \end{cases}
 $$
 
