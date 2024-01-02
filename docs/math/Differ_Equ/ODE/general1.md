@@ -190,51 +190,53 @@ $$
 \end{aligned}
 $$
 
-=== "法一"
-    令 $F(x)=\int_{x_0}^x |\varphi(t) - \psi(t)| \mathrm{d}t$，则
+!!! general "Prove $\varphi(x)=\psi(x)$"
 
-    $$
-    F'(x) = |\varphi(x) - \psi(x)| \leqslant L F(x)
-    $$
+    === "法一"
+        令 $F(x)=\int_{x_0}^x |\varphi(t) - \psi(t)| \mathrm{d}t$，则
 
-    > 改成等号，其解为 $F(x)=Ae^{Lx}$
+        $$
+        F'(x) = |\varphi(x) - \psi(x)| \leqslant L F(x)
+        $$
 
-    考虑
+        > 改成等号，其解为 $F(x)=Ae^{Lx}$
 
-    $$
-    \left( F(x)e^{-Lx} \right)' = e^{-Lx}F'(x) - L F(x) e^{-Lx} \leqslant 0
-    $$
+        考虑
 
-    可知 $F(x)e^{-Lx}$ 递减，$x\geqslant x_0$ 时有
+        $$
+        \left( F(x)e^{-Lx} \right)' = e^{-Lx}F'(x) - L F(x) e^{-Lx} \leqslant 0
+        $$
 
-    $$
-    F(x)e^{-Lx} \leqslant F(x_0)e^{-Lx_0} = 0 \quad (F(x_0)=0)
-    $$
+        可知 $F(x)e^{-Lx}$ 递减，$x\geqslant x_0$ 时有
 
-    然而 $F(x)\geqslant 0$，所以得到 $x\geqslant x_0$ 时 $F(x)=0$。同理 $x < x_0$，则得证。
+        $$
+        F(x)e^{-Lx} \leqslant F(x_0)e^{-Lx_0} = 0 \quad (F(x_0)=0)
+        $$
 
-=== "法二"
-    $\varphi(x)$ 和 $\psi(x)$ 都是解，所以都连续（甚至可微），所以 $|\varphi(x) - \psi(x)|$ 也连续，那么在闭区间 $I$ 上有界。取其绝对值上界 $K$，有
+        然而 $F(x)\geqslant 0$，所以得到 $x\geqslant x_0$ 时 $F(x)=0$。同理 $x < x_0$，则得证。
 
-    $$
-    |\varphi(x) - \psi(x)| \leqslant L \left|\int_{x_0}^x |\varphi(t) - \psi(t)| \mathrm{d}t\right|\leqslant LK|x-x_0|
-    $$
+    === "法二"
+        $\varphi(x)$ 和 $\psi(x)$ 都是解，所以都连续（甚至可微），所以 $|\varphi(x) - \psi(x)|$ 也连续，那么在闭区间 $I$ 上有界。取其绝对值上界 $K$，有
 
-    下面进行一个套娃，有
+        $$
+        |\varphi(x) - \psi(x)| \leqslant L \left|\int_{x_0}^x |\varphi(t) - \psi(t)| \mathrm{d}t\right|\leqslant LK|x-x_0|
+        $$
 
-    $$
-    |\varphi(x) - \psi(x)| \leqslant L \left|\int_{x_0}^x |\varphi(t) - \psi(t)| \mathrm{d}t\right|\leqslant \frac{L^2K}{2}|x-x_0|^2
-    $$
+        下面进行一个套娃，有
 
-    以此类推，有
+        $$
+        |\varphi(x) - \psi(x)| \leqslant L \left|\int_{x_0}^x |\varphi(t) - \psi(t)| \mathrm{d}t\right|\leqslant \frac{L^2K}{2}|x-x_0|^2
+        $$
 
-    $$
-    |\varphi(x) - \psi(x)| \leqslant \frac{L^nK}{n!}|x-x_0|^n
-    $$
+        以此类推，有
 
-    > 这里可以通过幂级数收敛证明通项的极限为 0
+        $$
+        |\varphi(x) - \psi(x)| \leqslant \frac{L^nK}{n!}|x-x_0|^n
+        $$
 
-    令 $n\to \infty$，有 $|\varphi(x) - \psi(x)|=0$，即 $\varphi(x)=\psi(x)$。
+        > 这里可以通过幂级数收敛证明通项的极限为 0
+
+        令 $n\to \infty$，有 $|\varphi(x) - \psi(x)|=0$，即 $\varphi(x)=\psi(x)$。
 
 !!! tip "Remark"
     - 事实上，Picard 定理条件中 Lip 条件即使去掉，也能保证解的存在性

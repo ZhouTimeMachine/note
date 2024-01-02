@@ -214,9 +214,12 @@ $$
 注意，随机变量包括连续型随机变量和离散型随机变量，但随机变量并不总是连续性随机变量或离散型随机变量。如
 
 $$
-F(x)= \begin{cases}0, & x<0 \\ 
-    \displaystyle\frac{1+x}{2}, & 0 \leq x<1 \\
-    1, & x \geq 1\end{cases}
+F(x)= 
+\begin{cases}
+    0, & x<0 \\ 
+    \dfrac{1+x}{2}, & 0 \leq x<1 \\
+    1, & x \geq 1
+\end{cases}
 $$
 
 根据分布函数的公理化定义可以判断它确实是一个分布函数。但是对应的随机变量取值在 $[\frac12,1)$，取值并不可列，因此不是离散型随机变量。它也不是连续型随机变量，因为 $F(x)$ 不连续，比如可以看出应有 $P(\xi=0)=\frac12$，与连续性随机变量 $P(\xi=c)=0$ 的性质矛盾。
@@ -227,7 +230,7 @@ $$
     === "均匀 (uniform) 分布"
         $$
         p(x)=\begin{cases}
-            \displaystyle\frac{1}{b-a},
+            \dfrac{1}{b-a},
             & a \leqslant x \leqslant b \\
             0, & \text { 其他. }
         \end{cases}

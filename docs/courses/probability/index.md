@@ -8,6 +8,6 @@
     - including expectation, variance, covariance, correlation coefficient
 - [Data Feature Pro](feature_pro.md)
     - including moment, characteristic function
-- [Data Feature Pro](prob_lim.md)
+- [Limit Theorems](prob_lim.md)
     - including convergence in probability, convergence in distribution
 - [Normal Distribution](normal_distr.md)

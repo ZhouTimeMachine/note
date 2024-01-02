@@ -36,6 +36,19 @@ nav:
       - Data Feature Pro: courses/probability/feature_pro.md
       - Limit Theorems: courses/probability/prob_lim.md
       - Normal Distribution: courses/probability/normal_distr.md
+    - Numerical Methods:
+      - courses/numerical/index.md
+      - Numerical Analysis:
+        - Overview: courses/numerical/analysis/overview.md
+        - Mathematical Preliminaries: courses/numerical/analysis/1.md
+        - Solve Equations (1 Variable): courses/numerical/analysis/2.md
+        - Interpolation & Poly. Approx.: courses/numerical/analysis/3.md
+        - Numerical Diffs & Integs: courses/numerical/analysis/4.md
+        - IVP for ODE: courses/numerical/analysis/5.md
+        - Solve Linear Systems (Directly): courses/numerical/analysis/6.md
+        - Solve Linear Systems (Iteratively): courses/numerical/analysis/7.md
+        - Approximation Theory: courses/numerical/analysis/8.md
+        - Approximating Eigenvalues: courses/numerical/analysis/9.md
     - Physics (H):
       - courses/physics/index.md
       - Electrostatics: courses/physics/2-electrostatics.md
@@ -55,6 +68,7 @@ nav:
       - ODE:
         - math/Differ_Equ/ODE/index.md
         - Existence of Solution: math/Differ_Equ/ODE/general1.md
+        - ODE System: math/Differ_Equ/ODE/system.md
       - PDE:
         - math/Differ_Equ/PDE/index.md
         - Introduction: math/Differ_Equ/PDE/introduction.md

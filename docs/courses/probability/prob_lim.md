@@ -29,7 +29,7 @@ $$
 $$
 
 
-### De Moive-Laplace 中心极限定理
+### De Moivre-Laplace 中心极限定理
 
 $p\in(0,1)$，$S_n\sim B(n,p)$，则
 
