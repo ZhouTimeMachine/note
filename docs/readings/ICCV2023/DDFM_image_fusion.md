@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="../../../css/counter.css" />
+
 # DDFM: Denoising Diffusion Model for Multi-Modality Image Fusion
 
-!!! info "Link: [paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Zhao_DDFM_Denoising_Diffusion_Model_for_Multi-Modality_Image_Fusion_ICCV_2023_paper.pdf), [code](https://github.com/Zhaozixiang1228/MMIF-DDFM)"
+!!! info "Link: [arxiv](https://arxiv.org/abs/2303.06840), [paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Zhao_DDFM_Denoising_Diffusion_Model_for_Multi-Modality_Image_Fusion_ICCV_2023_paper.pdf), [code](https://github.com/Zhaozixiang1228/MMIF-DDFM)"
 
 !!! abstract "Abstract"
     - Claim: Use **DDPM** for Multi-Modality Image Fusion
