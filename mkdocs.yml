@@ -39,7 +39,7 @@ nav:
     - Numerical Methods:
       - courses/numerical/index.md
       - Numerical Analysis:
-        - Overview: courses/numerical/analysis/overview.md
+        - Overview: courses/numerical/analysis/index.md
         - Mathematical Preliminaries: courses/numerical/analysis/1.md
         - Solve Equations (1 Variable): courses/numerical/analysis/2.md
         - Interpolation & Poly. Approx.: courses/numerical/analysis/3.md
@@ -49,6 +49,15 @@ nav:
         - Solve Linear Systems (Iteratively): courses/numerical/analysis/7.md
         - Approximation Theory: courses/numerical/analysis/8.md
         - Approximating Eigenvalues: courses/numerical/analysis/9.md
+      - Numerical Algebra:
+        - Overview: courses/numerical/algebra/index.md
+        - Direct Methods for Linear Systems: courses/numerical/algebra/1.md
+        - Sensitivity & Round-off Error Analysis: courses/numerical/algebra/2.md
+        - Solve Least Square Problems: courses/numerical/algebra/3.md
+        - Classic Iterative Methods for Linear Systems: courses/numerical/algebra/4.md
+        - Conjugate Gradient Method: courses/numerical/algebra/5.md
+        - Solve Asymmetric Eigenvalue Problems: courses/numerical/algebra/6.md
+        - Solve Symmetric Eigenvalue Problems: courses/numerical/algebra/7.md
     - Physics (H):
       - courses/physics/index.md
       - Electrostatics: courses/physics/2-electrostatics.md
@@ -80,7 +89,7 @@ nav:
         - Stochastic Integrals: math/Differ_Equ/Intro2SDE/stochastic_integrals.md
         - SDE: math/Differ_Equ/Intro2SDE/SDE.md
         - Applications: math/Differ_Equ/Intro2SDE/applications.md
-    - Probability Theory: courses/probability/index.md
+    - Probability Theory: math/probability/index.md
   - Readings:
     - readings/index.md
     - Diffusion Models: readings/diffusion.md
@@ -88,6 +97,7 @@ nav:
       - readings/ICCV2023/index.md
       - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
       - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
+      - E2E Multi-View Feature Matching: readings/ICCV2023/e2e_multiview_feature_matching.md
     - Metrics: readings/metrics.md
 
 theme: 

@@ -11,6 +11,7 @@ This page and its subpages are my notes for these courses.
 ## Contents
 
 - Numerical Analysis (learnt, note to be written)
-    - [Overview](analysis/overview.md)
+    - [Overview](analysis/index.md)
 - Numerical Algebra (learnt, note to be written)
+    - [Overview](algebra/index.md)
 - Numerical Solution of Differential Equations (not learnt yet)

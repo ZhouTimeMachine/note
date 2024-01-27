@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="../../../css/counter.css" />
+
 # A Latent Space of Stochastic Diffusion Models for Zero-Shot Image Editing and Guidance
 
-!!! info "Link: [paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Wu_A_Latent_Space_of_Stochastic_Diffusion_Models_for_Zero-Shot_Image_ICCV_2023_paper.pdf), [gh-page](https://chenwu.io/stochastic-latent-space/), [code](https://github.com/humansensinglab/cycle-diffusion)"
+!!! info "Link: [arxiv](https://arxiv.org/abs/2210.05559), [paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Wu_A_Latent_Space_of_Stochastic_Diffusion_Models_for_Zero-Shot_Image_ICCV_2023_paper.pdf), [gh-page](https://chenwu.io/stochastic-latent-space/), [code](https://github.com/humansensinglab/cycle-diffusion)"
 
 !!! abstract "Abstract"
     - Claim: Define a **Latent Space** of Stochastic Diffusion Models(**DDPM**)
