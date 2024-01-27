@@ -9,4 +9,4 @@
     - [Ordinary Differential Equations](Differ_Equ/ODE/index.md)
     - [Partial Differential Equations](Differ_Equ/PDE/index.md)
     - [Stochastic Differential Equations](Differ_Equ/Intro2SDE/index.md)
-- [Probability Theory](../courses/probability/index.md)
+- [Probability & Statistics](probability/index.md)
