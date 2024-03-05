@@ -2,7 +2,7 @@
 
 !!! info "Some metrics used in papers"
 
-!!! tip "Take [A Study on the Evaluation of Generative Models](https://arxiv.org/pdf/2206.10935.pdf) as reference"
+!!! tip "Take [A Study on the Evaluation of Generative Models](https://arxiv.org/abs/2206.10935) as reference"
 
 ## KL Divergence
 > KL, abbr. for Kullback-Leibler
@@ -122,7 +122,7 @@ $$
 
 ## CLIP Score
 
-> 出自 [CLIPScore: A Reference-free Evaluation Metric for Image Captioning](https://arxiv.org/pdf/2104.08718.pdf)
+> 出自 [CLIPScore: A Reference-free Evaluation Metric for Image Captioning](https://arxiv.org/abs/2104.08718)
 
 特征提取器选用 ViT-B/32。原始的 CLIP Score，$v$ 为 visual CLIP embedding, $c$ 为 textual CLIP embedding，则
 

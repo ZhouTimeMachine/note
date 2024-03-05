@@ -5,8 +5,8 @@
 ## Contents
 
 - [Algebra](Algebra/index.md)
-- [Differential Equations](Differ_Equ/index.md): ODEs, PDEs, SDEs
-    - [Ordinary Differential Equations](Differ_Equ/ODE/index.md)
-    - [Partial Differential Equations](Differ_Equ/PDE/index.md)
-    - [Stochastic Differential Equations](Differ_Equ/Intro2SDE/index.md)
+- [Differential Equations](DEs/index.md): ODEs, PDEs, SDEs
+    - [Ordinary Differential Equations](DEs/ODE/index.md)
+    - [Partial Differential Equations](DEs/PDE/index.md)
+    - [Stochastic Differential Equations](DEs/Intro2SDE/index.md)
 - [Probability & Statistics](probability/index.md)

@@ -21,7 +21,7 @@
 
 In Diffusion Models, when denoising, we have
 
-> Equation (12) in [*Denoising Diffusion Implicit Models*](https://arxiv.org/pdf/2010.02502.pdf)
+> Equation (12) in [*Denoising Diffusion Implicit Models*](https://arxiv.org/abs/2010.02502)
 
 $$
     x_{t-1} = \sqrt{\overline{\alpha}_{t-1}}

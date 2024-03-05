@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="../../../css/counter.css" />
 
-# Diffussion Models
+# Denoising Diffusion Probabilistic Models
 
 !!! info "Reference"
 	本文参考自博客 [What are Diffusion Models? | Lil'Log](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) 和知乎[由浅入深了解 Diffusion Model](https://zhuanlan.zhihu.com/p/525106459?utm_source=zhihu)
 
-!!! warning "本页面还在施工中"
+!!! warning "该页面还在建设中"
 
 Diffusion 的关键就是两个步骤：**前向加噪 (Forward Diffusion Process)**和**反向去噪 (Reverse Diffusion Process)**
 
@@ -59,9 +59,13 @@ $$
 x_t=\sqrt{\alpha_t\alpha_{t-1}}x_{t-2}+\sqrt{1-\alpha_t\alpha_{t-1}}\overline{\varepsilon}_{t-2},\quad \overline{\varepsilon}_{t-2}\sim \mathcal{N}(0, 1)
 $$
 
-以此类推就会有 $x_t=\sqrt{\overline{\alpha}_t}x_0 + \sqrt{1-\overline{\alpha}_t}\varepsilon$, $\overline{\alpha}_t=\prod_{i=1}^t\alpha_i$, $\varepsilon\sim \mathcal{N}(0, 1)$。
+以此类推就会有
 
-$\alpha_i\in(0, 1)$，因此 $t\to \infty$ 时有 $\overline{\alpha}_t\to 0$，即 $x_t\to \varepsilon\sim \mathcal{N}(0, 1)$。
+$$
+x_t=\sqrt{\overline{\alpha}_t}x_0 + \sqrt{1-\overline{\alpha}_t}\varepsilon
+$$
+
+其中 $\overline{\alpha}_t=\prod_{i=1}^t\alpha_i$, $\varepsilon\sim \mathcal{N}(0, 1)$。由于 $\alpha_i\in(0, 1)$，则 $t\to \infty$ 时有 $\overline{\alpha}_t\to 0$，即 $x_t\to \varepsilon\sim \mathcal{N}(0, 1)$。
 
 ### Reverse Diffusion Process
 
