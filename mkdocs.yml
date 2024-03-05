@@ -73,32 +73,41 @@ nav:
       - Linear Algebra Left Undone: math/Algebra/linear.md
       - Lie Groups & Lie Algebras: math/Algebra/lie.md
     - Differential Equations:
-      - math/Differ_Equ/index.md
+      - math/DEs/index.md
       - ODE:
-        - math/Differ_Equ/ODE/index.md
-        - Existence of Solution: math/Differ_Equ/ODE/general1.md
-        - ODE System: math/Differ_Equ/ODE/system.md
+        - math/DEs/ODE/index.md
+        - Existence of Solution: math/DEs/ODE/general1.md
+        - ODE System: math/DEs/ODE/system.md
       - PDE:
-        - math/Differ_Equ/PDE/index.md
-        - Introduction: math/Differ_Equ/PDE/introduction.md
-        - 4 Linear PDEs: math/Differ_Equ/PDE/4linearPDEs.md
+        - math/DEs/PDE/index.md
+        - Introduction: math/DEs/PDE/introduction.md
+        - 4 Linear PDEs: math/DEs/PDE/4linearPDEs.md
       - SDE:
-        - math/Differ_Equ/Intro2SDE/index.md
-        - Introduction & Probability: math/Differ_Equ/Intro2SDE/intro_prob.md
-        - Brownian Motion & "White Noise": math/Differ_Equ/Intro2SDE/Brownian_noise.md
-        - Stochastic Integrals: math/Differ_Equ/Intro2SDE/stochastic_integrals.md
-        - SDE: math/Differ_Equ/Intro2SDE/SDE.md
-        - Applications: math/Differ_Equ/Intro2SDE/applications.md
+        - math/DEs/Intro2SDE/index.md
+        - Introduction & Probability: math/DEs/Intro2SDE/intro_prob.md
+        - Brownian Motion & "White Noise": math/DEs/Intro2SDE/Brownian_noise.md
+        - Stochastic Integrals: math/DEs/Intro2SDE/stochastic_integrals.md
+        - SDE: math/DEs/Intro2SDE/SDE.md
+        - Applications: math/DEs/Intro2SDE/applications.md
     - Probability Theory: math/probability/index.md
   - Readings:
     - readings/index.md
-    - Diffusion Models: readings/diffusion.md
+    - Diffusion Models:
+      - readings/diffusion/index.md
+      - DDPM: readings/diffusion/DDPM.md
+      - Score-based Generative Models: readings/diffusion/SGM.md
+      - v-prediction: readings/diffusion/v-prediction.md
+    - ICLR2024:
+      - readings/ICLR2024/index.md
+      - Singularity of Diffusion: readings/ICLR2024/Singularity_Diffusion.md
+      - Particle Filter + Diffusion: readings/ICLR2024/Particle_Filter_Diffusion.md
     - ICCV2023:
       - readings/ICCV2023/index.md
       - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
       - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
       - E2E Multi-View Feature Matching: readings/ICCV2023/e2e_multiview_feature_matching.md
     - Metrics: readings/metrics.md
+    - Abbrs: readings/abbrs.md
 
 theme: 
   name: 'material'
