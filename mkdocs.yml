@@ -65,6 +65,9 @@ nav:
       - Electromagnetics: courses/physics/2-electromagnetics.md
       - Optics: courses/physics/2-optics.md
       - Quantum: courses/physics/2-quantum.md
+    - Python Basics:
+      - Review: courses/python/review.md
+      - Homework: courses/python/hw.md
     - C Programming: courses/C-review.md
   - Math:
     - math/index.md

@@ -1,7 +1,3 @@
----
-custom_css: custom.css
----
-
 # C Programming
 
 !!! info "PTA homework of ZJU *Fundamentals of Programming and Algorithm*, 2020 Fall & Winter."
