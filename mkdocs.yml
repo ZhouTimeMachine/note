@@ -111,6 +111,7 @@ nav:
 
 theme: 
   name: 'material'
+  custon_dir: overrides
   language: 'en'
   icon: 
     logo: material/notebook-outline

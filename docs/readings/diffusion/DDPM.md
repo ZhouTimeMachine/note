@@ -9,7 +9,7 @@
 
 Diffusion 的关键就是两个步骤：**前向加噪 (Forward Diffusion Process)**和**反向去噪 (Reverse Diffusion Process)**
 
-### Forward Diffusion Process
+## Forward Diffusion Process
 
 原始的真实数据为 $x_0\sim q(x)$，对其进行 $T$ 步的逐渐加噪，得到 $x_1,\cdots, x_T$。令 $T\to\infty$，$x_T$ 就服从各向同性的高斯分布 (isotropic Gaussian distribution)，或球形高斯分布。
 
@@ -67,7 +67,7 @@ $$
 
 其中 $\overline{\alpha}_t=\prod_{i=1}^t\alpha_i$, $\varepsilon\sim \mathcal{N}(0, 1)$。由于 $\alpha_i\in(0, 1)$，则 $t\to \infty$ 时有 $\overline{\alpha}_t\to 0$，即 $x_t\to \varepsilon\sim \mathcal{N}(0, 1)$。
 
-### Reverse Diffusion Process
+## Reverse Diffusion Process
 
 $\beta_t$ **足够小时，**$q(x_{t-1}|x_t)$ **也满足 Gaussian 分布。**（Feller, William. "On the theory of stochastic processes, with particular reference to applications." Proceedings of the [First] Berkeley Symposium on Mathematical Statistics and Probability. University of California Press, 1949.）
 

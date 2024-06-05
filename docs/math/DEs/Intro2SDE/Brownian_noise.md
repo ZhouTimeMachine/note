@@ -227,7 +227,11 @@ $$
 
 !!! tip "a.s. 是 [almost surely](../intro_prob/#probability-space) 的缩写"
 
+中心极限定理提供了如此定义布朗运动的动机：由一系列合适地缩放了的独立随机分布的和构成的位置随机变量，服从正态分布。
+
 ### More on White Noise
+
+
 
 ## Construction of Brownian Motion
 
