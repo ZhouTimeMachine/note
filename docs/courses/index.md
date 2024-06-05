@@ -21,6 +21,9 @@
     - [Index](probability/index.md)
 - Physics (H), *2021*
     - [Index of Physics Ⅰ & Ⅱ](physics/index.md)
+- Python Programming, *2024 Spring & Summer*
+    - [Review](python/review.md)
+    - [Homework](python/hw.md)
 - Fundamentals of Programming and Algorithm, *2020 Fall & Winter*
     - [PTA](C-review.md)
 
