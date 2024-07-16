@@ -46,11 +46,13 @@ $$
 !!! general "零至二阶矩的考虑"
 
     - 零阶矩 $\int_{-\infty}^{+\infty} f(y, \tau) \mathrm{d}y = 1$ （概率密度函数）
-    - 由对称性 $f(y, \tau) = f(-y, \tau)$，$f(y, \tau)$ 关于 $y$ 的一阶矩（期望）为
+    - 由对称性 $f(y, \tau) = f(-y, \tau)$（$f$ 关于 $y$ 是偶函数），$f(y, \tau)$ 关于 $y$ 的一阶矩（期望）为
 
     $$
     \int_{-\infty}^{+\infty} y f(y, \tau) \mathrm{d}y = 0
     $$
+
+    > $y f(y, \tau)$ 关于 $y$ 是一个奇函数，对称性导致积分为 $0$
 
     - 考虑二阶矩（方差），**假定**关于 $\tau$ 是**线性**的
 
@@ -75,10 +77,11 @@ $$
 u_t=\frac{D}{2}u_{xx}
 $$
 
-这就是**扩散方程 (diffusion equation)**，也称**热方程 (heat equation)**。在同作者的 PDE 书的 [2.3 节](../../PDE/4linearPDEs/#heat-equation)给出了这类方程的解法，在这里直接给出它的解：
+这就是**扩散方程 (diffusion equation)**，也称**热方程 (heat equation)**。在同作者的 PDE 书的 [2.3 节](../../PDE/4linearPDEs/#heat-equation)给出了这类方程的解法，结合其初值条件 $u(x, 0)=\delta_0$，在这里直接给出它的解：
 
 $$
 u(x, t) = \frac{1}{(2\pi Dt)^{1/2}}e^{-\frac{x^2}{2Dt}}
+= \frac{1}{\sqrt{Dt} \sqrt{2\pi}}e^{-\frac{x^2}{2(\sqrt{Dt})^2}}
 $$
 
 从中可见，在 $t$ 时刻扩散的墨水的密度服从 $N(0, Dt)$ 的分布。关于常数 $D$，[Einstein relation](https://en.wikipedia.org/wiki/Einstein_relation_(kinetic_theory)) 揭示了
@@ -89,7 +92,7 @@ $$
 
 ??? general "各符号的解释"
     - $\mu$: “流动性 (mobility)”，其表达式为 $v_d/F$
-        - $v_d$ 是粒子的 terminal drift velocity，terminal velocity 即流体中从静止受力加速后能达到的最大平衡速度
+        - $v_d$ 是粒子的 terminal drift velocity，即流体中从静止受力加速后能达到的最大平衡速度
         - $F$ 则是受力
     - $k_B$: Boltzmann 常数
     - $T$: 绝对温度
@@ -153,6 +156,8 @@ $$
 $$
 u_t = \frac{D}{2}u_{xx}
 $$
+
+于是我们重新获得了扩散方程。
 
 ### Mathematical Justification
 
