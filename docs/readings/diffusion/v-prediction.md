@@ -77,17 +77,17 @@ $$
 \mathrm dx = \left[f(x, t) - \frac{1}{2}g(t)^2\nabla _x\log  p_t(x)\right]\mathrm d t
 $$
 
-使用传统的数值方法（例如 Euler 法或者 Runge-Kutta 法）当然也可以分步求解，但是专用的更新规则效果更佳，即
+使用传统的数值方法（例如 Euler 法或者 Runge-Kutta 法）当然也可以分步求解，例如 DDIM 使用的是 Euler 法：
 
 $$
     x_{t-1} = \sqrt{\overline{\alpha}_{t-1}}
-    \left( \frac{x_t-\sqrt{1-\overline{\alpha}_t}\varepsilon_{\theta}^{(t)}(x_t)}{\sqrt{\overline{\alpha}_t}} \right)
-    + \sqrt{1-\overline{\alpha}_{t-1}}\varepsilon_{\theta}^{(t)}(x_t)
+    \underbrace{\left( \frac{x_t-\sqrt{1-\overline{\alpha}_t}\varepsilon_{\theta}^{(t)}(x_t)}{\sqrt{\overline{\alpha}_t}} \right)}_{\text{“ predicted }x_0\text{”}}
+    + \underbrace{\sqrt{1-\overline{\alpha}_{t-1}}\varepsilon_{\theta}^{(t)}(x_t)}_{\text{“direction pointing to }x_t\text{”}}
 $$
 
 > 可以从 [*Denoising Diffusion Implicit Models*](https://arxiv.org/abs/2010.02502) 的 Equation (12) 导出
 
-设 $t$ 时刻角参数化的结果为 $\phi_{t}$，$t-1$ 时刻角参数化的结果为 $\phi_s$，那么有
+然而，利用 v-prediction 的角参数化性质，可以重写 DDIM 的更新规则。设 $t$ 时刻角参数化的结果为 $\phi_{t}$，$t-1$ 时刻角参数化的结果为 $\phi_s$，那么有
 
 $$
 \begin{aligned}
@@ -114,8 +114,8 @@ $$
 
 ## Implementation in diffusers
 
-所以，具体应用时，预测 $v$ 然后再用改写后的 DDIM 更新公式求解即可。
+然而，考察了稳定的 0.25.0 和考察时最新的 0.29.1 版本的 diffusers 代码，发现并没有直接使用 v-prediction 的角参数化性质进行去噪，事实上仍使用前面最基本的 DDIM 去噪公式，只是将原本使用 $\varepsilon$ 表示的 predicted $x_0$ 改成了 v-prediction 表示的 predicted $x_0$，即
 
-!!! warning "有待查看代码以求证"
-
-diffusers 中也已经整合了 v-prediction，见 [code](https://github.com/huggingface/diffusers/blob/58b8dce129dc108acf142f11ae514328e37516a3/src/diffusers/schedulers/scheduling_ddim.py#L422)
+$$
+x_0=\alpha x_t - \sigma v_{\theta}^{(t)}(x_t)
+$$

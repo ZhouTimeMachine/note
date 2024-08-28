@@ -1,12 +1,13 @@
-# Readings
+# Math
 
-!!! info "A collection of my notes when reading some books, blogs or papers."
+!!! info "A collection of my notes about mathematics."
 
 ## Contents
 
-- [Algebra](Algebra/index.md)
 - [Differential Equations](DEs/index.md): ODEs, PDEs, SDEs
     - [Ordinary Differential Equations](DEs/ODE/index.md)
     - [Partial Differential Equations](DEs/PDE/index.md)
     - [Stochastic Differential Equations](DEs/Intro2SDE/index.md)
 - [Probability & Statistics](probability/index.md)
+- Misc
+    - [Continuities](misc/continuities.md)

@@ -275,3 +275,10 @@ input#mkdocs-content-password {
   margin-left: auto;
   margin-right: auto;
 }
+
+[data-md-color-scheme="slate"] .md-content {
+  --md-typeset-a-color: #09bfdd;
+}
+[data-md-color-scheme="default"] .md-content {
+  --md-typeset-a-color: #466aff;
+}
