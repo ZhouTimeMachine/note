@@ -71,10 +71,6 @@ nav:
     - C Programming: courses/C-review.md
   - Math:
     - math/index.md
-    - Algebra:
-      - math/Algebra/index.md
-      - Linear Algebra Left Undone: math/Algebra/linear.md
-      - Lie Groups & Lie Algebras: math/Algebra/lie.md
     - Differential Equations:
       - math/DEs/index.md
       - ODE:
@@ -93,11 +89,13 @@ nav:
         - SDE: math/DEs/Intro2SDE/SDE.md
         - Applications: math/DEs/Intro2SDE/applications.md
     - Probability Theory: math/probability/index.md
+    - Misc: math/misc/continuities.md
   - Readings:
     - readings/index.md
     - Diffusion Models:
       - readings/diffusion/index.md
       - DDPM: readings/diffusion/DDPM.md
+      - DDIM: readings/diffusion/DDIM.md
       - Score-based Generative Models: readings/diffusion/SGM.md
       - v-prediction: readings/diffusion/v-prediction.md
     - ICLR2024:
