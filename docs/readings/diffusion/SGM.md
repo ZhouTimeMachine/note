@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../../css/counter.css" />
+
 # Score-based Generative Models
 
 !!! info "Reference"

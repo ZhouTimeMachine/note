@@ -83,7 +83,7 @@ $$
     - PSNR: Quality
     - SSIM: Similarity
 
-    Details in [Metrics](../metrics.md).
+    Details in [Metrics](../miscs/metrics.md).
 
 ### Zero-shot Image Editing
 
@@ -109,7 +109,7 @@ $$
     - PSNR: Quality
     - SSIM: Similarity between real image and generated image
 
-    Details in [Metrics](../metrics.md).
+    Details in [Metrics](../miscs/metrics.md).
 
 <div style="text-align:center;">
     <img src="../../imgs/ICCV2023/DDPM_latent_5.png" alt="DDPM_latent_5" style="zoom:80%;" />
