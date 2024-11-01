@@ -89,7 +89,13 @@ nav:
         - SDE: math/DEs/Intro2SDE/SDE.md
         - Applications: math/DEs/Intro2SDE/applications.md
     - Probability Theory: math/probability/index.md
-    - Misc: math/misc/continuities.md
+    - Analysis:
+      - math/analysis/index.md
+      - Funcs of Real Vars:
+        - math/analysis/funcRvar/index.md
+        - Basics of Set Theory: math/analysis/funcRvar/sets.md
+        - Lebesgue Measure: math/analysis/funcRvar/LebesgueMeasure.md
+      - Continuities: math/analysis/continuities.md
   - Readings:
     - readings/index.md
     - Diffusion Models:
@@ -107,12 +113,15 @@ nav:
       - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
       - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
       - E2E Multi-View Feature Matching: readings/ICCV2023/e2e_multiview_feature_matching.md
-    - Metrics: readings/metrics.md
-    - Abbrs: readings/abbrs.md
+    - Miscs:
+      - Abbrs: readings/miscs/abbrs.md
+      - Metrics: readings/miscs/metrics.md
+      - Normalization: readings/miscs/normalization.md
+      - Einsum: readings/miscs/einsum.md
 
 theme: 
   name: 'material'
-  custon_dir: overrides
+  custom_dir: overrides
   language: 'en'
   icon: 
     logo: material/notebook-outline
@@ -151,7 +160,7 @@ markdown_extensions:
   - pymdownx.arithmatex: # TeX support for math formula
       generic: true
   - pymdownx.emoji: # emoji support
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true

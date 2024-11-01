@@ -261,7 +261,7 @@ $$
 
     也就得到了依分布收敛。
 
-!!! info "依概率收敛 $\nRightarrow$ 依分布收敛"
+!!! info "依概率收敛 $\Rightarrow$ 依分布收敛"
 
 ??? general "Counterexample"
 

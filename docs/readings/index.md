@@ -7,4 +7,3 @@
 - [Diffusion Models](diffusion/index.md)
 - [ICLR2024](ICLR2024/index.md)
 - [ICCV2023](ICCV2023/index.md)
-- [Metrics](metrics.md)

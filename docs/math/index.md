@@ -9,5 +9,5 @@
     - [Partial Differential Equations](DEs/PDE/index.md)
     - [Stochastic Differential Equations](DEs/Intro2SDE/index.md)
 - [Probability & Statistics](probability/index.md)
-- Misc
-    - [Continuities](misc/continuities.md)
+- [Analysis](analysis/index.md)
+    - [Functions of a Real Variable](analysis/funcRvar/index.md)

@@ -846,10 +846,30 @@ $$
 
 ## Sample Path Properties
 
-!!! warning "本节还在施工中"
+布朗运动的采样路径具有一定的 Hölder 连续性，为了详细阐述与证明，需要首先阐明 Hölder 连续性的定义。
+
+> 可以参考 [Hölder condition - Wikipedia](https://en.wikipedia.org/wiki/H%C3%B6lder_condition)，另外对于各种连续性在本笔记的 [Continuities](../../../analysis/continuities) 中也有详细的阐述
+
+!!! info "Hölder Continuity"
+    考虑函数 $f:[0, T]\to \mathbb{R}$ 与 $0 < \gamma \leqslant 1$：
+
+    **(1)** 如果存在常数 $K$ 使得下式成立，则称 $f$ 是 $\:\gamma$-Hölder 一致连续 (uniformly $\:\gamma$-Hölder continuous) 的：
+
+    $$
+    |f(t) - f(s)| \leqslant K|t-s|^\gamma, \quad \forall t, s\in [0, T]
+    $$
+
+    **(2)** 如果存在常数 $K$ 使得下式成立，则称 $f$ 是在 $s$ 点是 $\:\gamma$-Hölder 连续的：
+
+    $$
+    |f(t) - f(s)| \leqslant K|t-s|^\gamma, \quad \forall t\in [0, T]
+    $$
+
+对于随机过程的采样路径的 Hölder 连续性，Kolmogorov 连续性定理常常被使用：
 
 !!! abstract "Kolmogorov continuity theorem"
-    
+    asd
 
+> 详见 [Kolmogorov continuity theorem - Wikipedia](https://en.wikipedia.org/wiki/Kolmogorov_continuity_theorem)
 
 ## Markov Property
