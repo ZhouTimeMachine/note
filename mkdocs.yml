@@ -69,6 +69,7 @@ nav:
       - Review: courses/python/review.md
       - Homework: courses/python/hw.md
     - C Programming: courses/C-review.md
+    - Information Theory: courses/info-theory.md
   - Math:
     - math/index.md
     - Differential Equations:
@@ -113,11 +114,14 @@ nav:
       - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
       - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
       - E2E Multi-View Feature Matching: readings/ICCV2023/e2e_multiview_feature_matching.md
+    - Neural Network Basics:
+      - readings/NNbasics/index.md
+      - LSTM & GRU: readings/NNbasics/lstm_gru.md
+      - Normalization: readings/NNbasics/normalization.md
+      - Einsum: readings/NNbasics/einsum.md
     - Miscs:
       - Abbrs: readings/miscs/abbrs.md
       - Metrics: readings/miscs/metrics.md
-      - Normalization: readings/miscs/normalization.md
-      - Einsum: readings/miscs/einsum.md
 
 theme: 
   name: 'material'

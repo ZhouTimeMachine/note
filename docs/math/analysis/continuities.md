@@ -103,7 +103,7 @@ $$
     1. (Lebesgue) 若 $f$ 是 $[a, b]$ 上的单增实值函数，则 $f$ 在 $[a, b]$ 上几乎处处可导
     2. $f$ 在 $[a, b]$ 上有界变差，等价于 $f$ 可以表示为两个单增实值函数的差
 
-    第一个定理的证明较为复杂，涉及到 Vitali 覆盖定理（参见 [Vitali Covering Lemma - Wikipedia]([../real/vitali-covering-theorem.md](https://en.wikipedia.org/wiki/Vitali_covering_lemma#Vitali's_covering_theorem_for_the_Lebesgue_measure)) 中关于 Lebesgue 测度下的 Vitali 覆盖定理）与一些实分析的技术，感兴趣的读者可以查阅周性伟、孙文昌编著的《实变函数》第三版 5.1 节。
+    第一个定理的证明较为复杂，涉及到 Vitali 覆盖定理（参见 [Vitali Covering Lemma - Wikipedia](https://en.wikipedia.org/wiki/Vitali_covering_lemma#Vitali's_covering_theorem_for_the_Lebesgue_measure) 中关于 Lebesgue 测度下的 Vitali 覆盖定理）与一些实分析的技术，感兴趣的读者可以查阅周性伟、孙文昌编著的《实变函数》第三版 5.1 节。
     
     ??? general "第二个定理的证明"
         单增实值函数显然是有限变差的，两个单增实值函数的差也是有限变差的，因此反推显然，只证明正推的过程。
