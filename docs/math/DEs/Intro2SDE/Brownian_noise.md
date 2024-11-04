@@ -77,7 +77,7 @@ $$
 u_t=\frac{D}{2}u_{xx}
 $$
 
-这就是**扩散方程 (diffusion equation)**，也称**热方程 (heat equation)**。在同作者的 PDE 书的 [2.3 节](../../PDE/4linearPDEs/#heat-equation)给出了这类方程的解法，结合其初值条件 $u(x, 0)=\delta_0$，在这里直接给出它的解：
+这就是**扩散方程 (diffusion equation)**，也称**热方程 (heat equation)**。在同作者的 PDE 书的 [2.3 节](../PDE/4linearPDEs.md#heat-equation)给出了这类方程的解法，结合其初值条件 $u(x, 0)=\delta_0$，在这里直接给出它的解：
 
 $$
 u(x, t) = \frac{1}{(2\pi Dt)^{1/2}}e^{-\frac{x^2}{2Dt}}
@@ -161,7 +161,7 @@ $$
 
 ### Mathematical Justification
 
-利用 [De Moivre-Laplace 中心极限定理](../../../../courses/probability/prob_lim/#de-moivre-laplace)，可以给出随机游走到特定时间位置的概率分布的一种更概率论的推导方式。
+利用 [De Moivre-Laplace 中心极限定理](../../../courses/probability/prob_lim.md#de-moivre-laplace)，可以给出随机游走到特定时间位置的概率分布的一种更概率论的推导方式。
 
 使用随机变量 $X(t)$ 表示 $t=n\Delta t$ 时刻的位置，再定义 $n$ 次游走中向右游走的次数为
 
@@ -232,7 +232,7 @@ $$
     2. (Gaussian increments) $W(t) - W(s)\sim N(0, t-s), \quad \forall\; t\geqslant s\geqslant 0$
     3. (independent increments) $W(t_1), W(t_2) - W(t_1), \cdots, W(t_n) - W(t_{n-1})$ are independent for all times $0\leqslant t_1 < t_2 < \cdots < t_n$
 
-!!! tip "a.s. 是 [almost surely](../intro_prob/#probability-space) 的缩写"
+!!! tip "a.s. 是 [almost surely](intro_prob.md#probability-space) 的缩写"
 
 中心极限定理提供了如此定义布朗运动的动机：由一系列合适地缩放了的独立随机分布的和构成的位置随机变量，服从正态分布。
 
@@ -848,7 +848,7 @@ $$
 
 布朗运动的采样路径具有一定的 Hölder 连续性，为了详细阐述与证明，需要首先阐明 Hölder 连续性的定义。
 
-> 可以参考 [Hölder condition - Wikipedia](https://en.wikipedia.org/wiki/H%C3%B6lder_condition)，另外对于各种连续性在本笔记的 [Continuities](../../../analysis/continuities) 中也有详细的阐述
+> 可以参考 [Hölder condition - Wikipedia](https://en.wikipedia.org/wiki/H%C3%B6lder_condition)，另外对于各种连续性在本笔记的 [Continuities](../../analysis/continuities.md) 中也有详细的阐述
 
 !!! info "Hölder Continuity"
     考虑函数 $f:[0, T]\to \mathbb{R}$ 与 $0 < \gamma \leqslant 1$：

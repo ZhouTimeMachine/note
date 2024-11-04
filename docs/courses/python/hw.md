@@ -41,7 +41,7 @@ print(c)
 ??? general "Answer"
     F。报错 `ValueError: invalid literal for int() with base 8: 'a'`，因为 'a' 在八进制下是没有意义的。
     
-    需要了解 `int(value, base)` 函数中 `value` 和 `base` 的意义（见 [Review - int](../review/#int)），以及区分 `a` 和 `'a'` 的区别。
+    需要了解 `int(value, base)` 函数中 `value` 和 `base` 的意义（见 [Review - int](review.md#int)），以及区分 `a` 和 `'a'` 的区别。
 
 **Q2-1-2.** 表达式 `-2**2` 等于 4。
 
@@ -83,7 +83,7 @@ print('f({0:.1f}) = {1:.1f}'.format(x,result))
 **Q5-1-1-7.** `int("92",8)` 的值是 74。
 
 ??? general "Answer"
-    F。根据 `int(value, base)` 函数中 `value` 和 `base` 的意义（见 [Review - int](../review/#int)），会把 "92" 试图按照八进制进行解释，但是 '9' 不是八进制的数字，因此会报错 `ValueError: invalid literal for int() with base 8: '92'`。
+    F。根据 `int(value, base)` 函数中 `value` 和 `base` 的意义（见 [Review - int](review.md#int)），会把 "92" 试图按照八进制进行解释，但是 '9' 不是八进制的数字，因此会报错 `ValueError: invalid literal for int() with base 8: '92'`。
 
 **Q6-1-16.** 表达式：`"34" in "1234"==True` 返回值是 `True`。
 
@@ -104,7 +104,7 @@ print('f({0:.1f}) = {1:.1f}'.format(x,result))
     2 == 2.0 -> 2.0 == 2.0 -> True
     ```
 
-    关于这种混合数值类型计算时的类型转换规则，可以参照 [Review - 数值类型混合运算](../review/#complex)。
+    关于这种混合数值类型计算时的类型转换规则，可以参照 [Review - 数值类型混合运算](review.md#complex)。
 
 **Q15-1-10.** 变量不需事先声明就可使用。
 
@@ -218,7 +218,7 @@ bin(12.5)
 
     对于第二行，空列表转 bool 为 False，非空列表转 bool 为 True。特别地，bool([[]]) 也为 True。
 
-    对于第三行，`bin`, `oct`, `hex` 都要求输入为 int，详见 [Review - int](../review/#int)。
+    对于第三行，`bin`, `oct`, `hex` 都要求输入为 int，详见 [Review - int](review.md#int)。
 
 **Q2-2-7:11.** 给出以下程序的输出结果。
 
@@ -265,7 +265,7 @@ print(--3)
 
     对于第四行，两个负号相互抵消了效果，所以又回到了原始的 3。
 
-    关于运算符优先级和结合性的内容可以去 [Review - 运算符优先级与结合性](../review/#precedence)查漏补缺。
+    关于运算符优先级和结合性的内容可以去 [Review - 运算符优先级与结合性](review.md#precedence)查漏补缺。
 
 **Q3-2-6:8:9.** 给出以下程序的输出结果
 
@@ -305,7 +305,7 @@ print(43.5//2 - 20//4)
     Pythonbeginner
     16.0
     ```
-    关于运算符优先级和结合性的内容可以去 [Review - 运算符优先级与结合性](../review/#precedence)查漏补缺。
+    关于运算符优先级和结合性的内容可以去 [Review - 运算符优先级与结合性](review.md#precedence)查漏补缺。
 
     对于第一行，计算顺序为
     ```python
@@ -516,7 +516,7 @@ print(int("20", 16), int("101",2))
 
     对于第二行，按十六进制和二进制解释输入字符串，输出对应的十进制 int。
 
-    可以参考 [Review - int](../review/#int)。
+    可以参考 [Review - int](review.md#int)。
 
 ## 字符串
 
@@ -543,14 +543,14 @@ print("yes" if s1==s2 else "no")
     
     `s1` 的每个数字后面都有一个空格，`s2` 仅在各数字之间存在空格，因此 `s1` 在末尾比 `s2` 多了一个空格，输出为 `no`。
 
-    关于 join 可以回顾 [Review - join: split 的逆操作](../review/#join-split)。
+    关于 join 可以回顾 [Review - join: split 的逆操作](review.md#join-split)。
 
 **Q9-1-17\*.** `"12 "*3==" ".join([12, 12, 12])` 的输出是 `False`
 
 ??? general "Answer"
     F。`[12, 12, 12]` 是整数列表，输入给 `join` 会发生报错，无法得到正常输出。
 
-    关于 join 可以回顾 [Review - join: split 的逆操作](../review/#join-split)。
+    关于 join 可以回顾 [Review - join: split 的逆操作](review.md#join-split)。
 
 ### 选择题
 
@@ -623,7 +623,7 @@ print("percentage%5s"%("123"))
     format123  
     percentage  123
     ```
-    f-string 和 format 输出字符串时，如果设定的宽度大于字符串的实际宽度，默认会在字符串右侧填充空格；而 % 这种格式化字符串，默认会在字符串左侧填充空格。详见 [Review - 格式化字符串](../review/#format-string)。
+    f-string 和 format 输出字符串时，如果设定的宽度大于字符串的实际宽度，默认会在字符串右侧填充空格；而 % 这种格式化字符串，默认会在字符串左侧填充空格。详见 [Review - 格式化字符串](review.md#format-string)。
 
 **Q4-4-1:8.** 下面程序的输出是：
 
@@ -751,7 +751,7 @@ print("{first}-{second}={0}".format(34-23,first=a,second=b))
     ```
     34-23=11
     ```
-    `"{first}-{second}={0}".format(34-23,first=a,second=b)` 中的 `0` 对应的是 `34-23`，`first` 对应的是 `a`，`second` 对应的是 `b`。注意这种 format 的用法比较少见但确实是合法的，可见 [Review - 格式化字符串](../review/#format-string)。
+    `"{first}-{second}={0}".format(34-23,first=a,second=b)` 中的 `0` 对应的是 `34-23`，`first` 对应的是 `a`，`second` 对应的是 `b`。注意这种 format 的用法比较少见但确实是合法的，可见 [Review - 格式化字符串](review.md#format-string)。
 
 **Q15-2-10.** 下面代码的输出结果是
 
@@ -839,7 +839,7 @@ G)for key in mlist:  H)for e in mlist:  I) for value in mstr：
 
     而 `x=y=z+1` 是合法的，这是因为 Python 特别规定了这种连等的赋值语句，将会首先计算最右侧的表达式，将其计算结果赋值给左边的每一个对象。
 
-    关于赋值语句的更多内容可以参考 [Review - 赋值语句](../review/#assignment)。
+    关于赋值语句的更多内容可以参考 [Review - 赋值语句](review.md#assignment)。
 
 **Q8-1-2.** 带有 `else` 子句的循环如果因为执行了 `break` 语句而退出的话，会执行 `else` 子句的代码。
 
@@ -885,7 +885,7 @@ print(x)
     [1, 2, 3, 3, 5]
     ```
 
-    具体细节可以参照 [Review - 赋值语句](../review/#assignment)。
+    具体细节可以参照 [Review - 赋值语句](review.md#assignment)。
 
 ### 选择题
 
@@ -1167,7 +1167,7 @@ print(a)
     
     对于第二行代码，首先算出等号右侧的 2 和 `t+1=2`。随后按顺序赋值，先将 2 赋值给 t，再将算好的 t+1 的值，也就是 2 赋值给 a。
 
-    关于赋值语句的计算顺序，可以参考 [Review - 赋值语句](../review/#assignment)。
+    关于赋值语句的计算顺序，可以参考 [Review - 赋值语句](review.md#assignment)。
 
 ```python
 lst=[2,3,5,6,8,9,10]
@@ -1273,7 +1273,7 @@ G) str(single)  H) str(hexSting)  I) singles
     # a = [[4, 2], [4, 2], [4, 2]]
     ```
 
-    可以参考 [Review - 列表](../review/#list)。
+    可以参考 [Review - 列表](review.md#list)。
 
 **Q9-1-22.** `[1,2,[3]]+[4,5]` 的结果是 `[1,2,3,4,5]`。
 
@@ -1293,7 +1293,7 @@ print(lst[100])
 **Q9-1-1.** 字符串、列表、元组都是序列类型。
 
 ??? general "Answer"
-    T。参考 [Review - 数据类型](../review/#data-type)。
+    T。参考 [Review - 数据类型](review.md#data-type)。
 
 **Q9-1-2.** 列表可以用 `find()` 函数来搜索数据是否在列表中。
 
@@ -1303,7 +1303,7 @@ print(lst[100])
 **Q9-1-3.** 字符串对象和元组对象是不可变对象，列表对象为可变对象。
 
 ??? general "Answer"
-    T。参考 [Review - 可变类型与不可变类型](../review/#mutable-immutable)。
+    T。参考 [Review - 可变类型与不可变类型](review.md#mutable-immutable)。
 
 ### 选择题
 
@@ -1407,7 +1407,7 @@ print(id(a)==id(d))
 
     对于第三行输出，切片操作会进行类似 `copy` 的操作，而不是引用赋值。
 
-    可以参考 [Review - 列表](../review/#list)。
+    可以参考 [Review - 列表](review.md#list)。
 
 **Q7-4-7:8:9:10.** 给出以下四段程序的输出。
 
@@ -1471,7 +1471,7 @@ print(data[0][2])
     
     这种方式构造的 `data` 矩阵的每一行都是独立构造的 `[0]*3`，因此修改 `data[2][2]` 不会影响其他元素。
 
-> 对于列表的困惑，可以参考 [Review - 列表](../review/#list)。
+> 对于列表的困惑，可以参考 [Review - 列表](review.md#list)。
 
 **Q9-1-5:6:7:8:9:10:11:12.** 给出以下程序的输出。
 
@@ -2060,7 +2060,7 @@ scope1()
 
     `*l` 意为对列表 `l` 进行解包 (unpack) 后获得 print 函数的参数列表，即让 1 和 6 称为 print 的参数，实际上相当于调用了 `print(1, 6)`。
 
-    关于函数的解包参数列表，可以参考 [Review - 解包参数列表](../review/#unpacking)。
+    关于函数的解包参数列表，可以参考 [Review - 解包参数列表](review.md#unpacking)。
 
 ```python
 a=10
@@ -2130,7 +2130,7 @@ print(lst[3][1][2])
 
     此处注意，字符串排序规则是首先根据第一个字符的 ascii 码，如果相同则再看第二个字符，以此类推。如果前 n 个字符都相同，一个字符串没有第 n+1 个字符，另一个存在第 n+1 个字符，那么认为长度就是 n 的字符串更小（相当于第 n+1 个字符的 ascii 码为 0）。
 
-    关于 Lambda 表达式的简单例子，可以参考 [Review - Lambda 表达式](../review/#lambda)。
+    关于 Lambda 表达式的简单例子，可以参考 [Review - Lambda 表达式](review.md#lambda)。
 
 ```python
 f = lambda p:p+5
