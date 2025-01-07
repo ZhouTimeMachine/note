@@ -11,6 +11,9 @@ nav:
     - index.md
   - Courses:
     - courses/index.md
+    - High-Dimensional Probability:
+      - courses/high-dim-prob/index.md
+      - Lecture 1: courses/high-dim-prob/lec1.md
     - Theory of Computation:
       - courses/toc/index.md
       - Sets, Relations and Languages: courses/toc/languages.md
@@ -189,12 +192,12 @@ markdown_extensions:
 #   - sane_lists
 
 extra_css:
-  - https://cdn.tonycrane.cc/utils/katex.min.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css
   - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
   - css/custom.css
 
 extra_javascript:
-  - https://cdn.tonycrane.cc/utils/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.js
   - js/katex.js
   - js/heti.js
 
