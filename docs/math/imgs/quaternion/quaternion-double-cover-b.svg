@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78.25 80.3">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+        font-size: 6px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        letter-spacing: -.07em;
+      }
+
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke-width: .25px;
+      }
+
+      .cls-4, .cls-5 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-4, .cls-5 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-5 {
+        stroke-width: .5px;
+      }
+    </style>
+  </defs>
+  <ellipse class="cls-4" cx="39.12" cy="35.73" rx="39" ry="9.75"/>
+  <g>
+    <path class="cls-2" d="M39.37,80.29l-.48-77.63.48,77.63Z"/>
+    <g>
+      <polyline class="cls-4" points="39.37 80.02 38.88 2.67 39.37 80.29"/>
+      <polygon class="cls-polygon" points="40.38 79.19 40.2 79.02 39.37 79.93 38.52 79.03 38.34 79.2 39.37 80.29 40.38 79.19"/>
+    </g>
+  </g>
+  <g>
+    <line class="cls-4" x1="57.66" y1="28.43" x2="39.12" y2="66.48"/>
+    <path class="cls-polygon" d="M58.12,27.48c-.38.37-.94.78-1.4.98l.88.09.62.64c-.13-.49-.14-1.18-.09-1.71Z"/>
+  </g>
+  <g>
+    <line class="cls-4" x1="39.12" y1="66.48" x2="73.38" y2="32.23"/>
+    <path class="cls-polygon" d="M74.12,31.48c-.22.48-.43,1.14-.47,1.65l-.38-.8-.8-.38c.51-.03,1.16-.25,1.65-.47Z"/>
+  </g>
+  <circle class="cls-5" cx="39.27" cy="65.98" r=".25"/>
+  <text class="cls-1 cls-text" transform="translate(45.23 75.99)"><tspan x="0" y="0">-u</tspan></text>
+  <text class="cls-1 cls-text" transform="translate(49.7 67.42)"><tspan x="0" y="0">2π - θ</tspan></text>
+  <g>
+    <path class="cls-4" d="M35.95,73.9c-.65.46-1.13,1.17-1.12,1.51.09,2.77,9.06,2.75,9,0,0-.42-.45-1.93-2.7-1.93"/>
+    <path class="cls-polygon" d="M37.08,73.48c-.61.01-1.39-.06-1.94-.25l.67.76.03,1.01c.26-.52.79-1.11,1.24-1.52Z"/>
+  </g>
+  <text class="cls-1 cls-text" transform="translate(56.38 25.74)"><tspan x="0" y="0">v</tspan><tspan class="cls-3 cls-text" x="3" y="0">’</tspan></text>
+  <text class="cls-1 cls-text" transform="translate(73.86 30.76) scale(1.01 1)"><tspan x="0" y="0">v</tspan></text>
+  <circle class="cls-5" cx="58.22" cy="27.28" r=".1"/>
+  <circle class="cls-5" cx="74.12" cy="31.47" r=".1"/>
+  <g>
+    <path class="cls-4" d="M40.07,62.39c-9.06-.66-10.47,2.57-8.95,4.09,2,2,12,3,16,0,.85-.63,2-4-4-4"/>
+    <path class="cls-polygon" d="M41.12,62.48c-.49-.21-1.09-.56-1.45-.91l.26.85-.35.81c.4-.31,1.03-.59,1.54-.75Z"/>
+  </g>
+</svg>

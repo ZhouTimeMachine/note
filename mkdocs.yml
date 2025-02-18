@@ -100,6 +100,13 @@ nav:
         - Basics of Set Theory: math/analysis/funcRvar/sets.md
         - Lebesgue Measure: math/analysis/funcRvar/LebesgueMeasure.md
       - Continuities: math/analysis/continuities.md
+    - Geometry:
+      - math/geometry/index.md
+      - Quaternion:
+        - math/geometry/quaternion/index.md
+        - Basics: math/geometry/quaternion/basics.md
+        - Quarternion: math/geometry/quaternion/quaternion.md
+        - Interpolation: math/geometry/quaternion/interpolation.md
   - Readings:
     - readings/index.md
     - Diffusion Models:

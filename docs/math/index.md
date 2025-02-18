@@ -11,3 +11,5 @@
 - [Probability & Statistics](probability/index.md)
 - [Analysis](analysis/index.md)
     - [Functions of a Real Variable](analysis/funcRvar/index.md)
+- [Geometry](geometry/index.md)
+    - [Quaternion](geometry/quaternion/index.md)
