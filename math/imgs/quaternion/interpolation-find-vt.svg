@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="rot-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 83.43 80.3">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-size: 3px;
+      }
+
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-3, .cls-4, .cls-5 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-3, .cls-5 {
+        fill: none;
+        stroke-width: .25px;
+      }
+
+      .cls-4 {
+        stroke-width: .5px;
+      }
+
+      .cls-6 {
+        font-size: 5px;
+      }
+
+      .cls-6, .cls-7 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+
+      .cls-8 {
+        font-size: 6px;
+      }
+
+      .cls-5 {
+        stroke-dasharray: 1 1;
+      }
+    </style>
+  </defs>
+  <ellipse class="cls-3" cx="39.12" cy="36.48" rx="39" ry="16.25"/>
+  <g>
+    <path class="cls-1" d="M38.88,2.67l.48,77.63-.48-77.63Z"/>
+    <g>
+      <polyline class="cls-3" points="38.88 2.94 39.37 80.29 38.88 2.67"/>
+      <polygon class="cls-polygon" points="37.87 3.78 38.05 3.95 38.88 3.04 39.73 3.93 39.91 3.76 38.88 2.67 37.87 3.78"/>
+    </g>
+  </g>
+  <g>
+    <line class="cls-3" x1="52.67" y1="23.6" x2="39.33" y2="66.48"/>
+    <polygon class="cls-polygon" points="51.83 23.85 53.33 21.48 53.21 24.29 51.83 23.85"/>
+  </g>
+  <g>
+    <line class="cls-3" x1="39.12" y1="66.48" x2="76.37" y2="37.83"/>
+    <polygon class="cls-polygon" points="76.42 38.71 78.12 36.48 75.53 37.56 76.42 38.71"/>
+  </g>
+  <circle class="cls-4" cx="39.27" cy="66.28" r=".25"/>
+  <g>
+    <path class="cls-3" d="M43.16,33.87c.19.17.36.37.5.6.52.79.63,1.71.2,2.11"/>
+    <polygon class="cls-polygon" points="43.21 34.84 43.34 34.04 44 33.58 42.12 33.27 43.21 34.84"/>
+  </g>
+  <text class="cls-7 cls-text" transform="translate(41.23 4.99)"><tspan class="cls-8" x="0" y="0">u</tspan><tspan class="cls-2 cls-text" x="3" y="0">t</tspan></text>
+  <text class="cls-6 cls-text" transform="translate(44.69 35.06)"><tspan x="0" y="0">tφ</tspan></text>
+  <g>
+    <path class="cls-3" d="M40.82,11.48c1.15-.02,2.32-1.77,2.3-2.45-.09-3.51-9.26-3.49-9.2,0,0,.43.29,1.72,1.57,2.23"/>
+    <path class="cls-polygon" d="M36.69,11.48c-.6.09-1.36.3-1.87.59l.53-.86-.14-1c.35.46.97.96,1.48,1.28Z"/>
+  </g>
+  <text class="cls-7 cls-text" transform="translate(51.38 18.74)"><tspan class="cls-8" x="0" y="0">v</tspan><tspan class="cls-2" x="3" y="0">t</tspan></text>
+  <text class="cls-7 cls-text" transform="translate(78.86 35.76) scale(1.01 1)"><tspan class="cls-8" x="0" y="0">v</tspan><tspan class="cls-2" x="3" y="0">0</tspan></text>
+  <circle class="cls-4" cx="78.12" cy="36.48" r=".1"/>
+  <circle class="cls-4" cx="39.12" cy="36.48" r=".25"/>
+  <line class="cls-5" x1="19.12" y1="22.48" x2="39.12" y2="36.36"/>
+  <line class="cls-5" x1="39.12" y1="36.48" x2="78.12" y2="36.48"/>
+  <text class="cls-7 cls-text" transform="translate(15.65 20.86) scale(1.01 1)"><tspan class="cls-8" x="0" y="0">v</tspan><tspan class="cls-2 cls-text" x="3" y="0">1</tspan></text>
+  <line class="cls-5" x1="53.12" y1="21.48" x2="39.12" y2="36.48"/>
+  <circle class="cls-4" cx="53.32" cy="21.38" r=".1"/>
+  <circle class="cls-4" cx="19.23" cy="22.48" r=".1"/>
+  <g>
+    <line class="cls-3" x1="39.12" y1="66.48" x2="20.04" y2="24.5"/>
+    <polygon class="cls-polygon" points="20.91 24.65 19.12 22.48 19.59 25.25 20.91 24.65"/>
+  </g>
+</svg>
