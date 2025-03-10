@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="circle-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 67.2 61.13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke-width: .25px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-1, .cls-2 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-2 {
+        stroke-width: .5px;
+      }
+
+      .cls-3 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+        font-size: 5px;
+      }
+
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="31.46" cy="36.01" r="30"/>
+  <circle class="cls-2" cx="31.46" cy="36.01" r=".25"/>
+  <text class="cls-3 cls-text" transform="translate(26.84 40.94)"><tspan x="0" y="0">O</tspan></text>
+  <g>
+    <line class="cls-1" x1="31.44" y1="35.97" x2="59.15" y2="35.97"/>
+    <polygon class="cls-polygon" points="58.66 36.7 61.37 35.97 58.66 35.24 58.66 36.7"/>
+  </g>
+  <circle class="cls-2" cx="5.46" cy="20.91" r=".15"/>
+  <circle class="cls-2" cx="61.46" cy="35.98" r=".15"/>
+  <g>
+    <line class="cls-1" x1="31.57" y1="35.99" x2="7.57" y2="22.13"/>
+    <polygon class="cls-polygon" points="8.36 21.75 5.65 21.02 7.63 23.01 8.36 21.75"/>
+  </g>
+  <g>
+    <line class="cls-1" x1="55.65" y1="49.88" x2="31.65" y2="36.02"/>
+    <polygon class="cls-polygon" points="55.58 49 57.57 50.99 54.86 50.26 55.58 49"/>
+  </g>
+  <text class="cls-3 cls-text" transform="translate(0 19.4)"><tspan x="0" y="0">q</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(2.5 21.06) scale(.58)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(63.25 37.04)"><tspan x="0" y="0">q</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(65.75 38.71) scale(.58)"><tspan x="0" y="0">0</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(58.26 52.81)"><tspan x="0" y="0">-q</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(62.42 54.48) scale(.58)"><tspan x="0" y="0">1</tspan></text>
+</svg>
