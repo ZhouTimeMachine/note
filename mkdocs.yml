@@ -1,0 +1,205 @@
+site_name: Jianjun Zhou's Notebook
+site_url: https://ZhouTimeMachine.github.io/note
+repo_name: ZhouTimeMachine/note
+repo_url: https://github.com/ZhouTimeMachine/note/
+edit_uri: tree/master/docs
+site_description: Jianjun Zhou's Notebook
+copyright: Copyright &copy; 2023 <a href="https://github.com/ZhouTimeMachine" target="_blank" rel="noopener">ZhouTimeMachine</a>
+
+nav:
+  - Home:
+    - index.md
+  - Courses:
+    - courses/index.md
+    - High-Dimensional Probability:
+      - courses/high-dim-prob/index.md
+      - Lecture 1: courses/high-dim-prob/lec1.md
+    - Theory of Computation:
+      - courses/toc/index.md
+      - Sets, Relations and Languages: courses/toc/languages.md
+      - Finite Automata: courses/toc/finite_automata.md
+      - Context-Free Languages: courses/toc/context_free.md
+      - Turing Machine: courses/toc/turing_machine.md
+      - Undecidability: courses/toc/undecidability.md
+      - After Story: courses/toc/after_story.md
+    - Advanced Data Structure and Algorithm: courses/ads-final-review.md
+    - Probability Theory:
+      - courses/probability/index.md
+      - Basics: courses/probability/basics.md
+      - Random Variable & Vector: courses/probability/rand_var_vec.md
+      - Data Feature Basics: courses/probability/feature_basics.md
+      - Data Feature Pro: courses/probability/feature_pro.md
+      - Limit Theorems: courses/probability/prob_lim.md
+      - Normal Distribution: courses/probability/normal_distr.md
+    - Numerical Methods:
+      - courses/numerical/index.md
+      - Numerical Analysis:
+        - Overview: courses/numerical/analysis/index.md
+        - Mathematical Preliminaries: courses/numerical/analysis/1.md
+        - Solve Equations (1 Variable): courses/numerical/analysis/2.md
+        - Interpolation & Poly. Approx.: courses/numerical/analysis/3.md
+        - Numerical Diffs & Integs: courses/numerical/analysis/4.md
+        - IVP for ODE: courses/numerical/analysis/5.md
+        - Solve Linear Systems (Directly): courses/numerical/analysis/6.md
+        - Solve Linear Systems (Iteratively): courses/numerical/analysis/7.md
+        - Approximation Theory: courses/numerical/analysis/8.md
+        - Approximating Eigenvalues: courses/numerical/analysis/9.md
+      - Numerical Algebra:
+        - Overview: courses/numerical/algebra/index.md
+        - Direct Methods for Linear Systems: courses/numerical/algebra/1.md
+        - Sensitivity & Round-off Error Analysis: courses/numerical/algebra/2.md
+        - Solve Least Square Problems: courses/numerical/algebra/3.md
+        - Classic Iterative Methods for Linear Systems: courses/numerical/algebra/4.md
+        - Conjugate Gradient Method: courses/numerical/algebra/5.md
+        - Solve Asymmetric Eigenvalue Problems: courses/numerical/algebra/6.md
+        - Solve Symmetric Eigenvalue Problems: courses/numerical/algebra/7.md
+    - Physics (H):
+      - courses/physics/index.md
+      - Electrostatics: courses/physics/2-electrostatics.md
+      - Current: courses/physics/2-current.md
+      - Electromagnetics: courses/physics/2-electromagnetics.md
+      - Optics: courses/physics/2-optics.md
+      - Quantum: courses/physics/2-quantum.md
+    - Information Theory: courses/info-theory.md
+  - Math:
+    - math/index.md
+    - Differential Equations:
+      - math/DEs/index.md
+      - ODE:
+        - math/DEs/ODE/index.md
+        - Existence of Solution: math/DEs/ODE/general1.md
+        - ODE System: math/DEs/ODE/system.md
+      - PDE:
+        - math/DEs/PDE/index.md
+        - Introduction: math/DEs/PDE/introduction.md
+        - 4 Linear PDEs: math/DEs/PDE/4linearPDEs.md
+      - SDE:
+        - math/DEs/Intro2SDE/index.md
+        - Introduction & Probability: math/DEs/Intro2SDE/intro_prob.md
+        - Brownian Motion & "White Noise": math/DEs/Intro2SDE/Brownian_noise.md
+        - Stochastic Integrals: math/DEs/Intro2SDE/stochastic_integrals.md
+        - SDE: math/DEs/Intro2SDE/SDE.md
+        - Applications: math/DEs/Intro2SDE/applications.md
+    - Probability Theory: math/probability/index.md
+    - Analysis:
+      - math/analysis/index.md
+      - Funcs of Real Vars:
+        - math/analysis/funcRvar/index.md
+        - Basics of Set Theory: math/analysis/funcRvar/sets.md
+        - Lebesgue Measure: math/analysis/funcRvar/LebesgueMeasure.md
+      - Continuities: math/analysis/continuities.md
+    - Geometry:
+      - math/geometry/index.md
+      - Quaternion:
+        - math/geometry/quaternion/index.md
+        - Basics: math/geometry/quaternion/basics.md
+        - Quarternion: math/geometry/quaternion/quaternion.md
+        - Interpolation: math/geometry/quaternion/interpolation.md
+  - Readings:
+    - readings/index.md
+    - Diffusion Models:
+      - readings/diffusion/index.md
+      - DDPM: readings/diffusion/DDPM.md
+      - DDIM: readings/diffusion/DDIM.md
+      - Score-based Generative Models: readings/diffusion/SGM.md
+      - v-prediction: readings/diffusion/v-prediction.md
+    - ICLR2024:
+      - readings/ICLR2024/index.md
+      - Singularity of Diffusion: readings/ICLR2024/Singularity_Diffusion.md
+      - Particle Filter + Diffusion: readings/ICLR2024/Particle_Filter_Diffusion.md
+    - ICCV2023:
+      - readings/ICCV2023/index.md
+      - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
+      - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
+      - E2E Multi-View Feature Matching: readings/ICCV2023/e2e_multiview_feature_matching.md
+    - Neural Network Basics:
+      - readings/NNbasics/index.md
+      - LSTM & GRU: readings/NNbasics/lstm_gru.md
+      - Normalization: readings/NNbasics/normalization.md
+      - Einsum: readings/NNbasics/einsum.md
+    - Miscs:
+      - Abbrs: readings/miscs/abbrs.md
+      - Metrics: readings/miscs/metrics.md
+
+theme: 
+  name: 'material'
+  custom_dir: overrides
+  language: 'en'
+  icon: 
+    logo: material/notebook-outline
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      primary: teal
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 日间模式
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.top
+  font: false
+
+markdown_extensions:
+  - admonition # mkdocs warning
+  - md_in_html # footnote
+  - meta # metadata
+  - pymdownx.caret # underline
+  - pymdownx.mark # text hightlight
+  - pymdownx.tilde # strikethrough
+  - pymdownx.keys
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.arithmatex: # TeX support for math formula
+      generic: true
+  - pymdownx.emoji: # emoji support
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      linenums: true
+  - pymdownx.tasklist: # tasklist support
+      custom_checkbox: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - tables
+#   - toc:
+#       permalink: true
+#       toc_depth: 4
+#   - def_list
+#   - attr_list
+#   - sane_lists
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css
+  - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
+  - css/custom.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.js
+  - js/katex.js
+  - js/heti.js
+
+plugins:
+  - search
+  - heti:
+      extra_skipped_class:
+        - arithmatex
+      disable_serve: false
+  - tikzautomata

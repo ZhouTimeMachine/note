@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="triangle-1" xmlns="http://www.w3.org/2000/svg" viewBox="29 25 34 15">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-1, .cls-2, .cls-3 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-1, .cls-3 {
+        fill: none;
+        stroke-width: .25px;
+      }
+
+      .cls-2 {
+        stroke-width: .5px;
+      }
+
+      .cls-4 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+
+      .cls-4, .cls-5 {
+        font-size: 3px;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 1 1;
+      }
+
+      .cls-5 {
+        font-family: TimesNewRomanPS-BoldMT, 'Times New Roman';
+        font-weight: 700;
+      }
+
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+    </style>
+  </defs>
+  <circle class="cls-2" cx="30.12" cy="36.01" r=".25"/>
+  <g>
+    <line class="cls-1" x1="30.22" y1="35.97" x2="52.8" y2="35.97"/>
+    <polygon class="cls-polygon" points="52.31 36.7 55.02 35.97 52.31 35.24 52.31 36.7"/>
+  </g>
+  <circle class="cls-2" cx="54.83" cy="35.98" r=".15"/>
+  <g>
+    <line class="cls-1" x1="30.22" y1="35.89" x2="56.35" y2="26.66"/>
+    <polygon class="cls-polygon" points="56.12 27.51 58.43 25.93 55.64 26.14 56.12 27.51"/>
+  </g>
+  <circle class="cls-2" cx="58.43" cy="25.91" r=".15"/>
+  <g>
+    <line class="cls-1" x1="54.82" y1="35.97" x2="57.68" y2="28.12"/>
+    <polygon class="cls-polygon" points="58.19 28.83 58.43 26.04 56.82 28.34 58.19 28.83"/>
+  </g>
+  <text class="cls-5 cls-text" transform="translate(58.67 31.4)"><tspan x="0" y="0">βv</tspan></text>
+  <text class="cls-4 cls-text" transform="translate(61.75 32.4) scale(.58)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-5 cls-text" transform="translate(44.91 38.76)"><tspan x="0" y="0">αv</tspan></text>
+  <text class="cls-4 cls-text" transform="translate(48.09 39.76) scale(.58)"><tspan x="0" y="0">0</tspan></text>
+  <text class="cls-5 cls-text" transform="translate(45.75 27.81)"><tspan x="0" y="0">v</tspan></text>
+  <text class="cls-4 cls-text" transform="translate(47.25 28.81) scale(.58)"><tspan x="0" y="0">t</tspan></text>
+  <path class="cls-1" d="M39.43,35.98c.69-1.08.46-2.45-.42-3.14"/>
+  <text class="cls-4 cls-text" transform="translate(40.44 34.97)"><tspan x="0" y="0">tθ</tspan></text>
+  <text class="cls-4 cls-text" transform="translate(55.61 39.29)"><tspan x="0" y="0">θ</tspan></text>
+  <line class="cls-3" x1="54.12" y1="35.97" x2="64.02" y2="35.97"/>
+  <path class="cls-1" d="M57.89,35.98c-.16-1.27-1.22-2.18-2.34-2.15"/>
+</svg>
