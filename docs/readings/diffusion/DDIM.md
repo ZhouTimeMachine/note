@@ -4,11 +4,13 @@
 
 ## Denoising of DDIM
 
-回顾原始 DDPM 的去噪，是通过 $p_{\theta}(x_{t-1}|x_t)$ 近似去噪转移核 $q(x_{t-1}|x_t)$，一步步去噪得到的。由于转移核服从高斯分布 $\mathcal{N}(\tilde{\mu}_t, \tilde{\beta}_tI)$，因此实际上操作为
+回顾原始 DDPM 的去噪，是通过让去噪转移核 $p_{\theta}(x_{t-1}|x_t)$ 趋近于 ground truth 的 $p(x_{t-1}|x_t, x_0)$，一步步去噪得到的。由于 $p(x_{t-1}|x_t, x_0)=\mathcal{N}(\tilde{\mu}_t, \tilde{\beta}_tI)$，我们也将 $p_{\theta}(x_{t-1}|x_t)$ 重参数化为 $\mathcal{N}(\mu_{\theta}(x_t, t), \sigma_t^2I)$，因此实际上操作为
 
 $$
-x_{t-1} = \tilde{\mu}_t + \sqrt{\tilde{\beta}_t}\varepsilon_t
+x_{t-1} = \mu_{\theta}(x_t, t) + \sigma_t\varepsilon_t
 $$
+
+> 这里的 $\varepsilon_t\sim \mathcal{N}(0, 1)$ 是随机采样的去噪过程中的加噪扰动，和 epsilon-prediction 中模型预测的 $\varepsilon_{\theta}^{(t)}(x_t)$ 不同，后者是用来构造 $\mu_{\theta}(x_t, t)$ 的 
 
 $\varepsilon_t$ 导致去噪过程的每一步都具有一定的随机性，从而需要一步步去噪，加噪需要多少步（DDPM 中往往加噪 1000 步）去噪也需要多少步。这是非常耗时的，DDIM 的核心思想就是将 SDE 转化成 ODE，从而去噪的每一步都不再需要随机项，从而可以使用解 ODE 的加速方法加速。
 
@@ -47,6 +49,8 @@ $$
     + \underbrace{\sqrt{1-\overline{\alpha}_ {t-1}-\sigma_ t^2}\varepsilon_ {\theta}^{(t)}(x_ t)}_ {\text{“direction pointing to }x_t\text{”}}
     + \underbrace{\sigma_ t \varepsilon_ t}_ {\text{random noise}}
 $$
+
+> 详见 [Denoising Diffusion Implicit Models](http://arxiv.org/abs/2010.02502) 的公式 (12)
 
 其中 $\sigma_t^2=\eta \tilde{\beta}_t$ 是去噪过程中的噪声方差，注意到有
 
@@ -98,4 +102,6 @@ x_{t+1} - x_t = \sqrt{\overline{\alpha}_{t+1}} \left[
 \right]
 $$
 
-显然这样直接的反演会导致相当的误差，无法反演回到原图。目前对 DDIM 反演做得比较好的工作是 [Null-text Inversion for Editing Real Images using Guided Diffusion Models](http://arxiv.org/abs/2211.09794)。
+显然这样直接的反演会导致相当的误差，无法反演回到原图。
+
+> 在 2023 年我第一次写这篇笔记的时候，找到了一篇对 DDIM 反演进行了一定改进的参考工作 [Null-text Inversion for Editing Real Images using Guided Diffusion Models](http://arxiv.org/abs/2211.09794)
