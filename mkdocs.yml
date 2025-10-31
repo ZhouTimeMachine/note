@@ -101,17 +101,13 @@ nav:
       - readings/diffusion/index.md
       - DDPM: readings/diffusion/DDPM.md
       - DDIM: readings/diffusion/DDIM.md
-      - Score-based Generative Models: readings/diffusion/SGM.md
+      - SGM: readings/diffusion/SGM.md
       - v-prediction: readings/diffusion/v-prediction.md
-    - ICLR2024:
-      - readings/ICLR2024/index.md
-      - Singularity of Diffusion: readings/ICLR2024/Singularity_Diffusion.md
-      - Particle Filter + Diffusion: readings/ICLR2024/Particle_Filter_Diffusion.md
-    - ICCV2023:
-      - readings/ICCV2023/index.md
-      - Latent Space of DDPM: readings/ICCV2023/DDPM_latent.md
-      - DDPM for Multi-Modality Image Fusion: readings/ICCV2023/DDFM_image_fusion.md
-      - E2E Multi-View Feature Matching: readings/ICCV2023/e2e_multiview_feature_matching.md
+      - SDE/ODE formulation: readings/diffusion/DE-formula.md
+      - EDM: readings/diffusion/EDM.md
+      - Rectified Flow: readings/diffusion/rectified-flow.md
+      - Mean Flow: readings/diffusion/mean-flow.md
+      - Guidance: readings/diffusion/guidance.md
     - Neural Network Basics:
       - readings/NNbasics/index.md
       - LSTM & GRU: readings/NNbasics/lstm_gru.md

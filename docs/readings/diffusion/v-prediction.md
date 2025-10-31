@@ -4,7 +4,7 @@
 
 !!! warning "该页面还在建设中"
 
-!!! info "Based on *Progressive Distillation for Fast Sampling of Diffusion Models* (ICLR 2022 Spotlight). Link: [arxiv](https://arxiv.org/abs/2202.00512), [openreview](https://openreview.net/forum?id=TIdIXIpzhoI), [code](https://github.com/google-research/google-research/tree/master/diffusion_distillation)"
+!!! info "Main Reference: [Progressive Distillation for Fast Sampling of Diffusion Models](https://arxiv.org/abs/2202.00512), ICLR 2022 Spotlight"
 
 Diffusion Model 中的 v-prediction 是相对于 $\varepsilon$-prediction 方法而言的，从预测一个噪声 $\varepsilon$ 变化到预测速度 $v$，作为一种加速采样的方法在渐进蒸馏这篇论文中提出。
 
@@ -34,7 +34,8 @@ $$
 在论文的附录 D 中给出了这种角参数化的可视化效果：
 
 <div style="text-align:center;">
-    <img src="../../imgs/diffusion/v-prediction-visualization.png" alt="v-prediction-visualization" style="zoom:67%;" />
+    <img src="../../imgs/diffusion/v-prediction-visualization-light.png#only-light" alt="v-prediction-visualization-light" style="zoom:25%;" />
+    <img src="../../imgs/diffusion/v-prediction-visualization-dark.png#only-dark" alt="v-prediction-visualization-dark" style="zoom:25%;" />
 </div>
 
 这里的 $z$ 指的就是 $x_t$，$x$ 就是 $x_0$，有
@@ -85,7 +86,7 @@ $$
     + \underbrace{\sqrt{1-\overline{\alpha}_{t-1}}\varepsilon_{\theta}^{(t)}(x_t)}_{\text{“direction pointing to }x_t\text{”}}
 $$
 
-> 可以从 [*Denoising Diffusion Implicit Models*](https://arxiv.org/abs/2010.02502) 的 Equation (12) 导出
+> 可以从 [Denoising Diffusion Implicit Models](https://arxiv.org/abs/2010.02502) 的 Equation (12) 导出
 
 然而，利用 v-prediction 的角参数化性质，可以重写 DDIM 的更新规则。设 $t$ 时刻角参数化的结果为 $\phi_{t}$，$t-1$ 时刻角参数化的结果为 $\phi_s$，那么有
 

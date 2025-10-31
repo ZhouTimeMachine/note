@@ -3,17 +3,21 @@
 # Denoising Diffusion Probabilistic Models
 
 !!! info "References"
-	- [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
+	- [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (Neural Information Processing Systems 2020, Poster)
 	- [What are Diffusion Models? | Lil'Log](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
 	- [Understanding Diffusion Models: A Unified Perspective](http://arxiv.org/abs/2208.11970)
 
+??? note "Gossip"
+	于 2025.5.27 查看时，DDPM 原论文引用量已经达到 22000+；但在 2020 年其投稿会议时仅为 Poster，连 Oral 列表都没能进入——可以期待一下 DDPM 拿下时间检验奖。
+
 Diffusion 的关键就是两个步骤：**前向加噪 (Forward Diffusion Process)**和**反向去噪 (Reverse Diffusion Process)**
 
-<div style="text-align:center;">
-	<img src="../../imgs/diffusion/ddpm-modeling.svg" alt="ddpm-modeling" style="zoom:67%;" />
-</div>
-
-> 该图来自于 [DDPM 原论文](https://arxiv.org/abs/2006.11239)，进行了重绘
+<figure style="text-align:center;">
+    <img src="../../imgs/diffusion/ddpm-modeling.svg" alt="ddpm-modeling" style="zoom:67%;" />
+    <figcaption><small>
+        Modified from <a href="https://arxiv.org/abs/2006.11239">the original DDPM paper</a>
+    </small></figcaption>
+</figure>
 
 ## Forward Diffusion Process
 
@@ -583,6 +587,6 @@ $$
 综合观之，有
 
 <div style="text-align:center;">
-	<img src="../../imgs/diffusion/ddpm-pseudo-code-light.png#only-light" alt="ddpm-pseudo-code-light" style="zoom:67%;" />
+    <img src="../../imgs/diffusion/ddpm-pseudo-code-light.png#only-light" alt="ddpm-pseudo-code-light" style="zoom:67%;" />
 	<img src="../../imgs/diffusion/ddpm-pseudo-code-dark.png#only-dark" alt="ddpm-pseudo-code-dark" style="zoom:67%;" />
 </div>
