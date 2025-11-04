@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_3" data-name="图层 3" xmlns="http://www.w3.org/2000/svg" viewBox="10 20 63 40">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+        font-size: 6px;
+      }
+
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke-width: .25px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-2, .cls-3 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-3 {
+        stroke-width: .5px;
+      }
+    </style>
+  </defs>
+  <circle class="cls-2" cx="41.12" cy="41.48" r="30"/>
+  <circle class="cls-3" cx="41.12" cy="41.48" r=".25"/>
+  <g>
+    <line class="cls-2" x1="53.67" y1="15.43" x2="41.12" y2="41.48"/>
+    <path class="cls-polygon" d="M54.12,14.48c-.38.37-.93.79-1.4.99l.88.09.62.63c-.13-.49-.15-1.18-.1-1.71Z"/>
+  </g>
+  <g>
+    <line class="cls-2" x1="40.95" y1="41.58" x2="68.14" y2="30.87"/>
+    <path class="cls-polygon" d="M69.12,30.48c-.39.35-.85.87-1.09,1.32l-.02-.88-.59-.66c.48.17,1.17.24,1.7.23Z"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M47.26,32.35c4.5,3.01,6.19,8.96,3.75,13.96-2.67,5.46-9.25,7.72-14.71,5.06-5.46-2.67-7.72-9.25-5.06-14.71,2.44-5,8.17-7.32,13.32-5.63"/>
+    <path class="cls-polygon" d="M45.95,31.6c.48.59,1,1.43,1.23,2.11l.24-1.24.98-.8c-.71.13-1.7.07-2.44-.07Z"/>
+    <path class="cls-polygon" d="M45.95,31.6c-.76-.01-1.74.09-2.42.33l.83-.95.03-1.26c.34.64.99,1.38,1.56,1.88Z"/>
+  </g>
+  <circle class="cls-3" cx="45.82" cy="31.68" r=".15"/>
+  <circle class="cls-3" cx="51.32" cy="37.5" r=".15"/>
+  <circle class="cls-3" cx="54.12" cy="14.5" r=".15"/>
+  <circle class="cls-3" cx="69.12" cy="30.48" r=".15"/>
+  <text class="cls-1 cls-text" transform="translate(45.99 57.42)"><tspan x="0" y="0">2π - θ</tspan></text>
+  <text class="cls-1 cls-text" transform="translate(50.51 33.42)"><tspan x="0" y="0">θ</tspan></text>
+</svg>
