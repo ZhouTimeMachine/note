@@ -25,7 +25,5 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material
       - run: pip install mkdocs-heti-plugin
-      - run: git clone https://github.com/TonyCrane/mkdocs-toolchain.git
-      - run: pip install -e mkdocs-toolchain/mkdocs-tikzautomata-plugin
       - run: mkdir cache
       - run: mkdocs gh-deploy --force
