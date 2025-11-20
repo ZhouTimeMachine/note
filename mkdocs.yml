@@ -183,13 +183,13 @@ markdown_extensions:
 #   - sane_lists
 
 extra_css:
-  - https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css
+  - css/katex.min.css  # 0.16.25
   - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
   - css/custom.css
   - css/svg_extra.css
 
 extra_javascript:
-  - https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.js
+  - js/katex.min.js  # 0.16.25
   - js/katex.js
   - js/heti.js
 
