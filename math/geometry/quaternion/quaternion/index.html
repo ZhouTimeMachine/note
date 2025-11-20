@@ -1,0 +1,2880 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Jianjun Zhou's Notebook" name="description"/>
+<link href="https://ZhouTimeMachine.github.io/note/math/geometry/quaternion/quaternion/" rel="canonical"/>
+<link href="../basics/" rel="prev"/>
+<link href="../interpolation/" rel="next"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+<title>Quarternion - Jianjun Zhou's Notebook</title>
+<link href="../../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/svg_extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Jianjun Zhou's Notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Jianjun Zhou's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Jianjun Zhou's Notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Quarternion
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ZhouTimeMachine/note/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ZhouTimeMachine/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../courses/">
+          
+  
+  
+    
+  
+  Courses
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../readings/">
+          
+  
+  
+    
+  
+  Readings
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Jianjun Zhou's Notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Jianjun Zhou's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+</a>
+    Jianjun Zhou's Notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ZhouTimeMachine/note/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ZhouTimeMachine/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/">
+<span class="md-ellipsis">
+    
+  
+    Courses
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Courses
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/high-dim-prob/">
+<span class="md-ellipsis">
+    
+  
+    High-Dimensional Probability
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    High-Dimensional Probability
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/high-dim-prob/lec1/">
+<span class="md-ellipsis">
+    
+  
+    Lecture 1
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/toc/">
+<span class="md-ellipsis">
+    
+  
+    Theory of Computation
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Theory of Computation
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/languages/">
+<span class="md-ellipsis">
+    
+  
+    Sets, Relations and Languages
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/finite_automata/">
+<span class="md-ellipsis">
+    
+  
+    Finite Automata
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/context_free/">
+<span class="md-ellipsis">
+    
+  
+    Context-Free Languages
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/turing_machine/">
+<span class="md-ellipsis">
+    
+  
+    Turing Machine
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/undecidability/">
+<span class="md-ellipsis">
+    
+  
+    Undecidability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/after_story/">
+<span class="md-ellipsis">
+    
+  
+    After Story
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/ads-final-review/">
+<span class="md-ellipsis">
+    
+  
+    Advanced Data Structure and Algorithm
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/probability/">
+<span class="md-ellipsis">
+    
+  
+    Probability Theory
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Probability Theory
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/basics/">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/rand_var_vec/">
+<span class="md-ellipsis">
+    
+  
+    Random Variable &amp; Vector
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/feature_basics/">
+<span class="md-ellipsis">
+    
+  
+    Data Feature Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/feature_pro/">
+<span class="md-ellipsis">
+    
+  
+    Data Feature Pro
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/prob_lim/">
+<span class="md-ellipsis">
+    
+  
+    Limit Theorems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/normal_distr/">
+<span class="md-ellipsis">
+    
+  
+    Normal Distribution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Methods
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Methods
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Analysis
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Analysis
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/1/">
+<span class="md-ellipsis">
+    
+  
+    Mathematical Preliminaries
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/2/">
+<span class="md-ellipsis">
+    
+  
+    Solve Equations (1 Variable)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/3/">
+<span class="md-ellipsis">
+    
+  
+    Interpolation &amp; Poly. Approx.
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/4/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Diffs &amp; Integs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/5/">
+<span class="md-ellipsis">
+    
+  
+    IVP for ODE
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/6/">
+<span class="md-ellipsis">
+    
+  
+    Solve Linear Systems (Directly)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/7/">
+<span class="md-ellipsis">
+    
+  
+    Solve Linear Systems (Iteratively)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/8/">
+<span class="md-ellipsis">
+    
+  
+    Approximation Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/9/">
+<span class="md-ellipsis">
+    
+  
+    Approximating Eigenvalues
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Algebra
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Algebra
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/1/">
+<span class="md-ellipsis">
+    
+  
+    Direct Methods for Linear Systems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/2/">
+<span class="md-ellipsis">
+    
+  
+    Sensitivity &amp; Round-off Error Analysis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/3/">
+<span class="md-ellipsis">
+    
+  
+    Solve Least Square Problems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/4/">
+<span class="md-ellipsis">
+    
+  
+    Classic Iterative Methods for Linear Systems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/5/">
+<span class="md-ellipsis">
+    
+  
+    Conjugate Gradient Method
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/6/">
+<span class="md-ellipsis">
+    
+  
+    Solve Asymmetric Eigenvalue Problems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/7/">
+<span class="md-ellipsis">
+    
+  
+    Solve Symmetric Eigenvalue Problems
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/physics/">
+<span class="md-ellipsis">
+    
+  
+    Physics (H)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Physics (H)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-electrostatics/">
+<span class="md-ellipsis">
+    
+  
+    Electrostatics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-current/">
+<span class="md-ellipsis">
+    
+  
+    Current
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-electromagnetics/">
+<span class="md-ellipsis">
+    
+  
+    Electromagnetics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-optics/">
+<span class="md-ellipsis">
+    
+  
+    Optics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-quantum/">
+<span class="md-ellipsis">
+    
+  
+    Quantum
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/info-theory/">
+<span class="md-ellipsis">
+    
+  
+    Information Theory
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    
+  
+    Math
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Math
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../DEs/">
+<span class="md-ellipsis">
+    
+  
+    Differential Equations
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Differential Equations
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../DEs/ODE/">
+<span class="md-ellipsis">
+    
+  
+    ODE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    ODE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/ODE/general1/">
+<span class="md-ellipsis">
+    
+  
+    Existence of Solution
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/ODE/system/">
+<span class="md-ellipsis">
+    
+  
+    ODE System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../DEs/PDE/">
+<span class="md-ellipsis">
+    
+  
+    PDE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PDE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/PDE/introduction/">
+<span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/PDE/4linearPDEs/">
+<span class="md-ellipsis">
+    
+  
+    4 Linear PDEs
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../DEs/Intro2SDE/">
+<span class="md-ellipsis">
+    
+  
+    SDE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    SDE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/Intro2SDE/intro_prob/">
+<span class="md-ellipsis">
+    
+  
+    Introduction &amp; Probability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/Intro2SDE/Brownian_noise/">
+<span class="md-ellipsis">
+    
+  
+    Brownian Motion &amp; "White Noise"
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/Intro2SDE/stochastic_integrals/">
+<span class="md-ellipsis">
+    
+  
+    Stochastic Integrals
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/Intro2SDE/SDE/">
+<span class="md-ellipsis">
+    
+  
+    SDE
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../DEs/Intro2SDE/applications/">
+<span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../probability/">
+<span class="md-ellipsis">
+    
+  
+    Probability Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../analysis/">
+<span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../analysis/funcRvar/">
+<span class="md-ellipsis">
+    
+  
+    Funcs of Real Vars
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Funcs of Real Vars
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/funcRvar/sets/">
+<span class="md-ellipsis">
+    
+  
+    Basics of Set Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/funcRvar/LebesgueMeasure/">
+<span class="md-ellipsis">
+    
+  
+    Lebesgue Measure
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/continuities/">
+<span class="md-ellipsis">
+    
+  
+    Continuities
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Geometry
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Geometry
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Quaternion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Quaternion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../basics/">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Quarternion
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Quarternion
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        概念和运算
+      
+    </span>
+</a>
+<nav aria-label="概念和运算" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        模长
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        加减法
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        乘法
+      
+    </span>
+</a>
+<nav aria-label="乘法" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        数乘
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      
+        相互乘法
+      
+    </span>
+</a>
+<nav aria-label="相互乘法" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      
+        基本形式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      
+        矩阵形式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grassmann">
+<span class="md-ellipsis">
+      
+        Grassmann 积形式
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      
+        纯四元数、逆和共轭
+      
+    </span>
+</a>
+<nav aria-label="纯四元数、逆和共轭" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      
+        纯四元数
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      
+        （乘法）逆和共轭
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d">
+<span class="md-ellipsis">
+      
+        3D 旋转的四元数基本形式
+      
+    </span>
+</a>
+<nav aria-label="3D 旋转的四元数基本形式" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_1">
+<span class="md-ellipsis">
+      
+        3D 向量的四元数表示
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      
+        旋转正交向量
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      
+        组合两个分量
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_2">
+<span class="md-ellipsis">
+      
+        3D 旋转的矩阵形式（利用四元数元素）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_3">
+<span class="md-ellipsis">
+      
+        3D 旋转的四元数指数形式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      
+        旋转四元数的复合
+      
+    </span>
+</a>
+<nav aria-label="旋转四元数的复合" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_16">
+<span class="md-ellipsis">
+      
+        复合四元数仍是旋转四元数
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_17">
+<span class="md-ellipsis">
+      
+        复合共轭计算
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_4">
+<span class="md-ellipsis">
+      
+        四元数表示 3D 旋转的问题：双倍覆盖
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../interpolation/">
+<span class="md-ellipsis">
+    
+  
+    Interpolation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/">
+<span class="md-ellipsis">
+    
+  
+    Readings
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Readings
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/diffusion/">
+<span class="md-ellipsis">
+    
+  
+    Diffusion Models
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Diffusion Models
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DDPM/">
+<span class="md-ellipsis">
+    
+  
+    DDPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DDIM/">
+<span class="md-ellipsis">
+    
+  
+    DDIM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/SGM/">
+<span class="md-ellipsis">
+    
+  
+    SGM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/v-prediction/">
+<span class="md-ellipsis">
+    
+  
+    v-prediction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DE-formula/">
+<span class="md-ellipsis">
+    
+  
+    SDE/ODE formulation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/EDM/">
+<span class="md-ellipsis">
+    
+  
+    EDM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/rectified-flow/">
+<span class="md-ellipsis">
+    
+  
+    Rectified Flow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/mean-flow/">
+<span class="md-ellipsis">
+    
+  
+    Mean Flow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/guidance/">
+<span class="md-ellipsis">
+    
+  
+    Guidance
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/NNbasics/">
+<span class="md-ellipsis">
+    
+  
+    Neural Network Basics
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Neural Network Basics
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/lstm_gru/">
+<span class="md-ellipsis">
+    
+  
+    LSTM &amp; GRU
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/normalization/">
+<span class="md-ellipsis">
+    
+  
+    Normalization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/einsum/">
+<span class="md-ellipsis">
+    
+  
+    Einsum
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Miscs
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Miscs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/miscs/abbrs/">
+<span class="md-ellipsis">
+    
+  
+    Abbrs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/miscs/metrics/">
+<span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        概念和运算
+      
+    </span>
+</a>
+<nav aria-label="概念和运算" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        模长
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        加减法
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        乘法
+      
+    </span>
+</a>
+<nav aria-label="乘法" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        数乘
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      
+        相互乘法
+      
+    </span>
+</a>
+<nav aria-label="相互乘法" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      
+        基本形式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      
+        矩阵形式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grassmann">
+<span class="md-ellipsis">
+      
+        Grassmann 积形式
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      
+        纯四元数、逆和共轭
+      
+    </span>
+</a>
+<nav aria-label="纯四元数、逆和共轭" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      
+        纯四元数
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      
+        （乘法）逆和共轭
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d">
+<span class="md-ellipsis">
+      
+        3D 旋转的四元数基本形式
+      
+    </span>
+</a>
+<nav aria-label="3D 旋转的四元数基本形式" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_1">
+<span class="md-ellipsis">
+      
+        3D 向量的四元数表示
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      
+        旋转正交向量
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      
+        组合两个分量
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_2">
+<span class="md-ellipsis">
+      
+        3D 旋转的矩阵形式（利用四元数元素）
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_3">
+<span class="md-ellipsis">
+      
+        3D 旋转的四元数指数形式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      
+        旋转四元数的复合
+      
+    </span>
+</a>
+<nav aria-label="旋转四元数的复合" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_16">
+<span class="md-ellipsis">
+      
+        复合四元数仍是旋转四元数
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_17">
+<span class="md-ellipsis">
+      
+        复合共轭计算
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3d_4">
+<span class="md-ellipsis">
+      
+        四元数表示 3D 旋转的问题：双倍覆盖
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<p><link href="../../../../css/counter.css" rel="stylesheet"/></p>
+<h1 id="_1">四元数</h1>
+<div class="admonition info">
+<p class="admonition-title">notes of <a href="https://github.com/Krasjet/quaternion">https://github.com/Krasjet/quaternion</a>, chapter 3</p>
+</div>
+<p>四元数和复数十分类似，只是复数只有<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>个虚部，而四元数有<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个虚部。所有四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\in \mathbb{H}\)</span><span class="heti-spacing"> </span></span>都可以表示为：</p>
+<div class="arithmatex">\[
+q = a + bi + cj + dk, \quad a, b, c, d \in \mathbb{R}
+\]</div>
+<blockquote>
+<p><span><span class="arithmatex">\(\mathbb{H}\)</span><span class="heti-spacing"> </span></span>代表全体四元素，用来纪念四元数的发现者<span><span class="heti-spacing"> </span>William Rowan Hamilton</span></p>
+</blockquote>
+<p>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(i^2=j^2=k^2=ijk=-1\)</span></span>。</p>
+<p>与复数类似，四元数也可以表示为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^4\)</span><span class="heti-spacing"> </span></span>的向量，或者将实部和虚部分开，表示为单个实数和向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^3\)</span><span class="heti-spacing"> </span></span>的有序对：</p>
+<div class="arithmatex">\[
+q = [s, \mathbf{v}],\quad \mathbf{v} = (x, y, z)^{\top}\in \mathbb{R}^3
+\]</div>
+<h2 id="_2">概念和运算</h2>
+<h3 id="_3">模长</h3>
+<div class="arithmatex">\[
+\|q\| = \sqrt{a^2 + b^2 + c^2 + d^2}
+= \sqrt{s^2 + \|\mathbf{v}\|^2}
+\]</div>
+<h3 id="_4">加减法</h3>
+<p>和复数完全类似，即对应实部、虚部相加减。对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_1 = a_1 + b_1i + c_1j + d_1k = [s, \mathbf{v}]\)</span></span>，<span class="arithmatex">\(q_2 = a_2 + b_2i + c_2j + d_2k = [t, \mathbf{u}]\)</span>，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1 \pm q_2 
+    &amp;= (a_1 \pm a_2) + (b_1 \pm b_2)i + (c_1\pm c_2)j + (d_1\pm d_2)k \\
+    &amp;= [s\pm t, \mathbf{v}\pm \mathbf{u}]
+\end{aligned}
+\]</div>
+<h3 id="_5">乘法</h3>
+<h4 id="_6">数乘</h4>
+<p>和复数完全类似，直接进行一个<span><span class="heti-spacing"> </span>scale</span>：</p>
+<div class="arithmatex">\[
+sq = s(a + bi + cj + dk) = sa + sbi + scj + sdk
+\]</div>
+<p>数乘满足交换律，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(sq=qs\)</span></span></p>
+<h4 id="_7">相互乘法</h4>
+<h5 id="_8">基本形式</h5>
+<ul>
+<li>四元数之间的乘法<strong>不满足交换律</strong>，即左乘<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1q_2\)</span><span class="heti-spacing"> </span></span>并不一定等于右乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_2q_1\)</span></span></li>
+<li><strong>结合律、分配律依然成立</strong></li>
+</ul>
+<p>两个四元数的乘法是十分凌乱的，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1q_2
+    =&amp; (a_1 + b_1i + c_1j + d_1k) (a_2 + b_2i + c_2j + d_2k) \\
+    =&amp; (a_1a_2 + a_1b_2i + a_1c_2j + a_1d_2k) + \\
+    &amp; (b_1a_2i + b_1b_2i^2 + b_1c_2ij + b_1d_2ik) + \\
+    &amp; (c_1a_2j + c_1b_2ji + c_1c_2j^2 + c_1d_2jk) + \\
+    &amp; (d_1a_2k + d_1b_2ki + d_1c_2kj + d_1k^2) \\
+\end{aligned}
+\]</div>
+<p>根据<span><span class="heti-spacing"> </span><span class="arithmatex">\(i^2=j^2=k^2=ijk=-1\)</span></span>，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    -jk=i^2(jk)=i(ijk)=-i &amp;\quad\Rightarrow\quad  jk=i \\
+    -ij=(ij)k^2=(ijk)k=-k &amp;\quad\Rightarrow\quad ij=k \\
+    kj=(ij)j=ij^2=-i &amp;\quad\Rightarrow\quad kj=-i \\
+    -ki=k(kj)=k^2j=-j &amp;\quad\Rightarrow\quad ki=j \\
+    ji=(ki)i=ki^2=-k &amp;\quad\Rightarrow\quad ji=-k \\
+    ik=i(ij)=i^2j=-j &amp;\quad\Rightarrow\quad ik=-j
+\end{aligned}
+\]</div>
+<blockquote>
+<p>从这里就可以注意到四元数乘法不满足交换律</p>
+</blockquote>
+<p>用一个表格表示基<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((1, i, j, k)^{\top}\)</span><span class="heti-spacing"> </span></span>两两相乘的结果：</p>
+<div class="admonition info">
+<p class="admonition-title">四元数基底相乘表</p>
+<div class="center" markdown="1">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(\times\)</span></th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><span class="arithmatex">\(i\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(j\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="arithmatex">\(i\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(j\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(k\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(i\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(i\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(k\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-j\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(j\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(j\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-k\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(i\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(k\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(k\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(j\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-i\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>利用表格中的结果，我们可以把四元数相互乘法的形式简化为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1q_2
+    =&amp; (a_1a_2 +a_1b_2i + a_1c_2j + a_1d_2k) + \\
+    &amp; (b_1a_2i - b_1b_2 + b_1c_2k - b_1d_2j) + \\
+    &amp; (c_1a_2j - c_1b_2k - c_1c_2 + c_1d_2i) + \\
+    &amp; (d_1a_2k + d_1b_2j - d_1c_2i - d_1d_2)\\
+    =&amp; (a_1{\color{red} a_2} - b_1{\color{cyan} b_2} - c_1{\color{green} c_2} - d_1{\color{yellow} d_2}) + \\
+    &amp; (b_1{\color{red} a_2} + a_1{\color{cyan} b_2} - d_1{\color{green} c_2} + c_1{\color{yellow} d_2})i + \\
+    &amp; (c_1{\color{red} a_2} + d_1{\color{cyan} b_2} + a_1{\color{green} c_2} - b_1{\color{yellow} d_2})j + \\
+    &amp; (d_1{\color{red} a_2} - c_1{\color{cyan} b_2} + b_1{\color{green} c_2} + a_1{\color{yellow} d_2})k
+\end{aligned}
+\]</div>
+<div class="admonition info">
+<p class="admonition-title">四元数乘法基本形式</p>
+<p>对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1=a_1 + b_1i + c_1j + d_1k\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_2={\color{red} a_2} + {\color{cyan} b_2}i + {\color{green} c_2}j + {\color{yellow} d_2}k\)</span></span>，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1q_2 
+    =&amp; (a_1{\color{red} a_2} - b_1{\color{cyan} b_2} - c_1{\color{green} c_2} - d_1{\color{yellow} d_2}) + \\
+    &amp; (b_1{\color{red} a_2} + a_1{\color{cyan} b_2} - d_1{\color{green} c_2} + c_1{\color{yellow} d_2})i + \\
+    &amp; (c_1{\color{red} a_2} + d_1{\color{cyan} b_2} + a_1{\color{green} c_2} - b_1{\color{yellow} d_2})j + \\
+    &amp; (d_1{\color{red} a_2} - c_1{\color{cyan} b_2} + b_1{\color{green} c_2} + a_1{\color{yellow} d_2})k
+\end{aligned}
+\]</div>
+</div>
+<h5 id="_9">矩阵形式</h5>
+<p>在向量表示四元数下，可以把四元数相互乘法表示为矩阵乘向量的形式，即</p>
+<div class="admonition info">
+<p class="admonition-title">四元数乘法矩阵形式</p>
+<p>对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1=a_1 + b_1i + c_1j + d_1k\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_2={\color{red} a_2} + {\color{cyan} b_2}i + {\color{green} c_2}j + {\color{yellow} d_2}k\)</span></span>，有</p>
+<div class="arithmatex">\[
+    q_1q_2 = 
+    \begin{bmatrix}
+        a_1 &amp; -b_1 &amp; -c_1 &amp; -d_1 \\
+        b_1 &amp;  a_1 &amp; -d_1 &amp;  c_1 \\
+        c_1 &amp;  d_1 &amp;  a_1 &amp; -b_1 \\
+        d_1 &amp; -c_1 &amp;  b_1 &amp;  a_1
+    \end{bmatrix} \begin{bmatrix}
+        {\color{red} a_2} \\
+        {\color{cyan} b_2} \\
+        {\color{green} c_2} \\
+        {\color{yellow} d_2}
+    \end{bmatrix}
+\]</div>
+</div>
+<p>我们发现，这实际上把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1\)</span><span class="heti-spacing"> </span></span>看作一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^{4\times 4}\)</span><span class="heti-spacing"> </span></span>的反对称矩阵，<span><span class="arithmatex">\(q_2\)</span><span class="heti-spacing"> </span></span>看作一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^4\)</span><span class="heti-spacing"> </span></span>的向量。所以，类似复数地，四元数也有其反对称矩阵表示。</p>
+<h5 id="grassmann"><span>Grassmann<span class="heti-spacing"> </span></span>积形式</h5>
+<p>我们还希望在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q=[s, \mathbf{v}]\)</span><span class="heti-spacing"> </span></span>的表示下能够方便地进行四元数乘法，于是就有了<span class="heti-skip"><span class="heti-spacing"> </span>Grassmann<span class="heti-spacing"> </span></span>积的结果形式。将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1, q_2\)</span><span class="heti-spacing"> </span></span>表示为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1=[a_1, [b_1, c_1, d_1]^{\top}]=[a_1, \mathbf{v}]\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_2=[a_2, [b_2, c_2, d_2]^{\top}]=[a_2, \mathbf{u}]\)</span></span>，整理前面得到的乘法结果：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1q_2
+    =&amp; (a_1a_2 - (b_1b_2 + c_1c_2 + d_1d_2)) + \\
+    &amp; (b_1{\color{red} a_2} + {\color{cyan} a_1}b_2 + c_1d_2 - d_1c_2)i + \\
+    &amp; (c_1{\color{red} a_2} + {\color{cyan} a_1}c_2 + d_1b_2 - b_1d_2)j + \\
+    &amp; (d_1{\color{red} a_2} + {\color{cyan} a_1}d_2 + b_1c_2 - c_1b_2)k
+\end{aligned}
+\]</div>
+<p>又<strong>注意到</strong></p>
+<div class="arithmatex">\[
+\begin{gathered}
+    \mathbf{v}\cdot \mathbf{u} = b_1b_2 + c_1c_2 + d_1d_2 \\
+    \mathbf{v}\times \mathbf{u} = \begin{bmatrix}
+        \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+        b_1 &amp; c_1 &amp; d_1 \\
+        b_2 &amp; c_2 &amp; d_2
+    \end{bmatrix} = (c_1d_2 - d_1c_2)\mathbf{i} + (d_1b_2 - b_1d_2)\mathbf{j} + (b_1c_2 - c_1b_2)\mathbf{k}
+\end{gathered}
+\]</div>
+<p>所以我们发现<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1q_2\)</span><span class="heti-spacing"> </span></span>可以用向量点乘和叉乘的方式表示出来，即</p>
+<div class="admonition info">
+<p class="admonition-title"><span>Grassmann<span class="heti-spacing"> </span></span>积</p>
+<p>对四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1=[a_1, \mathbf{v}]\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_2=[a_2, \mathbf{u}]\)</span></span>，有</p>
+<div class="arithmatex">\[
+q_1q_2 = [a_1a_2 - \mathbf{v}\cdot \mathbf{u}, a_1\mathbf{u} + a_2\mathbf{v} + \mathbf{v}\times \mathbf{u}]
+\]</div>
+</div>
+<p>回忆前面推导过的<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转公式，也是由<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\times \mathbf{v}\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\cdot \mathbf{v}\)</span><span class="heti-spacing"> </span></span>构成的，只是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\)</span><span class="heti-spacing"> </span></span>是旋转轴的方向，而<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}\)</span><span class="heti-spacing"> </span></span>是受到旋转变换的向量。事实上，<span>Grassmann<span class="heti-spacing"> </span></span>积形式的四元数乘法也正是连接四元数和旋转的纽带，这会在后面进行展示。</p>
+<div class="admonition abstract">
+<p class="admonition-title">四元数乘法的表示形式</p>
+<p>四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1=a_1 + b_1i + c_1j + d_1k = [a_1, \mathbf{v}]\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_2=a_2 + b_2i + c_2j + d_2k = [a_2, \mathbf{u}]\)</span><span class="heti-spacing"> </span></span>的乘法有如下表示形式：</p>
+<ul>
+<li>基本形式：</li>
+</ul>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1q_2 
+    =&amp; (a_1{\color{red} a_2} - b_1{\color{cyan} b_2} - c_1{\color{green} c_2} - d_1{\color{yellow} d_2}) + \\
+    &amp; (b_1{\color{red} a_2} + a_1{\color{cyan} b_2} - d_1{\color{green} c_2} + c_1{\color{yellow} d_2})i + \\
+    &amp; (c_1{\color{red} a_2} + d_1{\color{cyan} b_2} + a_1{\color{green} c_2} - b_1{\color{yellow} d_2})j + \\
+    &amp; (d_1{\color{red} a_2} - c_1{\color{cyan} b_2} + b_1{\color{green} c_2} + a_1{\color{yellow} d_2})k
+\end{aligned}
+\]</div>
+<ul>
+<li>矩阵形式</li>
+</ul>
+<div class="arithmatex">\[
+q_1q_2 =
+\begin{bmatrix}
+    a_1 &amp; -b_1 &amp; -c_1 &amp; -d_1 \\
+    b_1 &amp;  a_1 &amp; -d_1 &amp;  c_1 \\
+    c_1 &amp;  d_1 &amp;  a_1 &amp; -b_1 \\
+    d_1 &amp; -c_1 &amp;  b_1 &amp;  a_1
+\end{bmatrix} \begin{bmatrix}
+    {\color{red} a_2} \\
+    {\color{cyan} b_2} \\
+    {\color{green} c_2} \\
+    {\color{yellow} d_2}
+\end{bmatrix}
+\]</div>
+<ul>
+<li><span>Grassmann<span class="heti-spacing"> </span></span>积形式</li>
+</ul>
+<div class="arithmatex">\[
+q_1q_2 = [a_1a_2 - \mathbf{v}\cdot \mathbf{u}, a_1\mathbf{u} + a_2\mathbf{v} + \mathbf{v}\times \mathbf{u}]
+\]</div>
+</div>
+<h3 id="_10">纯四元数、逆和共轭</h3>
+<h4 id="_11">纯四元数</h4>
+<p>与复数类似，纯四元数指实部为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的四元数。对于纯四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_v=[0, \mathbf{v}]\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(q_u=[0, \mathbf{u}]\)</span></span>，有</p>
+<div class="arithmatex">\[
+q_vq_u = [- \mathbf{v}\cdot \mathbf{u}, \mathbf{v}\times \mathbf{u}]
+\]</div>
+<h4 id="_12">（乘法）逆和共轭</h4>
+<p>事实上，我们容易验证四元数集合<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{H}\)</span><span class="heti-spacing"> </span></span>和其加法和乘法构成的代数系统为环<span class="heti-skip"><span class="heti-spacing"> </span>(ring)<span class="heti-spacing"> </span></span>而不是域<span><span class="heti-spacing"> </span>(field)</span>。这一点和复数是不一致的，因为复数与其加法、乘法运算构成了一个数域。</p>
+<blockquote>
+<p>事实上所构成的环是含幺环，但不是交换环</p>
+</blockquote>
+<details class="tip">
+<summary>对群、环、域的回顾</summary>
+<div class="admonition info">
+<p class="admonition-title">群<span><span class="heti-spacing"> </span>(group)</span></p>
+<p>代数系统<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(&lt;G: \circ&gt;\)</span><span class="heti-spacing"> </span></span>是一个群，如果满足以下条件：</p>
+<ol>
+<li>结合律：对于任意<span><span class="heti-spacing"> </span><span class="arithmatex">\(a, b, c\in G\)</span></span>，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\circ (b\circ c) = (a\circ b)\circ c\)</span></span></li>
+<li>单位元：存在运算单位元，即存在一个元素<span><span class="heti-spacing"> </span><span class="arithmatex">\(e\in G\)</span></span>，使得对于任意<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\in G\)</span></span>，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\circ e = e\circ a = a\)</span></span></li>
+<li>逆元：任意元素可逆，即对于任意<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\in G\)</span></span>，存在一个元素<span><span class="heti-spacing"> </span><span class="arithmatex">\(a^{-1}\in G\)</span></span>，使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\circ a^{-1} = a^{-1}\circ a = e\)</span></span></li>
+</ol>
+</div>
+<p>群需要满足<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个条件，如果满足的条件数量不同，有如下常见情形：</p>
+<ul>
+<li><span>(1)<span class="heti-spacing"> </span></span>如果仅满足条件<span><span class="heti-spacing"> </span>1</span>（结合律<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则称为<strong>半群</strong></li>
+<li><span>(2)<span class="heti-spacing"> </span></span>如果满足条件<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>2</span>，则称为<strong>含幺半群</strong></li>
+<li><span>(4)<span class="heti-spacing"> </span></span>如果在条件<span><span class="heti-spacing"> </span>1</span>、2、<span>3<span class="heti-spacing"> </span></span>的基础上，运算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\circ\)</span><span class="heti-spacing"> </span></span>还满足交换律，则称<strong>交换群</strong>或 <strong><span>Abel<span class="heti-spacing"> </span></span>群</strong></li>
+</ul>
+<p>环和域都含有一个加法运算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(+\)</span><span class="heti-spacing"> </span></span>和一个乘法运算<span><span class="heti-spacing"> </span><span class="arithmatex">\(\circ\)</span></span>。</p>
+<div class="admonition info">
+<p class="admonition-title">环<span><span class="heti-spacing"> </span>(ring)</span></p>
+<p>代数系统<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(&lt;R: +, \circ&gt;\)</span><span class="heti-spacing"> </span></span>是一个环，如果满足以下条件：</p>
+<ol>
+<li><span><span class="arithmatex">\(&lt;R: +&gt;\)</span><span class="heti-spacing"> </span></span>是一个交换群</li>
+<li><span><span class="arithmatex">\(&lt;R: \circ&gt;\)</span><span class="heti-spacing"> </span></span>是一个半群（仅需满足结合律）</li>
+<li>乘法运算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\circ\)</span><span class="heti-spacing"> </span></span>对加法运算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(+\)</span><span class="heti-spacing"> </span></span>满足分配律</li>
+</ol>
+</div>
+<p>如果环中的乘法满足交换律，则称为<strong>交换环</strong>；如果环中的乘法有单位元，则称为<strong>含幺环</strong>。</p>
+<blockquote>
+<p>环的加法单位元记作<span><span class="heti-spacing"> </span><span class="arithmatex">\(0\)</span></span>，如果是含幺环，其乘法单位元记作<span><span class="heti-spacing"> </span><span class="arithmatex">\(1\)</span></span></p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">域<span><span class="heti-spacing"> </span>(field)</span></p>
+<p>代数系统<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(&lt;F: +, \circ&gt;\)</span><span class="heti-spacing"> </span></span>是一个域，如果满足以下条件：</p>
+<ol>
+<li><span><span class="arithmatex">\(&lt;F: +, \circ&gt;\)</span><span class="heti-spacing"> </span></span>是一个含有至少两个元的交换环</li>
+<li><span><span class="arithmatex">\(&lt;F\backslash \{0\}: \circ&gt;\)</span><span class="heti-spacing"> </span></span>是一个交换群</li>
+</ol>
+</div>
+<p>可见，域所必须含有的两个元就是加法单位元<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>和乘法单位元<span><span class="heti-spacing"> </span>1</span>。</p>
+</details>
+<p>四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span><span class="heti-spacing"> </span></span>的加法逆是很自然的<span><span class="heti-spacing"> </span><span class="arithmatex">\(-q\)</span></span>，但是乘法逆就需要小心构造了。使用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q^*=[s, -\mathbf{v}]\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q=[s, \mathbf{v}]\)</span><span class="heti-spacing"> </span></span>的共轭，则有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    qq^* 
+    &amp;= [s, \mathbf{v}][s, -\mathbf{v}] = [s^2 - \mathbf{v}\cdot (-\mathbf{v}), s(-\mathbf{v}) + s\mathbf{v} + \mathbf{v}\times (-\mathbf{v})] \\
+    &amp;= [s^2 + \|\mathbf{v}\|^2, 0] = [s, -\mathbf{v}][s, \mathbf{v}] = q^*q \\
+    &amp;= \|q\|^2 (+0i+0j+0k)
+\end{aligned}
+\]</div>
+<p>从而我们发现</p>
+<div class="admonition info">
+<p class="admonition-title">四元数的乘法逆</p>
+<p>对于四元数<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[s, \mathbf{v}]\)</span></span>，其乘法逆为<span><span class="heti-spacing"> </span><span class="arithmatex">\(q^{-1} = q^*/\|q\|^2\)</span></span>，<span><span class="arithmatex">\(q^*=[s, -\mathbf{v}]\)</span><span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span><span class="heti-spacing"> </span></span>的共轭，我们有</p>
+<div class="arithmatex">\[
+qq^* = q^*q = \|q\|^2
+\]</div>
+</div>
+<h2 id="3d"><span>3D<span class="heti-spacing"> </span></span>旋转的四元数基本形式</h2>
+<h3 id="3d_1"><span>3D<span class="heti-spacing"> </span></span>向量的四元数表示</h3>
+<p>首先我们需要将相关的<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>向量转换为四元数表示。回顾利用向量正交分解进行<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转变换的步骤：</p>
+<ol>
+<li>计算分解<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}_{\parallel}\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}_{\perp}\)</span></span></li>
+<li>旋转<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}_{\perp}\)</span><span class="heti-spacing"> </span></span>得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}_{\perp}'\)</span></span></li>
+<li>计算<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}'=\mathbf{v}_{\perp}' + \mathbf{v}_{\parallel}\)</span></span></li>
+</ol>
+<p>我们将所涉及的向量用<strong>纯四元数</strong>表示如下：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp; v = [0, \mathbf{v}], &amp; v' = [0, \mathbf{v}'],\\
+    &amp; v_{\perp} = [0, \mathbf{v}_{\perp}], &amp; v_{\perp}' = [0, \mathbf{v}_{\perp}'],\\
+    &amp; v_{\parallel} = [0, \mathbf{v}_{\parallel}], &amp; u = [0, \mathbf{u}]
+\end{aligned}
+\]</div>
+<p>那么依然有<span><span class="heti-spacing"> </span><span class="arithmatex">\(v=v_{\parallel}+v_{\perp}\)</span>, <span class="arithmatex">\(v'=v_{\parallel}+v_{\perp}'\)</span></span>。</p>
+<h3 id="_13">旋转正交向量</h3>
+<p>根据前面对<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转的讨论，我们有</p>
+<div class="arithmatex">\[
+\mathbf{v}_{\perp}' = \mathbf{v}_{\perp}\cos\theta + (\mathbf{u}\times \mathbf{v}_{\perp})\sin\theta
+\]</div>
+<p><span><span class="arithmatex">\(\mathbf{v}_{\perp}'\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}_{\perp}\)</span><span class="heti-spacing"> </span></span>很容易替换成对应的纯四元数，但是叉乘<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\times \mathbf{v}_{\perp}\)</span><span class="heti-spacing"> </span></span>比较难以表示。回忆起纯四元数乘法可以干净地用点乘和叉乘表示，所以我们可以用纯四元数乘法得到这个叉乘值：</p>
+<div class="arithmatex">\[
+    uv_{\perp} 
+    = [0, \mathbf{u}][0, \mathbf{v}_{\perp}]
+    = [-\underbrace{\mathbf{u}\cdot \mathbf{v}_{\perp}}_{=0, \mathbf{u}\perp \mathbf{v}_{\perp}}, \mathbf{u}\times \mathbf{v}_{\perp}]
+    = [0, \mathbf{u}\times \mathbf{v}_{\perp}]
+\]</div>
+<p>因此我们有</p>
+<div class="arithmatex">\[
+v_{\perp}' = v_{\perp}\cos\theta + uv_{\perp}\sin\theta = (\cos\theta + u\sin\theta)v_{\perp}
+\]</div>
+<p>由此我们成功把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(v_{\perp}'\)</span><span class="heti-spacing"> </span></span>表示为一个四元数和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(v_{\perp}\)</span><span class="heti-spacing"> </span></span>的乘积，特别地，这个四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q=\cos\theta + u\sin\theta=[\cos\theta, \mathbf{u}\sin\theta]\)</span><span class="heti-spacing"> </span></span>满足</p>
+<div class="arithmatex">\[
+\|q\| = \sqrt{\cos^2\theta + \|\mathbf{u}\|^2\sin^2\theta} = 1
+\]</div>
+<h3 id="_14">组合两个分量</h3>
+<p>现在我们有</p>
+<div class="arithmatex">\[
+v' = v_{\perp}' + v_{\parallel} = qv_{\perp} + v_{\parallel}
+\]</div>
+<p>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\theta, \mathbf{u}\sin\theta]\)</span></span>。当然，像前面讨论<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转一样，我们可以分别计算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(v_{\perp}\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(v_{\parallel}\)</span></span>，但是这里我们将使用新的方法：构造一个半角旋转四元数<span><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span></span>，使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(p^2=q\)</span></span>。我们采取简单的构造<span><span class="heti-spacing"> </span><span class="arithmatex">\(p=[\cos\frac{\theta}{2}, \mathbf{u}\sin\frac{\theta}{2}]\)</span></span>，这个构造的合理性将由一个引理的形式说明：</p>
+<div class="admonition abstract">
+<p class="admonition-title">旋转四元数二倍角</p>
+<p>如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\theta, \mathbf{u}\sin\theta]\)</span></span>，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(\|\mathbf{u}\|=1\)</span></span>，那么有<span><span class="heti-spacing"> </span><span class="arithmatex">\(q^2=[\cos 2\theta, \mathbf{u}\sin 2\theta]\)</span></span>。</p>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<div class="arithmatex">\[
+\begin{aligned}
+    q^2 
+    &amp;= [\cos\theta, \mathbf{u}\sin\theta][\cos\theta, \mathbf{u}\sin\theta] \\
+    &amp;= [\cos^2\theta - \mathbf{u}\cdot \mathbf{u}\sin^2\theta, \mathbf{u}\sin\theta\cos\theta + \cos\theta\mathbf{u}\sin\theta + \mathbf{u}\times \mathbf{u}\sin^2\theta] \\
+    &amp;= [\cos^2\theta - \sin^2\theta, 2\mathbf{u}\sin\theta\cos\theta] \\
+    &amp;= [\cos 2\theta, \mathbf{u}\sin 2\theta]
+\end{aligned}
+\]</div>
+</details>
+<p>这样，我们就有</p>
+<div class="arithmatex">\[
+    v' 
+    = qv_{\perp} + v_{\parallel}
+    = p^2v_{\perp} + pp^{-1}v_{\parallel}
+    = p (pv_{\perp} + p^{-1}v_{\parallel})
+    = p (pv_{\perp} + p^*v_{\parallel})
+\]</div>
+<blockquote>
+<p>容易得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(\|p\|=1\)</span></span>，所以<span><span class="heti-spacing"> </span><span class="arithmatex">\(p^*=p^{-1}\)</span></span></p>
+</blockquote>
+<p>即将进行的进一步化简为：</p>
+<div class="arithmatex">\[
+v' = p (pv_{\perp} + p^*v_{\parallel})
+\xlongequal{?} p (v_{\perp}p^* + v_{\parallel}p^*)
+= p (v_{\perp} + v_{\parallel})p^*
+= pv p^*
+\]</div>
+<p>这里需要我们证明两个事情：<span><span class="arithmatex">\(pv_{\perp}=v_{\perp}p^*\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(p^*v_{\parallel}=v_{\parallel}p^*\)</span></span>。将证明折叠如下：</p>
+<blockquote>
+<p>关键在于，<span>Grassmann<span class="heti-spacing"> </span></span>积由点乘和叉乘构成，垂直会让点乘为<span><span class="heti-spacing"> </span>0</span>，平行会让叉乘为<span><span class="heti-spacing"> </span>0</span></p>
+</blockquote>
+<details class="general">
+<summary>Proof</summary>
+<p>简记<span><span class="heti-spacing"> </span><span class="arithmatex">\(p=[\cos\frac{\theta}{2}, \mathbf{u}\sin\frac{\theta}{2}]=[\alpha, \beta\mathbf{u}]\)</span></span></p>
+<ul>
+<li>对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(pv_{\perp}=v_{\perp}p^*\)</span></span>，我们有</li>
+</ul>
+<div class="arithmatex">\[
+\begin{aligned}
+    LHS
+    &amp;= [\alpha, \beta\mathbf{u}][0, \mathbf{v}_{\perp}] \\
+    &amp;= [0 - \beta\mathbf{u}\cdot \mathbf{v}_{\perp}, \alpha \mathbf{v}_{\perp} + 0 + \beta\mathbf{u}\times \mathbf{v}_{\perp}] \\
+    &amp;= [0, \alpha \mathbf{v}_{\perp} + \beta\mathbf{u}\times \mathbf{v}_{\perp}] &amp; (\mathbf{u}\perp\mathbf{v}_{\perp} \Rightarrow \mathbf{u}\cdot \mathbf{v}_{\perp}=0 ) 
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+    RHS
+    &amp;= [0, \mathbf{v}_{\perp}][\alpha, -\beta\mathbf{u}] \\
+    &amp;= [0 + \beta\mathbf{u}\cdot \mathbf{v}_{\perp}, 0 + \mathbf{v}_{\perp}\alpha + \mathbf{v}_{\perp}\times (-\beta\mathbf{u})] \\
+    &amp;= [0, \alpha \mathbf{v}_{\perp} + \beta\mathbf{u}\times \mathbf{v}_{\perp}] &amp; (a\times b = - b\times a)
+\end{aligned}
+\]</div>
+<ul>
+<li>对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(p^*v_{\parallel}=v_{\parallel}p^*\)</span></span>，我们有</li>
+</ul>
+<div class="arithmatex">\[
+\begin{aligned}
+    LHS
+    &amp;= [\alpha, -\beta\mathbf{u}][0, \mathbf{v}_{\parallel}] \\
+    &amp;= [0 - \beta\mathbf{u}\cdot \mathbf{v}_{\parallel}, \alpha \mathbf{v}_{\parallel} + 0 - \beta\mathbf{u}\times \mathbf{v}_{\parallel}] \\
+    &amp;= [- \beta\mathbf{u}\cdot \mathbf{v}_{\parallel}, \alpha \mathbf{v}_{\parallel}] &amp; (\mathbf{u}\parallel\mathbf{v}_{\parallel} \Rightarrow \mathbf{u}\times \mathbf{v}_{\parallel}=0 )
+\end{aligned}
+\]</div>
+<div class="arithmatex">\[
+\begin{aligned}
+    RHS
+    &amp;= [0, \mathbf{v}_{\parallel}][\alpha, -\beta\mathbf{u}] \\
+    &amp;= [0 - \beta\mathbf{v}_{\parallel}\cdot \mathbf{u}, 0 + \mathbf{v}_{\parallel}\alpha + \mathbf{v}_{\parallel}\times (-\beta\mathbf{u})] \\
+    &amp;= [- \beta\mathbf{u}\cdot \mathbf{v}_{\parallel}, \alpha \mathbf{v}_{\parallel}]
+\end{aligned}
+\]</div>
+</details>
+<p>因此我们就有</p>
+<div class="admonition abstract">
+<p class="admonition-title"><span>3D<span class="heti-spacing"> </span></span>旋转的四元数基本形式</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>向量<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}\)</span></span>，其绕旋转轴方向向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\)</span><span class="heti-spacing"> </span></span>进行的角度为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\theta\)</span><span class="heti-spacing"> </span></span>的旋转变换可以表示为</p>
+<div class="arithmatex">\[
+v' = qv q^*
+\]</div>
+<p>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\frac{\theta}{2}, \mathbf{u}\sin\frac{\theta}{2}]\)</span></span>。</p>
+</div>
+<p>这个公式和我们之前推导的<span class="heti-skip"><span class="heti-spacing"> </span>Rodrigues<span class="heti-spacing"> </span></span>旋转公式是相容的，容易验证：</p>
+<div class="arithmatex">\[
+qvq^* = [0, \mathbf{v}\cos\theta + \mathbf{u}((\mathbf{u}\cdot \mathbf{v})(1-\cos\theta)) + (\mathbf{u}\times \mathbf{v})\sin\theta]
+\]</div>
+<details class="general">
+<summary>Proof</summary>
+<div class="arithmatex">\[
+\begin{aligned}
+    qvq^* 
+    =&amp; \left[
+        \cos\frac{\theta}{2}, 
+        \mathbf{u}\sin\frac{\theta}{2}
+    \right]
+    [0, \mathbf{v}]
+    \left[
+        \cos\frac{\theta}{2},
+        -\mathbf{u}\sin\frac{\theta}{2}
+    \right] \\
+    =&amp; \left[
+        0 - \mathbf{u}\cdot \mathbf{v}\sin\frac{\theta}{2}, 
+        \mathbf{v}\cos\frac{\theta}{2}
+        + 0
+        + (\mathbf{u}\times \mathbf{v})\sin\frac{\theta}{2}
+    \right]\left[
+        \cos\frac{\theta}{2},
+        -\mathbf{u}\sin\frac{\theta}{2}
+    \right] \\
+    =&amp; \left[
+        - \mathbf{u}\cdot \mathbf{v}\sin\frac{\theta}{2}, 
+        \mathbf{v}\cos\frac{\theta}{2}
+        + (\mathbf{u}\times \mathbf{v})\sin\frac{\theta}{2}
+    \right]\left[
+        \cos\frac{\theta}{2},
+        -\mathbf{u}\sin\frac{\theta}{2}
+    \right] \\
+    =&amp; \left[
+        -\mathbf{u}\cdot \mathbf{v}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+        + \left(
+            \mathbf{u}\cdot \mathbf{v}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+            + \underbrace{\mathbf{u}\cdot (\mathbf{u}\times \mathbf{v})}_{=0, \mathbf{u}\perp (\mathbf{u}\times \mathbf{v})}\sin^2\frac{\theta}{2}
+        \right)
+    \right., \\
+    &amp;   \mathbf{u}(\mathbf{u}\cdot \mathbf{v})\sin^2\frac{\theta}{2}
+        + \mathbf{v}\cos^2\frac{\theta}{2}
+        + (\mathbf{u}\times \mathbf{v})\sin\frac{\theta}{2}\cos\frac{\theta}{2} \\
+    &amp;\left.
+        - \mathbf{v}\times \mathbf{u}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+        - \underbrace{(\mathbf{u}\times \mathbf{v})\times \mathbf{u}}_{=-(\mathbf{u}\cdot \mathbf{v})\mathbf{u} + \|\mathbf{u}\|^2\mathbf{v}}\sin^2\frac{\theta}{2}
+    \right] \\
+    =&amp; \left[
+        0, 
+        2\mathbf{u}(\mathbf{u}\cdot \mathbf{v})\sin^2\frac{\theta}{2}
+        + \mathbf{v}\left(\cos^2\frac{\theta}{2} - \sin^2\frac{\theta}{2}\right)
+        + 2(\mathbf{u}\times \mathbf{v})\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+    \right] \\
+    =&amp; [0, \mathbf{u}(\mathbf{u}\cdot \mathbf{v})(1-\cos\theta) + \mathbf{v}\cos\theta + (\mathbf{u}\times \mathbf{v})\sin\theta]
+\end{aligned}
+\]</div>
+<p>注意有公式<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{a}\times (\mathbf{b}\times \mathbf{c}) = (\mathbf{a}\cdot \mathbf{c})\mathbf{b} - (\mathbf{a}\cdot \mathbf{b})\mathbf{c}\)</span></span></p>
+</details>
+<p>如果想要从旋转四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q=[a, \mathbf{b}]\)</span><span class="heti-spacing"> </span></span>恢复旋转轴方向<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\)</span><span class="heti-spacing"> </span></span>和旋转角<span><span class="heti-spacing"> </span><span class="arithmatex">\(\theta\)</span></span>，根据<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\frac{\theta}{2}, \mathbf{u}\sin\frac{\theta}{2}]\)</span></span>，只需要</p>
+<div class="arithmatex">\[
+    \theta = 2\arccos a, \quad
+    \mathbf{u} = \frac{\mathbf{b}}{\sin(\arccos a)}
+\]</div>
+<h2 id="3d_2"><span>3D<span class="heti-spacing"> </span></span>旋转的矩阵形式（利用四元数元素）</h2>
+<p>前面讨论过，对四元数左乘一个四元数<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=a+bi+cj+dk\)</span></span>，相当于对这个四元数向量左乘一个<span><span class="heti-spacing"> </span><span class="arithmatex">\(L(q)\)</span>:</span></p>
+<div class="arithmatex">\[
+L(q) = \begin{bmatrix}
+    a &amp; -b &amp; -c &amp; -d \\
+    b &amp;  a &amp; -d &amp;  c \\
+    c &amp;  d &amp;  a &amp; -b \\
+    d &amp; -c &amp;  b &amp;  a
+\end{bmatrix}
+\]</div>
+<p>用和之前类似的方法，可以得知对四元数右乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span></span>，等价于对这个四元数向量左乘一个<span><span class="heti-spacing"> </span><span class="arithmatex">\(R(q)\)</span>:</span></p>
+<div class="arithmatex">\[
+R(q) = \begin{bmatrix}
+    a &amp; -b &amp; -c &amp; -d \\
+    b &amp;  a &amp;  d &amp; -c \\
+    c &amp; -d &amp;  a &amp;  b \\
+    d &amp;  c &amp; -b &amp;  a
+\end{bmatrix}
+\]</div>
+<p>因此我们通过计算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L(q)R(q^*)\)</span><span class="heti-spacing"> </span></span>可以有</p>
+<div class="arithmatex">\[
+v' = qvq^* = L(q)R(q^*)v = \begin{bmatrix}
+    1 &amp; 0 &amp; 0 &amp; 0 \\
+    0 &amp; 1-2c^2-2d^2 &amp; 2bc-2ad &amp; 2ac+2bd \\
+    0 &amp; 2ad+2bc &amp; 1-2b^2-2d^2 &amp; 2cd-2ab \\
+    0 &amp; 2bd-2ac &amp; 2ab+2cd &amp; 1-2b^2-2c^2
+\end{bmatrix}v
+\]</div>
+<blockquote>
+<p><span><span class="arithmatex">\(L(q)R(q^*)\)</span><span class="heti-spacing"> </span></span>的计算过程略，读者可以自行验证</p>
+</blockquote>
+<p>因为是纯四元数的变换，实部没有意义，所以我们可以简单地有</p>
+<div class="admonition info">
+<p class="admonition-title"><span>3D<span class="heti-spacing"> </span></span>旋转的矩阵形式（利用四元数元素）</p>
+<p>对<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}\)</span><span class="heti-spacing"> </span></span>进行旋转，其旋转四元数为<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=a+bi+cj+dk\)</span></span>，则有</p>
+<div class="arithmatex">\[
+\mathbf{v}' = \begin{bmatrix}
+    1-2(c^2+d^2) &amp; 2(bc-ad) &amp; 2(ac+bd) \\
+    2(ad+bc) &amp; 1-2(b^2+d^2) &amp; 2(cd-ab) \\
+    2(bd-ac) &amp; 2(ab+cd) &amp; 1-2(b^2+c^2)
+\end{bmatrix}\mathbf{v}
+\]</div>
+</div>
+<p>矩阵形式的好处在于，对大批量的向量进行相同的旋转变换时，可以预先计算变换矩阵，而不需要一个一个地计算四元数乘法。</p>
+<h2 id="3d_3"><span>3D<span class="heti-spacing"> </span></span>旋转的四元数指数形式</h2>
+<p>类似复数的欧拉公式，旋转四元数也可以表示为指数形式，考虑四元数<span><span class="heti-spacing"> </span><span class="arithmatex">\(u=[0, \mathbf{u}]\)</span></span>，<span><span class="arithmatex">\(\mathbf{u}\)</span><span class="heti-spacing"> </span></span>为单位向量，我们有</p>
+<div class="arithmatex">\[
+e^{u\theta} = \cos\theta + u\sin\theta = \cos\theta + \mathbf{u}\sin\theta
+\]</div>
+<p>也就是说，旋转四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\theta, \mathbf{u}\sin\theta]\)</span><span class="heti-spacing"> </span></span>可以表示为<span><span class="heti-spacing"> </span><span class="arithmatex">\(e^{u\theta}\)</span></span>。类似欧拉公式，使用级数展开可以证明这个公式。</p>
+<details class="general">
+<summary>Proof</summary>
+<p>注意到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e^x\)</span>, <span class="arithmatex">\(\sin x\)</span>, <span class="arithmatex">\(\cos x\)</span><span class="heti-spacing"> </span></span>的泰勒展开式为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    e^x &amp;= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots \\
+    \sin x &amp;= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots \\
+    \cos x &amp;= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+\end{aligned}
+\]</div>
+<p>从而有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    e^{u\theta}
+    &amp;= \sum_{n=0}^{\infty} \frac{(u\theta)^n}{n!} \\
+    &amp;= 1 + u\theta + \frac{(u\theta)^2}{2!} + \frac{(u\theta)^3}{3!} + \frac{(u\theta)^4}{4!} + \frac{(u\theta)^5}{5!} + \cdots \\
+    &amp;= 1 + u\theta - \frac{\theta^2}{2!} - \frac{u\theta^3}{3!} + \frac{\theta^4}{4!} + \frac{u\theta^5}{5!} - \cdots &amp; (u^2=-1) \\
+\end{aligned}
+\]</div>
+<p>结合</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \sin \theta &amp;= \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}\theta^{2n+1} = \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \frac{\theta^7}{7!} + \cdots \\
+    \cos \theta &amp;= \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!}\theta^{2n} = 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \frac{\theta^6}{6!} + \cdots
+\end{aligned}
+\]</div>
+<p>有</p>
+<div class="arithmatex">\[
+    \cos\theta + u\sin\theta
+    = 1 + u\theta - \frac{\theta^2}{2!} - \frac{u\theta^3}{3!} + \frac{\theta^4}{4!} + \frac{u\theta^5}{5!} - \cdots
+    = e^{u\theta}
+\]</div>
+<blockquote>
+<p>实际上证明了李代数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathfrak{su}(2)\)</span><span class="heti-spacing"> </span></span>到李群<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(SU(2)\)</span><span class="heti-spacing"> </span></span>的指数映射</p>
+</blockquote>
+</details>
+<blockquote>
+<p>注意到有<span><span class="heti-spacing"> </span><span class="arithmatex">\(u^2 = [-\mathbf{u}\cdot \mathbf{u}, 0] = -1\)</span></span>，这和欧拉公式中的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(i\)</span><span class="heti-spacing"> </span></span>是非常类似的。</p>
+</blockquote>
+<p>有了四元数的指数形式，就可以改写前面的<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转的四元数表示：</p>
+<div class="admonition info">
+<p class="admonition-title"><span>3D<span class="heti-spacing"> </span></span>旋转的四元数指数形式</p>
+<p>对<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{v}\)</span><span class="heti-spacing"> </span></span>绕着旋转轴方向向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\)</span><span class="heti-spacing"> </span></span>进行的角度为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\theta\)</span><span class="heti-spacing"> </span></span>的旋转变换，令<span><span class="heti-spacing"> </span><span class="arithmatex">\(v=[0, \mathbf{v}]\)</span></span>，<span class="arithmatex">\(u=[0, \mathbf{u}]\)</span>，有</p>
+<div class="arithmatex">\[
+v' = e^{u\frac{\theta}{2}} v e^{-u\frac{\theta}{2}}
+\]</div>
+</div>
+<p>在旋转四元数的指数形式下，其自然对数运算和幂运算也就可以定义了。</p>
+<div class="admonition info">
+<p class="admonition-title">旋转四元数的自然对数、幂运算</p>
+<p>对旋转四元数<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\theta, \mathbf{u}\sin\theta]\)</span></span>，有</p>
+<div class="arithmatex">\[
+\ln q = [0, \mathbf{u}\theta], \quad
+q^t = (e^{u\theta})^t = e^{u(t\theta)}=[\cos (t\theta), \mathbf{u}\sin (t\theta)]
+\]</div>
+<p>可以看到，一个单位四元数的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>次幂等价于将它的旋转角缩放至<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>倍，且不会改变旋转轴<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}\)</span></span>。</p>
+</div>
+<p>旋转四元数的自然对数和幂运算会在之后讨论四元数插值时非常有用。</p>
+<h2 id="_15">旋转四元数的复合</h2>
+<p>先进行旋转四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1\)</span><span class="heti-spacing"> </span></span>对应的旋转，再进行旋转四元数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_2\)</span><span class="heti-spacing"> </span></span>对应的旋转，则可以一次性进行<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q_1q_2\)</span><span class="heti-spacing"> </span></span>对应的旋转：</p>
+<div class="arithmatex">\[
+v''=q_2(q_1vq_1^*)q_2^*=(q_2q_1)v(q_1^*q_2*)
+\]</div>
+<p>这里需要证明的有<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个关键：</p>
+<ol>
+<li><span><span class="arithmatex">\(q_2q_1\)</span><span class="heti-spacing"> </span></span>仍是旋转四元数</li>
+<li><span class="arithmatex">\((q_2q_1)^*=q_1^*q_2^*\)</span></li>
+</ol>
+<h3 id="_16">复合四元数仍是旋转四元数</h3>
+<p><span class="arithmatex">\(q_1=[\cos\theta_1, \mathbf{u}_1\sin\theta_1]\)</span>，<span class="arithmatex">\(q_2=[\cos\theta_2, \mathbf{u}_2\sin\theta_2]\)</span>，我们有</p>
+<div class="arithmatex">\[
+    q_2q_1 = [\cos\theta_2\cos\theta_1 - \mathbf{u}_2\cdot \mathbf{u}_1\sin\theta_2\sin\theta_1, \mathbf{u}_2\sin\theta_2\cos\theta_1 + \cos\theta_2\mathbf{u}_1\sin\theta_1 + \mathbf{u}_2\times \mathbf{u}_1\sin\theta_2\sin\theta_1]
+\]</div>
+<p>需要有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \theta &amp;= \arccos(\cos\theta_2\cos\theta_1 - \mathbf{u}_2\cdot \mathbf{u}_1\sin\theta_2\sin\theta_1) \\
+    \mathbf{u} &amp;= \pm \frac{\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1 + (\mathbf{u}_2\times \mathbf{u}_1)\sin\theta_2\sin\theta_1}{\|\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1 + (\mathbf{u}_2\times \mathbf{u}_1)\sin\theta_2\sin\theta_1\|}
+\end{aligned}
+\]</div>
+<p>只需证明</p>
+<div class="arithmatex">\[
+|\sin\theta| = \|\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1 + (\mathbf{u}_2\times \mathbf{u}_1)\sin\theta_2\sin\theta_1\|
+\]</div>
+<details class="general">
+<summary>Proof</summary>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}_2\times \mathbf{u}_1\)</span><span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}_1\)</span></span>、<span><span class="arithmatex">\(\mathbf{u}_2\)</span><span class="heti-spacing"> </span></span>都正交，设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}_1\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{u}_2\)</span><span class="heti-spacing"> </span></span>之间的夹角为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\varphi\)</span></span>，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp;\|\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1 + (\mathbf{u}_2\times \mathbf{u}_1)\sin\theta_2\sin\theta_1\| \\
+    =&amp; \sqrt{(\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1)^2 + (\mathbf{u}_2\times \mathbf{u}_1\sin\theta_2\sin\theta_1)^2} \\
+    =&amp; \sqrt{\sin^2\theta_1\cos^2\theta_2 + \sin^2\theta_2\cos^2\theta_1 + 2\sin\theta_1\cos\theta_2\sin\theta_2\cos\theta_1\cos\varphi + \sin^2\theta_2\sin^2\theta_1\sin^2\varphi} \\
+\end{aligned}
+\]</div>
+<p>所以有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp;\|\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1 + (\mathbf{u}_2\times \mathbf{u}_1)\sin\theta_2\sin\theta_1\|^2 + \cos^2\theta \\
+    =&amp; \sin^2\theta_1\cos^2\theta_2 + \sin^2\theta_2\cos^2\theta_1 + \bcancel{2\sin\theta_1\cos\theta_2\sin\theta_2\cos\theta_1\cos\varphi} + \sin^2\theta_2\sin^2\theta_1{\color{cyan} \sin^2\varphi} \\
+    &amp;+ \cos^2\theta_2\cos^2\theta_1 + \sin^2\theta_2\sin^2\theta_1{\color{cyan}\cos^2\varphi} - \bcancel{2  \cos\theta_2\cos\theta_1\sin\theta_2\sin\theta_1\cos\varphi}\\
+    =&amp; ({\color{yellow} \sin^2\theta_1}\cos^2\theta_2 + \cos^2\theta_2{\color{yellow} \cos^2\theta_1}) + (\sin^2\theta_2{\color{red} \sin^2\theta_1} + \sin^2\theta_2{\color{red} \cos^2\theta_1}) \\
+    =&amp; \cos^2\theta_2 + \sin^2\theta_2 = 1
+\end{aligned}
+\]</div>
+<p>则证得</p>
+<div class="arithmatex">\[
+|\sin \theta| = \|\mathbf{u}_1\sin\theta_1\cos\theta_2 + \mathbf{u}_2\sin\theta_2\cos\theta_1 + (\mathbf{u}_2\times \mathbf{u}_1)\sin\theta_2\sin\theta_1\|
+\]</div>
+</details>
+<h3 id="_17">复合共轭计算</h3>
+<p><span class="arithmatex">\(q_1=[s, \mathbf{v}]\)</span>，<span class="arithmatex">\(q_2=[t, \mathbf{u}]\)</span>，我们有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    (q_2q_1)^*
+    &amp;= [t, \mathbf{u}][s, \mathbf{v}]^* \\
+    &amp;= [ts - \mathbf{u}\cdot \mathbf{v}, t\mathbf{v} + s\mathbf{u} + \mathbf{u}\times \mathbf{v}]^* \\
+    &amp;= [st - \mathbf{v}\cdot \mathbf{u}, - s\mathbf{u} - t\mathbf{v} + \mathbf{v}\times \mathbf{u}] \\
+\end{aligned}
+\]</div>
+<p>而</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    q_1^*q_2^*
+    &amp;= [s, -\mathbf{v}][t, -\mathbf{u}] \\
+    &amp;= [st - \mathbf{v}\cdot \mathbf{u}, -s\mathbf{u} - t\mathbf{v} + \mathbf{v}\times \mathbf{u}]
+\end{aligned}
+\]</div>
+<p>从而证得<span><span class="heti-spacing"> </span><span class="arithmatex">\((q_2q_1)^*=q_1^*q_2^*\)</span></span>。</p>
+<h2 id="3d_4">四元数表示<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转的问题：双倍覆盖</h2>
+<p>即对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(q=[\cos\frac{\theta}{2}, \mathbf{u}\sin\frac{\theta}{2}]\)</span></span>，<span><span class="arithmatex">\(q\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(-q\)</span><span class="heti-spacing"> </span></span>表示的旋转是相同的，因为</p>
+<div class="arithmatex">\[
+-q = \left[-\cos\frac{\theta}{2}, -\mathbf{u}\sin\frac{\theta}{2}\right] = \left[\cos\left(\pi-\frac{\theta}{2}\right), \sin\left(\pi-\frac{\theta}{2}\right)(-\mathbf{u})\right]
+\]</div>
+<blockquote>
+<p>从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((-q)v(-q)^*=(-1)^2qvq^*=qvq^*\)</span><span class="heti-spacing"> </span></span>也可以看出来</p>
+</blockquote>
+<p>如下图所示，左图为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span><span class="heti-spacing"> </span></span>代表的旋转，中图为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(-q\)</span><span class="heti-spacing"> </span></span>代表的旋转，两者其实是一样的。</p>
+<div style="display: flex; justify-content: space-between;">
+<img alt="quaternion-double-cover-a" src="../../../imgs/quaternion/quaternion-double-cover-a.svg" style="width: 33%;"/>
+<img alt="quaternion-double-cover-b" src="../../../imgs/quaternion/quaternion-double-cover-b.svg" style="width: 33%;"/>
+<img alt="quaternion-double-cover-c" src="../../../imgs/quaternion/quaternion-double-cover-c.svg" style="width: 30%;"/>
+</div>
+<p>所以，事实上单位四元数（旋转四元数）到<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转构成了一个 <strong><span>2<span class="heti-spacing"> </span></span>对<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>满射同态</strong> (2-1 surjective homomorphism)，也就是说单位四元数<strong>双倍覆盖</strong> <span>(double cover)<span class="heti-spacing"> </span></span>了<span class="heti-skip"><span class="heti-spacing"> </span>3D<span class="heti-spacing"> </span></span>旋转。</p>
+<blockquote>
+<p>虽然<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(-q\)</span><span class="heti-spacing"> </span></span>是两个不同的四元数，但是它们对应的旋转矩阵是一样的，因此旋转矩阵不会出现双倍覆盖的问题。</p>
+</blockquote>
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script async="" crossorigin="anonymous" data-category="Announcements" data-category-id="DIC_kwDOKjiG3c4Cf36n" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="ZhouTimeMachine/note" data-repo-id="R_kgDOKjiG3Q" data-strict="0" data-theme="preferred_color_scheme" src="https://giscus.app/client.js">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2023 <a href="https://github.com/ZhouTimeMachine" rel="noopener" target="_blank">ZhouTimeMachine</a>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+<script src="../../../../js/katex.min.js"></script>
+<script src="../../../../js/katex.js"></script>
+<script src="../../../../js/heti.js"></script>
+</body>
+</html>

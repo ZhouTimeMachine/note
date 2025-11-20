@@ -1,0 +1,3422 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Jianjun Zhou's Notebook" name="description"/>
+<link href="https://ZhouTimeMachine.github.io/note/math/DEs/Intro2SDE/intro_prob/" rel="canonical"/>
+<link href="../" rel="prev"/>
+<link href="../Brownian_noise/" rel="next"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+<title>Introduction &amp; Probability - Jianjun Zhou's Notebook</title>
+<link href="../../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/svg_extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#an-introduction-to-stochastic-differential-equations">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Jianjun Zhou's Notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Jianjun Zhou's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Jianjun Zhou's Notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Introduction &amp; Probability
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ZhouTimeMachine/note/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ZhouTimeMachine/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../courses/">
+          
+  
+  
+    
+  
+  Courses
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../readings/">
+          
+  
+  
+    
+  
+  Readings
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Jianjun Zhou's Notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Jianjun Zhou's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+</a>
+    Jianjun Zhou's Notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ZhouTimeMachine/note/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ZhouTimeMachine/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/">
+<span class="md-ellipsis">
+    
+  
+    Courses
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Courses
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/high-dim-prob/">
+<span class="md-ellipsis">
+    
+  
+    High-Dimensional Probability
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    High-Dimensional Probability
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/high-dim-prob/lec1/">
+<span class="md-ellipsis">
+    
+  
+    Lecture 1
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/toc/">
+<span class="md-ellipsis">
+    
+  
+    Theory of Computation
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Theory of Computation
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/languages/">
+<span class="md-ellipsis">
+    
+  
+    Sets, Relations and Languages
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/finite_automata/">
+<span class="md-ellipsis">
+    
+  
+    Finite Automata
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/context_free/">
+<span class="md-ellipsis">
+    
+  
+    Context-Free Languages
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/turing_machine/">
+<span class="md-ellipsis">
+    
+  
+    Turing Machine
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/undecidability/">
+<span class="md-ellipsis">
+    
+  
+    Undecidability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/after_story/">
+<span class="md-ellipsis">
+    
+  
+    After Story
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/ads-final-review/">
+<span class="md-ellipsis">
+    
+  
+    Advanced Data Structure and Algorithm
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/probability/">
+<span class="md-ellipsis">
+    
+  
+    Probability Theory
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Probability Theory
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/basics/">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/rand_var_vec/">
+<span class="md-ellipsis">
+    
+  
+    Random Variable &amp; Vector
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/feature_basics/">
+<span class="md-ellipsis">
+    
+  
+    Data Feature Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/feature_pro/">
+<span class="md-ellipsis">
+    
+  
+    Data Feature Pro
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/prob_lim/">
+<span class="md-ellipsis">
+    
+  
+    Limit Theorems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/normal_distr/">
+<span class="md-ellipsis">
+    
+  
+    Normal Distribution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Methods
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Methods
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Analysis
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Analysis
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/1/">
+<span class="md-ellipsis">
+    
+  
+    Mathematical Preliminaries
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/2/">
+<span class="md-ellipsis">
+    
+  
+    Solve Equations (1 Variable)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/3/">
+<span class="md-ellipsis">
+    
+  
+    Interpolation &amp; Poly. Approx.
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/4/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Diffs &amp; Integs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/5/">
+<span class="md-ellipsis">
+    
+  
+    IVP for ODE
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/6/">
+<span class="md-ellipsis">
+    
+  
+    Solve Linear Systems (Directly)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/7/">
+<span class="md-ellipsis">
+    
+  
+    Solve Linear Systems (Iteratively)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/8/">
+<span class="md-ellipsis">
+    
+  
+    Approximation Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/9/">
+<span class="md-ellipsis">
+    
+  
+    Approximating Eigenvalues
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Algebra
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Algebra
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/1/">
+<span class="md-ellipsis">
+    
+  
+    Direct Methods for Linear Systems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/2/">
+<span class="md-ellipsis">
+    
+  
+    Sensitivity &amp; Round-off Error Analysis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/3/">
+<span class="md-ellipsis">
+    
+  
+    Solve Least Square Problems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/4/">
+<span class="md-ellipsis">
+    
+  
+    Classic Iterative Methods for Linear Systems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/5/">
+<span class="md-ellipsis">
+    
+  
+    Conjugate Gradient Method
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/6/">
+<span class="md-ellipsis">
+    
+  
+    Solve Asymmetric Eigenvalue Problems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/7/">
+<span class="md-ellipsis">
+    
+  
+    Solve Symmetric Eigenvalue Problems
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/physics/">
+<span class="md-ellipsis">
+    
+  
+    Physics (H)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Physics (H)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-electrostatics/">
+<span class="md-ellipsis">
+    
+  
+    Electrostatics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-current/">
+<span class="md-ellipsis">
+    
+  
+    Current
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-electromagnetics/">
+<span class="md-ellipsis">
+    
+  
+    Electromagnetics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-optics/">
+<span class="md-ellipsis">
+    
+  
+    Optics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-quantum/">
+<span class="md-ellipsis">
+    
+  
+    Quantum
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/info-theory/">
+<span class="md-ellipsis">
+    
+  
+    Information Theory
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    
+  
+    Math
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Math
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Differential Equations
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Differential Equations
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../ODE/">
+<span class="md-ellipsis">
+    
+  
+    ODE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    ODE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ODE/general1/">
+<span class="md-ellipsis">
+    
+  
+    Existence of Solution
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ODE/system/">
+<span class="md-ellipsis">
+    
+  
+    ODE System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../PDE/">
+<span class="md-ellipsis">
+    
+  
+    PDE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PDE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PDE/introduction/">
+<span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PDE/4linearPDEs/">
+<span class="md-ellipsis">
+    
+  
+    4 Linear PDEs
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    SDE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_2_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    SDE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Introduction &amp; Probability
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Introduction &amp; Probability
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+</a>
+<nav aria-label="Introduction" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deterministic-and-random-differential-equations">
+<span class="md-ellipsis">
+      
+        Deterministic and Random Differential Equations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stochastic-differentials">
+<span class="md-ellipsis">
+      
+        Stochastic Differentials
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#itos-chain-rule">
+<span class="md-ellipsis">
+      
+        Itô's Chain Rule
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-crash-course-in-probability-theory">
+<span class="md-ellipsis">
+      
+        A Crash Course in Probability Theory
+      
+    </span>
+</a>
+<nav aria-label="A Crash Course in Probability Theory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-definitions">
+<span class="md-ellipsis">
+      
+        Basic Definitions
+      
+    </span>
+</a>
+<nav aria-label="Basic Definitions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probability-space">
+<span class="md-ellipsis">
+      
+        Probability Space
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#random-variables">
+<span class="md-ellipsis">
+      
+        Random Variables
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stochastic-processes">
+<span class="md-ellipsis">
+      
+        Stochastic Processes
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expected-value-variance">
+<span class="md-ellipsis">
+      
+        Expected Value, Variance
+      
+    </span>
+</a>
+<nav aria-label="Expected Value, Variance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-with-respect-to-a-measure">
+<span class="md-ellipsis">
+      
+        Integration with respect to a Measure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-functions">
+<span class="md-ellipsis">
+      
+        Distribution Functions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#independence">
+<span class="md-ellipsis">
+      
+        Independence
+      
+    </span>
+</a>
+<nav aria-label="Independence" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditional-probability-and-independent-events">
+<span class="md-ellipsis">
+      
+        Conditional Probability and Independent Events
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#independent-random-variables">
+<span class="md-ellipsis">
+      
+        Independent Random Variables
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expectation-and-variannce-of-independent-random-variables">
+<span class="md-ellipsis">
+      
+        Expectation and Variannce of Independent Random Variables
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#some-probabilistic-methods">
+<span class="md-ellipsis">
+      
+        Some Probabilistic Methods
+      
+    </span>
+</a>
+<nav aria-label="Some Probabilistic Methods" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#chebyshevs-inequality-and-borel-cantelli-lemma">
+<span class="md-ellipsis">
+      
+        Chebyshev's Inequality and Borel-Cantelli Lemma
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#characteristic-functions">
+<span class="md-ellipsis">
+      
+        Characteristic Functions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#law-of-large-numbers-central-limit-theorem">
+<span class="md-ellipsis">
+      
+        Law of Large Numbers, Central Limit Theorem
+      
+    </span>
+</a>
+<nav aria-label="Law of Large Numbers, Central Limit Theorem" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#strong-law-of-large-numbers">
+<span class="md-ellipsis">
+      
+        Strong Law of Large Numbers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#central-limit-theorem">
+<span class="md-ellipsis">
+      
+        Central Limit Theorem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditional-expectation">
+<span class="md-ellipsis">
+      
+        Conditional Expectation
+      
+    </span>
+</a>
+<nav aria-label="Conditional Expectation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#approaches-to-conditional-expectation">
+<span class="md-ellipsis">
+      
+        Approaches to Conditional Expectation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#properties">
+<span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#martingales">
+<span class="md-ellipsis">
+      
+        Martingales
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Brownian_noise/">
+<span class="md-ellipsis">
+    
+  
+    Brownian Motion &amp; "White Noise"
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stochastic_integrals/">
+<span class="md-ellipsis">
+    
+  
+    Stochastic Integrals
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SDE/">
+<span class="md-ellipsis">
+    
+  
+    SDE
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../applications/">
+<span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../probability/">
+<span class="md-ellipsis">
+    
+  
+    Probability Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../analysis/">
+<span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../analysis/funcRvar/">
+<span class="md-ellipsis">
+    
+  
+    Funcs of Real Vars
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Funcs of Real Vars
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/funcRvar/sets/">
+<span class="md-ellipsis">
+    
+  
+    Basics of Set Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/funcRvar/LebesgueMeasure/">
+<span class="md-ellipsis">
+    
+  
+    Lebesgue Measure
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/continuities/">
+<span class="md-ellipsis">
+    
+  
+    Continuities
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../geometry/">
+<span class="md-ellipsis">
+    
+  
+    Geometry
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Geometry
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../geometry/quaternion/">
+<span class="md-ellipsis">
+    
+  
+    Quaternion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Quaternion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../geometry/quaternion/basics/">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../geometry/quaternion/quaternion/">
+<span class="md-ellipsis">
+    
+  
+    Quarternion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../geometry/quaternion/interpolation/">
+<span class="md-ellipsis">
+    
+  
+    Interpolation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/">
+<span class="md-ellipsis">
+    
+  
+    Readings
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Readings
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/diffusion/">
+<span class="md-ellipsis">
+    
+  
+    Diffusion Models
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Diffusion Models
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DDPM/">
+<span class="md-ellipsis">
+    
+  
+    DDPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DDIM/">
+<span class="md-ellipsis">
+    
+  
+    DDIM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/SGM/">
+<span class="md-ellipsis">
+    
+  
+    SGM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/v-prediction/">
+<span class="md-ellipsis">
+    
+  
+    v-prediction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DE-formula/">
+<span class="md-ellipsis">
+    
+  
+    SDE/ODE formulation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/EDM/">
+<span class="md-ellipsis">
+    
+  
+    EDM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/rectified-flow/">
+<span class="md-ellipsis">
+    
+  
+    Rectified Flow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/mean-flow/">
+<span class="md-ellipsis">
+    
+  
+    Mean Flow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/guidance/">
+<span class="md-ellipsis">
+    
+  
+    Guidance
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/NNbasics/">
+<span class="md-ellipsis">
+    
+  
+    Neural Network Basics
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Neural Network Basics
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/lstm_gru/">
+<span class="md-ellipsis">
+    
+  
+    LSTM &amp; GRU
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/normalization/">
+<span class="md-ellipsis">
+    
+  
+    Normalization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/einsum/">
+<span class="md-ellipsis">
+    
+  
+    Einsum
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Miscs
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Miscs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/miscs/abbrs/">
+<span class="md-ellipsis">
+    
+  
+    Abbrs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/miscs/metrics/">
+<span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+<span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+</a>
+<nav aria-label="Introduction" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deterministic-and-random-differential-equations">
+<span class="md-ellipsis">
+      
+        Deterministic and Random Differential Equations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stochastic-differentials">
+<span class="md-ellipsis">
+      
+        Stochastic Differentials
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#itos-chain-rule">
+<span class="md-ellipsis">
+      
+        Itô's Chain Rule
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-crash-course-in-probability-theory">
+<span class="md-ellipsis">
+      
+        A Crash Course in Probability Theory
+      
+    </span>
+</a>
+<nav aria-label="A Crash Course in Probability Theory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-definitions">
+<span class="md-ellipsis">
+      
+        Basic Definitions
+      
+    </span>
+</a>
+<nav aria-label="Basic Definitions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probability-space">
+<span class="md-ellipsis">
+      
+        Probability Space
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#random-variables">
+<span class="md-ellipsis">
+      
+        Random Variables
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stochastic-processes">
+<span class="md-ellipsis">
+      
+        Stochastic Processes
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expected-value-variance">
+<span class="md-ellipsis">
+      
+        Expected Value, Variance
+      
+    </span>
+</a>
+<nav aria-label="Expected Value, Variance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-with-respect-to-a-measure">
+<span class="md-ellipsis">
+      
+        Integration with respect to a Measure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution-functions">
+<span class="md-ellipsis">
+      
+        Distribution Functions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#independence">
+<span class="md-ellipsis">
+      
+        Independence
+      
+    </span>
+</a>
+<nav aria-label="Independence" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditional-probability-and-independent-events">
+<span class="md-ellipsis">
+      
+        Conditional Probability and Independent Events
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#independent-random-variables">
+<span class="md-ellipsis">
+      
+        Independent Random Variables
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expectation-and-variannce-of-independent-random-variables">
+<span class="md-ellipsis">
+      
+        Expectation and Variannce of Independent Random Variables
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#some-probabilistic-methods">
+<span class="md-ellipsis">
+      
+        Some Probabilistic Methods
+      
+    </span>
+</a>
+<nav aria-label="Some Probabilistic Methods" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#chebyshevs-inequality-and-borel-cantelli-lemma">
+<span class="md-ellipsis">
+      
+        Chebyshev's Inequality and Borel-Cantelli Lemma
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#characteristic-functions">
+<span class="md-ellipsis">
+      
+        Characteristic Functions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#law-of-large-numbers-central-limit-theorem">
+<span class="md-ellipsis">
+      
+        Law of Large Numbers, Central Limit Theorem
+      
+    </span>
+</a>
+<nav aria-label="Law of Large Numbers, Central Limit Theorem" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#strong-law-of-large-numbers">
+<span class="md-ellipsis">
+      
+        Strong Law of Large Numbers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#central-limit-theorem">
+<span class="md-ellipsis">
+      
+        Central Limit Theorem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#conditional-expectation">
+<span class="md-ellipsis">
+      
+        Conditional Expectation
+      
+    </span>
+</a>
+<nav aria-label="Conditional Expectation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#approaches-to-conditional-expectation">
+<span class="md-ellipsis">
+      
+        Approaches to Conditional Expectation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#properties">
+<span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#martingales">
+<span class="md-ellipsis">
+      
+        Martingales
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<p><link href="../../../../css/counter.css" rel="stylesheet"/></p>
+<h1 id="an-introduction-to-stochastic-differential-equations">An Introduction to Stochastic Differential Equations</h1>
+<div class="admonition info">
+<p class="admonition-title">Part of note of <em>An Introduction to Stochastic Differential Equations</em>, Lawrence C. Evans</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">本页面还在施工中</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<h3 id="deterministic-and-random-differential-equations">Deterministic and Random Differential Equations</h3>
+<p>关注系统状态<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm x\)</span><span class="heti-spacing"> </span></span>关于时间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>变化的<span><span class="heti-spacing"> </span>ODE:</span></p>
+<div class="arithmatex">\[
+\begin{cases}
+    \dot{\bm x}(t) = \bm b (\bm x(t)) \quad (t&gt;0)\\
+    \bm x (0) = \bm x_0
+\end{cases}
+\]</div>
+<div class="admonition abstract">
+<p class="admonition-title">向量场<span><span class="heti-spacing"> </span>(vector field)</span></p>
+<p>给定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S\subseteq \mathbb{R}^n\)</span>,<span class="heti-spacing"> </span></span>则标准笛卡尔坐标<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((x_1,\cdots,x_n)\)</span><span class="heti-spacing"> </span></span>下的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V: S\to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>被称为<strong>向量场</strong>。</p>
+<p>若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V\)</span><span class="heti-spacing"> </span></span>的每个分量都连续，则称为<strong>连续向量场</strong>。同理有<strong>光滑向量场</strong>。</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">光滑<span><span class="heti-spacing"> </span>(smooth)</span></p>
+<p>考虑可微函数类<span><span class="heti-spacing"> </span><span class="arithmatex">\(C^k\)</span></span>，即<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f\in C^k\)</span><span class="heti-spacing"> </span></span>等价于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f', f'', f^{(k)}\)</span><span class="heti-spacing"> </span></span>都存在且连续。</p>
+<p><span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>光滑即指<span><span class="heti-spacing"> </span><span class="arithmatex">\(f\in C^{\infty}\)</span></span>，即<strong>无限阶可微</strong>。</p>
+</div>
+<p><span><span class="arithmatex">\(\bm b: \mathbb{R}^n \to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>为光滑向量场。将能够确定<strong>轨迹<span><span class="heti-spacing"> </span>(trajectory)</span></strong> <span class="arithmatex">\(\bm x: [0, \infty)\to \mathbb{R}^n\)</span>。</p>
+<div style="text-align:center;">
+<img alt="trajectory" src="../../../imgs/Intro2SDE/trajectory.png" style="zoom:50%;"/>
+</div>
+<p>然而实践中，由于<strong>随机扰动<span><span class="heti-spacing"> </span>(random perturbations)</span></strong> 的存在，往往不精准地位于轨迹上。考虑随机扰动之后，就可以得到</p>
+<div class="arithmatex">\[
+\begin{cases}
+    \dot{\bm X}(t) = \bm b (\bm X(t)) + \bm B (\bm X(t))\bm\xi(t) \quad (t&gt;0)\\
+    \bm X (0) = \bm X_0
+\end{cases}
+\]</div>
+<p>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm B: \mathbb{R}^n \to \mathbb{R}^{n\times m}\)</span></span>，映射到一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\times m\)</span><span class="heti-spacing"> </span></span>矩阵。针对这个方程组有问题：</p>
+<ul>
+<li>定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\xi(\cdot)\)</span> (<span class="arithmatex">\(m\)</span><span class="heti-spacing"> </span></span>维“白噪声”)</li>
+<li>定义解得的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>的意义</li>
+<li>讨论解的存在性，唯一性，渐进<span class="heti-skip"><span class="heti-spacing"> </span>(asymptotic)<span class="heti-spacing"> </span></span>行为</li>
+</ul>
+<h3 id="stochastic-differentials">Stochastic Differentials</h3>
+<p>若令<span><span class="heti-spacing"> </span><span class="arithmatex">\(m=n, \bm X_0=0, \bm b\equiv 0, \bm B \equiv I\)</span></span>，那么此时的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>具有了<strong>布朗运动<span><span class="heti-spacing"> </span>(Bronwian motion)</span></strong> 或者说<strong>维恩过程<span><span class="heti-spacing"> </span>(Wiener process)</span></strong> 的意义，重写为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(\cdot)\)</span></span>，有</p>
+<div class="arithmatex">\[
+    \dot{\bm W} = \bm \xi (\cdot)
+\]</div>
+<p>所以，<strong>“白噪声” 实际上是布朗运动关于时间的导数</strong>。将“白噪声”这样替换，就可以得到</p>
+<div class="arithmatex">\[
+\begin{cases}
+    \mathrm{d}\bm X(t) = \bm b (\bm X(t)) \mathrm{d}t + \bm B (\bm X(t))\mathrm{d}\bm W(t) \quad (t&gt;0)\\
+    \bm X (0) = \bm X_0
+\end{cases}
+\]</div>
+<p>这就是<strong>随机微分方程</strong> (stochastic differential equations, SDE)。其中，<span><span class="arithmatex">\(\mathrm{d}\bm W\)</span><span class="heti-spacing"> </span></span>或者<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm B\mathrm{d}\bm W\)</span><span class="heti-spacing"> </span></span>被称为<strong>随机微分</strong> (stochastic differential)。解写作</p>
+<div class="arithmatex">\[
+\bm X(t) = \bm X_0 + \int_0^t \bm b(\bm X (s))\mathrm{d}s + \int_0^t \bm B (\bm X(t))\mathrm{d}\bm W(t)
+\]</div>
+<p>为了使这个形式的解有意义（良定义<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，我们需要</p>
+<ul>
+<li>构造布朗运动<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(\cdot)\)</span></span>：Chap3</li>
+<li>定义随机积分<span><span class="heti-spacing"> </span>(stochastic integral) <span class="arithmatex">\(\int_0^t\cdots \mathrm{d}\bm W\)</span></span>：Chap4</li>
+<li>解的存在性：Chap5</li>
+</ul>
+<p>对于这个解的实际意义，存在以下问题</p>
+<ul>
+<li><span>SDE<span class="heti-spacing"> </span></span>是否真的在建模物理问题？</li>
+<li>“白噪声” <span><span class="arithmatex">\(\bm \xi\)</span><span class="heti-spacing"> </span></span>是否真的是白噪声，还是只是一系列光滑高震荡函数的组合？：Chap6</li>
+</ul>
+<h3 id="itos-chain-rule">Itô's Chain Rule</h3>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>SDE<span class="heti-spacing"> </span></span>中，链式法则并不是<span class="heti-skip"><span class="heti-spacing"> </span>trivial<span class="heti-spacing"> </span></span>的。为了便于理解，以<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=m=1\)</span><span class="heti-spacing"> </span></span>的简单情况为例介绍</p>
+<div class="arithmatex">\[
+\mathrm{d}X = b(X)\mathrm{d}t + \mathrm{d}W
+\]</div>
+<p>给定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y(t)=u(X(t))\)</span>, <span class="arithmatex">\(u: \mathbb{R}\to\mathbb{R}\)</span><span class="heti-spacing"> </span></span>是一个给定的光滑函数。按照<span class="heti-skip"><span class="heti-spacing"> </span>trivial<span class="heti-spacing"> </span></span>的链式法则，你或许会认为</p>
+<div class="arithmatex">\[
+\mathrm{d}Y = u'\mathrm{d}X=u'b\mathrm{d}t+u'\mathrm{d}W
+\]</div>
+<div class="admonition warning">
+<p class="admonition-title">注意上面的式子是错的</p>
+</div>
+<p>上面的式子错误，主要来自于一个非常规<span><span class="heti-spacing"> </span>(irregular)</span> “事实”：布朗运动的微分近似于根号的时间微分</p>
+<div class="arithmatex">\[
+\mathrm{d} W\approx \sqrt{\mathrm{d}t}
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">常规链式法则</p>
+<p>常规链式法则实际上来自泰勒展开后省略高阶小量。即</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    Y + \mathrm{d}Y
+    &amp;= u(X + \mathrm{d}X) \\
+    &amp;= u(X) + u'\mathrm{d}X + \frac{1}{2}u''(\mathrm{d}X)^2 + \cdots\\
+    &amp;\approx u(X) + u'\mathrm{d}X
+\end{aligned}
+\]</div>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>再展开至少也是一阶，所以可以直接在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>的层面消除高阶小量。</p>
+</div>
+<p>然而此时泰勒展开后有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathrm{d}Y
+    &amp;= u'\mathrm{d}X + \frac{1}{2}u''(\mathrm{d}X)^2 + \cdots\\
+    &amp;\approx u'(b(X)\mathrm{d}t + \mathrm{d}W) + \frac{1}{2}u''(b(X)\mathrm{d}t + \mathrm{d}W)^2 + \cdots\\
+    &amp;\approx \left(u'b + \frac{1}{2}u''\right)\mathrm{d}t + u'\mathrm{d} W + o((\mathrm{d}t)^{3/2})
+\end{aligned}
+\]</div>
+<p>高阶项可以略去。这种奇怪的链式法则就是<span class="heti-skip"><span class="heti-spacing"> </span>Itô's Chain Rule<span class="heti-spacing"> </span></span>的一个实例化。</p>
+<details class="example">
+<summary>Example1</summary>
+<p>使用<span class="heti-skip"><span class="heti-spacing"> </span>Itô's Chain Rule<span class="heti-spacing"> </span></span>可以解得</p>
+<div class="arithmatex">\[
+\begin{cases}
+    \mathrm{d}Y = Y\mathrm{d}W \\
+    Y(0) = 1
+\end{cases}
+\Rightarrow
+Y(t) := e^{W(t)-\frac{t}{2}}
+\]</div>
+<p>而不是普通的</p>
+<div class="arithmatex">\[
+    Y(t) := e^{W(t)}
+\]</div>
+</details>
+<details class="example">
+<summary>Example2</summary>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S(t)\)</span><span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>时刻股价<span><span class="heti-spacing"> </span>(price of</span> <strong>stock</strong>)，一个标准模型认为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\frac{\mathrm{d}S}{S}\)</span><span class="heti-spacing"> </span></span>对特定的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mu&gt;0\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span><span class="heti-spacing"> </span></span>满足</p>
+<div class="arithmatex">\[
+    \frac{\mathrm{d}S}{S} = \mu \mathrm{d}t + \sigma \mathrm{d}W
+\]</div>
+<p>所以有<span><span class="heti-spacing"> </span>SDE</span></p>
+<div class="arithmatex">\[
+\begin{cases}
+    \mathrm{d}S = \mu S\mathrm{d}t + \sigma S\mathrm{d}W \\
+    S(0) = S_0
+\end{cases}
+\Rightarrow
+Y(t) := e^{W(t)-\frac{t}{2}}
+\]</div>
+<p>使用<span class="heti-skip"><span class="heti-spacing"> </span>Itô's Chain Rule<span class="heti-spacing"> </span></span>可以解得</p>
+<div class="arithmatex">\[
+    S(t) = S_0e^{\sigma W(t)+(\mu-\frac{\sigma^2}{2})t}
+\]</div>
+<p></p><div style="text-align:center;">
+<img alt="stock_trajectory" src="../../../imgs/Intro2SDE/stock_trajectory.png" style="zoom:50%;"/>
+</div>
+</details>
+<h2 id="a-crash-course-in-probability-theory">A Crash Course in Probability Theory</h2>
+<h3 id="basic-definitions">Basic Definitions</h3>
+<h4 id="probability-space">Probability Space</h4>
+<p><span>Bertrand's paradox<span class="heti-spacing"> </span></span>说明<heti-adjacent class="heti-adjacent-quarter">，</heti-adjacent>“随机”只有在确定的概率空间下才确定。给定同心的大圆和小圆，大圆的弦与小圆相交的概率在不同概率空间下有不同的答案。</p>
+<div class="admonition info">
+<p class="admonition-title">概率空间<span><span class="heti-spacing"> </span>(probability space)</span></p>
+<p>若<span><span class="heti-spacing"> </span>Triple <span class="arithmatex">\((\Omega, \mathcal{U}, P)\)</span></span></p>
+<div class="arithmatex">\[
+(\Omega, \mathcal{U}, P)
+\]</div>
+<p>满足</p>
+<ul>
+<li><span class="arithmatex">\(\Omega\neq\emptyset\)</span></li>
+<li><span><span class="arithmatex">\(\mathcal{U}\)</span><span class="heti-spacing"> </span></span>是关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega\)</span><span class="heti-spacing"> </span></span>子集的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span>-algebra</span></li>
+<li><span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{U}\)</span><span class="heti-spacing"> </span></span>上的概率测度</li>
+</ul>
+<p>则<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega, \mathcal{U}, P)\)</span><span class="heti-spacing"> </span></span>被称为<strong>概率空间</strong>。</p>
+</div>
+<p><span><span class="arithmatex">\(\sigma\)</span>-algebra <span class="arithmatex">\(\;\mathcal{U}\;\)</span><span class="heti-spacing"> </span></span>可以理解为合法事件集，正式定义为</p>
+<div class="admonition info">
+<p class="admonition-title"><span class="arithmatex">\(\sigma\)</span>-algebra</p>
+<p><span><span class="arithmatex">\(\sigma\)</span>-algebra <span class="arithmatex">\(\;\mathcal{U}\subseteq 2^{\Omega}\;\)</span><span class="heti-spacing"> </span></span>需满足以下性质<span><span class="heti-spacing"> </span>:</span></p>
+<ol>
+<li><span class="arithmatex">\(\emptyset, \;\Omega\in \mathcal{U}\)</span></li>
+<li>If <span class="arithmatex">\(A\in \mathcal{U}\)</span>, then <span class="arithmatex">\(A^c\in \mathcal{U}\)</span>.</li>
+<li>If <span class="arithmatex">\(A_1, A_2, \cdots \in \mathcal{U}\)</span>, then</li>
+</ol>
+<div class="arithmatex">\[
+\bigcup_{k=1}^{\infty}A_k,\; \bigcap_{k=1}^{\infty}A_k\in\mathcal{U}.
+\]</div>
+<p>这里<span><span class="heti-spacing"> </span><span class="arithmatex">\(A^{c}:=\Omega-A\)</span></span>，为补集的含义。</p>
+<blockquote>
+<p>一种更简单的定义方式为，<span><span class="arithmatex">\(\sigma\)</span>-algebra <span class="arithmatex">\(\;\mathcal{U}\;\)</span><span class="heti-spacing"> </span></span>即为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega\)</span><span class="heti-spacing"> </span></span>的子集族，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega\in \mathcal{U}\)</span></span>，且<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{U}\)</span><span class="heti-spacing"> </span></span>在补、可数交、可数并操作下封闭。</p>
+</blockquote>
+</div>
+<p>概率测度<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>是一个从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{U}\)</span><span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, 1]\)</span><span class="heti-spacing"> </span></span>的映射，可以给出任何合法事件的一个“概率”，正式定义为</p>
+<div class="admonition info">
+<p class="admonition-title">概率测度<span><span class="heti-spacing"> </span>(probability measure)</span></p>
+<p>令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{U}\)</span><span class="heti-spacing"> </span></span>为关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega\)</span><span class="heti-spacing"> </span></span>子集的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra</span>，则称</p>
+<div class="arithmatex">\[
+P:{\mathcal{U}}\to[0,1]
+\]</div>
+<p>为<strong>概率测度<span><span class="heti-spacing"> </span>(probability measure)</span></strong>，若满足<span><span class="heti-spacing"> </span>:</span></p>
+<p><strong>(1)</strong> <span class="arithmatex">\(P(\emptyset)=0,\;P(\Omega)=1.\)</span></p>
+<p><strong>(2)</strong> 若<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_1,A_2,\ldots\in\mathcal{U}\)</span></span>，则</p>
+<div class="arithmatex">\[ 
+    P\left(\bigcup_{k=1}^{\infty}A_k\right) \leqslant \sum_{k=1}^{\infty} P (A_k)
+\]</div>
+<p><strong>(3)</strong> <span>(2)<span class="heti-spacing"> </span></span>式在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_1,A_2,\ldots\in \mathcal{U}\)</span><span class="heti-spacing"> </span></span>是不相交的集合时取等。</p>
+<p>一个简单的导出结论是若<span><span class="heti-spacing"> </span><span class="arithmatex">\(A,B\in\mathcal{U}\)</span></span>，则</p>
+<div class="arithmatex">\[
+A\subseteq B\Rightarrow P(A)\leq P(B).
+\]</div>
+</div>
+<p>由此产生了一些术语<span><span class="heti-spacing"> </span>(terminology)</span>：</p>
+<ul>
+<li>集合<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\in\mathcal{U}\)</span><span class="heti-spacing"> </span></span>被称为<strong>事件<span><span class="heti-spacing"> </span>(event)</span></strong>，点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\in\Omega\)</span><span class="heti-spacing"> </span></span>被称为样本点<span><span class="heti-spacing"> </span>(sample points)</span></li>
+<li><span><span class="arithmatex">\(P(A)\)</span><span class="heti-spacing"> </span></span>是事件<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>的<strong>概率<span><span class="heti-spacing"> </span>(probability)</span></strong></li>
+<li><span class="arithmatex">\(P(A^c)=0\)</span>，则认为<span><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span></span> <strong>几乎必然<span><span class="heti-spacing"> </span>(almost surely, a.s.)</span></strong></li>
+</ul>
+<p>先举两个相对比较简单的例子：</p>
+<div class="admonition example">
+<p class="admonition-title">Examples</p>
+<ul>
+<li>有限点集的测度：为每个点分配对应的概率，所有点的概率和为<span><span class="heti-spacing"> </span>1</span>。一个集合（该有限点集的子集）的概率，即其中所有样本点概率的和。</li>
+<li><span>Buffon's needle problem:<span class="heti-spacing"> </span></span>平面由无限多平行线分割，相邻平行线之间相隔<span><span class="heti-spacing"> </span>2cm</span>。一根长度为<span class="heti-skip"><span class="heti-spacing"> </span>1cm<span class="heti-spacing"> </span></span>的针随机抛掷，求针与平行线相交的概率。问题分析中，构建概率空间、需要分析的随机变量，最后进行求解。</li>
+</ul>
+</div>
+<p>接下来的例子会有一些困难，因为即将引入一些后面依然会用到的概念。</p>
+<div class="admonition info">
+<p class="admonition-title">Borel <span class="arithmatex">\(\sigma\)</span>-algebra</p>
+<p><span>Borel <span class="arithmatex">\(\sigma\)</span>-algebra<span class="heti-spacing"> </span></span>表示拓扑空间上最小的包含所有开集的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\:\sigma\)</span>-algebra</span>。</p>
+</div>
+<blockquote>
+<p>在拓扑空间中，任何一个可以通过开集之间的补、可数交、可数并获得的集合，都是<span><span class="heti-spacing"> </span>Borel set</span>。<span>Borel <span class="arithmatex">\(\sigma\)</span>-algebra<span class="heti-spacing"> </span></span>事实上就是拓扑空间上所有<span class="heti-skip"><span class="heti-spacing"> </span>Borel set<span class="heti-spacing"> </span></span>的集合。</p>
+</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Examples</p>
+<ul>
+<li>使用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{B}\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>上的<span><span class="heti-spacing"> </span>Borel <span class="arithmatex">\(\;\sigma\)</span>-algebra</span>。设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f:\mathbb{R}^n\to \mathbb{R}\)</span><span class="heti-spacing"> </span></span>是一个满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\int_{\mathbb{R}^n} f\mathrm{d}x=1\)</span><span class="heti-spacing"> </span></span>的非负可积函数，则定义关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{B}\)</span><span class="heti-spacing"> </span></span>的概率测度</li>
+</ul>
+<div class="arithmatex">\[
+P(B) = \int_{B} f(x)\mathrm{d}x,\quad \forall B\in\mathcal{B}
+\]</div>
+<p>这样<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\mathbb{R}^n, \mathcal{B}, P)\)</span><span class="heti-spacing"> </span></span>就构成了一个概率空间。我们称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>为关于概率测度<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>的概率密度函数。</p>
+<ul>
+<li>同样在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{B}\)</span><span class="heti-spacing"> </span></span>下，对于定点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x_0\in \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>可以定义新的测度：Dirac measure，或<span><span class="heti-spacing"> </span>Dirac point mass</span></li>
+</ul>
+<div class="arithmatex">\[
+P(B) = \delta_{x_0}(B) =\begin{cases}
+    1, &amp; x_0\in B\\
+    0, &amp; x_0\notin B
+\end{cases}
+\]</div>
+</div>
+<blockquote>
+<p><span><span class="arithmatex">\(n=1\)</span><span class="heti-spacing"> </span></span>时，<span><span class="arithmatex">\(\mathcal{B}\)</span><span class="heti-spacing"> </span></span>实际上就是实数轴上的所有区间（开、闭、半开半闭<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+</blockquote>
+<p>注意区分<span class="heti-skip"><span class="heti-spacing"> </span>Dirac measure<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Dirac delta function<span class="heti-spacing"> </span></span>的区别。<span>Dirac delta function<span class="heti-spacing"> </span></span>的定义为</p>
+<div class="arithmatex">\[
+\delta(x) = 0, \quad x\neq 0;\quad \int_{-\infty}^{\infty}\delta(x)\mathrm{d}x = 1
+\]</div>
+<p>这是一个实际上不存在的函数，不能粗暴地定义<span><span class="heti-spacing"> </span><span class="arithmatex">\(\delta(0)=+\infty\)</span></span>。事实上，<span>Dirac measure<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Dirac delta function<span class="heti-spacing"> </span></span>可以通过以下关系联系起来：</p>
+<div class="arithmatex">\[
+\delta(x) = \frac{\mathrm{d}H(x)}{\mathrm{d}x},\quad
+H(x) = \begin{cases}
+    1, &amp; x\geqslant 0\\
+    0, &amp; x &lt; 0
+\end{cases}
+\]</div>
+<h4 id="random-variables">Random Variables</h4>
+<div class="admonition info">
+<p class="admonition-title">随机变量<span><span class="heti-spacing"> </span>(random variable)</span></p>
+<p>在概率空间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega,\mathcal{U},P)\)</span><span class="heti-spacing"> </span></span>下，<span><span class="arithmatex">\(\mathcal{U}\)</span>-<span class="heti-spacing"> </span></span>可测函数</p>
+<div class="arithmatex">\[
+    \bm X: \Omega\to \mathbb{R}^n
+\]</div>
+<p>被称为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维随机变量。</p>
+</div>
+<details class="info">
+<summary>可测<span><span class="heti-spacing"> </span>(measurable)</span></summary>
+<p>测度论中，一个集合<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>可测指的是<span><span class="heti-spacing"> </span><span class="arithmatex">\(A\in\mathcal{U}\)</span></span>。</p>
+<p>随后定义可测函数：在测度空间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega,\mathcal{U},P)\)</span><span class="heti-spacing"> </span></span>下，考虑<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X: \Omega\to \mathbb{R}^n\)</span></span>，若<span><span class="heti-spacing"> </span><span class="arithmatex">\(\:\forall B\in\mathcal{B}\)</span>,</span> </p>
+<div class="arithmatex">\[
+    \bm X^{-1}(B) = \{\omega: X(\omega)\in B\}\in\mathcal{U}
+\]</div>
+<p>那么就称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\mathcal{U}\)</span>-<span class="heti-spacing"> </span></span>可测<span><span class="heti-spacing"> </span>(<span class="arithmatex">\(\,\mathcal{U}\)</span>-measurable)</span>。即对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}\)</span><span class="heti-spacing"> </span></span>上任意开集<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>的逆像可测。</p>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">remark</p>
+<ul>
+<li>这里的随机变量<span class="heti-skip"><span class="heti-spacing"> </span>(random variable)<span class="heti-spacing"> </span></span>包括中文语境中的一元随机变量和多元随机向量</li>
+<li><span><span class="arithmatex">\(P(\bm X^{-1}(B))\)</span><span class="heti-spacing"> </span></span>往往写作</li>
+</ul>
+<div class="arithmatex">\[
+    P(\bm X\in B)
+\]</div>
+<p>赋与开集在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>的逆像的概率测度以意义：<span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>取值落在这个开集中的概率。</p>
+</div>
+<p>在这里给出指示函数<span class="heti-skip"><span class="heti-spacing"> </span>(indicator function)<span class="heti-spacing"> </span></span>和简单函数<span class="heti-skip"><span class="heti-spacing"> </span>(simple function)<span class="heti-spacing"> </span></span>两个随机变量的例子，这两个例子将在后面不带说明地出现。</p>
+<div class="admonition example">
+<p class="admonition-title">Examples</p>
+<p>对于集合<span><span class="heti-spacing"> </span><span class="arithmatex">\(A\in\mathcal{U}\)</span></span>，定义<strong>指示函数</strong> <span><span class="arithmatex">\(\bm 1_A\)</span><span class="heti-spacing"> </span></span>为</p>
+<div class="arithmatex">\[
+    \bm \chi_A(\omega) = 
+    \begin{cases}
+        1, &amp; \omega\in A\\
+        0, &amp; \omega\notin A
+    \end{cases}
+\]</div>
+<p>则指示函数可见就是一个随机变量。更一般地，对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_1,A_2,\cdots,A_n\in\mathcal{U}\)</span></span>，且<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega=\bigcup_{k=1}^n A_k\)</span></span>，定义<strong>简单函数</strong> <span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>为</p>
+<div class="arithmatex">\[
+    \bm X(\omega) = \sum_{k=1}^n a_k\bm \chi_{A_k}(\omega)
+\]</div>
+<p>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(a_k\in\mathbb{R}\)</span></span>，简单函数也是一个随机变量。</p>
+<blockquote>
+<p>简单函数就是多个指示函数的线性组合。</p>
+</blockquote>
+</div>
+<p>通过随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>可以生成<span><span class="heti-spacing"> </span><span class="arithmatex">\(\:\sigma\)</span>-algebra <span class="arithmatex">\(\mathcal{U}(\bm X)\)</span></span>，它“包含了所有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>的相关<strong>信息</strong>”。</p>
+<div class="admonition info">
+<p class="admonition-title">生成<span><span class="heti-spacing"> </span><span class="arithmatex">\(\:\sigma\)</span>-algebra</span></p>
+<p>由<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>生成的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\sigma\)</span>-algebra <span class="arithmatex">\(\:\mathcal{U}(\bm X)\)</span><span class="heti-spacing"> </span></span>定义为</p>
+<div class="arithmatex">\[
+    \mathcal{U}(\bm X):=\{\bm X^{-1}(B) \mid B\in\mathcal{B}\}
+\]</div>
+<p>如果随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>的函数，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y = \phi (\bm X)\)</span></span>，那就意味着<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\mathcal{U}(\bm X)\)</span>-<span class="heti-spacing"> </span></span>可测的。</p>
+<p>反之，如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\mathcal{U}(\bm X)\)</span>-<span class="heti-spacing"> </span></span>可测的，那么将会存在函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi\)</span><span class="heti-spacing"> </span></span>使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y = \phi(\bm X)\)</span></span>，即如果确定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\omega)\)</span><span class="heti-spacing"> </span></span>的值，那么<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y\)</span><span class="heti-spacing"> </span></span>的值也将被确定，尽管我们不一定能实际构造出这个<span><span class="heti-spacing"> </span><span class="arithmatex">\(\phi\)</span></span>。</p>
+</div>
+<h4 id="stochastic-processes">Stochastic Processes</h4>
+<div class="admonition info">
+<p class="admonition-title">随机过程<span class="heti-skip"><span class="heti-spacing"> </span>(stochastic process)<span class="heti-spacing"> </span></span>与采样路径<span><span class="heti-spacing"> </span>(sample path)</span></p>
+<ul>
+<li>随机变量集合<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{\bm X(t) \mid t\geqslant 0\}\)</span><span class="heti-spacing"> </span></span>被称为<strong>随机过程<span><span class="heti-spacing"> </span>(stochastic process)</span></strong></li>
+<li>给定样本点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\omega\in \Omega\)</span>,<span class="heti-spacing"> </span></span>映射<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\to \bm X(\omega, t)\)</span><span class="heti-spacing"> </span></span>被称为<strong>采样路径<span><span class="heti-spacing"> </span>(sample path)</span></strong></li>
+</ul>
+</div>
+<div style="text-align:center;">
+<img alt="sample_paths" src="../../../imgs/Intro2SDE/sample_paths.png" style="zoom:70%;"/>
+</div>
+<h3 id="expected-value-variance">Expected Value, Variance</h3>
+<h4 id="integration-with-respect-to-a-measure">Integration with respect to a Measure</h4>
+<p>即相对于定义好的概率测度<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>的积分。给定概率空间<span><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega,\mathcal{U},P)\)</span></span>，考虑实值<strong>简单</strong>随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X=\sum_{i=1}^k a_i\bm \chi_{A_i}\)</span></span>，定义其<strong>积分</strong> <span>(integral)<span class="heti-spacing"> </span></span>为</p>
+<div class="arithmatex">\[
+\int_{\Omega} X\mathrm{d}P := \sum_{i=1}^k a_i P(A_i)
+\]</div>
+<p>进一步地，扩展<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>为非负随机变量，可以用简单随机变量的积分逼近去定义它的积分：</p>
+<div class="arithmatex">\[
+\int_{\Omega} X\mathrm{d}P := \sup\left\{\int_{\Omega} Y\mathrm{d}P \;\bigg|\; Y\leqslant X, Y \text{ is simple}\right\}
+\]</div>
+<p>最终，对于随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X: \Omega\to \mathbb{R}\)</span></span>，将其积分写作</p>
+<div class="arithmatex">\[
+\int_{\Omega} X\mathrm{d}P := \int_{\Omega} X^+\mathrm{d}P - \int_{\Omega} X^-\mathrm{d}P
+\]</div>
+<p>只要右侧两个积分至少其一是有限的，那<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>的积分就是一个确定的有限<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>无限值。这里有</p>
+<div class="arithmatex">\[
+X^+ := \max\{X, 0\},\quad X^- = \max\{-X, 0\}
+\]</div>
+<p>从而保证了<span><span class="heti-spacing"> </span><span class="arithmatex">\(X=X^+-X^-\)</span></span>。更进一步地，给出随机向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X = (X^1, X^2, \cdots, X^n): \Omega \to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>的积分含义：</p>
+<div class="arithmatex">\[
+\int_{\Omega} \bm X\mathrm{d}P := \left(\int_{\Omega} X^1\mathrm{d}P, \int_{\Omega} X^2\mathrm{d}P, \cdots, \int_{\Omega} X^n\mathrm{d}P\right)
+\]</div>
+<p>完成了积分的定义之后，就可以定义期望值<span><span class="heti-spacing"> </span>(expected value)</span>，或称之为均值<span><span class="heti-spacing"> </span>(mean value)</span>，以及方差<span><span class="heti-spacing"> </span>(variance)</span>：</p>
+<div class="admonition info">
+<p class="admonition-title">期望和方差</p>
+<p>随机向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X: \Omega\to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>的<strong>期望值</strong> <span>(expected value)<span class="heti-spacing"> </span></span>定义为</p>
+<div class="arithmatex">\[
+\mathbb{E}(\bm X) := \int_{\Omega} \bm X \mathrm{d}P
+\]</div>
+<p>其方差<span class="heti-skip"><span class="heti-spacing"> </span>(variance)<span class="heti-spacing"> </span></span>定义为</p>
+<div class="arithmatex">\[
+\mathrm{Var}(\bm X) := \int_{\Omega} \left\|\bm X - \mathbb{E}(\bm X)\right\|^2 \mathrm{d}P
+\]</div>
+<p><span><span class="arithmatex">\(\|\cdot \|\)</span><span class="heti-spacing"> </span></span>代表<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>上的欧几里得范数。有方差公式</p>
+<div class="arithmatex">\[
+\mathrm{Var}(\bm X) = \mathbb{E}(\|\bm X\|^2) - \|\mathbb{E}(\bm X)\|^2
+\]</div>
+</div>
+<h4 id="distribution-functions">Distribution Functions</h4>
+<p>对于两个同维向量，定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\leqslant y\)</span><span class="heti-spacing"> </span></span>当且仅当对应分量都满足<span><span class="heti-spacing"> </span><span class="arithmatex">\(x_i\leqslant y_i\)</span></span>。在此约定下，定义随机向量的分布函数和多个随机向量的联合分布函数。</p>
+<div class="admonition info">
+<p class="admonition-title">分布函数<span><span class="heti-spacing"> </span>(distribution function)</span></p>
+<p>随机向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X: \Omega\to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>的<strong>分布函数</strong> <span>(distribution function) <span class="arithmatex">\(F_{\bm X}: \mathbb{R}^n\to [0, 1]\)</span><span class="heti-spacing"> </span></span>定义为</p>
+<div class="arithmatex">\[
+F_{\bm X}(\bm x) := P(\bm X\leqslant \bm x), \quad \forall \bm x\in\mathbb{R}^n
+\]</div>
+<p>更一般地，对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>个随机向量<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \bm X^2, \cdots, \bm X^n\)</span></span>，定义<strong>联合分布函数</strong> <span>(joint distribution function)<span class="heti-spacing"> </span></span>为</p>
+<div class="arithmatex">\[
+F_{\bm X_1, \bm X_2, \cdots, \bm X_n}(\bm x_1, \bm x_2, \cdots, \bm x_n) := P(\bm X_1\leqslant \bm x_1, \bm X_2\leqslant \bm x_2, \cdots, \bm X_n\leqslant \bm x_n), \quad \forall \bm x_1, \bm x_2, \cdots, \bm x_n\in\mathbb{R}^n
+\]</div>
+</div>
+<p>接下来引入更好用的密度函数。</p>
+<div class="admonition info">
+<p class="admonition-title">密度函数<span><span class="heti-spacing"> </span>(density function)</span></p>
+<p>给定随机向量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X: \Omega\to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>和其分布函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(F=F_{\bm X}\)</span></span>，若存在非负可积<span class="heti-skip"><span class="heti-spacing"> </span>(integrable)<span class="heti-spacing"> </span></span>函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f: \mathbb{R}^n\to [0, \infty)\)</span><span class="heti-spacing"> </span></span>满足</p>
+<div class="arithmatex">\[
+F(\bm x) = F(x_1,\cdots, x_n)=\int_{-\infty}^{x_1}\cdots \int_{-\infty}^{x_n} f(y_1, \cdots, y_n)\mathrm{d}y_1\cdots\mathrm{d}y_n
+\]</div>
+<p>则<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>就称为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>的密度函数。有时候，上面这个积分也简写为</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\bm x} f(\bm y)\mathrm{d}\bm y
+\]</div>
+<p>作为一个简单的导出结论，对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall B\in \mathcal{B}\)</span></span>（回顾，<span><span class="arithmatex">\(\mathcal{B}\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>Borel<span class="heti-spacing"> </span></span>集，是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{R}^m\)</span><span class="heti-spacing"> </span></span>上最小的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span>-algebra</span>，由全部开集构成）有</p>
+<div class="arithmatex">\[
+P(\bm X\in B) = \int_{B} f(\bm x)\mathrm{d}\bm x
+\]</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">导出结论的意义</p>
+<p>上面的导出结论是计算概率的一种重要方式，因为等式右侧是一个常规的积分，经常能被显式计算。</p>
+</div>
+<p>书中举了一元和多元高斯分布的密度函数作为例子，在此就不再赘述了。</p>
+<div class="admonition abstract">
+<p class="admonition-title">Lemma</p>
+<p>令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X: \Omega\to \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>为随机向量，假设其分布函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(F=F_{\bm X}\)</span><span class="heti-spacing"> </span></span>有密度函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(f\)</span></span>。对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(g: \mathbb{R}^n\to \mathbb{R}\)</span></span>，如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(g(\bm X)\)</span><span class="heti-spacing"> </span></span>是可积的，则</p>
+<div class="arithmatex">\[
+\mathbb{E}(g(\bm X)) = \int_{\mathbb{R}^n} g(\bm x)f(\bm x)\mathrm{d}\bm x
+\]</div>
+<p>特别地，有</p>
+<div class="arithmatex">\[
+\mathbb{E}(\bm X)=\int_{\mathbb{R}^n}xf(x) dx ,\quad \mathrm{Var}(\bm X)=\int_{\mathbb{R}^n}\|x-\mathbb{E}(\bm X)\|^2f(x) dx
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>证明思路为，若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(g\)</span><span class="heti-spacing"> </span></span>是简单函数时成立，则根据近似，<span><span class="arithmatex">\(g\)</span><span class="heti-spacing"> </span></span>是任意函数时都成立<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（不太严格但是能意会即可）</p>
+<p>则令</p>
+<div class="arithmatex">\[
+g = \sum_{i=1}^m b_i\chi_{B_i}
+\]</div>
+<p>于是就有</p>
+<div class="arithmatex">\[
+\mathbb{E}(g(\bm X)) = \sum_{i=1}^m b_i \int_{\Omega} \chi_{B_i}(\bm X)\mathrm{d}P = \sum_{i=1}^m b_i P(\bm X\in B_i)
+\]</div>
+<p>另一方面，又有</p>
+<div class="arithmatex">\[
+\int_{\mathbb{R}^n} g(\bm x)f(\bm x)\mathrm{d}\bm x
+= \sum_{i=1}^m b_i \int_{B_i} f(\bm x)\mathrm{d}\bm x
+= \sum_{i=1}^m b_i P(\bm X\in B_i)
+\]</div>
+<p>于是得证。</p>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Remark</p>
+<p>这个引理令我们可以仅用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>上的积分计算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(\bm X)\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathrm{Var}(\bm X)\)</span></span>。由于我们无法直接观测概率空间，只能观测<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>上的取值，因此基于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(\bm X)\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathrm{Var}(\bm X)\)</span><span class="heti-spacing"> </span></span>的观测是非常有用的。</p>
+</div>
+<h3 id="independence">Independence</h3>
+<h4 id="conditional-probability-and-independent-events">Conditional Probability and Independent Events</h4>
+<p>首先引入条件概率的概念。</p>
+<div class="admonition info">
+<p class="admonition-title">条件概率<span><span class="heti-spacing"> </span>(conditional probability)</span></p>
+<p>考虑概率空间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega,\mathcal{U},P)\)</span><span class="heti-spacing"> </span></span>和事件<span><span class="heti-spacing"> </span><span class="arithmatex">\(A,B\in\mathcal{U}\)</span></span>，定义条件概率<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P(A|B)\)</span><span class="heti-spacing"> </span></span>为：给定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>发生的条件下，<span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>发生的概率。容易得知有</p>
+<div class="arithmatex">\[
+P(A\mid B) := \frac{P(A\cap B)}{P(B)}
+\]</div>
+</div>
+<p>由此引入事件相互独立的意义。事件<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>独立于<span><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span></span>，实际上就是在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>发生的前提下<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>发生的概率，和不知道<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>是否发生时<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>发生的概率是一样的，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(A\mid B)=P(A)\)</span></span>。根据条件概率的定义，可以得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(A\cap B)=P(A)P(B)\)</span></span>。可以发现，在这个等式中，<span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>是完全对称的，所以<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>独立于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>的要求也是这个式子，可以称之为“相互独立”。</p>
+<div class="admonition info">
+<p class="admonition-title">事件的相互独立</p>
+<p>事件<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>相互独立<span><span class="heti-spacing"> </span>(independent)</span>，当且仅当</p>
+<div class="arithmatex">\[
+P(A\cap B) = P(A)P(B)
+\]</div>
+</div>
+<p><span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>相互独立，很容易可以得到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A^c\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>相互独立，<span><span class="arithmatex">\(A^c\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B^c\)</span><span class="heti-spacing"> </span></span>相互独立等结论。<span>2<span class="heti-spacing"> </span></span>个事件相互独立很容易就能推广到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>个事件相互独立，而更进一步地，从事件推广到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra<span class="heti-spacing"> </span></span>也是很有必要的。</p>
+<div class="admonition info">
+<p class="admonition-title"><span><span class="arithmatex">\(\sigma\)</span>-algebra<span class="heti-spacing"> </span></span>的相互独立</p>
+<p><span><span class="arithmatex">\(\mathcal{U}_i\subseteq \mathcal{U}\)</span><span class="heti-spacing"> </span></span>是一系列<span><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra</span>。称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{\mathcal{U}_i\}_{i=1}^{\infty}\)</span><span class="heti-spacing"> </span></span>相互独立，当且仅当任选<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(1 \leqslant k_1 &lt; k_2 &lt; \cdots &lt; k_m\)</span><span class="heti-spacing"> </span></span>和任意<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_{k_i}\in \mathcal{U}_{k_i}\)</span></span>，有</p>
+<div class="arithmatex">\[
+P(A_{k_1}\cap A_{k_2}\cap \cdots\cap A_{k_m}) = P(A_{k_1})P(A_{k_2})\cdots P(A_{k_m})
+\]</div>
+</div>
+<h4 id="independent-random-variables">Independent Random Variables</h4>
+<div class="admonition info">
+<p class="admonition-title">随机变量的相互独立</p>
+<p>随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \bm X_2, \cdots, \bm X_n\)</span><span class="heti-spacing"> </span></span>相互独立，当且仅当对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\;\forall\; 2\leqslant k\leqslant n\)</span>, <span class="arithmatex">\(1\leqslant i_1&lt;\cdots &lt; i_k \leqslant n\;\)</span><span class="heti-spacing"> </span></span>以及任意<span class="heti-skip"><span class="heti-spacing"> </span>Borel<span class="heti-spacing"> </span></span>集<span><span class="heti-spacing"> </span><span class="arithmatex">\(B_1, B_2, \cdots, B_k\in\mathcal{B}\)</span></span>，有</p>
+<div class="arithmatex">\[
+P(\bm X_{i_1}\in B_1, \bm X_{i_2}\in B_2, \cdots, \bm X_{i_k}\in B_k) = P(\bm X_{i_1}\in B_1)P(\bm X_{i_2}\in B_2)\cdots P(\bm X_{i_k}\in B_k)
+\]</div>
+</div>
+<p>说随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \bm X_2, \cdots, \bm X_n\)</span><span class="heti-spacing"> </span></span>相互独立，等价于说其生成<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra <span class="arithmatex">\(\;\mathcal{U}(\bm X_1), \mathcal{U}(\bm X_2), \cdots, \mathcal{U}(\bm X_n)\;\)</span><span class="heti-spacing"> </span></span>相互独立。其中产生联系的关键为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P(\bm X\in B)\)</span><span class="heti-spacing"> </span></span>即<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(\bm X^{-1}(B))\)</span></span>。 </p>
+<blockquote>
+<p>回顾生成<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra<span class="heti-spacing"> </span></span>的定义：<span><span class="arithmatex">\(\mathcal{U}(\bm X)\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>的所有逆像的集合构成的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra</span>，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(\{\bm X^{-1}(B) \mid B\in\mathcal{B}\}\)</span></span></p>
+</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Rademacher functions</p>
+<p>令<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega=[0, 1)\)</span></span>，<span><span class="arithmatex">\(\mathcal{U}\)</span><span class="heti-spacing"> </span></span>是所有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\subseteq [0, 1)\)</span><span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\;\sigma\)</span>-algebra</span>，<span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>Lebesgue<span class="heti-spacing"> </span></span>测度。定义随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \bm X_2, \cdots\)</span><span class="heti-spacing"> </span></span>为</p>
+<div class="arithmatex">\[
+\bm X_n(\omega) = \begin{cases}
+    1, &amp; \text{if } \frac{k}{2^n}\leqslant \omega &lt; \frac{k+1}{2^n},\; k\text{ is even}\\
+    -1, &amp; \text{if } \frac{k}{2^n}\leqslant \omega &lt; \frac{k+1}{2^n},\; k\text{ is odd}
+\end{cases}
+\]</div>
+<p>则这些被称为拉德马赫函数系<span><span class="heti-spacing"> </span>(Rademacher functions)</span>，我们可以证明它们是相互独立的。</p>
+<details class="general">
+<summary>Proof</summary>
+<p>只需要证明，对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall k\geqslant 2, 1\leqslant i_1&lt;\cdots &lt; i_k, \forall e_1, \cdots, e_k\in \{-1, 1\}\)</span><span class="heti-spacing"> </span></span>都有</p>
+<div class="arithmatex">\[
+P(\bm X_{i_1}=e_1, \bm X_{i_2}=e_2, \cdots, \bm X_{i_k}=e_k) = P(\bm X_{i_1}=e_1)P(\bm X_{i_2}=e_2)\cdots P(\bm X_{i_k}=e_k)
+\]</div>
+<p>证明两侧都等于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2^{-k}\)</span><span class="heti-spacing"> </span></span>即可。右侧是显然的（每一项都是<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^{-1}\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，左侧可以通过对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>进行数学归纳获得。</p>
+<blockquote>
+<p>左侧继续切分的话，必然是在原有的区间基础上再往下区分，所以符合的区间总是刚好是原来的一半</p>
+</blockquote>
+</details>
+</div>
+<p>将一簇独立变量分成两簇，然后让这两簇分别任意构建函数，两个函数值是相互独立的，形式化为如下的定理：</p>
+<div class="admonition abstract">
+<p class="admonition-title">Composition of Independent Random Variables</p>
+<p>令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \cdots, \bm X_{m+n}\)</span><span class="heti-spacing"> </span></span>是相互独立的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^k\)</span>-valued<span class="heti-spacing"> </span></span>随机变量。对于任意的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f: (\mathbb{R}^k)^n\to \mathbb{R}\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(g: (\mathbb{R}^k)^m\to \mathbb{R}\)</span></span>，有</p>
+<div class="arithmatex">\[
+    \bm Y := f(\bm X_1, \cdots, \bm X_n) \text{ and }
+    \bm Z := g(\bm X_{n+1}, \cdots, X_{n+m})
+\]</div>
+<p>相互独立。</p>
+</div>
+<p>该定理的证明略。</p>
+<blockquote>
+<p>可以参考<a href="https://epubs.siam.org/doi/book/10.1137/1.9781611971286"><span><span class="heti-spacing"> </span>L. Breiman, Probability, Addison-Wesley Publishing Company, 1968</span></a></p>
+</blockquote>
+<p>进一步地，随机变量的相互独立可以有其分布函数表示和密度函数表示（当存在密度函数时<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<div class="admonition abstract">
+<p class="admonition-title">随机变量相互独立的其他表示形式</p>
+<p>对于一簇随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, \cdots, X_m: \Omega\to \mathbb{R}^n\)</span></span>：</p>
+<p><strong>(1)</strong> 分布函数表示：这些随机变量相互独立，当且仅当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall x_k\in \mathbb{R}^n, k=1, \cdots, m\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+    F_{\bm X_1, \cdots, \bm X_m}(x_1, \cdots, x_m) = F_{\bm X_1}(x_1)\cdots F_{\bm X_m}(x_m)
+\]</div>
+<p><strong>(2)</strong> 密度函数表示：如果这些随机变量<strong>都有密度函数</strong>，则其相互独立当且仅当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall x_k\in \mathbb{R}^n, k=1, \cdots, m\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+    f_{\bm X_1, \cdots, \bm X_m}(x_1, \cdots, x_m) = f_{\bm X_1}(x_1)\cdots f_{\bm X_m}(x_m)
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>当存在密度函数时，可以得到密度函数表示和分布函数表示的等价性。</p>
+<details class="general">
+<summary>Proof</summary>
+<div class="arithmatex">\[
+\begin{aligned}
+    F_{\bm X_1, \cdots, \bm X_m}(x_1, \cdots, x_m)
+    &amp;= P(\bm X_1\leqslant x_1, \cdots, \bm X_m\leqslant x_m)\\
+    &amp;= \int_{-\infty}^{x_1}\cdots \int_{-\infty}^{x_m} f_{\bm X_1, \cdots, \bm X_m}(y_1, \cdots, y_m)\mathrm{d}y_1\cdots\mathrm{d}y_m\\
+    F_{\bm X_1}(x_1)\cdots F_{\bm X_m}(x_m)
+    &amp;= P(\bm X_1\leqslant x_1)P(\bm X_2\leqslant x_2)\cdots P(\bm X_m\leqslant x_m)\\
+    &amp;= \int_{-\infty}^{x_1} f_{\bm X_1}(y_1)\mathrm{d}y_1\cdots \int_{-\infty}^{x_m} f_{\bm X_m}(y_m)\mathrm{d}y_m \\
+    &amp;= \int_{-\infty}^{x_1}\cdots \int_{-\infty}^{x_m} f_{\bm X_1}(y_1)\cdots f_{\bm X_m}(y_m)\mathrm{d}y_1\cdots\mathrm{d}y_m\\
+\end{aligned}
+\]</div>
+<p>根据密度函数表示推导分布函数表示，显然。从分布函数表示出发，可以得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp; \int_{-\infty}^{x_1}\cdots \int_{-\infty}^{x_m} \left[f_{\bm X_1}(y_1)\cdots f_{\bm X_m}(y_m) - f_{\bm X_1, \cdots, \bm X_m}(y_1, \cdots, y_m)\right] \mathrm{d}y_1\cdots\mathrm{d}y_m \\
+    = &amp; F_{\bm X_1}(x_1)\cdots F_{\bm X_m}(x_m) - F_{\bm X_1, \cdots, \bm X_m}(x_1, \cdots, x_m) = 0
+\end{aligned}
+\]</div>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x_1, \cdots, x_m\)</span><span class="heti-spacing"> </span></span>是任意的，所以<span><span class="heti-spacing"> </span><span class="arithmatex">\(f_{\bm X_1}(y_1)\cdots f_{\bm X_m}(y_m) = f_{\bm X_1, \cdots, \bm X_m}(y_1, \cdots, y_m)\)</span></span>。</p>
+</details>
+<p>如果相互独立，则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    F_{\bm X_1, \cdots, \bm X_m}(x_1, \cdots, x_m)
+    &amp;= P(\bm X_1\leqslant x_1, \cdots, \bm X_m\leqslant x_m)\\
+    &amp;= P(\bm X_1\leqslant x_1)P(\bm X_2\leqslant x_2)\cdots P(\bm X_m\leqslant x_m)\\
+    &amp;= F_{\bm X_1}(x_1)\cdots F_{\bm X_m}(x_m)
+\end{aligned}
+\]</div>
+<p>另一方面，若分布函数表示的式子成立，为了便于证明，假设存在密度函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(f_{\bm X_1, \cdots, \bm X_m}\)</span></span>，则可以从密度函数表示出发去得到随机变量相互独立的定义式。</p>
+<p>任取<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_i\in \mathcal{U}(\bm X_i), i=1, \cdots, m\)</span></span>。可知有<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_i=\bm X_i^{-1}(B_i)\)</span></span>，对于某个<span><span class="heti-spacing"> </span><span class="arithmatex">\(B_i\in \mathcal{B}\)</span></span>。则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    P(A_1\cap \cdots \cap A_m)
+    &amp;= P(\bm X_1\in B_1, \cdots, \bm X_m\in B_m)\\
+    &amp;= \int_{B_1\times \cdots \times B_m} f_{\bm X_1, \cdots, \bm X_m}(x_1, \cdots, x_m)\mathrm{d}x_1\cdots\mathrm{d}x_m\\
+    &amp;= \int_{B_1}\cdots \int_{B_m} f_{\bm X_1}(x_1)\cdots f_{\bm X_m}(x_m)\mathrm{d}x_1\cdots\mathrm{d}x_m\\
+    &amp;= \left(\int_{B_1} f_{\bm X_1}(x_1)\mathrm{d}x_1\right)\cdots \left(\int_{B_m} f_{\bm X_m}(x_m)\mathrm{d}x_m\right)\\
+    &amp;= P(X_1\in B_1)\cdots P(X_m\in B_m) \\
+    &amp;= P(A_1)P(A_2)\cdots P(A_m)
+\end{aligned}
+\]</div>
+<p>由此证明了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{U}(\bm X_1), \cdots, \mathcal{U}(\bm X_m)\)</span><span class="heti-spacing"> </span></span>相互独立，也就是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \cdots, \bm X_m\)</span><span class="heti-spacing"> </span></span>相互独立。</p>
+<blockquote>
+<p>严谨的证明应当从分布函数表示出发，推导随机变量相互独立的定义式，读者可以自己思考</p>
+</blockquote>
+</details>
+<h4 id="expectation-and-variannce-of-independent-random-variables">Expectation and Variannce of Independent Random Variables</h4>
+<p>独立随机变量的期望和方差具有很好的拆解性质。</p>
+<div class="admonition abstract">
+<p class="admonition-title">独立随机变量的性质</p>
+<p>对于相互独立的实值随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, X_2, \cdots, X_m\)</span></span>（此处都是一维的随机“变量”而不是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维的随机“向量”<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，有</p>
+<p><strong>(1)</strong> 期望的拆解性质：如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(\left| X_i \right|) &lt; \infty (i=1, \cdots, m)\)</span></span>，则有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(\left| X_1 \cdots X_m \right|)&lt;\infty\)</span></span>，且</p>
+<div class="arithmatex">\[
+\mathbb{E}(X_1\cdots X_m) = \mathbb{E}(X_1)\cdots \mathbb{E}(X_m)
+\]</div>
+<p><strong>(2)</strong> 方差的拆解性质：若<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathrm{Var}(X_i)&lt;\infty (i=1, \cdots, m)\)</span></span>，则有</p>
+<div class="arithmatex">\[
+\mathrm{Var}(X_1+\cdots + X_m) = \mathrm{Var}(X_1) + \cdots + \mathrm{Var}(X_m)
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p><strong>(1)</strong> 为了方便，不严谨地假定每个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_i\)</span><span class="heti-spacing"> </span></span>都有界且存在密度函数，则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}(X_1\cdots X_m)
+    &amp;= \int_{\mathbb{R}^n} x_1\cdots x_m f_{X_1, \cdots, X_m}(x_1, \cdots, x_m)\mathrm{d}x_1\cdots\mathrm{d}x_m\\
+    &amp;= \left(\int_{\mathbb{R}^n} x_1 f_{X_1}(x_1)\mathrm{d}x_1\right) \cdots \left(\int_{\mathbb{R}^n} x_m f_{X_m}(x_m)\mathrm{d}x_m\right)\\
+    &amp;= \mathbb{E}(X_1)\cdots \mathbb{E}(X_m)
+\end{aligned}
+\]</div>
+<blockquote>
+<p>实际上完全不需要加上有界和存在密度函数的假设，严谨的证明留给读者</p>
+</blockquote>
+<p><strong>(2)</strong> 使用归纳法，那么只需要证明<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m=2\)</span><span class="heti-spacing"> </span></span>的情况即可，从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m=k\)</span><span class="heti-spacing"> </span></span>推到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m=k+1\)</span><span class="heti-spacing"> </span></span>也只需要<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m=2\)</span><span class="heti-spacing"> </span></span>的情况。则有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathrm{Var}(X_1+X_2)
+    =&amp; \int_{\Omega} [ X_1+X_2 - \mathbb{E}(X_1) + \mathbb{E}(X_2)]^2\mathrm{d}P \\
+    =&amp; \int_{\Omega} \left[X_1-\mathbb{E}(X_1)\right]^2\mathrm{d}P + \int_{\Omega} \left[X_2-\mathbb{E}(X_2)\right]^2\mathrm{d}P \\
+    &amp;+ 2\int_{\Omega} [X_1-\mathbb{E}(X_1)][X_2-\mathbb{E}(X_2)]\mathrm{d}P \\
+    =&amp; \mathrm{Var}(X_1) + \mathrm{Var}(X_2) + 2\mathbb{E}[X_1-\mathbb{E}(X_1)][X_2-\mathbb{E}(X_2)] \\
+    =&amp; \mathrm{Var}(X_1) + \mathrm{Var}(X_2) + 2\underbrace{\mathbb{E}[X_1-\mathbb{E}(X_1)]}_{=0} \cdot \underbrace{\mathbb{E}[X_2-\mathbb{E}(X_2)]}_{=0} \\
+\end{aligned}
+\]</div>
+<p>从而得证。</p>
+</details>
+<h3 id="some-probabilistic-methods">Some Probabilistic Methods</h3>
+<h4 id="chebyshevs-inequality-and-borel-cantelli-lemma">Chebyshev's Inequality and Borel-Cantelli Lemma</h4>
+<div class="admonition abstract">
+<p class="admonition-title">Chebyshev's Inequality</p>
+<p>对于随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>和任意<span><span class="heti-spacing"> </span><span class="arithmatex">\(1\leqslant p &lt; \infty\)</span></span>，有</p>
+<div class="arithmatex">\[
+P(\left| \bm X \right|\geqslant \varepsilon) \leqslant \frac{\mathbb{E}(\left| \bm X \right|^p)}{\varepsilon^p},\quad \forall \varepsilon &gt; 0
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<div class="arithmatex">\[
+    \mathbb{E}[\left| \bm X \right|^p]
+    = \mathbb{E}[\underbrace{\left| \bm X \right|^p}_{\geqslant \varepsilon^p} \cdot \bm 1_{\left| \bm X \right|\geqslant \varepsilon} + \underbrace{\left| \bm X \right|^p \cdot \bm 1_{\left| \bm X \right|&lt; \varepsilon}}_{\geqslant 0}]
+    \geqslant \mathbb{E}[\varepsilon^p \cdot \bm 1_{\left| \bm X \right|\geqslant \varepsilon}]
+    = \varepsilon^p P(\left| \bm X \right|\geqslant \varepsilon)
+\]</div>
+</details>
+<p>常见的<span class="heti-skip"><span class="heti-spacing"> </span>Chebyshev<span class="heti-spacing"> </span></span>不等式的导出式取<span><span class="heti-spacing"> </span><span class="arithmatex">\(p=2\)</span></span>，且用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X - \mathbb{E}(\bm X)\)</span><span class="heti-spacing"> </span></span>替换<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span></span>，有</p>
+<div class="arithmatex">\[
+P(\left| \bm X - \mathbb{E}(\bm X) \right|\geqslant \varepsilon) \leqslant \frac{\mathrm{Var}(\bm X)}{\varepsilon^2}
+\]</div>
+<p>在介绍<span class="heti-skip"><span class="heti-spacing"> </span>Borel-Cantelli<span class="heti-spacing"> </span></span>引理之前，先介绍一下事件的上极限的概念，实际上就是集合的上极限。</p>
+<div class="admonition info">
+<p class="admonition-title">事件的上极限</p>
+<p>对于一系列事件<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_1, A_2, \cdots\)</span></span>，定义其上极限为</p>
+<div class="arithmatex">\[
+\limsup_{n\to\infty} A_n = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k
+:= \{\omega \in \Omega \mid \omega \in A_k \text{ for infinitely many } k\}
+\]</div>
+<p>称作<span><span class="heti-spacing"> </span>"<span class="arithmatex">\(A_n\)</span> infinitely often"</span>，简写作<span><span class="heti-spacing"> </span>"<span class="arithmatex">\(A_n\; i.o.\)</span>"</span>。</p>
+</div>
+<p>注意对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\in \limsup\limits_{n\to\infty} A_n\)</span></span>，<span><span class="arithmatex">\(\omega\)</span><span class="heti-spacing"> </span></span>需要在无穷多个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_k\)</span><span class="heti-spacing"> </span></span>中出现，这无穷多个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_k\)</span><span class="heti-spacing"> </span></span>可以是间歇的。</p>
+<div class="admonition abstract">
+<p class="admonition-title">Borel-Cantelli Lemma</p>
+<p>对于一系列事件<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_1, A_2, \cdots\)</span></span>，如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sum_{n=1}^{\infty} P(A_n) &lt; \infty\)</span></span>，则</p>
+<div class="arithmatex">\[
+P(A_n\; i.o.) = P(\limsup_{n\to\infty} A_n) = 0
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<div class="arithmatex">\[
+    P(\limsup_{n\to\infty} A_n)
+    = P\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k\right)
+    \leqslant P\left(\bigcup_{k=n}^{\infty} A_k\right)
+    \leqslant \sum_{k=n}^{\infty} P(A_k)
+    \to 0 \quad \text{as } n\to\infty
+\]</div>
+<p><span class="arithmatex">\(\sum_{n=1}^{\infty} P(A_n) &lt; \infty\)</span>，即该级数收敛，所以可以得到上面的余项和趋向于<span><span class="heti-spacing"> </span>0</span>。</p>
+</details>
+<blockquote>
+<p>如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\sum_{n=1}^{\infty} P(A_n) = \infty\)</span><span class="heti-spacing"> </span></span>且<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_n\)</span><span class="heti-spacing"> </span></span>两两独立<span><span class="heti-spacing"> </span>(pairwise independent)</span>，则有<span class="heti-skip"><span class="heti-spacing"> </span>Borel-Cantelli<span class="heti-spacing"> </span></span>第二引理结论：<span class="arithmatex">\(P(A_n\; i.o.) = 1\)</span></p>
+</blockquote>
+<p><span>Borel-Cantelli<span class="heti-spacing"> </span></span>引理可以简单地应用于对于随机变量依概率收敛的阐释，首先介绍依概率收敛的概念。</p>
+<div class="admonition info">
+<p class="admonition-title">依概率收敛<span><span class="heti-spacing"> </span>(convergence in probability)</span></p>
+<p>对于一系列随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, X_2, \cdots\)</span><span class="heti-spacing"> </span></span>和随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span></span>，如果对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall \varepsilon &gt; 0\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+\lim_{n\to\infty} P(\left| X_n - X \right| \geqslant \varepsilon) = 0
+\]</div>
+<p>则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_n\)</span><span class="heti-spacing"> </span></span>依概率收敛<span class="heti-skip"><span class="heti-spacing"> </span>(converges in probability)<span class="heti-spacing"> </span></span>到<span><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span></span>，记作<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_n \xrightarrow{P} X\)</span></span></p>
+</div>
+<p><span>Borel-Cantelli<span class="heti-spacing"> </span></span>引理可以用于证明如下和依概率收敛有关的定理。</p>
+<div class="admonition abstract">
+<p class="admonition-title">依概率收敛的性质</p>
+<p>对于一系列随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, X_2, \cdots\)</span><span class="heti-spacing"> </span></span>和随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span></span>，如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_k \xrightarrow{P} X\)</span></span>，则存在子序列<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{X_{k_j}\}_{j=1}^{\infty}\subseteq \{X_k\}_{k=1}^{\infty}\)</span><span class="heti-spacing"> </span></span>使得<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_{k_j}\)</span><span class="heti-spacing"> </span></span>几乎处处收敛到<span><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span></span>，即</p>
+<div class="arithmatex">\[
+    X_{k_j} \to X, \quad \text{a.s.}
+\]</div>
+<p>或者说，</p>
+<div class="arithmatex">\[
+    P(\lim_{j\to\infty} X_{k_j} = X) = 1
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>每给定正整数<span><span class="heti-spacing"> </span><span class="arithmatex">\(j\)</span></span>，总能选到一个足够大的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k_j\)</span><span class="heti-spacing"> </span></span>使得</p>
+<div class="arithmatex">\[
+P\left(\left| X_{k_j} - X \right| &gt; \frac{1}{j}\right) \leqslant \frac{1}{2^j}
+\]</div>
+<p>从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(j=1\)</span><span class="heti-spacing"> </span></span>开始选择<span><span class="heti-spacing"> </span><span class="arithmatex">\(k_j\)</span></span>，使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(k_1 &lt; k_2 &lt; \cdots\)</span></span>，因此<span><span class="heti-spacing"> </span><span class="arithmatex">\(k_j\to \infty (j\to \infty)\)</span></span>。随后定义事件</p>
+<div class="arithmatex">\[
+A_j := \left\{\omega \in \Omega :\; \left| X_{k_j}(\omega) - X(\omega) \right| &gt; \frac{1}{j}\right\}
+\]</div>
+<p>由于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sum P(A_j) \leqslant \sum \frac{1}{2^j} &lt; \infty\)</span></span>，根据<span class="heti-skip"><span class="heti-spacing"> </span>Borel-Cantelli<span class="heti-spacing"> </span></span>引理，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(A_j\; i.o.) = 0\)</span></span>。因此，对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall \omega \in \Omega\)</span></span>，存在一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(j_0\)</span><span class="heti-spacing"> </span></span>使得<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega \notin A_j\)</span><span class="heti-spacing"> </span></span>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall j\geqslant j_0\)</span><span class="heti-spacing"> </span></span>都成立，即</p>
+<div class="arithmatex">\[
+\left| X_{k_j}(\omega) - X(\omega) \right| \leqslant \frac{1}{j}, \quad \forall j\geqslant j_0
+\]</div>
+<p>从而得证。</p>
+</details>
+<h4 id="characteristic-functions">Characteristic Functions</h4>
+<p>特征函数是概率论中一个非常重要的工具，对于连续随机变量（存在密度函数）而言，它是密度函数的共轭<span class="heti-skip"><span class="heti-spacing"> </span>Fourier<span class="heti-spacing"> </span></span>变换（或者也可以认为进行了逆<span class="heti-skip"><span class="heti-spacing"> </span>Fourier<span class="heti-spacing"> </span></span>变换<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<div class="admonition info">
+<p class="admonition-title">特征函数<span><span class="heti-spacing"> </span>(characteristic functions)</span></p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span>-valued<span class="heti-spacing"> </span></span>随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span></span>，其特征函数定义为</p>
+<div class="arithmatex">\[
+\phi_{\bm X}(\lambda) = \mathbb{E}[e^{i\lambda\bm X}], \quad \lambda\in \mathbb{R}
+\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">一元高斯分布随机变量的特征函数</p>
+<p>对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(X\sim N(\mu, \sigma^2)\)</span></span>，其特征函数为</p>
+<div class="arithmatex">\[
+\phi_X(\lambda) = e^{i\mu\lambda - \frac{1}{2}\sigma^2\lambda^2}
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>首先有</p>
+<div class="arithmatex">\[
+    \phi_X(\lambda)
+    = \int_{-\infty}^{\infty} e^{i\lambda x} \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\mathrm{d}x
+    \xlongequal{y=\frac{x-\mu}{\sigma}} \frac{e^{i\mu \lambda}}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{i(\sigma\lambda) y} e^{-\frac{y^2}{2}}\mathrm{d}y
+\]</div>
+<p>容易得到有</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\infty} e^{i\lambda y} e^{-\frac{y^2}{2}}\mathrm{d}y = e^{-\frac{\lambda^2}{2}}\int_{-\infty}^{\infty} e^{-\frac{(y-i\lambda)^2}{2}}\mathrm{d}y
+\]</div>
+<p>将复平面上的积分路径从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{\operatorname{Im}(z)=-\lambda\}\)</span><span class="heti-spacing"> </span></span>改成实轴，得到有</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{\infty} e^{-\frac{(y-i\lambda)^2}{2}}\mathrm{d}y = \int_{-\infty}^{\infty} e^{-\frac{y^2}{2}}\mathrm{d}y = \sqrt{2\pi}
+\]</div>
+<p>因此可以得到</p>
+<div class="arithmatex">\[
+\phi_X(\lambda) = \frac{e^{i\mu \lambda}}{\sqrt{2\pi}} \cdot e^{-\frac{(\sigma\lambda)^2}{2}} \cdot \sqrt{2\pi}
+= e^{i\mu\lambda - \frac{1}{2}\sigma^2\lambda^2}
+\]</div>
+<blockquote>
+<p>这里直接计算了重要积分<span><span class="heti-spacing"> </span><span class="arithmatex">\(\displaystyle \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}}\mathrm{d}x = \sqrt{2\pi}\)</span></span></p>
+</blockquote>
+<details class="general">
+<summary>重要积分的计算</summary>
+<div class="arithmatex">\[
+\begin{aligned}
+\left(\int_{-\infty}^{+\infty}e^{-\frac{x^2}{2}}\mathrm dx\right)^2&amp;=\int_{-\infty}^{+\infty}e^{-\frac{y^2}{2}}\mathrm dy\int_{-\infty}^{+\infty}e^{-\frac{x^2}{2}}\mathrm dx\\
+&amp;=\iint\limits_{R^2}e^{-\frac{x^2+y^2}{2}}\mathrm dx\mathrm dy\\
+&amp;=\iint\limits_{R^2}e^{-\frac{\rho^2}{2}}\rho\mathrm d\rho\mathrm d\theta\\
+&amp;=\int_{0}^{2\pi}\mathrm d\theta\int_0^{+\infty}e^{-\frac{\rho^2}{2}}\rho\mathrm d\rho\\
+&amp;=\int_{0}^{2\pi}\mathrm d\theta\int_0^{+\infty}-e^{-\frac{\rho^2}{2}}\mathrm d(-\frac{\rho^2}{2})\\
+&amp;=2\pi
+\end{aligned}
+\]</div>
+<p>可得<span><span class="heti-spacing"> </span><span class="arithmatex">\(\displaystyle \int_{-\infty}^{+\infty}e^{-\frac{x^2}{2}}\mathrm dx=\sqrt{2\pi}\)</span></span></p>
+</details>
+</details>
+<ul>
+<li>如果对特征函数进行泰勒展开，会发现特征函数每一阶的系数其实就是原随机变量的各阶矩</li>
+<li>因此特征函数可以看成一个将随机变量的各阶矩串联起来的工具，包含了随机变量的大量特征（期望，方差，偏度，峰度等）</li>
+<li>同时，特征函数与函数的分布函数紧密联系，特征函数相同便意味着分布函数相同</li>
+</ul>
+<p>特征函数的以上特性将由如下形式化的性质进行表达：</p>
+<div class="admonition abstract">
+<p class="admonition-title">特征函数的性质</p>
+<p><strong>(1)</strong> 如果（多元）随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X_1, \cdots, \bm X_n\)</span><span class="heti-spacing"> </span></span>相互独立，则对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall \lambda \in \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+\phi_{\bm X_1+\cdots+\bm X_n}(\lambda) = \phi_{\bm X_1}(\lambda_1)\cdots \phi_{\bm X_n}(\lambda_n)
+\]</div>
+<p><strong>(2)</strong> 对于实值一元随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+\phi^{(k)}(0) = i^k \mathbb{E}(X^k)\quad \text{for } k=0, 1, 2, \cdots
+\]</div>
+<p><strong>(3)</strong> 如果（多元）随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm X\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm Y\)</span><span class="heti-spacing"> </span></span>有相同的特征函数，则<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>有相同的分布，即</p>
+<div class="arithmatex">\[
+\phi_{\bm X}(\lambda) = \phi_{\bm Y}(\lambda), \forall \lambda \quad\Rightarrow\quad F_{\bm X}(x) = F_{\bm Y}(x), \forall X
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p><strong>(1)</strong></p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \phi_{\bm X_1 + \cdots + \bm X_n}(\lambda)
+    &amp;= \mathbb{E}[e^{i\lambda(\bm X_1 + \cdots + \bm X_n)}] \\
+    &amp;= \mathbb{E}[e^{i\lambda_1\bm X_1} \cdots e^{i\lambda_n\bm X_n}] \\
+    &amp;= \mathbb{E}[e^{i\lambda_1\bm X_1}] \cdots \mathbb{E}[e^{i\lambda_n\bm X_n}] \\
+    &amp;= \phi_{\bm X_1}(\lambda_1) \cdots \phi_{\bm X_n}(\lambda_n)
+\end{aligned}
+\]</div>
+<p><strong>(2)</strong> </p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \phi^{(k)}(0)
+    &amp;= \left.\frac{\mathrm{d}^k}{\mathrm{d}\lambda^k}\phi(\lambda)\right|_{\lambda=0} \\
+    &amp;= \left.\frac{\mathrm{d}^k}{\mathrm{d}\lambda^k}\mathbb{E}[e^{i\lambda X}]\right|_{\lambda=0} \\
+    &amp;= \left.\frac{\mathrm{d}^k}{\mathrm{d}\lambda^k}\int_{\mathbb{R}} e^{i\lambda x} \mathrm{d}F_{X}\right|_{\lambda=0} \\
+    &amp;= \left.\int_{\mathbb{R}} \frac{\mathrm{d}^k}{\mathrm{d}\lambda^k} e^{i\lambda x} \mathrm{d}F_{X}\right|_{\lambda=0} \\
+    &amp;= \int_{\mathbb{R}} i^k x^k \mathrm{d}F_{X} \\
+    &amp;= i^k \mathbb{E}(X^k)
+\end{aligned}
+\]</div>
+<p><strong>(3)</strong> 由特征函数的定义，假定密度函数存在，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \phi_{\bm X}(\lambda) = \phi_{\bm Y}(\lambda)
+    &amp;\Rightarrow \mathbb{E}[e^{i\lambda\bm X}] = \mathbb{E}[e^{i\lambda\bm Y}] \\
+    &amp;\Rightarrow \int_{\mathbb{R}^n} e^{i\lambda\bm x} f_{\bm X}(\bm x)\mathrm{d}\bm x = \int_{\mathbb{R}^n} e^{i\lambda\bm y} f_{\bm Y}(\bm y)\mathrm{d}\bm y \\
+    &amp;\Rightarrow \int_{\mathbb{R}^n} e^{i\lambda\bm x} [f_{\bm X}(\bm x) - f_{\bm Y}(\bm x)]\mathrm{d}\bm x = 0
+\end{aligned}
+\]</div>
+<p>对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall \lambda\)</span><span class="heti-spacing"> </span></span>都成立，可以感觉到<span><span class="heti-spacing"> </span><span class="arithmatex">\(f_{\bm X}(\bm x) - f_{\bm Y}(\bm x)=0\)</span></span>（不太严谨）</p>
+<blockquote>
+<p>严谨的证明可以参考<a href="https://epubs.siam.org/doi/book/10.1137/1.9781611971286"><span><span class="heti-spacing"> </span>L. Breiman, Probability, Addison-Wesley Publishing Company, 1968</span></a></p>
+</blockquote>
+</details>
+<p>特征函数的性质还有很多，比如特征函数的共轭性质，特征函数的收敛性质等等，这里不再一一列举。</p>
+<div class="admonition example">
+<p class="admonition-title">特征函数的应用</p>
+<p>可以用于证明<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\sim N(\mu_1, \sigma_1^2)\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\sim N(\mu_2, \sigma_2^2)\)</span><span class="heti-spacing"> </span></span>可以得到</p>
+<div class="arithmatex">\[
+X+Y \sim N(\mu_1+\mu_2, \sigma_1^2+\sigma_2^2)
+\]</div>
+<p>只需要计算其特征函数就可以证明。</p>
+<div class="arithmatex">\[
+\phi_{X+Y}(\lambda) = \phi_X(\lambda)\phi_Y(\lambda) = e^{i\mu_1\lambda - \frac{1}{2}\sigma_1^2\lambda^2} e^{i\mu_2\lambda - \frac{1}{2}\sigma_2^2\lambda^2} = e^{i(\mu_1+\mu_2)\lambda - \frac{1}{2}(\sigma_1^2+\sigma_2^2)\lambda^2}
+\]</div>
+</div>
+<h3 id="law-of-large-numbers-central-limit-theorem">Law of Large Numbers, Central Limit Theorem</h3>
+<p>如果一系列随机变量具有相同的分布函数，称其同分布<span><span class="heti-spacing"> </span>(identically distributed)</span>；如果这些随机变量还是相互独立的，称其独立同分布<span><span class="heti-spacing"> </span>(independent and identically distributed, i.i.d.)</span>。</p>
+<blockquote>
+<p>同分布说明这些随机变量含有相同的概率信息。独立同分布，则说明可以用这些随机变量表示<strong>重复独立实验</strong>的结果。</p>
+</blockquote>
+<h4 id="strong-law-of-large-numbers">Strong Law of Large Numbers</h4>
+<p>强大数律说明，随着重复独立实验的不断进行，所有实验结果的均值将<span class="heti-skip"><span class="heti-spacing"> </span>almost surely<span class="heti-spacing"> </span></span>趋向于期望。也就是说，重复独立实验的次数足够多时，将能够近似得到期望的值。</p>
+<div class="admonition abstract">
+<p class="admonition-title">强大数律</p>
+<p>对于一系列独立同分布的<span class="heti-skip"><span class="heti-spacing"> </span>Lebesgue<span class="heti-spacing"> </span></span>可积随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, X_2, \cdots\)</span></span>，如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(m:=\mathbb{E}(\left| X_i \right|) &lt; \infty\)</span></span>，则有</p>
+<div class="arithmatex">\[
+P\left(\lim_{n\to\infty} \frac{X_1 + \cdots + X_n}{n} = m\right) = 1
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>首先建立所需要的几个假设：</p>
+<ol>
+<li>假设这些随机变量都是实值的，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_i: \Omega\to \mathbb{R}\)</span></span></li>
+<li>为了简化，假设<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X_i^4)&lt;\infty\)</span>, <span class="arithmatex">\(i=1, \cdots\)</span></span></li>
+<li>假设<span><span class="heti-spacing"> </span><span class="arithmatex">\(m=0\)</span></span>，如果非零，只需要用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_i - m\)</span><span class="heti-spacing"> </span></span>替换<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_i\)</span><span class="heti-spacing"> </span></span>即可</li>
+</ol>
+<p>考虑</p>
+<div class="arithmatex">\[
+    \mathbb{E}\left[
+        \left( \sum_{i=1}^n X_i \right)^4
+    \right]
+    = \sum_{i, j, k, l=1}^n \mathbb{E}(X_iX_jX_kX_l)
+\]</div>
+<p>在交叉项中，只要有一项漏出来，就会导致值变为<span><span class="heti-spacing"> </span>0</span>，即若存在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(i\)</span><span class="heti-spacing"> </span></span>同时不等于<span><span class="heti-spacing"> </span><span class="arithmatex">\(j, k, l\)</span></span>，根据独立性就有</p>
+<div class="arithmatex">\[
+\mathbb{E}(X_iX_jX_kX_l) = \mathbb{E}(X_i)\mathbb{E}(X_jX_kX_l) = 0
+\]</div>
+<p>因此就有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}\left[
+        \left( \sum_{i=1}^n X_i \right)^4
+    \right]
+    &amp;= \sum_{i=1}^n \mathbb{E}(X_i^4) + 3\sum_{\substack{i, j=1 \\ i\neq j}}^n \mathbb{E}(X_i^2X_j^2) \\
+    &amp;= n\mathbb{E}(X_1^4) + 3(n^2-n)\mathbb{E}(X_1^2)^2 = O(n^2)
+    &amp;\leqslant n^2 C \quad \text{for some } C&gt;0
+\end{aligned}
+\]</div>
+<blockquote>
+<p>系数<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>可以从组合的角度想：给定<span><span class="heti-spacing"> </span><span class="arithmatex">\(i\)</span></span>，从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(j, k, l\)</span><span class="heti-spacing"> </span></span>中选择一个与之相同，剩下两个再组对相同</p>
+</blockquote>
+<p>对给定的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\varepsilon &gt;0\)</span></span>，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    P\left(\left| \frac{X_1 + \cdots + X_n}{n} \right| \geqslant \varepsilon\right)
+    &amp;= P\left(\left| \sum_{i=1}^n X_i \right| \geqslant n\varepsilon\right) \\
+    &amp;\leqslant \frac{1}{(n\varepsilon)^4} \mathbb{E}\left[
+        \left( \sum_{i=1}^n X_i \right)^4
+    \right] &amp; \text{(Chebyshev's Inequality)}\\
+    &amp;\leqslant \frac{C}{\varepsilon^4n^2}
+\end{aligned}
+\]</div>
+<p>设<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_n=\{\omega \in \Omega :\; |(X_1(\omega) + \cdots + X_n(\omega)) / n|\geqslant \varepsilon\}\)</span></span>，于是就有</p>
+<div class="arithmatex">\[
+    \sum P(A_n) \leqslant \sum \frac{C}{\varepsilon^4n^2} &lt; \infty
+\]</div>
+<p>根据<span class="heti-skip"><span class="heti-spacing"> </span>Borel-Cantelli<span class="heti-spacing"> </span></span>引理，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(A_n\; i.o.) = 0\)</span></span>。再设</p>
+<div class="arithmatex">\[
+    B_k := \left\{\omega \in \Omega :\; \limsup_{n\to\infty} \frac{X_1(\omega) + \cdots + X_n(\omega)}{n} \geqslant \frac{1}{k}\right\}
+\]</div>
+<p>其实就是令<span><span class="heti-spacing"> </span><span class="arithmatex">\(\varepsilon = 1/k\)</span></span>，总有<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(B_k)=0\)</span></span>。记<span><span class="heti-spacing"> </span><span class="arithmatex">\(B=\lim\limits_{k\to\infty} B_k=\bigcup\limits_{k=1}^{\infty} B_k\)</span></span>，则有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P(B)=0\)</span><span class="heti-spacing"> </span></span>且</p>
+<div class="arithmatex">\[
+\lim_{n\to \infty} \frac{X_1(\omega) + \cdots + X_n(\omega)}{n} = 0,\quad \forall \omega \notin B
+\]</div>
+<p>由此得证。</p>
+<blockquote>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega \in B_k\)</span><span class="heti-spacing"> </span></span>可以推出<span><span class="heti-spacing"> </span><span class="arithmatex">\(\omega \in B_{k+p}\)</span></span>，因此有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\limsup B_k = \liminf B_k = \bigcup\limits_{k=1}^{\infty} B_k\)</span></span>，即存在<span><span class="heti-spacing"> </span><span class="arithmatex">\(\lim B_k\)</span></span></p>
+</blockquote>
+</details>
+<h4 id="central-limit-theorem">Central Limit Theorem</h4>
+<p><span>Laplace, Demovire<span class="heti-spacing"> </span></span>曾对二项分布独立同分布随机变量的中心极限定理进行了研究，从比较形象的角度去看，可以解释在给定的一个<span class="heti-skip"><span class="heti-spacing"> </span>bound<span class="heti-spacing"> </span></span>之内所有实验结果的和相对于均值的一个波动。在这里略去<span class="heti-skip"><span class="heti-spacing"> </span>Laplace-Demovire<span class="heti-spacing"> </span></span>定理这一中心极限定理的特殊情形，直接给出更强的<span><span class="heti-spacing"> </span>Lindeberg</span>–<span>Lévy<span class="heti-spacing"> </span></span>中心极限定理形式。</p>
+<div class="admonition abstract">
+<p class="admonition-title">Lindeberg–<span>Lévy<span class="heti-spacing"> </span></span>中心极限定理</p>
+<p>对于一系列独立同分布的实值随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, X_2, \cdots\)</span></span>，设</p>
+<div class="arithmatex">\[
+    E(X_i) = \mu, \quad \mathrm{Var}(X_i) = \sigma^2 &lt; \infty,\quad \text{for } i=1, 2, \cdots
+\]</div>
+<p>令<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_n=X_1+\cdots+X_n\)</span></span>，则对于任意实数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(-\infty &lt; a &lt; b &lt; +\infty\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+    \lim_{n\to \infty} P(a\leqslant \frac{S_n - n\mu}{\sqrt{n}\sigma}\leqslant b)
+    = \frac{1}{\sqrt{2\pi}} \int_a^b e^{-\frac{x^2}{2}} \mathrm{d}x
+\]</div>
+</div>
+<details class="general">
+<summary>Outline of Proof</summary>
+<p>简单地假设<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mu=0, \sigma=1\)</span></span>，如果不是如此则可以先缩放。这样就会有特征函数</p>
+<div class="arithmatex">\[
+\phi_{\frac{S_n}{\sqrt{n}}}(\lambda) = \prod_{i=1}^n\phi_{\frac{X_i}{\sqrt{n}}}(\lambda)
+=\left[\phi_{\frac{X_1}{\sqrt{n}}}(\lambda)\right]^n
+=\left[\phi_{X_1}\left(\frac{\lambda}{\sqrt{n}}\right)\right]^n
+,\quad \forall \lambda\in \mathbb{R}
+\]</div>
+<blockquote>
+<p><span class="arithmatex">\(\phi_{\frac{X_i}{\sqrt{n}}}(\lambda) = \mathbb{E}[e^{i\lambda\frac{X_i}{\sqrt{n}}}] = \mathbb{E}[e^{i\frac{\lambda}{\sqrt{n}} X_i}] = \phi_{X_i}(\frac{\lambda}{\sqrt{n}})\)</span></p>
+</blockquote>
+<p>简写<span><span class="heti-spacing"> </span><span class="arithmatex">\(\phi = \phi_{X_1}\)</span></span>，对其进行泰勒展开到二阶小项。</p>
+<div class="arithmatex">\[
+\phi(\mu) = \phi(0) + \phi'(0)\mu + \frac{1}{2}\phi''(0)\mu^2 + o(\mu^2),\quad \mu \to 0^+
+\]</div>
+<p>由于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(0)=1\)</span>, <span class="arithmatex">\(\phi'(0)=i\mathbb{E}(X_1)=0\)</span>, <span class="arithmatex">\(\phi''(0)=i^2\mathbb{E}(X_1^2)=-(\mathrm{Var}(X_1) + [E(X_1)]^2)=-1\)</span></span>，令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mu=\frac{\lambda}{\sqrt{n}}\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+    \phi_{X_1}\left( \frac{\lambda}{\sqrt{n}} \right)
+    = 1 - \frac{\lambda^2}{2n} + o\left( \frac{\lambda^2}{n} \right)
+\]</div>
+<p>这样就</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \phi_{\frac{S_n}{\sqrt{n}}}(\lambda)
+    &amp;= \left[ 1 - \frac{\lambda^2}{2n} + o\left( \frac{\lambda^2}{n} \right) \right]^n \\
+    &amp;= e^{n\ln\left[1 - \frac{\lambda^2}{2n} + o\left( \frac{\lambda^2}{n} \right)\right]} \\
+    &amp;\xlongequal{x=\frac{1}{n} \to 0^+} \exp\left\{\frac{\ln\left[1 - \frac{1}{2}\lambda^2x + o\left( \lambda^2x \right)\right]}{x}\right\} \\
+    &amp;= \exp\left\{\frac{\left(-\frac{1}{2}\lambda^2x + o\left( \lambda^2x \right)\right)+o(x)}{x}\right\} \to e^{-\frac{\lambda^2}{2}}
+\end{aligned}
+\]</div>
+<p>由此可知<span><span class="heti-spacing"> </span><span class="arithmatex">\(\frac{S_n}{\sqrt{n}} \xrightarrow{d} N(0, 1)\)</span></span>，<span><span class="arithmatex">\(\xrightarrow{d}\)</span><span class="heti-spacing"> </span></span>表示依分布收敛。</p>
+</details>
+<p>可以注意到，对于所构建的变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(\displaystyle \frac{S_n - n\mu}{\sqrt{n}{\sigma}}\)</span></span>，当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>足够大时，其区间内的分布概率趋向于单位高斯分布在同一区间内的分布概率，即该变量<strong>依分布收敛于单位高斯分布</strong>。</p>
+<blockquote>
+<p>中心极限定理<span class="heti-skip"><span class="heti-spacing"> </span>(CLT)<span class="heti-spacing"> </span></span>还有许多更强或可能更弱的形式，比如比较有名的<span><span class="heti-spacing"> </span>Lyapunov CLT</span>，<span>Lindeberg CLT<span class="heti-spacing"> </span></span>等等，可以参考<a href="https://en.wikipedia.org/wiki/Central_limit_theorem"><span class="heti-skip"><span class="heti-spacing"> </span>Central limit theorem - Wikipedia<span class="heti-spacing"> </span></span></a>了解更多。</p>
+</blockquote>
+<h3 id="conditional-expectation">Conditional Expectation</h3>
+<p>在这里，我们希望关注的是以<strong>随机变量</strong> <span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>为条件，随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>的期望<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X \mid Y)\)</span></span>。这样的期望是相对比较抽象的，因为大家比较熟悉的期望是以事件<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>为条件的期望<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X \mid B)\)</span></span>：</p>
+<div class="arithmatex">\[
+\mathbb{E}(X \mid B) = \frac{1}{P(B)} \int_B X\mathrm{d} P
+\]</div>
+<p>但是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>的定义方式不是显然的，因此首先需要寻找定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>的方式，然后用直观的方式进行解释。</p>
+<h4 id="approaches-to-conditional-expectation">Approaches to Conditional Expectation</h4>
+<p>从一个简单的例子出发，可以更好地理解为什么要按后面的方法定义<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span></span>。</p>
+<div class="admonition example">
+<p class="admonition-title">Simple Example</p>
+<p>在概率空间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega, \mathcal{U}, P)\)</span><span class="heti-spacing"> </span></span>上定义简单随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(Y=\sum_{i=1}^m a_i\chi_{A_i}\)</span></span>（请读者回忆前面提过的简单函数<span class="heti-skip"><span class="heti-spacing"> </span>simple function<span class="heti-spacing"> </span></span>的定义<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并且让<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_1, \cdots, A_m\)</span><span class="heti-spacing"> </span></span>构成<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega\)</span><span class="heti-spacing"> </span></span>的一个划分（即<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\cup A_i = \Omega\)</span><span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_i\cap A_j = \emptyset\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，最后再让<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a_i\)</span><span class="heti-spacing"> </span></span>各不相同，则有</p>
+<div class="arithmatex">\[
+    Y(\omega) = \begin{cases}
+        a_1, &amp;        &amp;\omega \in A_1 \\
+        a_2, &amp;        &amp;\omega \in A_2 \\
+             &amp; \vdots &amp; \\
+        a_m, &amp;        &amp;\omega \in A_m
+    \end{cases}
+\]</div>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a_i\)</span><span class="heti-spacing"> </span></span>各不相同，根据<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y(\omega)\)</span><span class="heti-spacing"> </span></span>的值可以推知<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\)</span><span class="heti-spacing"> </span></span>在哪一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_i\)</span><span class="heti-spacing"> </span></span>之中，这样我们对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\omega)\)</span><span class="heti-spacing"> </span></span>的估计自然就是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid A_i)\)</span><span class="heti-spacing"> </span></span>了。于是有</p>
+<div class="arithmatex">\[
+\mathbb{E}(X\mid Y) = \sum_{i=1}^m \mathbb{E}(X\mid A_i)\cdot \chi_{A_i} = 
+\begin{cases}
+    \mathbb{E}(X\mid A_1), &amp;        &amp;\omega \in A_1 \\
+    \mathbb{E}(X\mid A_2), &amp;        &amp;\omega \in A_2 \\
+                           &amp; \vdots &amp; \\
+    \mathbb{E}(X\mid A_m), &amp;        &amp;\omega \in A_m
+\end{cases}
+\]</div>
+</div>
+<p>在这个例子中，我们需要注意以下三点：</p>
+<ul>
+<li><span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>是一个随机变量，而不是一个常数，这和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid B)\)</span><span class="heti-spacing"> </span></span>不同</li>
+<li><span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{U}(Y)\)</span>-measurable<span class="heti-spacing"> </span></span>的，即在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>的逆像集上定义</li>
+<li><span><span class="arithmatex">\(\int_A X\mathrm{d}P = \int_A \mathbb{E}(X\mid Y)\mathrm{d}P\)</span><span class="heti-spacing"> </span></span>对于任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\in \mathcal{U}(Y)\)</span><span class="heti-spacing"> </span></span>都成立</li>
+</ul>
+<blockquote>
+<p>理解第三条性质，在任取的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>的某个逆像事件<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\)</span><span class="heti-spacing"> </span></span>之下做概率积分，可以理解为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>相对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>更“平缓”了，但是最后积分累积起来的结果是一样的，也就是期望所具有的“均值”的概念</p>
+</blockquote>
+<p>于是，将注意到的性质作为对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>的定义：</p>
+<div class="admonition info">
+<p class="admonition-title">以随机变量为条件的条件期望</p>
+<p>令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X, Y\)</span><span class="heti-spacing"> </span></span>都定义于同一概率空间，则给定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>的条件下<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>的条件期望是满足以下条件的所有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\mathcal{U}(Y)\)</span>-measurable<span class="heti-spacing"> </span></span>的随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(Z\)</span></span>：</p>
+<div class="arithmatex">\[
+\int_A X\mathrm{d}P = \int_A Z\mathrm{d}P, \quad \forall A\in \mathcal{U}(Y)
+\]</div>
+</div>
+<blockquote>
+<p>可以证明，除去一系列概率测度为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的集合外，<span><span class="arithmatex">\(Z\)</span><span class="heti-spacing"> </span></span>具有存在唯一性。在后面<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X \mid \mathcal{V})\)</span><span class="heti-spacing"> </span></span>的定义下，由于有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X \mid Y) = \mathbb{E}(X \mid \mathcal{U}(Y))\)</span></span>，可以通过<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{E}(X \mid \mathcal{V})\)</span><span class="heti-spacing"> </span></span>的存在唯一性证明这一点。然而遗憾的是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{E}(X \mid \mathcal{V})\)</span><span class="heti-spacing"> </span></span>的存在唯一性的证明需要用到一些进阶的测度论概念，在书中被略去了，因此这里的详细证明如果读者感兴趣可以自己探索。</p>
+</blockquote>
+<p>在理解条件期望<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>的过程中，可以采用代数和几何的两个视角。</p>
+<p><strong>从代数视角出发</strong>，我们首先将关注点从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span><span class="heti-spacing"> </span></span>转移到<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span></span>，<span><span class="arithmatex">\(\mathcal{V}=\mathcal{U}(Y)\)</span><span class="heti-spacing"> </span></span>是由<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>生成的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span>-algebra</span>。将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>定义如下<span><span class="heti-spacing"> </span>.</span></p>
+<div class="admonition info">
+<p class="admonition-title">以<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span>-algebra<span class="heti-spacing"> </span></span>为条件的条件期望</p>
+<p>给定概率空间<span><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega, \mathcal{U}, P)\)</span></span>，对于任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span>-algebra <span class="arithmatex">\(\mathcal{V}\subseteq \mathcal{U}\)</span><span class="heti-spacing"> </span></span>和可积随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span></span>，定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>为任何满足如下两个条件的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Omega\)</span><span class="heti-spacing"> </span></span>上的随机变量：</p>
+<ul>
+<li><span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span>-measurable<span class="heti-spacing"> </span></span>的</li>
+<li><span class="arithmatex">\(\int_A X\mathrm{d}P=\int_A \mathbb{E}(X\mid\mathcal{V})\mathrm{d}P\)</span>, <span class="arithmatex">\(\forall A\in \mathcal{V}\)</span></li>
+</ul>
+</div>
+<blockquote>
+<p>第一条要求<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>必须利用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span><span class="heti-spacing"> </span></span>的信息构建，第二条则要求<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>在关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span><span class="heti-spacing"> </span></span>上的事件的积分上是一致的。</p>
+</blockquote>
+<p><span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>可以用来代表<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid Y)\)</span></span>，容易验证如下事实：</p>
+<ul>
+<li><span class="arithmatex">\(\mathbb{E}(X\mid Y)=\mathbb{E}(X\mid\mathcal{V})\)</span></li>
+<li><span class="arithmatex">\(\mathbb{E}(\mathbb{E}(X\mid\mathcal{V}))=\mathbb{E}(X)\)</span></li>
+<li><span class="arithmatex">\(\mathbb{E}(X)=\mathbb{E}(X\mid\{\emptyset, \Omega\})\)</span>, </li>
+</ul>
+<div style="text-align:center;">
+<img alt="conditional_expectation_proj" src="../../../imgs/Intro2SDE/conditional_expectation_proj.png" style="zoom:30%;"/>
+</div>
+<p><strong>从几何视角出发</strong>，可以证明<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V:=L^2(\Omega, \mathcal{V})\)</span><span class="heti-spacing"> </span></span>这一线性空间中的<strong>投影</strong>就是<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(X\mid\mathcal{V})\)</span></span>，即</p>
+<div class="arithmatex">\[
+\mathbb{E}(X\mid\mathcal{V}) = \mathop{\arg\min}\limits_{Y\in V}\| Y - X \|^2
+\]</div>
+<p><span><span class="arithmatex">\(L^2(\Omega, \mathcal{V})\)</span><span class="heti-spacing"> </span></span>意为包含所有<span class="heti-skip"><span class="heti-spacing"> </span>2-<span class="heti-spacing"> </span></span>范数有限的实值<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span>-measurable<span class="heti-spacing"> </span></span>随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y\)</span><span class="heti-spacing"> </span></span>的线性空间，其中<span class="heti-skip"><span class="heti-spacing"> </span>2-<span class="heti-spacing"> </span></span>范数定义为</p>
+<div class="arithmatex">\[
+\|Y\| := \left(\int_{\Omega} Y^2 \mathrm{d}P \right)^{\frac{1}{2}} &lt; \infty
+\]</div>
+<p>该<span class="heti-skip"><span class="heti-spacing"> </span>2-<span class="heti-spacing"> </span></span>范数是相对于如下<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L^2(\Omega, \mathcal{V})\)</span><span class="heti-spacing"> </span></span>上的内积而言的：<span class="arithmatex">\(\forall X, Y\in L^2(\Omega, \mathcal{V})\)</span>，有</p>
+<div class="arithmatex">\[
+(X, Y) := \int_{\Omega} XY \mathrm{d}P = \mathbb{E}(XY)
+\]</div>
+<p>可以注意到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V\)</span><span class="heti-spacing"> </span></span>只是在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span><span class="heti-spacing"> </span></span>的基础上附加了度量而已，基本可以等同起来看。</p>
+<h4 id="properties">Properties</h4>
+<div class="admonition abstract">
+<p class="admonition-title">条件期望的性质</p>
+<p><strong>(1)</strong> 对于常数<span><span class="heti-spacing"> </span><span class="arithmatex">\(a, b\)</span></span>，</p>
+<div class="arithmatex">\[
+    E(aX+bY\mid\mathcal{V})=aE(X\mid\mathcal{V})+bE(Y\mid\mathcal{V}) \quad a.s.
+\]</div>
+<p><strong>(2)</strong> 若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span>-measurable<span class="heti-spacing"> </span></span>的，则</p>
+<div class="arithmatex">\[
+    E(X\mid\mathcal{V})=X \quad a.s.
+\]</div>
+<p><strong>(3)</strong> 若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span>-measurable<span class="heti-spacing"> </span></span>的且<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(XY\)</span><span class="heti-spacing"> </span></span>可积，则</p>
+<div class="arithmatex">\[
+    E(XY\mid\mathcal{V})=XE(Y\mid\mathcal{V}) \quad a.s.
+\]</div>
+<p><strong>(4)</strong> 若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X\)</span><span class="heti-spacing"> </span></span>独立于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{V}\)</span></span>，则</p>
+<div class="arithmatex">\[
+    E(X\mid\mathcal{V})=E(X) \quad a.s.
+\]</div>
+<p><strong>(5)</strong> 若<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{W}\subseteq\mathcal{V}\)</span></span>，则</p>
+<div class="arithmatex">\[
+    E(X\mid\mathcal{V})\leq E(Y\mid\mathcal{V}) \quad a.s.
+\]</div>
+<p><strong>(6)</strong> <span class="arithmatex">\(X\leqslant Y\; a.s. \Rightarrow\)</span></p>
+<div class="arithmatex">\[
+    E(X\mid\mathcal{W})=E(E(X\mid\mathcal{V})\mid\mathcal{W})=E(E(X\mid\mathcal{W})\mid\mathcal{V}) \quad a.s.
+\]</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">留作习题证明略</p>
+</div>
+<p>另外，原始的期望存在琴生不等式，对于条件期望也存在琴生不等式。</p>
+<div class="admonition abstract">
+<p class="admonition-title">条件琴生不等式<span><span class="heti-spacing"> </span>(Conditional Jensen Inequality)</span></p>
+<p>给定凸函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Phi: \mathbb{R}\to \mathbb{R}\)</span></span>，且<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(|\Phi(X)|)&lt;\infty\)</span></span>，有</p>
+<div class="arithmatex">\[
+\Phi (\mathbb{E} (X\mid \mathcal{V})) = \mathbb{E} ( \Phi (X) \mid \mathcal{V})
+\]</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">留作习题证明略</p>
+</div>
+<h3 id="martingales">Martingales</h3>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y_1, Y_2, \cdots\)</span><span class="heti-spacing"> </span></span>是一列独立实值随机变量（不一定同分布<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，满足</p>
+<div class="arithmatex">\[
+\mathbb{E}(Y_i) = 0,\quad i = 1, 2, \cdots
+\]</div>
+<p>定义<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_n = Y_1 + \cdots + Y_n\)</span></span>，给定<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_1, \cdots, S_n\)</span></span>，现在希望预测<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_{n+k}\)</span></span>，有条件期望</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}(S_{n+k}\mid S_1, \cdots, S_n)
+    &amp;= \underbrace{\mathbb{E}(S_n\mid S_1, \cdots, S_n)}_{\text{given }S_1, \cdots, S_n}
+        + \underbrace{\mathbb{E}(Y_{n+1}+\cdots+Y_{n+k}\mid S_1, \cdots, S_n)}_{Y_{n+t} \text{ independent of }S_1, \cdots, S_n} \\
+    &amp;= S_n + \mathbb{E}(Y_{n+1} + \cdots + Y_{n+k}) \\
+    &amp;= S_n
+\end{aligned}
+\]</div>
+<p>可知对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall k\geqslant 1\)</span></span>，对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_{n+k}\)</span><span class="heti-spacing"> </span></span>的最佳估计都是<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_n\)</span></span>。这里可以认为描述了一个“公平” <span>(fair)<span class="heti-spacing"> </span></span>的赌博游戏，<span><span class="arithmatex">\(Y_i\)</span><span class="heti-spacing"> </span></span>是每局的收益，从此刻<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="arithmatex">\(n\)</span>)<span class="heti-spacing"> </span></span>望未来，未来的收益期望始终等于现在的收益。这里的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{S_n\}\)</span><span class="heti-spacing"> </span></span>就是一种离散鞅，描述的未来期望如直线一般前进。</p>
+<div class="admonition info">
+<p class="admonition-title">离散鞅<span><span class="heti-spacing"> </span>(discrete martingale)</span></p>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_1, X_2, \cdots\)</span><span class="heti-spacing"> </span></span>是一列实值随机变量，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(|X_i|)&lt;\infty (i=1, 2, \cdots)\)</span></span>，如果有</p>
+<div class="arithmatex">\[
+\mathbb{E}(X_{n+1}\mid X_1, \cdots, X_n) = X_n \quad a.s., \quad n=1, 2, \cdots
+\]</div>
+<p>我们就称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{X_i\}_{i=1}^{\infty}\)</span><span class="heti-spacing"> </span></span>是一个（离散）鞅，即<span><span class="heti-spacing"> </span>(discrete) martingale</span>。</p>
+</div>
+<p>引入连续时间<span><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span></span>，就可以在连续的随机过程的意义上定义连续的鞅。</p>
+<div class="admonition info">
+<p class="admonition-title">history</p>
+<p>令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>为实值随机过程，则不正式地定义生成<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sigma\)</span>-algebra</span></p>
+<div class="arithmatex">\[
+\mathcal{U}(t)L=\mathcal{U}(X(s)\mid 0\leqslant s\leqslant t)
+\]</div>
+<p>为直到时间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>的历史信息<span><span class="heti-spacing"> </span>(history)</span>。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">鞅<span><span class="heti-spacing"> </span>(martingale)</span></p>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>是连续时间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\geqslant 0\)</span><span class="heti-spacing"> </span></span>的实值随机过程，且满足<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(|X(t)|)&lt;\infty\)</span>, <span class="arithmatex">\(\forall t\geqslant 0\)</span></span>。</p>
+<p><strong>(1)</strong> 如果有</p>
+<div class="arithmatex">\[
+X(s) = \mathbb{E}(X(t)\mid \mathcal{U}(s)) \quad a.s., \quad \forall t\geqslant s \geqslant 0
+\]</div>
+<p>则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>是一个鞅<span><span class="heti-spacing"> </span>(martingale)</span>。</p>
+<p><strong>(2)</strong> 如果有</p>
+<div class="arithmatex">\[
+X(s) \leqslant \mathbb{E}(X(t)\mid \mathcal{U}(s)) \quad a.s., \quad \forall t\geqslant s \geqslant 0
+\]</div>
+<p>则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>是一个下鞅<span><span class="heti-spacing"> </span>(submartingale)</span>。</p>
+<blockquote>
+<p>同理可知上鞅<span class="heti-skip"><span class="heti-spacing"> </span>(supmartingale)<span class="heti-spacing"> </span></span>只需要把下鞅定义式中的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\leqslant\)</span><span class="heti-spacing"> </span></span>改成<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\geqslant\)</span><span class="heti-spacing"> </span></span>就行。</p>
+</blockquote>
+</div>
+<div class="admonition example">
+<p class="admonition-title">一维布朗运动</p>
+<p>一维布朗运动<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>就是一种鞅。记<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{W}(t) := \mathcal{U}(W(s)\mid 0\leqslant s\leqslant t)\)</span></span>，则 对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\geqslant s\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}(W(t)\mid \mathcal{W}(s))
+    &amp;= \mathbb{E}(W(t)-W(s)\mid \mathcal{W}(s))+\mathbb{E}(W(s)\mid \mathcal{W}(s)) \\
+    &amp;= \mathbb{E}(W(t)-W(s)) + W(s) \\
+    &amp;= W(s)\quad a.s.
+\end{aligned}
+\]</div>
+<p>注意根据布朗运动的定义，<span class="arithmatex">\(W(t)-W(s)\sim N(0, t-s)\)</span>，与<span class="heti-skip"><span class="heti-spacing"> </span>history <span class="arithmatex">\(\mathcal{W}(s)\)</span><span class="heti-spacing"> </span></span>无关。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">本节还在施工中</p>
+</div>
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script async="" crossorigin="anonymous" data-category="Announcements" data-category-id="DIC_kwDOKjiG3c4Cf36n" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="ZhouTimeMachine/note" data-repo-id="R_kgDOKjiG3Q" data-strict="0" data-theme="preferred_color_scheme" src="https://giscus.app/client.js">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2023 <a href="https://github.com/ZhouTimeMachine" rel="noopener" target="_blank">ZhouTimeMachine</a>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+<script src="../../../../js/katex.min.js"></script>
+<script src="../../../../js/katex.js"></script>
+<script src="../../../../js/heti.js"></script>
+</body>
+</html>

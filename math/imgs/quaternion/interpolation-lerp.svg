@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="triangle-1" xmlns="http://www.w3.org/2000/svg" viewBox="13 5 81.58 63.58">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-width: .5px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-1, .cls-2, .cls-3 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-2 {
+        stroke-dasharray: 1 1;
+      }
+
+      .cls-4 {
+        font-size: 3px;
+      }
+
+      .cls-3 {
+        stroke-width: .25px;
+      }
+
+      .cls-5 {
+        font-size: 6px;
+      }
+
+      .cls-6 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+    </style>
+  </defs>
+  <g>
+    <polyline class="cls-1" points="63.32 10.67 15.12 66.98 84.08 66.98"/>
+    <polygon class="cls-polygon" points="61.92 10.52 65.62 7.98 63.69 12.03 61.92 10.52"/>
+    <polygon class="cls-polygon" points="83.29 68.14 87.62 66.98 83.29 65.82 83.29 68.14"/>
+  </g>
+  <line class="cls-2" x1="87.68" y1="66.98" x2="65.68" y2="7.98"/>
+  <g>
+    <line class="cls-1" x1="15.12" y1="66.98" x2="77.71" y2="49.44"/>
+    <polygon class="cls-polygon" points="77.26 50.77 81.12 48.48 76.64 48.53 77.26 50.77"/>
+  </g>
+  <text class="cls-6 cls-text" transform="translate(82.53 48.34)"><tspan class="cls-5" x="0" y="0">v</tspan><tspan class="cls-4" x="3" y="0">t</tspan></text>
+  <text class="cls-6 cls-text" transform="translate(90.01 68.36) scale(1.01 1)"><tspan class="cls-5" x="0" y="0">v</tspan><tspan class="cls-4" x="3" y="0">0</tspan></text>
+  <text class="cls-6 cls-text" transform="translate(66.8 8.46) scale(1.01 1)"><tspan class="cls-5" x="0" y="0">v</tspan><tspan class="cls-4" x="3" y="0">1</tspan></text>
+  <g>
+    <path class="cls-3" d="M43.87,60.34c.73.55,1.31,1.36,1.48,2.28.51,2.78-.19,3.77-1.65,4.14"/>
+    <polygon class="cls-polygon" points="43.94 61.31 44.06 60.51 44.71 60.04 42.83 59.76 43.94 61.31"/>
+  </g>
+</svg>

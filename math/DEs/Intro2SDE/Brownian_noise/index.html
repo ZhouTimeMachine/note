@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Jianjun Zhou's Notebook" name="description"/>
+<link href="https://ZhouTimeMachine.github.io/note/math/DEs/Intro2SDE/Brownian_noise/" rel="canonical"/>
+<link href="../intro_prob/" rel="prev"/>
+<link href="../stochastic_integrals/" rel="next"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+<title>Brownian Motion &amp; "White Noise" - Jianjun Zhou's Notebook</title>
+<link href="../../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/svg_extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#brownian-motion-and-white-noise">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Jianjun Zhou's Notebook" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Jianjun Zhou's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Jianjun Zhou's Notebook
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Brownian Motion &amp; "White Noise"
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ZhouTimeMachine/note/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ZhouTimeMachine/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../courses/">
+          
+  
+  
+    
+  
+  Courses
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../readings/">
+          
+  
+  
+    
+  
+  Readings
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Jianjun Zhou's Notebook" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Jianjun Zhou's Notebook">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+</a>
+    Jianjun Zhou's Notebook
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ZhouTimeMachine/note/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ZhouTimeMachine/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/">
+<span class="md-ellipsis">
+    
+  
+    Courses
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Courses
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/high-dim-prob/">
+<span class="md-ellipsis">
+    
+  
+    High-Dimensional Probability
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    High-Dimensional Probability
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/high-dim-prob/lec1/">
+<span class="md-ellipsis">
+    
+  
+    Lecture 1
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/toc/">
+<span class="md-ellipsis">
+    
+  
+    Theory of Computation
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Theory of Computation
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/languages/">
+<span class="md-ellipsis">
+    
+  
+    Sets, Relations and Languages
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/finite_automata/">
+<span class="md-ellipsis">
+    
+  
+    Finite Automata
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/context_free/">
+<span class="md-ellipsis">
+    
+  
+    Context-Free Languages
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/turing_machine/">
+<span class="md-ellipsis">
+    
+  
+    Turing Machine
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/undecidability/">
+<span class="md-ellipsis">
+    
+  
+    Undecidability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/toc/after_story/">
+<span class="md-ellipsis">
+    
+  
+    After Story
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/ads-final-review/">
+<span class="md-ellipsis">
+    
+  
+    Advanced Data Structure and Algorithm
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/probability/">
+<span class="md-ellipsis">
+    
+  
+    Probability Theory
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Probability Theory
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/basics/">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/rand_var_vec/">
+<span class="md-ellipsis">
+    
+  
+    Random Variable &amp; Vector
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/feature_basics/">
+<span class="md-ellipsis">
+    
+  
+    Data Feature Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/feature_pro/">
+<span class="md-ellipsis">
+    
+  
+    Data Feature Pro
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/prob_lim/">
+<span class="md-ellipsis">
+    
+  
+    Limit Theorems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/probability/normal_distr/">
+<span class="md-ellipsis">
+    
+  
+    Normal Distribution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Methods
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Methods
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Analysis
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Analysis
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/1/">
+<span class="md-ellipsis">
+    
+  
+    Mathematical Preliminaries
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/2/">
+<span class="md-ellipsis">
+    
+  
+    Solve Equations (1 Variable)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/3/">
+<span class="md-ellipsis">
+    
+  
+    Interpolation &amp; Poly. Approx.
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/4/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Diffs &amp; Integs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/5/">
+<span class="md-ellipsis">
+    
+  
+    IVP for ODE
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/6/">
+<span class="md-ellipsis">
+    
+  
+    Solve Linear Systems (Directly)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/7/">
+<span class="md-ellipsis">
+    
+  
+    Solve Linear Systems (Iteratively)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/8/">
+<span class="md-ellipsis">
+    
+  
+    Approximation Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/analysis/9/">
+<span class="md-ellipsis">
+    
+  
+    Approximating Eigenvalues
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/">
+<span class="md-ellipsis">
+    
+  
+    Numerical Algebra
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_6_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Numerical Algebra
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/1/">
+<span class="md-ellipsis">
+    
+  
+    Direct Methods for Linear Systems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/2/">
+<span class="md-ellipsis">
+    
+  
+    Sensitivity &amp; Round-off Error Analysis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/3/">
+<span class="md-ellipsis">
+    
+  
+    Solve Least Square Problems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/4/">
+<span class="md-ellipsis">
+    
+  
+    Classic Iterative Methods for Linear Systems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/5/">
+<span class="md-ellipsis">
+    
+  
+    Conjugate Gradient Method
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/6/">
+<span class="md-ellipsis">
+    
+  
+    Solve Asymmetric Eigenvalue Problems
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/numerical/algebra/7/">
+<span class="md-ellipsis">
+    
+  
+    Solve Symmetric Eigenvalue Problems
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../courses/physics/">
+<span class="md-ellipsis">
+    
+  
+    Physics (H)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Physics (H)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-electrostatics/">
+<span class="md-ellipsis">
+    
+  
+    Electrostatics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-current/">
+<span class="md-ellipsis">
+    
+  
+    Current
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-electromagnetics/">
+<span class="md-ellipsis">
+    
+  
+    Electromagnetics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-optics/">
+<span class="md-ellipsis">
+    
+  
+    Optics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/physics/2-quantum/">
+<span class="md-ellipsis">
+    
+  
+    Quantum
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../courses/info-theory/">
+<span class="md-ellipsis">
+    
+  
+    Information Theory
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    
+  
+    Math
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Math
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Differential Equations
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Differential Equations
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../ODE/">
+<span class="md-ellipsis">
+    
+  
+    ODE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    ODE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ODE/general1/">
+<span class="md-ellipsis">
+    
+  
+    Existence of Solution
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ODE/system/">
+<span class="md-ellipsis">
+    
+  
+    ODE System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../PDE/">
+<span class="md-ellipsis">
+    
+  
+    PDE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_2_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    PDE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PDE/introduction/">
+<span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../PDE/4linearPDEs/">
+<span class="md-ellipsis">
+    
+  
+    4 Linear PDEs
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    SDE
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_3_2_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_2_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    SDE
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../intro_prob/">
+<span class="md-ellipsis">
+    
+  
+    Introduction &amp; Probability
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Brownian Motion &amp; "White Noise"
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Brownian Motion &amp; "White Noise"
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#motivation">
+<span class="md-ellipsis">
+      
+        Motivation
+      
+    </span>
+</a>
+<nav aria-label="Motivation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#some-history">
+<span class="md-ellipsis">
+      
+        Some History
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#random-walks">
+<span class="md-ellipsis">
+      
+        Random Walks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mathematical-justification">
+<span class="md-ellipsis">
+      
+        Mathematical Justification
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#definition-elementary-properties">
+<span class="md-ellipsis">
+      
+        Definition, Elementary Properties
+      
+    </span>
+</a>
+<nav aria-label="Definition, Elementary Properties" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#definition-computation">
+<span class="md-ellipsis">
+      
+        Definition &amp; Computation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#more-on-white-noise">
+<span class="md-ellipsis">
+      
+        More on White Noise
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construction-of-brownian-motion">
+<span class="md-ellipsis">
+      
+        Construction of Brownian Motion
+      
+    </span>
+</a>
+<nav aria-label="Construction of Brownian Motion" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expansions-in-an-orthonormal-basis">
+<span class="md-ellipsis">
+      
+        Expansions in an orthonormal basis
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construction-of-brownian-motion_1">
+<span class="md-ellipsis">
+      
+        Construction of Brownian Motion
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#brownian-motion-in-mathbbrn">
+<span class="md-ellipsis">
+      
+        Brownian Motion in \(\mathbb{R}^n\)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-path-properties">
+<span class="md-ellipsis">
+      
+        Sample Path Properties
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#markov-property">
+<span class="md-ellipsis">
+      
+        Markov Property
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stochastic_integrals/">
+<span class="md-ellipsis">
+    
+  
+    Stochastic Integrals
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SDE/">
+<span class="md-ellipsis">
+    
+  
+    SDE
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../applications/">
+<span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../probability/">
+<span class="md-ellipsis">
+    
+  
+    Probability Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../analysis/">
+<span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../analysis/funcRvar/">
+<span class="md-ellipsis">
+    
+  
+    Funcs of Real Vars
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Funcs of Real Vars
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/funcRvar/sets/">
+<span class="md-ellipsis">
+    
+  
+    Basics of Set Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/funcRvar/LebesgueMeasure/">
+<span class="md-ellipsis">
+    
+  
+    Lebesgue Measure
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/continuities/">
+<span class="md-ellipsis">
+    
+  
+    Continuities
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../geometry/">
+<span class="md-ellipsis">
+    
+  
+    Geometry
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Geometry
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../geometry/quaternion/">
+<span class="md-ellipsis">
+    
+  
+    Quaternion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_5_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Quaternion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../geometry/quaternion/basics/">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../geometry/quaternion/quaternion/">
+<span class="md-ellipsis">
+    
+  
+    Quarternion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../geometry/quaternion/interpolation/">
+<span class="md-ellipsis">
+    
+  
+    Interpolation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/">
+<span class="md-ellipsis">
+    
+  
+    Readings
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Readings
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/diffusion/">
+<span class="md-ellipsis">
+    
+  
+    Diffusion Models
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Diffusion Models
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DDPM/">
+<span class="md-ellipsis">
+    
+  
+    DDPM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DDIM/">
+<span class="md-ellipsis">
+    
+  
+    DDIM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/SGM/">
+<span class="md-ellipsis">
+    
+  
+    SGM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/v-prediction/">
+<span class="md-ellipsis">
+    
+  
+    v-prediction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/DE-formula/">
+<span class="md-ellipsis">
+    
+  
+    SDE/ODE formulation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/EDM/">
+<span class="md-ellipsis">
+    
+  
+    EDM
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/rectified-flow/">
+<span class="md-ellipsis">
+    
+  
+    Rectified Flow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/mean-flow/">
+<span class="md-ellipsis">
+    
+  
+    Mean Flow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/diffusion/guidance/">
+<span class="md-ellipsis">
+    
+  
+    Guidance
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../readings/NNbasics/">
+<span class="md-ellipsis">
+    
+  
+    Neural Network Basics
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Neural Network Basics
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/lstm_gru/">
+<span class="md-ellipsis">
+    
+  
+    LSTM &amp; GRU
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/normalization/">
+<span class="md-ellipsis">
+    
+  
+    Normalization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/NNbasics/einsum/">
+<span class="md-ellipsis">
+    
+  
+    Einsum
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Miscs
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Miscs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/miscs/abbrs/">
+<span class="md-ellipsis">
+    
+  
+    Abbrs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../readings/miscs/metrics/">
+<span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#motivation">
+<span class="md-ellipsis">
+      
+        Motivation
+      
+    </span>
+</a>
+<nav aria-label="Motivation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#some-history">
+<span class="md-ellipsis">
+      
+        Some History
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#random-walks">
+<span class="md-ellipsis">
+      
+        Random Walks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mathematical-justification">
+<span class="md-ellipsis">
+      
+        Mathematical Justification
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#definition-elementary-properties">
+<span class="md-ellipsis">
+      
+        Definition, Elementary Properties
+      
+    </span>
+</a>
+<nav aria-label="Definition, Elementary Properties" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#definition-computation">
+<span class="md-ellipsis">
+      
+        Definition &amp; Computation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#more-on-white-noise">
+<span class="md-ellipsis">
+      
+        More on White Noise
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construction-of-brownian-motion">
+<span class="md-ellipsis">
+      
+        Construction of Brownian Motion
+      
+    </span>
+</a>
+<nav aria-label="Construction of Brownian Motion" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expansions-in-an-orthonormal-basis">
+<span class="md-ellipsis">
+      
+        Expansions in an orthonormal basis
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#construction-of-brownian-motion_1">
+<span class="md-ellipsis">
+      
+        Construction of Brownian Motion
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#brownian-motion-in-mathbbrn">
+<span class="md-ellipsis">
+      
+        Brownian Motion in \(\mathbb{R}^n\)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sample-path-properties">
+<span class="md-ellipsis">
+      
+        Sample Path Properties
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#markov-property">
+<span class="md-ellipsis">
+      
+        Markov Property
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<p><link href="../../../../css/counter.css" rel="stylesheet"/></p>
+<h1 id="brownian-motion-and-white-noise">Brownian Motion and "White Noise"</h1>
+<div class="admonition info">
+<p class="admonition-title">Part of note of <em>An Introduction to Stochastic Differential Equations</em>, Lawrence C. Evans</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">本页面还在施工中</p>
+</div>
+<h2 id="motivation">Motivation</h2>
+<h3 id="some-history">Some History</h3>
+<p><strong>布朗运动<span><span class="heti-spacing"> </span>(brownian motion)</span></strong> 是一种具有连续时间参数和连续状态空间的随机过程。考虑充满清水的长细管，<span><span class="arithmatex">\(t=0\)</span><span class="heti-spacing"> </span></span>时在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x=0\)</span><span class="heti-spacing"> </span></span>处注入一滴墨水</p>
+<div class="arithmatex">\[
+u(x, 0) = \delta_0
+\]</div>
+<p><span><span class="arithmatex">\(\delta_0\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(0\)</span><span class="heti-spacing"> </span></span>处的<span><span class="heti-spacing"> </span>Dirac point mass</span>，即</p>
+<div class="arithmatex">\[
+\delta_0(x) = \begin{cases}
+1, &amp; x = 0\\
+0, &amp; x \neq 0
+\end{cases}
+\]</div>
+<p>墨水随着时间的推移，将会在管道中扩散。设一段短时间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\tau\)</span><span class="heti-spacing"> </span></span>后，墨水从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>扩散到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x+y\)</span><span class="heti-spacing"> </span></span>处的概率密度为<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(y, \tau)\)</span></span>，则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    u(x, t + \tau)
+    &amp;= \int_{-\infty}^{+\infty} u(x-y, t) f(y, \tau) \mathrm{d}y\\
+    &amp;= \int_{-\infty}^{+\infty} \left( u - u_x y + \frac{1}{2} u_{xx} y^2 + \cdots \right) f(y, \tau) \mathrm{d}y\\
+\end{aligned}
+\]</div>
+<p>这里对偏导用了简记，即</p>
+<div class="arithmatex">\[
+u_x = \frac{\partial u}{\partial x}(x, t), \quad u_{xx} = \frac{\partial^2 u}{\partial x^2}(x, t)
+\]</div>
+<p>这个式子实际上把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(u(x, t+\tau)\)</span><span class="heti-spacing"> </span></span>拆分成了<strong>各阶矩的线性组合</strong>，下面开始考虑其各阶矩的值。</p>
+<div class="admonition general">
+<p class="admonition-title">零至二阶矩的考虑</p>
+<ul>
+<li>零阶矩<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_{-\infty}^{+\infty} f(y, \tau) \mathrm{d}y = 1\)</span></span> （概率密度函数）</li>
+<li>由对称性<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(y, \tau) = f(-y, \tau)\)</span></span>（<span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y\)</span><span class="heti-spacing"> </span></span>是偶函数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span><span class="arithmatex">\(f(y, \tau)\)</span><span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y\)</span><span class="heti-spacing"> </span></span>的一阶矩（期望）为</li>
+</ul>
+<div class="arithmatex">\[
+\int_{-\infty}^{+\infty} y f(y, \tau) \mathrm{d}y = 0
+\]</div>
+<blockquote>
+<p><span><span class="arithmatex">\(y f(y, \tau)\)</span><span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y\)</span><span class="heti-spacing"> </span></span>是一个奇函数，对称性导致积分为<span><span class="heti-spacing"> </span><span class="arithmatex">\(0\)</span></span></p>
+</blockquote>
+<ul>
+<li>考虑二阶矩（方差<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<strong>假定</strong>关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\tau\)</span><span class="heti-spacing"> </span></span>是<strong>线性</strong>的</li>
+</ul>
+<div class="arithmatex">\[
+\int_{-\infty}^{+\infty} y^2 f(y, \tau) \mathrm{d}y = D\tau
+\]</div>
+<p>这里的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(D&gt;0\)</span><span class="heti-spacing"> </span></span>是一个正常数，并不是求导算子。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Remark</p>
+<p>这里给出了一个重要假设：方差关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\tau\)</span><span class="heti-spacing"> </span></span>是线性的</p>
+</div>
+<p>二阶以上的矩都省去，则原式可化为</p>
+<div class="arithmatex">\[
+\frac{u(x, t+\tau) - u(x, t)}{\tau} = \frac{D}{2}u_{xx}(x, t)
+\]</div>
+<p>令<span><span class="heti-spacing"> </span><span class="arithmatex">\(\tau\to 0^+\)</span></span>，就可以得到</p>
+<div class="arithmatex">\[
+u_t=\frac{D}{2}u_{xx}
+\]</div>
+<p>这就是<strong>扩散方程<span><span class="heti-spacing"> </span>(diffusion equation)</span></strong>，也称<strong>热方程<span><span class="heti-spacing"> </span>(heat equation)</span></strong>。在同作者的<span class="heti-skip"><span class="heti-spacing"> </span>PDE<span class="heti-spacing"> </span></span>书的<a href="../../PDE/4linearPDEs/#heat-equation"><span class="heti-skip"><span class="heti-spacing"> </span>2.3<span class="heti-spacing"> </span></span>节</a>给出了这类方程的解法，结合其初值条件<span><span class="heti-spacing"> </span><span class="arithmatex">\(u(x, 0)=\delta_0\)</span></span>，在这里直接给出它的解：</p>
+<div class="arithmatex">\[
+u(x, t) = \frac{1}{(2\pi Dt)^{1/2}}e^{-\frac{x^2}{2Dt}}
+= \frac{1}{\sqrt{Dt} \sqrt{2\pi}}e^{-\frac{x^2}{2(\sqrt{Dt})^2}}
+\]</div>
+<p>从中可见，在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>时刻扩散的墨水的密度服从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N(0, Dt)\)</span><span class="heti-spacing"> </span></span>的分布。关于常数<span><span class="heti-spacing"> </span><span class="arithmatex">\(D\)</span></span>，<a href="https://en.wikipedia.org/wiki/Einstein_relation_(kinetic_theory)"><span>Einstein relation<span class="heti-spacing"> </span></span></a>揭示了</p>
+<div class="arithmatex">\[
+D=\mu k_B T
+\]</div>
+<details class="general">
+<summary>各符号的解释</summary>
+<ul>
+<li><span class="arithmatex">\(\mu\)</span>: “流动性<span><span class="heti-spacing"> </span>(mobility)</span>”，其表达式为<span><span class="heti-spacing"> </span><span class="arithmatex">\(v_d/F\)</span></span><ul>
+<li><span><span class="arithmatex">\(v_d\)</span><span class="heti-spacing"> </span></span>是粒子的<span><span class="heti-spacing"> </span>terminal drift velocity</span>，即流体中从静止受力加速后能达到的最大平衡速度</li>
+<li><span><span class="arithmatex">\(F\)</span><span class="heti-spacing"> </span></span>则是受力</li>
+</ul>
+</li>
+<li><span><span class="arithmatex">\(k_B\)</span>: Boltzmann<span class="heti-spacing"> </span></span>常数</li>
+<li><span><span class="arithmatex">\(T\)</span>:<span class="heti-spacing"> </span></span>绝对温度</li>
+</ul>
+</details>
+<p>在本书中，则把这个关系写为</p>
+<div class="arithmatex">\[
+D=\frac{RT}{N_Af}
+\]</div>
+<details class="general">
+<summary>各符号的解释</summary>
+<ul>
+<li><span><span class="arithmatex">\(R\)</span><span class="heti-spacing"> </span></span>是理想气体常数，<span><span class="arithmatex">\(N_A\)</span><span class="heti-spacing"> </span></span>是阿伏伽德罗常数<span><span class="heti-spacing"> </span>(Avogadro constant)</span>，所以有<span><span class="heti-spacing"> </span><span class="arithmatex">\(R = k_BN_A\)</span></span></li>
+<li><span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>是摩擦系数，所以有<span><span class="heti-spacing"> </span><span class="arithmatex">\(F=fv_d=v_d/\mu\)</span></span></li>
+</ul>
+</details>
+<h3 id="random-walks">Random Walks</h3>
+<p><strong>随机游走<span><span class="heti-spacing"> </span>(random walks)</span></strong> 也可以用于导出扩散方程。考虑横坐标为空间<span><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span></span>，纵坐标为时间<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>的二维网格，网格具有空间最小单位<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta x\)</span><span class="heti-spacing"> </span></span>和时间最小单位<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta\)</span></span>。每个<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta t\)</span></span>，相对上一时刻的位置，各有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(1/2\)</span><span class="heti-spacing"> </span></span>的概率向左<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>向右移动<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta x\)</span></span>。使用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((m, n)\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\Delta t\)</span><span class="heti-spacing"> </span></span>时刻位于<span><span class="heti-spacing"> </span><span class="arithmatex">\(m\Delta x\)</span></span>，则初始有</p>
+<div class="arithmatex">\[
+p(m, 0) = \begin{cases}
+    0, &amp;m\neq 0\\
+    1, &amp;m=0
+\end{cases}
+\]</div>
+<p>考虑状态转移，有</p>
+<div class="arithmatex">\[
+p(m, n+1) = \frac{1}{2}p(m-1, n) + \frac{1}{2}p(m+1, n)
+\]</div>
+<p>因此就有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    p(m, n+1) - p(m, n)
+    &amp;= \frac{1}{2}p(m-1, n) + \frac{1}{2}p(m+1, n) - p(m, n)\\
+    &amp;= \frac{1}{2}\left( p(m-1, n) - 2p(m, n) + p(m+1, n) \right)
+\end{aligned}
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Important Assumption</p>
+<p>假设空间尺度和时间尺度满足如下关系</p>
+<div class="arithmatex">\[
+\frac{(\Delta x)^2}{\Delta t}=D\quad\text{for some positive constant }D
+\]</div>
+</div>
+<p>这样就有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \frac{p(m, n+1) - p(m, n)}{\Delta t}
+    &amp;= \frac{1}{2}\left( \frac{p(m-1, n) - 2p(m, n) + p(m+1, n)}{(\Delta x)^2} \right)\\
+    &amp;= \frac{D}{2}\left( \frac{p(m-1, n) - 2p(m, n) + p(m+1, n)}{(\Delta x)^2} \right)
+\end{aligned}
+\]</div>
+<p>令<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta x\to 0\)</span></span>，<span class="arithmatex">\(\Delta t\to 0\)</span>，<span class="arithmatex">\(m\Delta x\to x\)</span>，<span class="arithmatex">\(n\Delta t\to t\)</span>，这样就有<span><span class="heti-spacing"> </span><span class="arithmatex">\(p(m, n)\to u(x, t)\)</span></span>，则上式就变成了</p>
+<div class="arithmatex">\[
+u_t = \frac{D}{2}u_{xx}
+\]</div>
+<p>于是我们重新获得了扩散方程。</p>
+<h3 id="mathematical-justification">Mathematical Justification</h3>
+<p>利用<a href="../../../../courses/probability/prob_lim/#de-moivre-laplace"><span class="heti-skip"><span class="heti-spacing"> </span>De Moivre-Laplace<span class="heti-spacing"> </span></span>中心极限定理</a>，可以给出随机游走到特定时间位置的概率分布的一种更概率论的推导方式。</p>
+<p>使用随机变量<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(t)\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t=n\Delta t\)</span><span class="heti-spacing"> </span></span>时刻的位置，再定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>次游走中向右游走的次数为</p>
+<div class="arithmatex">\[
+S_n = \sum_{k=1}^n \xi_k
+\]</div>
+<p>这里<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\xi_k\)</span><span class="heti-spacing"> </span></span>是独立同分布的随机变量，满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p=1/2\)</span><span class="heti-spacing"> </span></span>的两点分布，即</p>
+<div class="arithmatex">\[
+\begin{cases}
+P(\xi_k=1)=1/2\\
+P(\xi_k=0)=1/2
+\end{cases},\quad
+Var(\xi_k)=p(1-p)=\frac{1}{4}
+\]</div>
+<p>可以得到</p>
+<div class="arithmatex">\[
+X(t)=S_n\Delta x + (n-S_n)\Delta x = (2S_n-n)\Delta x
+\]</div>
+<p>研究其方差，发现有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    Var(X(t))
+    &amp;= 4(\Delta x)^2Var(S_n)\\
+    &amp;= 4(\Delta x)^2(nVar(\xi_1))\\
+    &amp;= n(\Delta x)^2 \\
+    &amp;= \frac{(\Delta x)^2}{\Delta t}t
+\end{aligned}
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Remark</p>
+<p>由此可以注意到，<span>Einstein<span class="heti-spacing"> </span></span>的研究中令方差关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\tau\)</span><span class="heti-spacing"> </span></span>是线性的假设，和假设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\Delta x)^2\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta t\)</span><span class="heti-spacing"> </span></span>的线性假设是一致的。在这里同样给出这个假设。</p>
+</div>
+<div class="arithmatex">\[
+X(t) = (2S_n - n)\Delta x
+= \frac{S_n - \frac{n}{2}}{\sqrt{\frac{n}{4}}} \sqrt{n} \Delta x
+= \frac{S_n - \frac{n}{2}}{\sqrt{\frac{n}{4}}} \sqrt{tD}
+\]</div>
+<p>然后利用<span class="heti-skip"><span class="heti-spacing"> </span>De Moivre-Laplace<span class="heti-spacing"> </span></span>中心极限定理，可以得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \lim_{\substack{n\to\infty \\ t=n\Delta t,\; \frac{(\Delta x)^2}{\Delta t}=D}}P\left(a\leqslant X(t)\leqslant b\right)
+    &amp;= \lim_{n\to \infty}\left( \frac{a}{\sqrt{tD}}\leqslant \frac{S_n - \frac{n}{2}}{\sqrt{\frac{n}{4}}}\leqslant \frac{b}{\sqrt{tD}} \right) \\
+    &amp;= \frac{1}{\sqrt{2\pi}}\int_{a/\sqrt{tD}}^{b/\sqrt{tD}}e^{-\frac{x^2}{2}}\mathrm{d}x\\
+    &amp;= \frac{1}{\sqrt{2\pi tD}}\int_a^b e^{-\frac{x^2}{2tD}}\mathrm{d}x
+\end{aligned}
+\]</div>
+<blockquote>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_n\)</span><span class="heti-spacing"> </span></span>满足二项分布，所以可以说是在使用<span class="heti-skip"><span class="heti-spacing"> </span>De Moivre-Laplace<span class="heti-spacing"> </span></span>中心极限定理，而不必说是在用<span><span class="heti-spacing"> </span>Lindeberg</span>–<span>Lévy<span class="heti-spacing"> </span></span>中心极限定理</p>
+</blockquote>
+<p>再次导出<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>时刻的位置满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N(0, Dt)\)</span><span class="heti-spacing"> </span></span>的分布。</p>
+<h2 id="definition-elementary-properties">Definition, Elementary Properties</h2>
+<h3 id="definition-computation">Definition &amp; Computation</h3>
+<div class="admonition info">
+<p class="admonition-title">Brownian Motion/Wiener Process</p>
+<p><strong>布朗运动<span><span class="heti-spacing"> </span>(Brownian motion)</span></strong>，或<strong>维恩过程<span><span class="heti-spacing"> </span>(Wiener process)</span></strong> 是满足如下条件的实值随机过程<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span></span>：</p>
+<ol>
+<li><span class="arithmatex">\(W(0)=0\)</span> a.s.</li>
+<li>(Gaussian increments) <span class="arithmatex">\(W(t) - W(s)\sim N(0, t-s), \quad \forall\; t\geqslant s\geqslant 0\)</span></li>
+<li>(independent increments) <span class="arithmatex">\(W(t_1), W(t_2) - W(t_1), \cdots, W(t_n) - W(t_{n-1})\)</span> are independent for all times <span class="arithmatex">\(0\leqslant t_1 &lt; t_2 &lt; \cdots &lt; t_n\)</span></li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><span>a.s.<span class="heti-spacing"> </span></span>是<a href="../intro_prob/#probability-space"><span class="heti-skip"><span class="heti-spacing"> </span>almost surely<span class="heti-spacing"> </span></span></a>的缩写</p>
+</div>
+<p>中心极限定理提供了如此定义布朗运动的动机：由一系列合适地缩放了的独立随机分布的和构成的位置随机变量，服从正态分布。</p>
+<p>给出布朗运动的定义之后，应当得到相关的计算方式。从一个简单的问题出发，计算联合概率，即给定<span><span class="heti-spacing"> </span><span class="arithmatex">\([a_i, b_i], t_i, i=1, \cdots, n\)</span></span>，希望计算</p>
+<div class="arithmatex">\[
+P(a_1\leqslant W(t_1)\leqslant b_1, \cdots, a_n\leqslant W(t_n)\leqslant b_n)
+\]</div>
+<p>首先最基础的，对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall t &gt; 0\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\leqslant b\)</span></span>，由于<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(0)=0\)</span></span>，根据<span class="heti-skip"><span class="heti-spacing"> </span>Gaussian increments<span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+P(a\leqslant W(t)\leqslant b) = \frac{1}{\sqrt{2\pi t}} \int_a^b e^{-\frac{x^2}{2t}}\mathrm{d}x
+\]</div>
+<p>取<span><span class="heti-spacing"> </span><span class="arithmatex">\(t=t_1\)</span>, <span class="arithmatex">\([a, b] = [a_1, b_1]\)</span></span>，就可以得到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P(a_1\leqslant W(t_1)\leqslant b_1)\)</span><span class="heti-spacing"> </span></span>的值。进一步地，给定了<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(t_1)=x_1\)</span></span>，同样从<span class="heti-skip"><span class="heti-spacing"> </span>Gaussian increments<span class="heti-spacing"> </span></span>出发可以得到</p>
+<div class="arithmatex">\[
+P(a_2\leqslant W(t_2)\leqslant b_2 | W(t_1)=x_1) = \int_{a_2}^{b_2} \frac{1}{\sqrt{2\pi(t_2-t_1)}}e^{-\frac{(x_2-x_1)^2}{2(t_2-t_1)}}\mathrm{d}x
+\]</div>
+<p>定义</p>
+<div class="arithmatex">\[
+g(x, t\mid y) = \frac{1}{\sqrt{2\pi t}}e^{-\frac{(x-y)^2}{2t}}
+\]</div>
+<p>那就有</p>
+<div class="arithmatex">\[
+P(a_1\leqslant W(t_1)\leqslant b_1, a_2\leqslant W(t_2)\leqslant b_2)
+= \int_{a_1}^{b_1} \int_{a_2}^{b_2} g(x_1, t_1\mid 0) g(x_2, t_2 - t_1 \mid x_1) \mathrm{d}x_2\mathrm{d}x_1
+\]</div>
+<p>以此类推，那就有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp;P(a_1\leqslant W(t_1)\leqslant b_1, \cdots, a_n\leqslant W(t_n)\leqslant b_n) \\
+    = &amp;\int_{a_1}^{b_1}\cdots \int_{a_n}^{b_n} g(x_1, t_1\mid 0) g(x_2, t_2 - t_1 \mid x_1)\cdots g(x_n, t_n - t_{n-1} \mid x_{n-1}) \mathrm{d}x_n\cdots\mathrm{d}x_1
+\end{aligned}
+\]</div>
+<p>更一般地，以上这个计算的式子是以下定理中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x_1, \cdots, x_n)=\chi_{[a_1, b_1]}(x_1)\cdots \chi_{[a_n, b_n]}(x_n)\)</span><span class="heti-spacing"> </span></span>的特例。</p>
+<div class="admonition abstract">
+<p class="admonition-title">一维布朗运动的计算</p>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>为一维布朗运动，对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall n\in \mathbb{N}^+\)</span>, <span class="arithmatex">\(0=t_0&lt;t_1&lt;\cdots&lt;t_n\)</span>, <span class="arithmatex">\(f:\mathbb{R}^n\to\mathbb{R}\)</span></span>，我们有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp; \mathbb{E}(f(W(t_1), \cdots, W(t_n))) \\
+    =&amp; \int_{-\infty}^{\infty}\cdots \int_{-\infty}^{\infty} f(x_1, \cdots, x_n) g(x_1, t_1\mid 0) g(x_2, t_2 - t_1 \mid x_1)\cdots g(x_n, t_n - t_{n-1} \mid x_{n-1}) \mathrm{d}x_n\cdots\mathrm{d}x_1
+\end{aligned}
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>记<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_i:= W(t_1), Y_i:=X_i-X_{i-1}, i=1, \cdots, n\)</span></span>，并定义</p>
+<div class="arithmatex">\[
+h(y_1, \cdots, y_n) := f(y_1, y_1 + y_2, \cdots, y_1 + \cdots + y_n)
+\]</div>
+<blockquote>
+<p>好处是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Y_i\sim N(0, t_i - t_{i-1})\)</span><span class="heti-spacing"> </span></span>直接相互之间独立了</p>
+</blockquote>
+<p>则有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp; \mathbb{E}(f(W(t_1), \cdots, W(t_n))) = \mathbb{E} h(Y_1, \cdots, Y_n) \\
+    =&amp; \int_{-\infty}^{\infty}\cdots \int_{-\infty}^{\infty} h(y_1, \cdots, y_n) g(y_1, t_1\mid 0) g(y_2, t_2 - t_1 \mid 0)\cdots g(y_n, t_n - t_{n-1} \mid 0) \mathrm{d}y_n\cdots\mathrm{d}y_1 \\
+    =&amp; \int_{-\infty}^{\infty}\cdots \int_{-\infty}^{\infty} f(x_1, \cdots, x_n) g(x_1, t_1\mid 0) g(x_2, t_2 - t_1 \mid x_1)\cdots g(x_n, t_n - t_{n-1} \mid x_{n-1}) \mathrm{d}x_n\cdots\mathrm{d}x_1
+\end{aligned}
+\]</div>
+</details>
+<h3 id="more-on-white-noise">More on White Noise</h3>
+<p>本节的内容旨在提供对白噪声更多的一些直觉。首先为了计算方便，先证明如下引理：</p>
+<div class="admonition abstract">
+<p class="admonition-title">一维布朗运动的期望计算性质</p>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>为一维布朗运动，则</p>
+<div class="arithmatex">\[
+\begin{gathered}
+    \mathbb{E}(W(t)) = 0 ,\quad \mathbb{E}(W^2 (t)) = t, \quad \forall t\geqslant 0 \\
+    \mathbb{E}(W(t)W(s)) = t \wedge s = \min\{t, s\},\quad \forall t, s \geqslant 0
+\end{gathered}
+\]</div>
+</div>
+<blockquote>
+<p><span class="arithmatex">\(t \wedge s := \min\{t, s\}\)</span></p>
+</blockquote>
+<details class="general">
+<summary>Proof</summary>
+<p>由于<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(t)\sim N(0, t)\)</span></span>，第一行显然。对于第二行，不妨令<span><span class="heti-spacing"> </span><span class="arithmatex">\(t\geqslant s\)</span></span>（反之对称<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}(W(t)W(s))
+    &amp;= \mathbb{E}((W(s) + W(t) - W(s))W(s)) \\
+    &amp;= \mathbb{E}(W^2(s)) + \mathbb{E}((W(t) - W(s))W(s)) \\
+    &amp;= s + \mathbb{E}(W(t) - W(s))\mathbb{E}(W(s)) \\
+    &amp;= s
+\end{aligned}
+\]</div>
+<p>注意，倒数第三行到倒数第二行利用了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(t)-W(s)\sim N(0, t-s)\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(s)\sim N(0, s)\)</span><span class="heti-spacing"> </span></span>相互独立的结论。</p>
+</details>
+<p>接下来将阐述白噪声为什么“白”。不正式地，给出如下启发<span class="heti-skip"><span class="heti-spacing"> </span>(heuristic)<span class="heti-spacing"> </span></span>公式：</p>
+<div class="arithmatex">\[
+\mathbb{E}(\xi(t)\xi(s)) = \delta_0(s-t)
+\]</div>
+<blockquote>
+<p>注意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\delta_0(x)\)</span><span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>Dirac delta function</span></p>
+</blockquote>
+<details class="general">
+<summary>Informal Proof</summary>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:h&gt;0\)</span>,<span class="heti-spacing"> </span></span>对于给定的<span><span class="heti-spacing"> </span><span class="arithmatex">\(t&gt;0\)</span></span>，设</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \phi_h(s)
+    &amp;:= \mathbb{E}\left(
+        \left(\frac{W(t+h) - W(t)}{h}\right)
+        \left(\frac{W(s+h) - W(s)}{h}\right)
+    \right) \\
+    &amp;= \frac{1}{h^2}\left[
+        \mathbb{E}(W(t+h)W(s+h)) - \mathbb{E}(W(t+h)W(s)) - \mathbb{E}(W(t)W(s+h)) + \mathbb{E}(W(t)W(s))
+    \right] \\
+    &amp;= \frac{1}{h^2}\left[
+        (t+h)\wedge(s+h) - (t+h)\wedge s - t\wedge(s+h) + t\wedge s
+    \right]
+\end{aligned}
+\]</div>
+<p>分类讨论，容易得到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_h(s)\)</span><span class="heti-spacing"> </span></span>的图像如下图所示。</p>
+<p></p><div style="text-align:center;">
+<img alt="hw1" src="../../../imgs/Intro2SDE/hw1.gif" style="zoom:50%;"/>
+</div>
+<p>可以注意到，<span><span class="arithmatex">\(\phi_h(s)\)</span><span class="heti-spacing"> </span></span>满足<span><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_h\geqslant 0\)</span></span>，且</p>
+<div class="arithmatex">\[
+\int_{-\infty}^{+\infty} \phi_h(s) \mathrm{d}s = 
+\frac{1}{2} \cdot (2h) \cdot \frac{1}{h} = 1
+\]</div>
+<p>可以看出，当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h\to 0^+\)</span><span class="heti-spacing"> </span></span>时，<span><span class="arithmatex">\(\phi_h(s)\)</span><span class="heti-spacing"> </span></span>逐渐变得尖锐，在以上两个条件满足的情况下，凭感觉最终就是<span><span class="heti-spacing"> </span><span class="arithmatex">\(\delta_0(s-t)\)</span></span>。另一方面，<span><span class="arithmatex">\(h\to 0^+\)</span><span class="heti-spacing"> </span></span>时我们根据<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_h(s)\)</span><span class="heti-spacing"> </span></span>的定义式，可以感觉到其趋向于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(\xi(t)\xi(s))\)</span></span>。从这两方面，我们可以不正式地完成证明。</p>
+</details>
+<p>在最后阐释“白”噪声之前，我们需要先引入自相关<span class="heti-skip"><span class="heti-spacing"> </span>(autocorrelation)<span class="heti-spacing"> </span></span>函数和广义平稳<span class="heti-skip"><span class="heti-spacing"> </span>(wide-sense stationary)<span class="heti-spacing"> </span></span>的概念。</p>
+<div class="admonition info">
+<p class="admonition-title">自相关函数</p>
+<p>对于满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\mathbb{E}(X^2(t)) &lt; \infty\)</span>, <span class="arithmatex">\(t\geqslant 0\:\)</span><span class="heti-spacing"> </span></span>的实值随机过程<span><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span></span>，定义</p>
+<div class="arithmatex">\[
+    r(t, s) := \mathbb{E}(X(t)X(s))
+\]</div>
+<p>为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>的自相关函数<span><span class="heti-spacing"> </span>(autocorrelation function)</span>。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">广义平稳</p>
+<p>对于满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\mathbb{E}(X^2(t)) &lt; \infty\)</span>, <span class="arithmatex">\(t\geqslant 0\:\)</span><span class="heti-spacing"> </span></span>的实值随机过程<span><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span></span>，如果存在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(c: \mathbb{R}\to \mathbb{R}\)</span><span class="heti-spacing"> </span></span>使得</p>
+<div class="arithmatex">\[
+    r(t, s) = c(t-s), \quad
+    \mathbb{E}(X(t)) = \mathbb{E}(X(s)), \quad
+    \forall t, s\geqslant 0
+\]</div>
+<p>则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X(\cdot)\)</span><span class="heti-spacing"> </span></span>是广义平稳<span class="heti-skip"><span class="heti-spacing"> </span>(wide-sense stationary)<span class="heti-spacing"> </span></span>的。</p>
+</div>
+<p>对于任意广义平稳函数，将其自相关函数进行<span class="heti-skip"><span class="heti-spacing"> </span>Fourier<span class="heti-spacing"> </span></span>变换，可以得到其谱密度<span><span class="heti-spacing"> </span>(spectral density) <span class="arithmatex">\(f(\lambda)\)</span></span>：</p>
+<div class="arithmatex">\[
+f(\lambda) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} c(t)e^{-i\lambda t}\mathrm{d}t,\quad \lambda \in \mathbb{R}
+\]</div>
+<p>对于白噪声过程，根据前面的启发式公式，我们可以认为取<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(c(\cdot)=\delta_0\)</span><span class="heti-spacing"> </span></span>的情况下，可以得到白噪声过程<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\xi(\cdot)\)</span><span class="heti-spacing"> </span></span>是广义平稳的。计算白噪声的谱密度</p>
+<div class="arithmatex">\[
+f(\lambda) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \delta_0(t)e^{-i\lambda t}\mathrm{d}t = \frac{1}{2\pi},\quad \forall \lambda \in \mathbb{R}
+\]</div>
+<p>可以看出白噪声过程的谱密度是常数，即所有“频率”在自相关函数的构成中的贡献相当。因此类比所有颜色的光在白光的构成中贡献相当，我们将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\xi(\cdot)\)</span><span class="heti-spacing"> </span></span>称为“白”噪声。</p>
+<h2 id="construction-of-brownian-motion">Construction of Brownian Motion</h2>
+<p>前面直接定义了符合什么性质的实值随机过程是布朗运动，并进一步研究了其一些简单性质，但是并没有证明<strong>布朗运动的存在性</strong>，即存在一个实值随机过程<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>满足布朗运动的定义。</p>
+<p>本节将花大篇幅在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, 1]\)</span><span class="heti-spacing"> </span></span>上构造布朗运动，随后简单地将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, 1]\)</span><span class="heti-spacing"> </span></span>扩展到<span><span class="heti-spacing"> </span><span class="arithmatex">\([0, +\infty)\)</span></span>。在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, 1]\)</span><span class="heti-spacing"> </span></span>上构造布朗运动的主要过程为：</p>
+<ul>
+<li>选择一组<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L^2(0, 1)\)</span><span class="heti-spacing"> </span></span>上的<strong>规范正交基</strong> (orthonormal basis)，<span><span class="arithmatex">\(L^2(0, 1)\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, 1]\)</span><span class="heti-spacing"> </span></span>上的平方可积实值函数空间（可以理解为函数的<span class="heti-skip"><span class="heti-spacing"> </span>2-<span class="heti-spacing"> </span></span>范数存在，与<span class="heti-skip"><span class="heti-spacing"> </span>2.6<span class="heti-spacing"> </span></span>中的定义是相容的）</li>
+<li><span><span class="arithmatex">\(L^2(0, 1)\)</span><span class="heti-spacing"> </span></span>是无限维空间，将白噪声使用该规范正交基<strong>线性表示</strong>，会是级数的形式</li>
+<li>进一步地构造的布朗运动，依然会是级数的形式，需要证明该级数的<strong>一致收敛性</strong></li>
+</ul>
+<blockquote>
+<p>以上过程中用到了许多小波分析<span class="heti-skip"><span class="heti-spacing"> </span>(wavelet analysis)<span class="heti-spacing"> </span></span>的技术</p>
+</blockquote>
+<h3 id="expansions-in-an-orthonormal-basis">Expansions in an orthonormal basis</h3>
+<p>对于基<span><span class="heti-spacing"> </span><span class="arithmatex">\(\{\psi_n\}_{n=0}^{\infty}\)</span></span>，规范正交性要求有</p>
+<div class="arithmatex">\[
+\int_0^1 \psi_n(s)\psi_m(s)\mathrm{d}s = \delta_{mn} = \begin{cases}
+    1, &amp; m=n\\
+    0, &amp; m\neq n
+\end{cases},\quad \forall\: m, n
+\]</div>
+<p>将白噪声使用规范正交基<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{\psi_n\}_{n=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>线性表示有</p>
+<div class="arithmatex">\[
+\xi(t) = \sum_{n=0}^{\infty} A_n \psi_n(t)
+\]</div>
+<p>这里的系数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_n\)</span><span class="heti-spacing"> </span></span>都是随机变量，根据规范正交基的性质，上式两边都乘上<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\psi_n(t)\)</span><span class="heti-spacing"> </span></span>后积分就容易得知有</p>
+<div class="arithmatex">\[
+A_n = \int_0^1 \xi(t)\psi_n(t)\mathrm{d}t
+\]</div>
+<p>构造时，我们<strong>希望</strong> <span><span class="arithmatex">\(A_n\)</span><span class="heti-spacing"> </span></span>之间相互独立，且符合均值为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的高斯分布。给出这样严格的限制之后，要满足正交基的规范性，已经其实已经对方差有了要求，我们有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}(A_nA_m)
+    &amp; = \mathbb{E}\left( \int_0^1 \xi(t)\psi_n(t)\mathrm{d}t \int_0^1 \xi(s)\psi_m(s)\mathrm{d}s \right) \\
+    &amp; = \int_0^1 \int_0^1 \mathbb{E}(\xi(t)\xi(s))\psi_n(t)\psi_m(s)\mathrm{d}t\mathrm{d}s \\
+    &amp; = \int_0^1 \int_0^1 \delta_0(t-s)\psi_n(t)\psi_m(s)\mathrm{d}t\mathrm{d}s &amp; \text{heuristic formula}\\
+    &amp; = \int_0^1 \psi_n(t)\psi_m(t)\mathrm{d}t &amp; \delta_0(t-s) = \begin{cases}
+        1, &amp; t=s\\
+        0, &amp; t\neq s
+    \end{cases}
+\end{aligned}
+\]</div>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m\neq n\)</span><span class="heti-spacing"> </span></span>的情况，前面已经约定<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(A_n)=0\)</span></span>，因此就有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(A_mA_n) = \mathbb{E}(A_m)\mathbb{E}(A_n)=0\)</span></span>，与规范正交基的定义一致。而对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m=n\)</span><span class="heti-spacing"> </span></span>的情况，就有</p>
+<div class="arithmatex">\[
+\mathbb{E}(A_n^2) = \int_0^1 \psi_n^2(t)\mathrm{d}t
+\]</div>
+<p>要使其与规范正交基的定义一致，就需要<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{E}(A_n^2)=1\)</span></span>，因此就有<span><span class="heti-spacing"> </span><span class="arithmatex">\(Var(A_n)=\mathbb{E}(A_n^2) - \mathbb{E}(A_n)^2 = 1\)</span></span>。</p>
+<p>综上可知，如果<span class="heti-skip"><span class="heti-spacing"> </span>i.i.d.<span class="heti-spacing"> </span></span>地取<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_n\sim N(0, 1)\)</span></span>，那么对于规范正交基<span><span class="heti-spacing"> </span><span class="arithmatex">\(\{\psi_n\}_{n=0}^{\infty}\)</span></span>，所构造的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\xi(t)=\sum A_n\psi_n(t)\)</span><span class="heti-spacing"> </span></span>就是有意义的。于是，布朗运动<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>就可以被下式给定：</p>
+<div class="arithmatex">\[
+W(t) := \int_0^t \xi(s)\mathrm{d}s = \sum_{n=0}^{\infty} A_n \int_0^t \psi_n(s)\mathrm{d}s
+\]</div>
+<p>尽管看起来任意规范正交基<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{\psi_n\}_{n=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>都是可行的，但是为了使整个构造过程更严格、性质更优雅，之后将使用<span class="heti-skip"><span class="heti-spacing"> </span>Haar functions<span class="heti-spacing"> </span></span>作为规范正交基。</p>
+<h3 id="construction-of-brownian-motion_1">Construction of Brownian Motion</h3>
+<div class="admonition info">
+<p class="admonition-title">Haar Functions</p>
+<p><strong>Haar functions</strong> <span><span class="arithmatex">\(\{h_k(\cdot)\}_{k=0}^{\infty}\:\)</span><span class="heti-spacing"> </span></span>是一系列在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L^2(0, 1)\)</span><span class="heti-spacing"> </span></span>上的函数。首先定义<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_0\)</span></span></p>
+<div class="arithmatex">\[
+h_0(t) := 1,\quad t\in [0, 1]
+\]</div>
+<p>然后对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^n\leqslant k &lt; 2^{n+1}-1\)</span>, <span class="arithmatex">\(n\in \mathbb{N}\)</span></span>，定义</p>
+<div class="arithmatex">\[
+h_k(t) := \begin{cases}
+    2^{n/2}, &amp; t\in [\frac{k-2^n}{2^n}, \frac{k-2^n+1/2}{2^n})\\
+    -2^{n/2}, &amp; t\in [\frac{k-2^n+1/2}{2^n}, \frac{k-2^n+1}{2^n}]\\
+    0, &amp; \text{otherwise}
+\end{cases}
+\]</div>
+</div>
+<p>对于单个<span><span class="heti-spacing"> </span>Haar function</span>，原书上给了这张图：</p>
+<div style="text-align:center;">
+<img alt="graph-of-a-haar-function" src="../../../imgs/Intro2SDE/graph-of-a-haar-function.jpg" style="zoom:50%;"/>
+</div>
+<p>为了更加形象地展示<span><span class="heti-spacing"> </span>Haar functions</span>，下图展示了前<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>Haar functions <span class="arithmatex">\(h_k(t)\)</span><span class="heti-spacing"> </span></span>和后面将会提及的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s_k(t)\)</span><span class="heti-spacing"> </span></span>的图像：</p>
+<div style="text-align:center;">
+<img alt="first-eight-Haar-functions-and-their-integrals" src="../../../imgs/Intro2SDE/first-eight-Haar-functions-and-their-integrals.png" style="zoom:50%;"/>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title"><span>Haar functions<span class="heti-spacing"> </span></span>的规范正交性<span><span class="heti-spacing"> </span>(Lemma 1)</span></p>
+<p><span>Haar functions <span class="arithmatex">\(\{h_k(\cdot)\}_{k=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>构成了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L^2(0, 1)\)</span><span class="heti-spacing"> </span></span>上的一组完全的<span class="heti-skip"><span class="heti-spacing"> </span>(complete)<span class="heti-spacing"> </span></span>规范正交基。</p>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>首先，显然有</p>
+<div class="arithmatex">\[
+\int_0^1 h_k^2(t)\mathrm{d}t = 2^n \left(\frac{1}{2^{n+1}} + \frac{1}{2^{n+1}}\right) = 1
+\]</div>
+<p>考虑交叉相乘求积，设<span><span class="heti-spacing"> </span><span class="arithmatex">\(l &gt; k\)</span></span>，要么<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_k\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_l\)</span><span class="heti-spacing"> </span></span>的支撑集<span class="heti-skip"><span class="heti-spacing"> </span>(support)<span class="heti-spacing"> </span></span>要么交集为空，要么必然有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\operatorname{supp}(h_l) \subseteq \operatorname{supp}(h_k)\)</span></span>。支撑集交集为空，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_lh_k=0\)</span></span>，而对于支撑集存在包含关系这一情况有</p>
+<div class="arithmatex">\[
+\int_0^1 h_l(t)h_k(t)\mathrm{d}t = \pm 2^{n/2}\int_0^1h_l(t)\mathrm{d}t = 0,\quad 2^n\leqslant k &lt; 2^{n+1}
+\]</div>
+<blockquote>
+<p>支撑集<span class="heti-skip"><span class="heti-spacing"> </span>(support)<span class="heti-spacing"> </span></span>是指使得函数取值非零的定义域的子集，详细可见<a href="https://en.wikipedia.org/wiki/Support_(mathematics)"><span><span class="heti-spacing"> </span>Support (mathematics) - Wikipedia</span></a></p>
+</blockquote>
+<p>现在规范正交性已经得到证明，下面需要证明的就是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{h_k(\cdot)\}_{k=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>构成了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L^2(0, 1)\)</span><span class="heti-spacing"> </span></span>上的一组<strong>完全的基</strong>。利用上已经证明的正交性，只需要证明<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall f\in L^2(0, 1)\)</span></span>，如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall k\in \mathbb{N}^+\)</span><span class="heti-spacing"> </span></span>都有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_0^1 f(t)h_k(t)\mathrm{d}t = 0\)</span></span>，那么就有<span><span class="heti-spacing"> </span><span class="arithmatex">\(f=0\)</span> a.e.</span>。</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k=0\)</span><span class="heti-spacing"> </span></span>的情况，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_0^1 f\mathrm{d}t = 0\)</span></span>。接下来考虑<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^n\leqslant k &lt; 2^{n+1}\)</span></span>。</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n=0\)</span><span class="heti-spacing"> </span></span>的情况，有<span><span class="heti-spacing"> </span><span class="arithmatex">\(k=1\)</span></span>，那么有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_0^{1/2} f\mathrm{d}t = \int_{1/2}^1 f\mathrm{d}t\)</span></span>。结合<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k=0\)</span><span class="heti-spacing"> </span></span>时的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_0^1 f\mathrm{d}t = (\int_0^{1/2} + \int_{1/2}^1)f\mathrm{d}t = 0\)</span></span>，就有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_0^{1/2} f\mathrm{d}t = \int_{1/2}^1 f\mathrm{d}t = 0\)</span></span>。</p>
+<p>同理，让<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>的下一层依照上一层，总能得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_{k/2^{n+1}}^{(k+1)/2^{n+1}} f\mathrm{d}t = 0\)</span>, <span class="arithmatex">\(\forall\: 0\leqslant k &lt; 2^{n+1}\)</span></span>。这样就可以得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(\int_0^1 f\mathrm{d}t = 0\)</span></span>，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(f=0\)</span> a.e.</span>。</p>
+</details>
+<p>由此，我们将构造</p>
+<div class="arithmatex">\[
+W(t) := \sum_{k=0}^{\infty} A_k \int_0^t h_k(s)\mathrm{d}s
+\]</div>
+<p>为了证明所构造的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, 1]\)</span><span class="heti-spacing"> </span></span>上确实是布朗运动，需要首先研究几个引理。</p>
+<div class="admonition info">
+<p class="admonition-title">Schauder function</p>
+<p><span class="arithmatex">\(k\)</span>-th <strong>Schauder function</strong> <span><span class="arithmatex">\(s_k(t)\)</span><span class="heti-spacing"> </span></span>被定义为</p>
+<div class="arithmatex">\[
+s_k(t) := \int_0^t h_k(s)\mathrm{d}s, \quad 0\leqslant t\leqslant 1
+\]</div>
+</div>
+<p><span><span class="arithmatex">\(s_k(t)\)</span><span class="heti-spacing"> </span></span>的图像是高度为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2^{-n/2-1}\)</span><span class="heti-spacing"> </span></span>的“帐篷”，具体可见前面的图。因此有</p>
+<div class="arithmatex">\[
+\max\limits_{0\leqslant t\leqslant 1} |s_k(t)| = 2^{-n/2-1},\quad 2^n \leqslant k &lt; 2^{n+1}
+\]</div>
+<p>可以看出，<span><span class="arithmatex">\(s_k\)</span><span class="heti-spacing"> </span></span>就成为了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>的基。为了方便后续<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>的一些计算，引入如下引理：</p>
+<div class="admonition abstract">
+<p class="admonition-title">Lemma 2</p>
+<p><span class="arithmatex">\(\forall\: 0\leqslant t, s \leqslant 1\)</span>，有</p>
+<div class="arithmatex">\[
+\sum_{k=0}^{\infty} s_k(s)s_k(t) = s \wedge t
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>定义</p>
+<div class="arithmatex">\[
+\phi_s(\tau) := \begin{cases}
+    1, &amp; 0 \leqslant \tau \leqslant s \\
+    0, &amp; s &lt; \tau \leqslant 1
+\end{cases}
+\]</div>
+<p>考虑<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:0\leqslant s \leqslant t \leqslant 1\)</span>,<span class="heti-spacing"> </span></span>理解<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_s\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_t\)</span><span class="heti-spacing"> </span></span>的图像如下图所示：</p>
+<p></p><div style="text-align:center;">
+<img alt="3.3_lemma2_phi" src="../../../imgs/Intro2SDE/3.3_lemma2_phi.png" style="zoom:50%;"/>
+</div>
+<p>因此，考虑<span><span class="heti-spacing"> </span><span class="arithmatex">\(0\leqslant s, t\leqslant 1\)</span></span>，有</p>
+<div class="arithmatex">\[
+\int_0^1 \phi_s(\tau)\phi_t(\tau)\mathrm{d}\tau = s \wedge t
+\]</div>
+<p>另一方面，将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_s\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi_t\)</span><span class="heti-spacing"> </span></span>分别展开为<span class="heti-skip"><span class="heti-spacing"> </span>Haar functions<span class="heti-spacing"> </span></span>的线性组合</p>
+<div class="arithmatex">\[
+\phi_s(\tau) = \sum_{k=0}^{\infty} a_kh_k(\tau),\quad \phi_t(\tau) = \sum_{k=0}^{\infty} b_kh_k(\tau)
+\]</div>
+<p>这样就有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \int_0^1 \phi_s(\tau)\phi_t(\tau)\mathrm{d}\tau
+    &amp;= \int_0^1 \left(\sum_{k=0}^{\infty} a_kh_k(\tau)\right) \left(\sum_{k=0}^{\infty} b_kh_k(\tau)\right)\mathrm{d}\tau \\
+    &amp;= \int_0^1 \sum_{k=0}^{\infty} a_kb_kh_k^2(\tau)\mathrm{d}\tau \\
+    &amp;= \sum_{k=0}^{\infty} a_kb_k\int_0^1 h_k^2(\tau)\mathrm{d}\tau \\
+    &amp;= \sum_{k=0}^{\infty} a_kb_k
+\end{aligned}
+\]</div>
+<p>而</p>
+<div class="arithmatex">\[
+    a_k = \int_0^1 \phi_s(\tau)h_k(\tau)\mathrm{d}\tau = \int_0^s h_k(\tau)\mathrm{d}\tau = s_k(s),\quad b_k = s_k(t)
+\]</div>
+<p>由此得证。</p>
+</details>
+<p>为了正式证明所构造的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>的级数表示的一致收敛性了，需要如下的引理。</p>
+<div class="admonition abstract">
+<p class="admonition-title">Lemma 3</p>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{a_k\}_{k=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>是满足如下性质的实数序列：<span><span class="arithmatex">\(\exists\)</span><span class="heti-spacing"> </span></span>常数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(C &gt; 0\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(0\leqslant \delta &lt; 1/2\)</span><span class="heti-spacing"> </span></span>使得<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall\: k\in \mathbb{N}^+\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+|a_k|\leqslant Ck^\delta
+\]</div>
+<p>那么对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(0\leqslant t\leqslant 1\)</span></span>，以下函数项级数一致收敛<span><span class="heti-spacing"> </span>(converge uniformly):</span> </p>
+<div class="arithmatex">\[
+\sum_{k=0}^{\infty} a_ks_k(t)
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>从前面的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_k\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s_k\)</span><span class="heti-spacing"> </span></span>示例的图像中，我们可以看出对于所有正整数<span><span class="heti-spacing"> </span><span class="arithmatex">\(k\in [2^n, 2^{n+1})\)</span></span>，<span><span class="arithmatex">\(s_k\)</span><span class="heti-spacing"> </span></span>的支撑集都是不相交的，因此这系列<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>决定的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a_ks_k(t)\)</span><span class="heti-spacing"> </span></span>中至多只有一项非零。给定这样<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>的范围，<span><span class="arithmatex">\(|s_k(t)|\)</span><span class="heti-spacing"> </span></span>的最大值前面已经给出，而对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a_k\)</span><span class="heti-spacing"> </span></span>我们有</p>
+<div class="arithmatex">\[
+    \max\limits_{2^n \leqslant k &lt; 2^{n+1}} |a_k| \leqslant C(2^{n+1})^\delta
+\]</div>
+<p>于是可以得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \sum_{k=2^m}^{\infty} |a_k|\cdot |s_k(t)|
+    \leqslant &amp; \sum_{n=m}^{\infty} \max\limits_{2^n \leqslant k &lt; 2^{n+1}} |a_k|  \cdot \max\limits_{2^n \leqslant k &lt; 2^{n+1}} |s_k(t)|\\
+    \leqslant &amp; C\sum_{n=m}^{\infty} (2^{n+1})^\delta \cdot 2^{-n/2-1} \\
+    = &amp; 2^{\delta - 1}C\sum_{n=m}^{\infty} \left[2^{(\delta - 1/2)}\right]^n \\
+    = &amp; 2^{\delta - 1}C \cdot \frac{2^{m(\delta - 1/2)}}{1 - 2^{(\delta - 1/2)}}
+\end{aligned}
+\]</div>
+<p>第一行即考虑到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\in [2^n, 2^{n+1})\)</span><span class="heti-spacing"> </span></span>时最多只有一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>可以使得<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a_k s_k(t)\)</span><span class="heti-spacing"> </span></span>非零，对这一项进行放缩即可。第三到第四行应用了几何级数的公式（等比数列求和<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。注意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\delta\)</span><span class="heti-spacing"> </span></span>为常数，因此当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m\)</span><span class="heti-spacing"> </span></span>足够大时，以上优级数的余项和可以被控制在任意小的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\varepsilon &gt; 0\)</span><span class="heti-spacing"> </span></span>内，因此通过优级数判别法可以得到函数项级数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\sum a_k s_k(t)\)</span><span class="heti-spacing"> </span></span>一致收敛。</p>
+</details>
+<p>有了<span><span class="heti-spacing"> </span>Lemma 3</span>，就只需要再证明用于构造<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>的级数的各系数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_k\)</span><span class="heti-spacing"> </span></span>满足<span class="heti-skip"><span class="heti-spacing"> </span>Lemma3<span class="heti-spacing"> </span></span>的条件了。当然，因为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_k\)</span><span class="heti-spacing"> </span></span>实际上是一系列随机变量，因此满足条件的形式上略有不同。</p>
+<div class="admonition abstract">
+<p class="admonition-title">Lemma 4</p>
+<p>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{A_k\}_{k=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>i.i.d.<span class="heti-spacing"> </span></span>地服从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N(0, 1)\)</span><span class="heti-spacing"> </span></span>分布的一系列随机变量，那么对于<span class="heti-skip"><span class="heti-spacing"> </span>almost every<span class="heti-spacing"> </span></span>样本点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\)</span><span class="heti-spacing"> </span></span>有</p>
+<div class="arithmatex">\[
+|A_k(\omega)| = O(\sqrt{\ln k}), \quad k\to \infty
+\]</div>
+</div>
+<p>由于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>足够大时，<span class="arithmatex">\(\sqrt{\ln k}\leqslant Ck^{1/4}\)</span>，因此<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{A_k\}_{k=0}^{\infty}\)</span> almost surely<span class="heti-spacing"> </span></span>满足<span class="heti-skip"><span class="heti-spacing"> </span>Lemma 3<span class="heti-spacing"> </span></span>的条件。</p>
+<details class="general">
+<summary>Proof</summary>
+<p>首先对于给定的<span><span class="heti-spacing"> </span><span class="arithmatex">\(x&gt;0\)</span></span>，对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P(|A_k|&gt;x)\)</span><span class="heti-spacing"> </span></span>进行一个比较松的放缩：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    P(|A_k| &gt; x) 
+    &amp;= \frac{2}{\sqrt{2\pi}}\int_x^{+\infty} e^{-s^2/2}\mathrm{d}s \\
+    &amp;\leqslant \frac{2}{\sqrt{2\pi}} e^{-x^2/4} \int_x^{+\infty} e^{-s^2/4}\mathrm{d}s \\
+    &amp;\leqslant C e^{-x^2/4}
+\end{aligned}
+\]</div>
+<p>这里的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(C\)</span><span class="heti-spacing"> </span></span>是某个常数。第一行考虑了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A_k &gt; x\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(A_k &lt; -x\)</span></span>，第二行的无穷积分显然依然是收敛的。这样，取<span><span class="heti-spacing"> </span><span class="arithmatex">\(x=4\sqrt{\ln k}\)</span></span>，就有</p>
+<div class="arithmatex">\[
+    P(|A_k|\geqslant 4\sqrt{\ln k}) \leqslant Ce^{-4\ln k} = \frac{C}{k^4}
+\]</div>
+<p>由于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\sum P(|A_k|\geqslant 4\sqrt{\ln k}) \leqslant \sum C/k^4&lt;\infty\)</span></span>，根据<span class="heti-skip"><span class="heti-spacing"> </span>Borel-Cantelli<span class="heti-spacing"> </span></span>引理就有</p>
+<div class="arithmatex">\[
+    P(|A_k| \geqslant 4\sqrt{\ln k}\text{ i.o.}) = 0
+\]</div>
+<p>这意味着样本点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\)</span><span class="heti-spacing"> </span></span>使得存在无限多个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(|A_k(\omega)|\geqslant 4\sqrt{\ln k}\)</span><span class="heti-spacing"> </span></span>的概率为<span><span class="heti-spacing"> </span>0</span>。也就是说，对于<span><span class="heti-spacing"> </span>almost every <span class="arithmatex">\(\omega\)</span></span>，都仅有有限个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>满足这个关系式。取这有限个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>中的最大值<span><span class="heti-spacing"> </span><span class="arithmatex">\(K(\omega)\)</span></span>（意为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(K\)</span><span class="heti-spacing"> </span></span>取决于给定的<span><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，有</p>
+<div class="arithmatex">\[
+|A_k(\omega)| \leqslant 4\sqrt{\ln k}, \quad k &gt; K(\omega)
+\]</div>
+<p>由此完成了证明。</p>
+</details>
+<p>有了以上的引理准备，我们最终可以用如下定理的形式说明我们关于所构造的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>的结论。</p>
+<div class="admonition abstract">
+<p class="admonition-title">构造布朗运动</p>
+<p>令<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\{A_k\}_{k=0}^{\infty}\)</span><span class="heti-spacing"> </span></span>是一系列相互独立的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N(0, 1)\)</span><span class="heti-spacing"> </span></span>随机变量，定义于相同概率空间。则级数</p>
+<div class="arithmatex">\[
+    W(t, \omega) := \sum_{k=0}^{\infty} A_k(\omega) s_k(t)
+\]</div>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>almost every <span class="arithmatex">\(\omega\)</span><span class="heti-spacing"> </span></span>下都关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>一致收敛，并且有结论</p>
+<ol>
+<li><span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\in [0, 1]\)</span><span class="heti-spacing"> </span></span>上的布朗运动</li>
+<li>对于<span><span class="heti-spacing"> </span>a.e. <span class="arithmatex">\(\omega\)</span></span>，采样路径<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\mapsto W(t, \omega)\)</span><span class="heti-spacing"> </span></span>是连续的 </li>
+</ol>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>对于级数的一致收敛性，结合<span class="heti-skip"><span class="heti-spacing"> </span>Lemma 3<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Lemma 4<span class="heti-spacing"> </span></span>就可以得到证明，而且采样路径的连续性也成为了其导出结论。</p>
+<blockquote>
+<p>对于采样路径的连续性，将在下一节<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span><a href="#sample-path-properties"><span class="heti-skip"><span class="heti-spacing"> </span>Sample Path Properties<span class="heti-spacing"> </span></span></a><span class="heti-skip"><span class="heti-spacing"> </span>)<span class="heti-spacing"> </span></span>中详细阐述。</p>
+</blockquote>
+<p>接下来将重点阐述<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>符合布朗运动定义中的三条性质。</p>
+<p>首先，任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>都有<span><span class="heti-spacing"> </span><span class="arithmatex">\(s_k(0)=0\)</span></span>，所以<span class="heti-skip"><span class="heti-spacing"> </span>a.e. <span class="arithmatex">\(\omega\)</span><span class="heti-spacing"> </span></span>有<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(0, \omega)=\sum A_k(\omega)\cdot 0 = 0\)</span></span>。</p>
+<p>为了证明任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(0\leqslant s \leqslant t \leqslant 1\)</span><span class="heti-spacing"> </span></span>都有<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(t) - W(s)\sim N(0, t-s)\)</span></span>，我们使用特征函数的方法：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \phi_{W(t) - W(s)}(\lambda)
+    &amp;= \mathbb{E}(e^{i\lambda(W(t) - W(s))}) \\
+    &amp;= \mathbb{E}\left(e^{i\lambda\sum A_k(s_k(t) - s_k(s))}\right) \\
+    &amp;= \prod \mathbb{E}\left(e^{i\lambda A_k(s_k(t) - s_k(s))}\right) &amp; \text{independence}\\
+    &amp;= \prod e^{-\frac{1}{2}\lambda^2(s_k(t) - s_k(s))^2} &amp; \text{$A_k\sim N(0, 1)$}\\
+    &amp;= e^{-\frac{1}{2}\lambda^2\sum (s_k(t) - s_k(s))^2} \\
+    &amp;= e^{-\frac{1}{2}\lambda^2\sum (s_k^2(t) - 2 s_k(t) s_k(s) + s_k^2(s))^2} \\
+    &amp;= e^{-\frac{1}{2}\lambda^2\sum (t - 2s + s)} &amp; \text{Lemma 2}\\
+    &amp;= e^{-\frac{1}{2}\lambda^2(t-s)}
+\end{aligned}
+\]</div>
+<p>得到的结果是标准的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N(t-s)\)</span><span class="heti-spacing"> </span></span>的特征函数，所以得证。</p>
+<p>前面完成了<span class="heti-skip"><span class="heti-spacing"> </span>Gaussian increments<span class="heti-spacing"> </span></span>的证明，最后证明<span><span class="heti-spacing"> </span>independent increments</span>，即对于任意<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:m\in \mathbb{N}^+\)</span>, <span class="arithmatex">\(0=t_0&lt;t_1&lt;\cdots&lt;t_m\leqslant 1\)</span><span class="heti-spacing"> </span></span>有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(t_1), \cdots, W(t_m) - W(t_{m-1})\)</span><span class="heti-spacing"> </span></span>相互独立。只需要证明</p>
+<div class="arithmatex">\[
+    F_{W(t_1), \cdots, W(t_m) - W(t_{m-1})} = \prod F_{W(t_j) - W(t_{j-1})}
+\]</div>
+<p>依然使用特征函数的方法，只需要证明</p>
+<div class="arithmatex">\[
+\mathbb{E}\left( e^{i\sum \lambda_j (W(t_j) - W(t_{j-1}))} \right) = \prod e^{-\frac{1}{2}\lambda_j^2(t_j - t_{j-1})}
+\]</div>
+<p>下面以证明<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m=2\)</span><span class="heti-spacing"> </span></span>为例，其他情况完全类似：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}\left( e^{i[\lambda_1 W(t_1) + \lambda_2(W(t_2) - W(t_1))]} \right)
+    &amp;= \mathbb{E}\left( e^{i[(\lambda_1 - \lambda_2)W(t_1) + \lambda_2W(t_2)]} \right) \\
+    &amp;= \mathbb{E}\left( e^{i[(\lambda_1 - \lambda_2)\sum A_k s_k(t_1) + \lambda_2\sum A_k s_k(t_2)]} \right) \\
+    &amp;= \mathbb{E}\left( e^{i\sum A_k[(\lambda_1 - \lambda_2)s_k(t_1) + \lambda_2s_k(t_2)]} \right) \\
+    &amp;= \prod \mathbb{E}\left( e^{iA_k[(\lambda_1 - \lambda_2)s_k(t_1) + \lambda_2s_k(t_2)]} \right) \\
+    &amp;= \prod e^{-\frac{1}{2}[(\lambda_1 - \lambda_2)s_k(t_1) + \lambda_2s_k(t_2)]^2} \\
+    &amp;= e^{-\frac{1}{2}\sum (\lambda_1 - \lambda_2)^2s_k^2(t_1) + 2(\lambda_1 - \lambda_2)\lambda_2s_k(t_1)s_k(t_2) + \lambda_2^2s_k^2(t_2)} \\
+    &amp;= e^{-\frac{1}{2}\left[(\lambda_1 - \lambda_2)^2t_1 + 2(\lambda_1 - \lambda_2)\lambda_2 t_1 + \lambda_2^2 t_2\right]} \\
+    &amp;= e^{-\frac{1}{2}(\lambda_1^2 t_1 + \lambda_2^2 (t_2 - t_1))} \\
+\end{aligned}
+\]</div>
+</details>
+<p>最后，我们还需要把所构造的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\in[0, 1]\)</span><span class="heti-spacing"> </span></span>上的布朗运动扩充到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\in [0, +\infty)\)</span><span class="heti-spacing"> </span></span>上。</p>
+<div class="admonition abstract">
+<p class="admonition-title">一维布朗运动的存在性</p>
+<p>对于概率空间<span><span class="heti-spacing"> </span><span class="arithmatex">\((\Omega, \mathcal{U}, P)\)</span></span>，在其上定义可数无穷多个相互独立的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N(0, 1)\)</span><span class="heti-spacing"> </span></span>随机变量<span><span class="heti-spacing"> </span><span class="arithmatex">\(\{A_k\}_{k=0}^{\infty}\)</span></span>，则存在一个定义于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\omega\in \Omega, t\geqslant 0\)</span><span class="heti-spacing"> </span></span>的一维布朗运动<span><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span></span>。</p>
+</div>
+<div class="admonition general">
+<p class="admonition-title">Outline of Proof</p>
+<p>将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([0, +\infty)\)</span><span class="heti-spacing"> </span></span>间隔为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(1\)</span><span class="heti-spacing"> </span></span>进行分割，每个区域的随机变量系数序列都是<span class="heti-skip"><span class="heti-spacing"> </span>i.i.d.<span class="heti-spacing"> </span></span>的，只需要让基函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s_k\)</span><span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>进行平移变换即可。具体地，只需要让</p>
+<div class="arithmatex">\[
+W(t) := W(n-1) + W^n (t-(n-1)),\quad n-1\leqslant t \leqslant n
+\]</div>
+<p>注意这里的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W^n\)</span><span class="heti-spacing"> </span></span>只是表示标号为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>而已。这样定义的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(W(\cdot)\)</span><span class="heti-spacing"> </span></span>就是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(t\geqslant 0\)</span><span class="heti-spacing"> </span></span>的一维布朗运动了。</p>
+</div>
+<h3 id="brownian-motion-in-mathbbrn">Brownian Motion in <span class="arithmatex">\(\mathbb{R}^n\)</span></h3>
+<p>要把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}\)</span><span class="heti-spacing"> </span></span>上的一维布朗运动扩展到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>上的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维布朗运动，其实是非常直接的。</p>
+<div class="admonition info">
+<p class="admonition-title"><span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维布朗运动</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}^n\)</span>-valued<span class="heti-spacing"> </span></span>随机过程<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(\cdot) = (W^1(\cdot), \cdots, W^n(\cdot))\)</span></span>，如果满足</p>
+<ol>
+<li><span><span class="arithmatex">\(W^k(\cdot)\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbb{R}\)</span><span class="heti-spacing"> </span></span>上的一维布朗运动</li>
+<li><span><span class="arithmatex">\(\sigma\)</span>-<span class="heti-spacing"> </span></span>代数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{W}^k := \mathcal{U}(W^k(t)|t\geqslant 0)\)</span><span class="heti-spacing"> </span></span>之间相互独立，<span class="arithmatex">\(k=1, \cdots, n\)</span></li>
+</ol>
+<blockquote>
+<p>即每条分路径都独立采样</p>
+</blockquote>
+</div>
+<p>下面简单地阐述<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维布朗运动的计算。</p>
+<div class="admonition abstract">
+<p class="admonition-title">Lemma</p>
+<p>给定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维布朗运动<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(\cdot)\)</span></span>，对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall k, l=1, \cdots, n\)</span></span>，有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    \mathbb{E}(W^k(t)W^l(s)) &amp; = (t\wedge s)\delta_{kl} \\
+    \mathbb{E}((W^k(t) - W^k(s))(W^l(t) - W^l(s))) &amp; = (t-s)\delta_{kl}\quad (t\geqslant s\geqslant 0)
+\end{aligned}
+\]</div>
+</div>
+<div class="admonition general">
+<p class="admonition-title">Outline of Proof</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k=l\)</span><span class="heti-spacing"> </span></span>的情况，就是单个一维布朗运动的性质，因此我们只需要处理<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\neq l\)</span><span class="heti-spacing"> </span></span>的情况。然而，根据定义，<span><span class="arithmatex">\(W^k(t), W^k(s), W^l(t), W^l(s)\)</span><span class="heti-spacing"> </span></span>之间都是相互独立的，因此就非常容易证明了，在此略去具体的证明。</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title"><span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维布朗运动的计算</p>
+<p>给定<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>维布朗运动<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(\cdot)\)</span></span>，则对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\forall t &gt; 0\)</span><span class="heti-spacing"> </span></span>有<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(t)\sim N(0, tI)\)</span></span>，且任意<span class="heti-skip"><span class="heti-spacing"> </span>Borel<span class="heti-spacing"> </span></span>集<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(A\subseteq \mathbb{R}^n\)</span><span class="heti-spacing"> </span></span>都有</p>
+<div class="arithmatex">\[
+    P(\bm W(t)\in A) = \frac{1}{(2\pi t)^{n/2}}\int_A e^{-\frac{1}{2t}|\bm x|^2}\mathrm{d}\bm x
+\]</div>
+<p>更一般地，对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m\in \mathbb{N}^+\)</span><span class="heti-spacing"> </span></span>和函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(f: \mathbb{R}^n\times \mathbb{R} ^n\times \cdots \mathbb{R}^n\to \mathbb{R}\)</span></span>，我们有</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    &amp;\mathbb{E}(f(\bm W(t_1), \cdots, \bm W(t_m))) \\
+    =&amp; \int_{\mathbb{R}^n} \cdots \int_{\mathbb{R}^n} f(\bm x_1, \cdots, \bm x_m) g(x_1, t_1 | 0)g(x_w, t_2 - t_1 | x_1)\cdots g(x_m, t_m - t_{m-1} | x_{m-1})\mathrm{d}\bm x_1\cdots \mathrm{d}\bm x_m
+\end{aligned}
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+    g(x, t | y) = \frac{1}{(2\pi t)^{n/2}}e^{-\frac{1}{2t}|x-y|^2}
+\]</div>
+</div>
+<details class="general">
+<summary>Proof</summary>
+<p>对于每个点<span><span class="heti-spacing"> </span><span class="arithmatex">\((x_1, \cdots, x_n)\in \mathbb{R}^n\)</span></span>，考虑<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\bm W(t)\)</span><span class="heti-spacing"> </span></span>的密度函数</p>
+<div class="arithmatex">\[
+\begin{aligned}
+    f_{\bm W(t)}(x_1, \cdots, x_n)
+    &amp;= f_{W^1(t)}(x_1)\cdots f_{W^n(t)}(x_n) \\
+    &amp;= \frac{1}{(2\pi t)^{1/2}}e^{-\frac{1}{2t}x_1^2}\cdots \frac{1}{(2\pi t)^{1/2}}e^{-\frac{1}{2t}x_n^2} \\
+    &amp;= \frac{1}{(2\pi t)^{n/2}}e^{-\frac{1}{2t}(|x_1|^2 + \cdots + |x_n|^2)} \\
+    &amp;= \frac{1}{(2\pi t)^{n/2}}e^{-\frac{1}{2t}|\bm x|^2} = g(\bm x, t | 0)
+\end{aligned}
+\]</div>
+<p>对于更普遍的情况，模仿一维布朗运动的计算推导过程即可，请读者自证。</p>
+</details>
+<h2 id="sample-path-properties">Sample Path Properties</h2>
+<p>布朗运动的采样路径具有一定的<span class="heti-skip"><span class="heti-spacing"> </span>Hölder<span class="heti-spacing"> </span></span>连续性，为了详细阐述与证明，需要首先阐明<span class="heti-skip"><span class="heti-spacing"> </span>Hölder<span class="heti-spacing"> </span></span>连续性的定义。</p>
+<blockquote>
+<p>可以参考<a href="https://en.wikipedia.org/wiki/H%C3%B6lder_condition"><span><span class="heti-spacing"> </span>Hölder condition - Wikipedia</span></a>，另外对于各种连续性在本笔记的<a href="../../../analysis/continuities/"><span class="heti-skip"><span class="heti-spacing"> </span>Continuities<span class="heti-spacing"> </span></span></a>中也有详细的阐述</p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Hölder Continuity</p>
+<p>考虑函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f:[0, T]\to \mathbb{R}\)</span><span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span><span class="arithmatex">\(0 &lt; \gamma \leqslant 1\)</span></span>：</p>
+<p><strong>(1)</strong> 如果存在常数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(K\)</span><span class="heti-spacing"> </span></span>使得下式成立，则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\gamma\)</span>-Hölder<span class="heti-spacing"> </span></span>一致连续<span class="heti-skip"><span class="heti-spacing"> </span>(uniformly <span class="arithmatex">\(\:\gamma\)</span>-Hölder continuous)<span class="heti-spacing"> </span></span>的：</p>
+<div class="arithmatex">\[
+|f(t) - f(s)| \leqslant K|t-s|^\gamma, \quad \forall t, s\in [0, T]
+\]</div>
+<p><strong>(2)</strong> 如果存在常数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(K\)</span><span class="heti-spacing"> </span></span>使得下式成立，则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>是在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>点是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\:\gamma\)</span>-Hölder<span class="heti-spacing"> </span></span>连续的：</p>
+<div class="arithmatex">\[
+|f(t) - f(s)| \leqslant K|t-s|^\gamma, \quad \forall t\in [0, T]
+\]</div>
+</div>
+<p>对于随机过程的采样路径的<span class="heti-skip"><span class="heti-spacing"> </span>Hölder<span class="heti-spacing"> </span></span>连续性，<span>Kolmogorov<span class="heti-spacing"> </span></span>连续性定理常常被使用：</p>
+<div class="admonition abstract">
+<p class="admonition-title">Kolmogorov continuity theorem</p>
+<p>asd</p>
+</div>
+<blockquote>
+<p>详见<a href="https://en.wikipedia.org/wiki/Kolmogorov_continuity_theorem"><span><span class="heti-spacing"> </span>Kolmogorov continuity theorem - Wikipedia</span></a></p>
+</blockquote>
+<h2 id="markov-property">Markov Property</h2>
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script async="" crossorigin="anonymous" data-category="Announcements" data-category-id="DIC_kwDOKjiG3c4Cf36n" data-emit-metadata="0" data-input-position="top" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="ZhouTimeMachine/note" data-repo-id="R_kgDOKjiG3Q" data-strict="0" data-theme="preferred_color_scheme" src="https://giscus.app/client.js">
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2023 <a href="https://github.com/ZhouTimeMachine" rel="noopener" target="_blank">ZhouTimeMachine</a>
+</div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+<script src="../../../../js/katex.min.js"></script>
+<script src="../../../../js/katex.js"></script>
+<script src="../../../../js/heti.js"></script>
+</body>
+</html>

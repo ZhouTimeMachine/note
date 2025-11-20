@@ -1,0 +1,106 @@
+<svg viewBox="78 100 444 120" width="444" height="187.2" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9.8" refY="3.5" orient="auto">
+            <path d="M0,0 L10,3.5 L0,7 Z" fill="currentColor"/>
+        </marker>
+    </defs>
+
+    <style>
+      .nodeText {
+        font-size: 32px;
+        font-weight: bold;
+        /* fill: black; (由下面的暗色模式CSS控制) */
+        text-anchor: middle;
+        dominant-baseline: middle;
+      }
+      .labelText {
+        font-size: 24px;
+        /* fill: black; (由下面的暗色模式CSS控制) */
+        text-anchor: middle;
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+      .subscript {
+        font-size: 0.7em;
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+      .boldText {
+        font-weight: bold;
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+
+      /* 浅色模式默认颜色 */
+      .circleNode {
+        fill: #cccccc;
+        stroke: black;
+        stroke-width: 4;
+      }
+      .nodeText {
+        fill: black;
+      }
+      .labelText {
+        fill: black;
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+      .arrow {
+        stroke: black;
+        stroke-width: 3;
+        color: black; /* 关键：为 marker 的 currentColor 提供值 */
+      }
+      .arrowend {
+        stroke: black;
+        stroke-width: 3;
+        color: black;
+        fill: black;
+      }
+
+      /* 暗色模式样式 */
+      @media (prefers-color-scheme: dark) {
+        .circleNode {
+          fill: #444444; 
+          stroke: #aaaaaa; 
+        }
+        .nodeText {
+          fill: white;
+        }
+        .labelText {
+          fill: white;
+        }
+        .arrow {
+          stroke: white;
+          stroke-width: 3;
+          color: white; /* 关键：为 marker 的 currentColor 提供值 (暗色模式) */
+        }
+        .arrowend {
+          stroke: white;
+          stroke-width: 3;
+          color: white;
+          fill: white;
+        }
+      }
+    </style>
+
+    <circle class="circleNode" cx="150" cy="150" r="65" />
+    <circle class="circleNode" cx="450" cy="150" r="65" />
+
+    <text x="150" y="150" class="nodeText">
+        X<tspan baseline-shift="sub" class="subscript">t</tspan>
+    </text>
+    <text x="450" y="150" class="nodeText">
+        X<tspan baseline-shift="sub" class="subscript">t-1</tspan>
+    </text>
+
+    <!-- <line class="arrow" x1="215" y1="150" x2="385" y2="150" marker-end="url(#arrowhead)" /> -->
+    <line class="arrow" x1="215" y1="150" x2="382" y2="150" />
+    <polygon class="arrowend" points="382,150 370,146.5 370,153.5" stroke="none"/>
+    <text x="300" y="115" class="labelText"> 
+        p<tspan baseline-shift="sub" class="subscript">θ</tspan>(<tspan class="boldText">X</tspan><tspan baseline-shift="sub" class="subscript">t-1</tspan>|<tspan class="boldText">X</tspan><tspan baseline-shift="sub" class="subscript">t</tspan>)
+    </text>
+
+    <!-- <path class="arrow" d="M 385.988,161.284 Q 300,230 214.012,161.284" fill="none" stroke-dasharray="8,6" marker-end="url(#arrowhead)" /> -->
+    <path class="arrow" id="curvedArrow" d="M 385.988,161.284 Q 300,230 214.012,161.284" fill="none" stroke-dasharray="8,6" />
+    <polygon class="arrowend" points="216.012,163.284 226.009,166.793 221.639,172.261" stroke="none"/>
+
+    <text x="300" y="233" class="labelText"> 
+        q(<tspan class="boldText">X</tspan><tspan baseline-shift="sub" class="subscript">t</tspan>|<tspan class="boldText">X</tspan><tspan baseline-shift="sub" class="subscript">t-1</tspan>)
+    </text>
+</svg>

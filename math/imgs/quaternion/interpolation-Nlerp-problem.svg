@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="circle-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.06 66.13">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-size: 5px;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke-width: .25px;
+      }
+
+      .cls-5, .cls-6 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .cls-5, .cls-6 {
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+
+      .cls-6 {
+        stroke-width: .5px;
+      }
+
+      .cls-7, .cls-3 {
+        font-family: STLiti, STLiti;
+      }
+
+      .cls-2, .cls-8 {
+        font-family: TimesNewRomanPSMT, 'Times New Roman';
+      }
+
+      .cls-4 {
+        font-family: TimesNewRomanPS-BoldMT, 'Times New Roman';
+        font-weight: 700;
+      }
+      
+      .cls-polygon {
+        fill: #000;
+      }
+      .cls-text {
+        fill: #000;
+      }
+      @media (prefers-color-scheme: dark) {
+        .cls-polygon {
+          fill: #fff;
+        }
+        .cls-text {
+          fill: #fff;
+        }
+      }
+    </style>
+  </defs>
+  <circle class="cls-5" cx="30.12" cy="36.01" r="30"/>
+  <circle class="cls-6" cx="30.12" cy="36.01" r=".25"/>
+  <circle class="cls-6" cx="39.3" cy="22.16" r=".15"/>
+  <circle class="cls-6" cx="46.68" cy="11.01" r=".15"/>
+  <text class="cls-2 cls-text" transform="translate(25.51 40.94)"><tspan x="0" y="0">O</tspan></text>
+  <g>
+    <line class="cls-5" x1="30.11" y1="35.97" x2="57.82" y2="35.97"/>
+    <polygon class="cls-polygon" points="57.32 36.7 60.03 35.97 57.32 35.24 57.32 36.7"/>
+  </g>
+  <line class="cls-5" x1="60.13" y1="35.98" x2="18.46" y2="8.34"/>
+  <circle class="cls-6" cx="28.88" cy="15.25" r=".15"/>
+  <circle class="cls-6" cx="18.46" cy="8.34" r=".15"/>
+  <circle class="cls-6" cx="49.71" cy="29.07" r=".15"/>
+  <circle class="cls-6" cx="60.13" cy="35.98" r=".15"/>
+  <g>
+    <line class="cls-5" x1="30.09" y1="35.99" x2="19.32" y2="10.46"/>
+    <polygon class="cls-polygon" points="20.18 10.64 18.46 8.42 18.84 11.2 20.18 10.64"/>
+  </g>
+  <g>
+    <line class="cls-5" x1="30.1" y1="35.97" x2="45.42" y2="12.88"/>
+    <polygon class="cls-polygon" points="45.75 13.7 46.65 11.04 44.54 12.89 45.75 13.7"/>
+  </g>
+  <g>
+    <line class="cls-5" x1="30.22" y1="35.89" x2="56.35" y2="26.66"/>
+    <polygon class="cls-polygon" points="56.12 27.51 58.43 25.93 55.64 26.14 56.12 27.51"/>
+  </g>
+  <circle class="cls-6" cx="58.43" cy="25.91" r=".15"/>
+  <circle class="cls-6" cx="28.35" cy="6.01" r=".15"/>
+  <g>
+    <line class="cls-5" x1="30.14" y1="36.04" x2="28.48" y2="8.38"/>
+    <polygon class="cls-polygon" points="29.23 8.83 28.35 6.17 27.78 8.92 29.23 8.83"/>
+  </g>
+  <text class="cls-4 cls-text" transform="translate(2.67 8.4)"><tspan x="0" y="0">v</tspan></text>
+  <text class="cls-2 cls-text" transform="translate(5.17 10.06) scale(.58)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-1 cls-text" transform="translate(6.62 8.4)"><tspan class="cls-8" x="0" y="0">, </tspan><tspan class="cls-7 cls-text" x="2.5" y="0">t=1</tspan></text>
+  <text class="cls-4 cls-text" transform="translate(61.91 37.04)"><tspan x="0" y="0">v</tspan></text>
+  <text class="cls-2 cls-text" transform="translate(64.41 38.71) scale(.58)"><tspan x="0" y="0">0</tspan></text>
+  <text class="cls-1 cls-text" transform="translate(65.87 37.04)"><tspan class="cls-8" x="0" y="0">, </tspan><tspan class="cls-7" x="2.5" y="0">t=0</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(22.91 4.04)"><tspan x="0" y="0">t=0.75</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(45.39 7.99)"><tspan x="0" y="0">t=0.5</tspan></text>
+  <text class="cls-3 cls-text" transform="translate(59.39 24.99)"><tspan x="0" y="0">t=0.25</tspan></text>
+</svg>
